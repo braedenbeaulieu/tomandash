@@ -1,0 +1,29 @@
+#blog {
+    width: 60%;
+    margin: 0 auto;
+
+    #posts {
+        width: 100%;
+
+        #post{
+            width: 100%;
+            text-align: left;
+            display: block;
+            margin-bottom: 100px;
+
+            #author {
+                width: 100%;
+                margin-bottom: 15px;
+                color: rgba(0, 0, 0, .4);
+
+                span {
+                    color: black;
+                }
+            }
+
+            #body {
+                width: 100%;
+            }
+        }
+    }
+}
