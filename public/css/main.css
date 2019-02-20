@@ -134,6 +134,11 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
+html p {
+  font-size: 12px;
+  color: pink;
+}
+
 #blog {
   width: 60%;
   margin: 0 auto;

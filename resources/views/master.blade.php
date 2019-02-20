@@ -10,13 +10,7 @@
 </head>
 <body>
 <header>
-    <a href="{{url('/')}}"><h1 id="logo">Birch Beer</h1></a>
-    <div id="burger"><p id="navToggle">&#9776;</p></div>
-    <nav id="nav">
-        <ul>
 
-        </ul>
-    </nav>
 </header>
 
 <section id="content">
@@ -24,7 +18,7 @@
 </section>
 
 <footer>
-    <p>all content &copy; birch beer 2018</p>
+    <p>all content &copy; 2018</p>
 </footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
