@@ -10,12 +10,20 @@
 </head>
 <body>
 <header>
-    <a href="{{url('/')}}"><h1 id="logo">Birch Beer</h1></a>
-    <div id="burger"><p id="navToggle">&#9776;</p></div>
-    <nav id="nav">
-        <ul>
+    <nav>
+        <div id="left">
+            <a href="">Our Story</a>
+            <a href="">Gallery</a>
+            <a href="">Registry</a>
+        </div>
 
-        </ul>
+        <div id="logo">LOGO</div>
+
+        <div id="right">
+            <a href="">Guestbook</a>
+            <a href="">The Wedding</a>
+            <a href="">RSVP</a>
+        </div>
     </nav>
 </header>
 
@@ -24,7 +32,7 @@
 </section>
 
 <footer>
-    <p>all content &copy; birch beer 2018</p>
+    <p>all content &copy; 2018</p>
 </footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
