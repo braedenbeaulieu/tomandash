@@ -1,0 +1,39 @@
+header {
+    width: 100%;
+    color: $white;
+
+    nav {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 15px 0;
+        width: 100%;
+        margin: auto;
+        background: $grey;
+
+        #left {
+            a {
+                color: $white;
+                width: 92px;
+                padding: 0 7px;
+                margin: 0 15px;
+            }
+        }
+
+        #logo {
+            font-size: 50px;
+            margin: 0 120px;
+            background: $grey;
+        }
+
+        #right {
+            a {
+                color: $white;
+                width: 92px;
+                padding: 15px 7px;
+                margin: 0 15px;
+            }
+        }
+    }
+}

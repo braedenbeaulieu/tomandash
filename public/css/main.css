@@ -134,20 +134,96 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
+html body {
+  width: 100%;
+  text-align: center;
+}
+
+html body p {
+  font-size: 12px;
+}
+
+html body a {
+  text-decoration: none;
+  color: black;
+}
+
+header {
+  width: 100%;
+  color: #f8fafc;
+}
+
+header nav {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  margin: auto;
+  background: #444;
+}
+
+header nav #left a {
+  color: #f8fafc;
+  width: 92px;
+  padding: 0 7px;
+  margin: 0 15px;
+}
+
+header nav #logo {
+  font-size: 50px;
+  margin: 0 120px;
+  background: #444;
+}
+
+header nav #right a {
+  color: #f8fafc;
+  width: 92px;
+  padding: 15px 7px;
+  margin: 0 15px;
+}
+
+footer {
+  width: 100%;
+  background: lightgrey;
+  text-align: center;
+  margin-top: 1000px;
+}
+
 #blog {
+  display: block;
   width: 60%;
   margin: 0 auto;
 }
 
 #blog #posts {
+  width: 60%;
+  margin: 0 auto;
+}
+
+#blog #posts #makePost {
+  width: 92.3%;
+  background: pink;
+  margin: 20px 0;
+  padding: 0;
+  border: 1px solid #888;
+}
+
+#blog #posts #makePost textarea {
+  background: lightblue;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
 #blog #posts #post {
+  margin: 10px 30px 50px 0;
+  padding-bottom: 10px;
   width: 100%;
   text-align: left;
   display: block;
-  margin-bottom: 100px;
 }
 
 #blog #posts #post #author {
