@@ -198,7 +198,7 @@ footer {
 
 #blog {
   display: block;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -291,7 +291,8 @@ footer {
 }
 
 #blog #posts .post div #post-body {
-  width: 100%;
+  max-width: 535px;
+  overflow-wrap: break-word;
 }
 
 #blog #posts .post div #comment-like {

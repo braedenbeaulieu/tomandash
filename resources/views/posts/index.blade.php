@@ -10,7 +10,7 @@
             <form id="make-post" method="POST" action="{{action('PostController@store')}}">
                 @csrf
                 <input name="user_id" type="text" value="1" hidden>
-                <input name="body" type="text" value="">
+                <input name="body" type="text" placeholder="Tell us what you're thinking..">
                 <input type="submit" value="Post" class="edit-post-button">
             </form>
             @forelse($posts as $post)
@@ -33,6 +33,15 @@
                         <input name="user_id" type="text" value="1" hidden>
                         <input name="body" type="text" value="{{$post->body}}">
                         <input name="button" type="submit" value="Make Change">
+                        <input name="button" type="button" value="Close" class="close-edit-form">
+                    </form>
+                    <form method="post" action="{{action('PostCommentController@store')}}" class="comment-form">
+                        {{method_field('PATCH')}}
+                        @csrf
+                        <input name="user_id" type="text" value="1" hidden>
+                        <input name="body" type="text" value="{{$post->body}}">
+                        <input name="button" type="submit" value="Make Change">
+                        <input name="button" type="button" value="Close" class="close-edit-form">
                     </form>
                 </div>
             @empty

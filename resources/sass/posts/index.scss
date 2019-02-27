@@ -1,7 +1,7 @@
 // whole page
 #blog {
     display: block;
-    width: 60%;
+    width: 100%;
     margin: 0 auto;
 
     // all the posts
@@ -100,7 +100,8 @@
                 }
 
                 #post-body {
-                    width: 100%;
+                    max-width: 535px;
+                    overflow-wrap: break-word;
                 }
 
                 // div for the like and comment button

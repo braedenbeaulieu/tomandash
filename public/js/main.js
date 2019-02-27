@@ -112,38 +112,28 @@ $(document).ready(function () {
         console.log(status + " = " + _error);
       }
     });
-  }); // when they click a button on their post
-  // check if they've clicked edit because we will want to only show one edit at a time
+  }); // check if they've clicked edit because we will want to only show one edit at a time
 
   var alreadyClickedEdit = false; // hide all forms at first so we can slide in when needed
 
-  $('.edit-form').hide();
+  $('.edit-form').hide(); // when they click a button on their post
+
   $('#posts').on('click', function (e) {
     // get element clicked
-    var target = $(e.target);
-    var edit_form = target.parent().parent().parent().find('form'); // check if clicked element is edit button
+    var target = $(e.target); // get current edit form
 
-    if (target.hasClass('edit-button') && alreadyClickedEdit === false) {
-      alreadyClickedEdit = true; // get all post information
+    var edit_form = target.parent().parent().parent().find('.edit-form'); // check if clicked element is close edit form button
 
+    if (target.hasClass('close-edit-form')) {
+      target.parent().slideUp(); // check if clicked element is edit button
+    } else if (target.hasClass('edit-button') && alreadyClickedEdit === false) {
+      // get all post information
       var post_id = target.attr('id');
       var post_user_id = target.parent().parent().find('.author').attr('id');
       var post_body = target.parent().parent().find('#post-body').text();
       console.log("".concat(post_id, " ").concat(post_user_id, " ").concat(post_body));
-      edit_form.slideDown(); // create form with inputs and display it on screen for editing
-      // let form = $('<form></form>');
-      // let edit_button = $('<input>');
-      // let edit_body = $('<input>');
-      // let container = target.parent().parent().parent();
-      // edit_body.attr({name:'body', type:'text', value:post_body});
-      // edit_button.attr({name:'button', type:'button', value:'Make Change'});
-      // form.attr({method:'post', action:'https://cake.scweb.ca/CAKE/public/posts', id:'edit-form'});
-      // form.append(edit_body, edit_button);
-      // form.appendTo(container);
-    } else if (target.hasClass('edit-button') && alreadyClickedEdit === true) {
-      edit_form.slideUp();
-      alreadyClickedEdit = false;
-    }
+      edit_form.slideDown(); // if they click the comment button
+    } else if (target.hasClass('comment-button')) {}
   });
 });
 
