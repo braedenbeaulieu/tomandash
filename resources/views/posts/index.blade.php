@@ -7,10 +7,12 @@
 
     <section id="blog">
         <section id="posts">
-            <div id="makePost">
-                <input type="text" placeholder="Tell us what you're thinking...">
-                <input type="button" value="Post">
-            </div>
+            <form id="makePost" method="POST" action="{{action('PostController@store')}}">
+                @csrf
+                <input name="user_id" type="text" value="1">
+                <input name="body" type="text" placeholder="Tell us what you're thinking...">
+                <input type="submit" value="Post" class="post-button">
+            </form>
             @forelse($posts as $post)
                 <div id="post">
                     <img src="https://fillmurray.com/50/50">

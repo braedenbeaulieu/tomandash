@@ -205,7 +205,6 @@ footer {
 #blog #posts {
   width: 600px;
   margin: 0 auto;
-  background: pink;
 }
 
 #blog #posts #makePost {
@@ -220,7 +219,7 @@ footer {
   padding: 0 0 40px;
 }
 
-#blog #posts #makePost input[type=button] {
+#blog #posts #makePost input[type=submit] {
   width: auto;
   margin: 7px 0 0 7px;
   display: block;
@@ -229,6 +228,13 @@ footer {
   padding: 10px 17px;
   background: white;
   text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts #makePost input[type=submit]:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
 #blog #posts #post {
@@ -277,5 +283,9 @@ footer {
   border: none;
   background: none;
   color: #3490dc;
+}
+
+#blog #posts #post div #commentLike input:hover {
+  text-decoration: underline;
 }
 
