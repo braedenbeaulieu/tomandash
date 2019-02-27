@@ -43,12 +43,16 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-
     }
 
     public function update(Request $request, Post $post)
     {
+        $formData = $request->all();
+        $post = Post::where('id', $post->id)->get();
+        $post = $post[0];
+        $post->update($formData);
 
+        return redirect('posts');
     }
 
     public function destroy(Post $post)

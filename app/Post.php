@@ -33,4 +33,8 @@ class Post extends Model
     public function getAuthor($post) {
         return $post->user()->where('id', $post->user_id)->value('name');
     }
+
+    public function getAuthorId($post) {
+        return $post->user()->where('id', $post->user_id)->value('id');
+    }
 }
