@@ -106,30 +106,32 @@
                         @endforelse
                     </div>
 
-                    {{--edit post form--}}
-                    <form method="post" action="{{action('PostController@update', $post->id)}}" class="edit-form">
-                        {{method_field('PATCH')}}
-                        @csrf
-                        <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
-                        <input name="body" type="text" value="{{$post->body}}">
-                        <div class="buttons">
-                            <input name="button" type="submit" value="Make Change">
-                            <input name="button" type="button" value="Close" class="close-form">
-                        </div>
+                    @if(Auth::check())
+                        {{--edit post form--}}
+                        <form method="post" action="{{action('PostController@update', $post->id)}}" class="edit-form">
+                            {{method_field('PATCH')}}
+                            @csrf
+                            <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
+                            <input name="body" type="text" value="{{$post->body}}">
+                            <div class="buttons">
+                                <input name="button" type="submit" value="Make Change">
+                                <input name="button" type="button" value="Close" class="close-form">
+                            </div>
 
-                    </form>
+                        </form>
 
-                    {{--create a comment form--}}
-                    <form method="post" action="{{action('PostController@storeComment', $post->id)}}" class="comment-form">
-                        @csrf
-                        <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
-                        <input name="post_id" type="text" value="{{$post->id}}" hidden>
-                        <input name="body" type="text">
-                        <div class="buttons">
-                            <input name="button" type="submit" value="Comment">
-                            <input name="button" type="button" value="Close" class="close-form">
-                        </div>
-                    </form>
+                        {{--create a comment form--}}
+                        <form method="post" action="{{action('PostController@storeComment', $post->id)}}" class="comment-form">
+                            @csrf
+                            <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
+                            <input name="post_id" type="text" value="{{$post->id}}" hidden>
+                            <input name="body" type="text">
+                            <div class="buttons">
+                                <input name="button" type="submit" value="Comment">
+                                <input name="button" type="button" value="Close" class="close-form">
+                            </div>
+                        </form>
+                    @endif
                 </div>
             @empty
                 <p>There are no posts yet.</p>
