@@ -149,18 +149,17 @@ $(document).ready(function () {
         error: function error(xhr, status, _error2) {
           console.log(status + " = " + _error2);
         }
-      });
-      console.log('delete comment' + comment_id); // if you clicked like button
+      }); // if you clicked like button
     } else if (target.hasClass('like-button')) {
-      var post_id = target.attr('id');
+      // get like id
+      var like_id = target.attr('id');
+      console.log('like click');
       $.ajax({
-        url: '/cake/public/posts/' + post_id + '/like',
-        type: 'get',
-        data: {},
+        url: '/posts/like/' + like_id,
+        type: 'POST',
         success: function success(data) {
-          console.log(data);
-          var likes = $('.like-counter');
-          likes.html(parseInt(likes.text()) + 1); //like.fadeOut(100).attr('src', '../img/like-heart-coral.png').attr('id', 'liked').fadeIn(200);
+          console.log(data); // let likes = $('.like-counter');
+          // likes.html(parseInt(likes.text()) + 1);
         },
         error: function error(xhr, status, _error3) {
           console.log(status + " = " + _error3);

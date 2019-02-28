@@ -87,22 +87,17 @@ class PostController extends Controller
 
     }
 
-    public function like(Request $request) {
-        if($request->ajax()) {
-            // get posts id segment
-            $segment = $request->segment(2);
-            // find the posts that it refers to
-            $post = Post::findOrFail($segment);
-            // if the user has already liked this posts, don't let them again
+    public function like($post_id) {
+        
+        $post = Post::where('id', $post_id)->get();
+        $post = $post[0];
+        $like = new PostLike;
+        $like->user_id = $post->user_id;
+        $like->post_id = $post->id;
+        $like->save();
 
-                // add like to posts(HOW DO I PUT THIS INTO LIKE CONTROLLER?!)
-                //$post->addLike();
-                $like = new PostLike;
-                $like->user_id = Auth::user()->id;
-                $like->post_id = $post->id;
-                $like->save();
-                return 'liked';
-        }
+        return redirect('posts');
+
     }
 
 

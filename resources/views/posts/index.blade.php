@@ -23,14 +23,18 @@
                         <p id="post-body">{{$post->body}}</p>
                         <div id="comment-like">
                             <p class="like-counter">{{$post->countLikes($post)}}</p>
-                            <input class="like-button" id="{{$post->id}}" type="button" value="Like">
-                            <input class="comment-button" type="button" value="Comment">
-                            <input class="edit-button" id="{{$post->id}}" type="button" value="Edit">
+                            <form class="like-button buttons" method="post" action="{{ action('PostController@like', ['id' => $post->id])}}">
+                                @csrf
+                                <input id="{{$post->id}}" type="submit" value="Like">
+                            </form>
+
+                            <input class="comment-button buttons" type="button" value="Comment">
+                            <input class="edit-button buttons" id="{{$post->id}}" type="button" value="Edit">
 
                             {{--delete post button--}}
-                            <form class="delete-button" method="post" action="{{ action('PostController@destroy', ['id' => $post->id]) }}">
+                            <form class="delete-button buttons" method="post" action="{{ action('PostController@destroy', ['id' => $post->id]) }}">
                                 {{ method_field('DELETE') }}
-                                @csrf
+
                                 <input type="submit" value="Delete">
                             </form>
                         </div>

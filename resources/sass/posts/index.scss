@@ -187,18 +187,31 @@
 
                 // div for the like and comment button
                 #comment-like {
-                    display: inline flex;
+                    display: inline-flex;
                     margin-left: -7px;
+
 
                     .like-counter {
                         padding: 5px;
                     }
 
-                    input {
+                    .buttons {
                         cursor: pointer;
                         border: none;
                         background: none;
                         color: $blue;
+                        width: auto;
+
+                        input {
+                            cursor: pointer;
+                            border: none;
+                            background: none;
+                            color: $blue;
+
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
 
                         // on hover
                         &:hover {

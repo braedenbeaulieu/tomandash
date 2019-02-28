@@ -18,7 +18,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // routing for posts controller
-Route::get('/posts/{post}/like', 'PostController@like');
+Route::post('/posts/like/{like}', 'PostController@like');
 Route::post('/posts/comment', 'PostController@storeComment');
 Route::delete('/posts/comment/{comment}', 'PostController@destroyComment');
 Route::resource('/posts', 'PostController');

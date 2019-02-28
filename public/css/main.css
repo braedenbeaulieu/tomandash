@@ -366,7 +366,7 @@ footer {
 }
 
 #blog #posts .post div #comment-like {
-  display: inline flex;
+  display: inline-flex;
   margin-left: -7px;
 }
 
@@ -374,14 +374,26 @@ footer {
   padding: 5px;
 }
 
-#blog #posts .post div #comment-like input {
+#blog #posts .post div #comment-like .buttons {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #3490dc;
+  width: auto;
+}
+
+#blog #posts .post div #comment-like .buttons input {
   cursor: pointer;
   border: none;
   background: none;
   color: #3490dc;
 }
 
-#blog #posts .post div #comment-like input:hover {
+#blog #posts .post div #comment-like .buttons input:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post div #comment-like .buttons:hover {
   text-decoration: underline;
 }
 

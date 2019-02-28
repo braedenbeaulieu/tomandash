@@ -78,21 +78,23 @@ $(document).ready(function () {
                     console.log(status + " = " + error);
                 }
             });
-            console.log('delete comment' + comment_id);
+
 
             // if you clicked like button
         } else if(target.hasClass('like-button')) {
-            let post_id = target.attr('id');
+
+            // get like id
+            let like_id = target.attr('id');
+
+            console.log('like click');
+
             $.ajax({
-                url: '/cake/public/posts/' + post_id + '/like',
-                type: 'get',
-                data: {},
+                url: '/posts/like/' + like_id,
+                type: 'POST',
                 success: function(data) {
                     console.log(data);
-                    let likes = $('.like-counter');
-                    likes.html(parseInt(likes.text()) + 1);
-                    //like.fadeOut(100).attr('src', '../img/like-heart-coral.png').attr('id', 'liked').fadeIn(200);
-
+                    // let likes = $('.like-counter');
+                    // likes.html(parseInt(likes.text()) + 1);
                 },
                 error: function(xhr, status, error) {
                     console.log(status + " = " + error);
