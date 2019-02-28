@@ -13,12 +13,13 @@
 
 Route::get('/', 'PostController@index');
 
+// routing for auth stuff
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // routing for posts controller
 Route::post('/posts/like/{like}', 'PostController@like');
+Route::delete('/posts/like/{like}', 'PostController@destroyLike');
 Route::post('/posts/comment', 'PostController@storeComment');
 Route::delete('/posts/comment/{comment}', 'PostController@destroyComment');
 Route::resource('/posts', 'PostController');

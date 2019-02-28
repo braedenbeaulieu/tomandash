@@ -21,7 +21,6 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-
     public function create()
     {
 
@@ -61,23 +60,6 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-
-
-
-    public function destroyComment($comment_id) {
-        $comment = PostComment::where('id', $comment_id)->get();
-        $comment = $comment[0];
-        $comment->delete();
-        return redirect('posts');
-    }
-
-
-
-
-
-
-
-
     public function storeComment(Request $request) {
 
         $formData = $request->all();
@@ -87,17 +69,31 @@ class PostController extends Controller
 
     }
 
+    public function destroyComment($comment_id) {
+        $comment = PostComment::where('id', $comment_id)->get();
+        $comment = $comment[0];
+        $comment->delete();
+        return redirect('posts');
+    }
+
     public function like($post_id) {
-        
+
         $post = Post::where('id', $post_id)->get();
         $post = $post[0];
         $like = new PostLike;
-        $like->user_id = $post->user_id;
+        $like->user_id = Auth::user()->id;
         $like->post_id = $post->id;
         $like->save();
 
         return redirect('posts');
 
+    }
+
+    public function destroyLike($like_id) {
+        $like = PostLike::where('id', $like_id)->get();
+        $like = $like[0];
+        $like->delete();
+        return redirect('posts');
     }
 
 

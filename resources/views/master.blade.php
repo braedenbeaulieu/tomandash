@@ -23,6 +23,12 @@
             <a href="">Guestbook</a>
             <a href="">The Wedding</a>
             <a href="">RSVP</a>
+            @if(Auth::check())
+                <a href="{{ url('/logout') }}">Log Out</a>
+            @else
+                <a href="{{ route('login') }}"><li>login</li></a>
+                <a href="{{ route('register') }}"><li>register</li></a>
+            @endif
         </div>
     </nav>
 </header>

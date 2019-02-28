@@ -81,26 +81,27 @@ $(document).ready(function () {
 
 
             // if you clicked like button
-        } else if(target.hasClass('like-button')) {
-
-            // get like id
-            let like_id = target.attr('id');
-
-            console.log('like click');
-
-            $.ajax({
-                url: '/posts/like/' + like_id,
-                type: 'POST',
-                success: function(data) {
-                    console.log(data);
-                    // let likes = $('.like-counter');
-                    // likes.html(parseInt(likes.text()) + 1);
-                },
-                error: function(xhr, status, error) {
-                    console.log(status + " = " + error);
-                }
-            });
         }
+        // else if(target.hasClass('like-button')) {
+        //
+        //     // get like id
+        //     let like_id = target.attr('id');
+        //
+        //     console.log('like click');
+        //
+        //     $.ajax({
+        //         url: '/posts/like/' + like_id,
+        //         type: 'POST',
+        //         success: function(data) {
+        //             console.log(data);
+        //             // let likes = $('.like-counter');
+        //             // likes.html(parseInt(likes.text()) + 1);
+        //         },
+        //         error: function(xhr, status, error) {
+        //             console.log(status + " = " + error);
+        //         }
+        //     });
+        // }
     });
 
 });

@@ -150,22 +150,27 @@ $(document).ready(function () {
           console.log(status + " = " + _error2);
         }
       }); // if you clicked like button
-    } else if (target.hasClass('like-button')) {
-      // get like id
-      var like_id = target.attr('id');
-      console.log('like click');
-      $.ajax({
-        url: '/posts/like/' + like_id,
-        type: 'POST',
-        success: function success(data) {
-          console.log(data); // let likes = $('.like-counter');
-          // likes.html(parseInt(likes.text()) + 1);
-        },
-        error: function error(xhr, status, _error3) {
-          console.log(status + " = " + _error3);
-        }
-      });
-    }
+    } // else if(target.hasClass('like-button')) {
+    //
+    //     // get like id
+    //     let like_id = target.attr('id');
+    //
+    //     console.log('like click');
+    //
+    //     $.ajax({
+    //         url: '/posts/like/' + like_id,
+    //         type: 'POST',
+    //         success: function(data) {
+    //             console.log(data);
+    //             // let likes = $('.like-counter');
+    //             // likes.html(parseInt(likes.text()) + 1);
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.log(status + " = " + error);
+    //         }
+    //     });
+    // }
+
   });
 });
 

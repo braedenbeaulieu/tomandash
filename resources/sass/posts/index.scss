@@ -100,7 +100,8 @@
                 .buttons {
                     width: 60%;
                     display: inline-flex;
-                    justify-content: start;
+                    justify-content: flex-start;
+
 
                     // edit post button (same as post button)
                     input {
@@ -138,7 +139,7 @@
                 .buttons {
                     width: 60%;
                     display: inline-flex;
-                    justify-content: start;
+                    justify-content: flex-start;
 
                     // edit post button (same as post button)
                     input {
@@ -183,6 +184,7 @@
                 #post-body {
                     max-width: 535px;
                     overflow-wrap: break-word;
+                    line-height: 15px;
                 }
 
                 // div for the like and comment button

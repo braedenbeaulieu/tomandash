@@ -289,7 +289,7 @@ footer {
 #blog #posts .post .edit-form .buttons {
   width: 60%;
   display: inline-flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 #blog #posts .post .edit-form .buttons input {
@@ -323,7 +323,7 @@ footer {
 #blog #posts .post .comment-form .buttons {
   width: 60%;
   display: inline-flex;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 #blog #posts .post .comment-form .buttons input {
@@ -363,6 +363,7 @@ footer {
 #blog #posts .post div #post-body {
   max-width: 535px;
   overflow-wrap: break-word;
+  line-height: 15px;
 }
 
 #blog #posts .post div #comment-like {
