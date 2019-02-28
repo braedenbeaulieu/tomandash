@@ -22,8 +22,8 @@
                         <p class="author" id="user_id">{{$post->getAuthor($post)}}</p>
                         <p id="post-body">{{$post->body}}</p>
                         <div id="comment-like">
-                            <p id="like-counter">100</p>
-                            <input class="like-button" type="button" value="Like">
+                            <p class="like-counter">{{$post->countLikes($post)}}</p>
+                            <input class="like-button" id="{{$post->id}}" type="button" value="Like">
                             <input class="comment-button" type="button" value="Comment">
                             <input class="edit-button" id="{{$post->id}}" type="button" value="Edit">
 
@@ -49,16 +49,16 @@
                             </div>
 
                             {{--delete comment button--}}
-                            {{--<form  method="post" action="{{ route('/posts/comment/', ['id' => $comment->id]) }}">--}}
-                                {{--{{ method_field('DELETE') }}--}}
-                                {{--@csrf--}}
-                                {{--<input class="delete-comment" id="{{$comment->id}}" type="submit" value="Delete">--}}
+                            <form  method="post" action="{{ action('PostController@destroyComment', ['id' => $comment->id]) }}">
+                                {{ method_field('DELETE') }}
+                                @csrf
+                                <input class="delete-comment" id="{{$comment->id}}" type="submit" value="Delete">
 
-                            {{--</form>--}}
+                            </form>
 
-                            <div class="delete-comment-container">
-                                <input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">
-                            </div>
+                            {{--<div class="delete-comment-container">--}}
+                                {{--<input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">--}}
+                            {{--</div>--}}
 
 
                         @empty

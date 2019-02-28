@@ -370,8 +370,8 @@ footer {
   margin-left: -7px;
 }
 
-#blog #posts .post div #comment-like #like-counter {
-  display: none;
+#blog #posts .post div #comment-like .like-counter {
+  padding: 5px;
 }
 
 #blog #posts .post div #comment-like input {

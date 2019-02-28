@@ -23,7 +23,7 @@ class Post extends Model
     }
 
     public function countLikes($post) {
-        return $post->likes()->where('post_id', $post->id)->get();
+        return count($post->likes()->where('post_id', $post->id)->get());
     }
 
     public function getComments($post) {

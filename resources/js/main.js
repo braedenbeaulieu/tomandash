@@ -79,19 +79,18 @@ $(document).ready(function () {
                 }
             });
             console.log('delete comment' + comment_id);
-        } else if(target.hasClass('like-post')) {
+
+            // if you clicked like button
+        } else if(target.hasClass('like-button')) {
             let post_id = target.attr('id');
             $.ajax({
-                url: '/cake/public/posts/' + id + '/like',
+                url: '/cake/public/posts/' + post_id + '/like',
                 type: 'get',
                 data: {},
                 success: function(data) {
-                    let likes = $('#likes');
-                    let like = $('.like');
+                    console.log(data);
+                    let likes = $('.like-counter');
                     likes.html(parseInt(likes.text()) + 1);
-                    like.fadeTo( "fast", function() {
-                        like.attr('src', '../img/like-heart-coral.png').attr('id', 'liked');
-                    });
                     //like.fadeOut(100).attr('src', '../img/like-heart-coral.png').attr('id', 'liked').fadeIn(200);
 
                 },

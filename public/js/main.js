@@ -136,8 +136,9 @@ $(document).ready(function () {
       formOpen = true; // if they click the comment button
     } else if (target.hasClass('comment-button') && formOpen === false) {
       comment_form.slideDown();
-      formOpen = true; // if the click the delete comment button
+      formOpen = true; // if they click the delete comment button
     } else if (target.hasClass('delete-comment')) {
+      // get comment id
       var comment_id = target.attr('comment-id');
       $.ajax({
         url: '/posts/comment/' + comment_id,
@@ -149,7 +150,22 @@ $(document).ready(function () {
           console.log(status + " = " + _error2);
         }
       });
-      console.log('delete comment' + comment_id);
+      console.log('delete comment' + comment_id); // if you clicked like button
+    } else if (target.hasClass('like-button')) {
+      var post_id = target.attr('id');
+      $.ajax({
+        url: '/cake/public/posts/' + post_id + '/like',
+        type: 'get',
+        data: {},
+        success: function success(data) {
+          console.log(data);
+          var likes = $('.like-counter');
+          likes.html(parseInt(likes.text()) + 1); //like.fadeOut(100).attr('src', '../img/like-heart-coral.png').attr('id', 'liked').fadeIn(200);
+        },
+        error: function error(xhr, status, _error3) {
+          console.log(status + " = " + _error3);
+        }
+      });
     }
   });
 });

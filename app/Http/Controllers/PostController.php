@@ -64,12 +64,9 @@ class PostController extends Controller
 
 
 
-
-
-
-
-    public function destroyComment($comment) {
-        dd($comment);
+    public function destroyComment($comment_id) {
+        $comment = PostComment::where('id', $comment_id)->get();
+        $comment = $comment[0];
         $comment->delete();
         return redirect('posts');
     }
@@ -98,8 +95,6 @@ class PostController extends Controller
             $post = Post::findOrFail($segment);
             // if the user has already liked this posts, don't let them again
 
-            if(Auth::user()->hasLiked($post->id) === 'no') {
-
                 // add like to posts(HOW DO I PUT THIS INTO LIKE CONTROLLER?!)
                 //$post->addLike();
                 $like = new PostLike;
@@ -107,7 +102,6 @@ class PostController extends Controller
                 $like->post_id = $post->id;
                 $like->save();
                 return 'liked';
-            }
         }
     }
 
