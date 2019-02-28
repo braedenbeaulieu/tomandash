@@ -52,7 +52,80 @@
             display: inline-flex;
             flex-wrap: wrap;
 
+            // comments
+            .comments {
+                width: 80%;
+                margin-left: 17%;
+                border-left: 2px solid $grey;
+                padding-left: 3%;
+
+                .comment {
+                    p {
+                        margin-bottom: 5px;
+                    }
+                }
+
+                .delete-comment-container {
+                    position: relative;
+
+                    .delete-comment {
+                        cursor: pointer;
+                        border: none;
+                        background: none;
+                        color: orangered;
+                        position: absolute;
+                        top: -35px;
+                        right: 0;
+
+                        // on hover
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+
+            // edit form
             .edit-form {
+                width: 100%;
+                display: block;
+
+                // editable box
+                input[type="text"] {
+                    width: 100%;
+                    height: 20px;
+                }
+
+                // buttons in form
+                .buttons {
+                    width: 60%;
+                    display: inline-flex;
+                    justify-content: start;
+
+                    // edit post button (same as post button)
+                    input {
+                        width: auto;
+                        margin: 7px 0 0 7px;
+                        display: block;
+                        border: 1px solid $grey;
+                        border-radius: 2px;
+                        padding: 10px 17px;
+                        background: white;
+                        text-decoration: none;
+                        cursor: pointer;
+                        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+                        transition: all .3s;
+
+                        // on hover
+                        &:hover {
+                            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+                        }
+                    }
+                }
+            }
+
+            // comment form
+            .comment-form {
                 width: 100%;
                 display: block;
 
@@ -61,25 +134,33 @@
                     height: 20px;
                 }
 
-                // edit post button (same as post button)
-                input[type="submit"] {
-                    width: auto;
-                    margin: 7px 0 0 7px;
-                    display: block;
-                    border: 1px solid $grey;
-                    border-radius: 2px;
-                    padding: 10px 17px;
-                    background: white;
-                    text-decoration: none;
-                    cursor: pointer;
-                    box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-                    transition: all .3s;
+                // buttons in form
+                .buttons {
+                    width: 60%;
+                    display: inline-flex;
+                    justify-content: start;
 
-                    // on hover
-                    &:hover {
-                        box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+                    // edit post button (same as post button)
+                    input {
+                        width: auto;
+                        margin: 7px 0 0 7px;
+                        display: block;
+                        border: 1px solid $grey;
+                        border-radius: 2px;
+                        padding: 10px 17px;
+                        background: white;
+                        text-decoration: none;
+                        cursor: pointer;
+                        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+                        transition: all .3s;
+
+                        // on hover
+                        &:hover {
+                            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+                        }
                     }
                 }
+
             }
 
             // profile picture
@@ -122,6 +203,13 @@
                         // on hover
                         &:hover {
                             text-decoration: underline;
+                        }
+                    }
+
+                    // delete post form
+                    .delete-button {
+                        input {
+                            color: orangered;
                         }
                     }
                 }

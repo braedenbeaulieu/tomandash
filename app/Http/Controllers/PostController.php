@@ -57,13 +57,37 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-
+        $post->delete();
+        return redirect('posts');
     }
 
-    public function destroyComment(PostComment $comment) {
-        $post_id = PostComment::where('post_id', $comment->post_id)->pluck('post_id');
+
+
+
+
+
+
+
+    public function destroyComment($comment) {
+        dd($comment);
         $comment->delete();
-        return redirect('posts/' . $post_id[0]);
+        return redirect('posts');
+    }
+
+
+
+
+
+
+
+
+    public function storeComment(Request $request) {
+
+        $formData = $request->all();
+        PostComment::create($formData);
+
+        return redirect('posts');
+
     }
 
     public function like(Request $request) {
@@ -87,21 +111,6 @@ class PostController extends Controller
         }
     }
 
-    public function comment(Request $request) {
-        // create new comment
-        // user_id, post_id, body
-        if($request->ajax()) {
-            // get posts id segment
-            $segment = $request->segment(2);
-            // find the posts that it refers to
-            $post = Post::findOrFail($segment);
-            $comment = new Comment;
-            $comment->user_id = Auth::user()->id;
-            $comment->post_id = $post->id;
-            $comment->body = $request->comment;
-            $comment->save();
-            return 'commented';
-        }
-    }
+
 
 }

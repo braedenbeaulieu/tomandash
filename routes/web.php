@@ -18,4 +18,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // routing for posts controller
+Route::post('/posts/comment', 'PostController@storeComment');
+Route::delete('/posts/comment/{comment}', 'PostController@destroyComment');
 Route::resource('/posts', 'PostController');

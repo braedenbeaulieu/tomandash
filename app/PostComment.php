@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class PostComment extends Model
 {
+
+    protected $table = 'post_comments';
+    protected $fillable = ['user_id', 'post_id', 'body'];
+
     public function post() {
         return $this->belongsTo(Post::class);
     }
@@ -14,7 +18,7 @@ class PostComment extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getUsername($comment) {
+    public function getUser($comment) {
         $username = $comment->user()->where('id', $comment->user_id)->get();
         return $username[0];
     }

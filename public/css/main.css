@@ -151,6 +151,7 @@ html body a {
 html body #subtitle {
   font-size: 3em;
   padding: 60px 0;
+  font-family: "Pinyon Script", cursive;
 }
 
 header {
@@ -246,6 +247,35 @@ footer {
   flex-wrap: wrap;
 }
 
+#blog #posts .post .comments {
+  width: 80%;
+  margin-left: 17%;
+  border-left: 2px solid #444;
+  padding-left: 3%;
+}
+
+#blog #posts .post .comments .comment p {
+  margin-bottom: 5px;
+}
+
+#blog #posts .post .comments .delete-comment-container {
+  position: relative;
+}
+
+#blog #posts .post .comments .delete-comment-container .delete-comment {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: orangered;
+  position: absolute;
+  top: -35px;
+  right: 0;
+}
+
+#blog #posts .post .comments .delete-comment-container .delete-comment:hover {
+  text-decoration: underline;
+}
+
 #blog #posts .post .edit-form {
   width: 100%;
   display: block;
@@ -256,7 +286,13 @@ footer {
   height: 20px;
 }
 
-#blog #posts .post .edit-form input[type=submit] {
+#blog #posts .post .edit-form .buttons {
+  width: 60%;
+  display: inline-flex;
+  justify-content: start;
+}
+
+#blog #posts .post .edit-form .buttons input {
   width: auto;
   margin: 7px 0 0 7px;
   display: block;
@@ -270,7 +306,41 @@ footer {
   transition: all 0.3s;
 }
 
-#blog #posts .post .edit-form input[type=submit]:hover {
+#blog #posts .post .edit-form .buttons input:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #posts .post .comment-form {
+  width: 100%;
+  display: block;
+}
+
+#blog #posts .post .comment-form input[type=text] {
+  width: 100%;
+  height: 20px;
+}
+
+#blog #posts .post .comment-form .buttons {
+  width: 60%;
+  display: inline-flex;
+  justify-content: start;
+}
+
+#blog #posts .post .comment-form .buttons input {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts .post .comment-form .buttons input:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -313,5 +383,9 @@ footer {
 
 #blog #posts .post div #comment-like input:hover {
   text-decoration: underline;
+}
+
+#blog #posts .post div #comment-like .delete-button input {
+  color: orangered;
 }
 
