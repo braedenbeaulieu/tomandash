@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/main.css')}}">
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pinyon+Script|Roboto" rel="stylesheet">
     <link rel="icon" href="">
     <title>Tom + Ash</title>
 </head>
@@ -24,6 +24,12 @@
             <a href="">Guestbook</a>
             <a href="">The Wedding</a>
             <a href="">RSVP</a>
+            @if(Auth::check())
+                <a href="{{ url('/logout') }}">Log Out</a>
+            @else
+                <a href="{{ route('login') }}"><li>login</li></a>
+                <a href="{{ route('register') }}"><li>register</li></a>
+            @endif
         </div>
     </nav>
 </header>

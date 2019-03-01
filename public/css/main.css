@@ -10646,6 +10646,12 @@ html body a {
   color: black;
 }
 
+html body #subtitle {
+  font-size: 3em;
+  padding: 60px 0;
+  font-family: "Pinyon Script", cursive;
+}
+
 header {
   width: 100%;
   color: #f8fafc;
@@ -10691,50 +10697,206 @@ footer {
 
 #blog {
   display: block;
-  width: 60%;
+  width: 100%;
   margin: 0 auto;
 }
 
 #blog #posts {
-  width: 60%;
+  width: 600px;
   margin: 0 auto;
 }
 
-#blog #posts #makePost {
-  width: 92.3%;
-  background: pink;
+#blog #posts #make-post {
+  width: 100%;
   margin: 20px 0;
   padding: 0;
-  border: 1px solid #888;
 }
 
-#blog #posts #makePost textarea {
-  background: lightblue;
+#blog #posts #make-post input[type=text] {
   width: 100%;
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 0 0 40px;
 }
 
-#blog #posts #post {
-  margin: 10px 30px 50px 0;
+#blog #posts #make-post input[type=submit] {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts #make-post input[type=submit]:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #posts .post {
+  margin: 10px 30px 30px 0;
   padding-bottom: 10px;
   width: 100%;
   text-align: left;
+  display: inline-flex;
+  flex-wrap: wrap;
+}
+
+#blog #posts .post .comments {
+  width: 80%;
+  margin-left: 17%;
+  border-left: 2px solid #444;
+  padding-left: 3%;
+}
+
+#blog #posts .post .comments .comment p {
+  margin-bottom: 5px;
+}
+
+#blog #posts .post .comments .delete-comment-container {
+  position: relative;
+}
+
+#blog #posts .post .comments .delete-comment-container .delete-comment {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: orangered;
+  position: absolute;
+  top: -35px;
+  right: 0;
+}
+
+#blog #posts .post .comments .delete-comment-container .delete-comment:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post .edit-form {
+  width: 100%;
   display: block;
 }
 
-#blog #posts #post #author {
+#blog #posts .post .edit-form input[type=text] {
+  width: 100%;
+  height: 20px;
+}
+
+#blog #posts .post .edit-form .buttons {
+  width: 60%;
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+#blog #posts .post .edit-form .buttons input {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts .post .edit-form .buttons input:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #posts .post .comment-form {
+  width: 100%;
+  display: block;
+}
+
+#blog #posts .post .comment-form input[type=text] {
+  width: 100%;
+  height: 20px;
+}
+
+#blog #posts .post .comment-form .buttons {
+  width: 60%;
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+#blog #posts .post .comment-form .buttons input {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts .post .comment-form .buttons input:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #posts .post img {
+  border-radius: 50%;
+  max-height: 50px;
+  margin-right: 7px;
+}
+
+#blog #posts .post div {
+  margin-top: 5px;
+}
+
+#blog #posts .post div .author {
   width: 100%;
   margin-bottom: 15px;
-  color: rgba(0, 0, 0, 0.4);
+  color: #444;
 }
 
-#blog #posts #post #author span {
-  color: black;
+#blog #posts .post div #post-body {
+  max-width: 535px;
+  overflow-wrap: break-word;
+  line-height: 15px;
 }
 
-#blog #posts #post #body {
-  width: 100%;
+#blog #posts .post div #comment-like {
+  display: inline-flex;
+  margin-left: -7px;
+}
+
+#blog #posts .post div #comment-like .like-counter {
+  padding: 5px;
+}
+
+#blog #posts .post div #comment-like .buttons {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #3490dc;
+  width: auto;
+}
+
+#blog #posts .post div #comment-like .buttons input {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #3490dc;
+}
+
+#blog #posts .post div #comment-like .buttons input:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post div #comment-like .buttons:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post div #comment-like .delete-button input {
+  color: orangered;
 }
 
