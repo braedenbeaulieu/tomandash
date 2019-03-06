@@ -27,6 +27,11 @@ $(document).ready(function () {
     $('.edit-form').hide();
     $('.comment-form').hide();
 
+    // hide all comments at first, user has to press show comments button to see.
+    $('.comments').hide();
+    // toggle for checking if its slid down or up
+    let slideToggle = false;
+
     // when they click a button on their post
     $('#posts').on('click', function(e) {
 
@@ -79,29 +84,32 @@ $(document).ready(function () {
                 }
             });
 
-
-            // if you clicked like button
         }
-        // else if(target.hasClass('like-button')) {
-        //
-        //     // get like id
-        //     let like_id = target.attr('id');
-        //
-        //     console.log('like click');
-        //
-        //     $.ajax({
-        //         url: '/posts/like/' + like_id,
-        //         type: 'POST',
-        //         success: function(data) {
-        //             console.log(data);
-        //             // let likes = $('.like-counter');
-        //             // likes.html(parseInt(likes.text()) + 1);
-        //         },
-        //         error: function(xhr, status, error) {
-        //             console.log(status + " = " + error);
-        //         }
-        //     });
-        // }
+        // if they click the show comments button
+        else if(target.hasClass('show-comments')) {
+            let comments = target.parent().children('.comments');
+            let showComments = target.parent().children('.show-comments');
+            let commentsCount = target.parent().children('.comments-count').text();
+
+            if(slideToggle === false) {
+                comments.slideDown();
+                slideToggle = true;
+                if(commentsCount < 1) {
+                    showComments.text(`hide all ${commentsCount} comments`);
+                } else if(commentsCount == 1) {
+                    showComments.text(`hide comment`);
+                }
+
+            } else if(slideToggle === true) {
+                comments.slideUp();
+                slideToggle = false;
+                if(commentsCount < 1) {
+                    showComments.text(`show all ${commentsCount} comments`);
+                } else if(commentsCount == 1) {
+                    showComments.text(`show comment`);
+                }
+            }
+        }
     });
 
 });

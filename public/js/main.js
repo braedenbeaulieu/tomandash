@@ -117,7 +117,11 @@ $(document).ready(function () {
   var formOpen = false; // hide all forms at first so we can slide in when needed
 
   $('.edit-form').hide();
-  $('.comment-form').hide(); // when they click a button on their post
+  $('.comment-form').hide(); // hide all comments at first, user has to press show comments button to see.
+
+  $('.comments').hide(); // toggle for checking if its slid down or up
+
+  var slideToggle = false; // when they click a button on their post
 
   $('#posts').on('click', function (e) {
     // get element clicked
@@ -149,28 +153,33 @@ $(document).ready(function () {
         error: function error(xhr, status, _error2) {
           console.log(status + " = " + _error2);
         }
-      }); // if you clicked like button
-    } // else if(target.hasClass('like-button')) {
-    //
-    //     // get like id
-    //     let like_id = target.attr('id');
-    //
-    //     console.log('like click');
-    //
-    //     $.ajax({
-    //         url: '/posts/like/' + like_id,
-    //         type: 'POST',
-    //         success: function(data) {
-    //             console.log(data);
-    //             // let likes = $('.like-counter');
-    //             // likes.html(parseInt(likes.text()) + 1);
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.log(status + " = " + error);
-    //         }
-    //     });
-    // }
+      });
+    } // if they click the show comments button
+    else if (target.hasClass('show-comments')) {
+        var comments = target.parent().children('.comments');
+        var showComments = target.parent().children('.show-comments');
+        var commentsCount = target.parent().children('.comments-count').text();
 
+        if (slideToggle === false) {
+          comments.slideDown();
+          slideToggle = true;
+
+          if (commentsCount < 1) {
+            showComments.text("hide all ".concat(commentsCount, " comments"));
+          } else if (commentsCount == 1) {
+            showComments.text("hide comment");
+          }
+        } else if (slideToggle === true) {
+          comments.slideUp();
+          slideToggle = false;
+
+          if (commentsCount < 1) {
+            showComments.text("show all ".concat(commentsCount, " comments"));
+          } else if (commentsCount == 1) {
+            showComments.text("show comment");
+          }
+        }
+      }
   });
 });
 

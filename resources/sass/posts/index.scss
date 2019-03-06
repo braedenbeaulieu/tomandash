@@ -6,20 +6,25 @@
 
     // all the posts
     #posts {
+        background: $white;
         width: 600px;
         margin: 0 auto;
+        padding: 0 15px;
+        //border-left: 1px solid rgba(0, 0, 0, .1);
+        //border-right: 1px solid rgba(0, 0, 0, .1);
 
         // create post form
         #make-post {
             width: 100%;
             margin: 20px 0;
             padding: 0;
+            //border-bottom: 1px solid rgba(0, 0, 0, .1);
 
             // post body input box
-            input[type="text"] {
+            textarea {
                 width: 100%;
                 margin: 0;
-                padding: 0 0 40px;
+                padding: 5px 0 40px 5px;
             }
 
             // post button
@@ -43,67 +48,115 @@
             }
         }
 
+        #must-log-in {
+            p {
+                a{
+                    color: $blue;
+                    text-decoration: underline;
+                }
+            }
+        }
+
         // for every post
         .post {
             margin: 10px 30px 30px 0;
-            padding-bottom: 10px;
+            padding-left: 10px;
             width: 100%;
             text-align: left;
             display: inline-flex;
             flex-wrap: wrap;
+            position: relative;
 
-            // comments
+            // show comments button
+            .show-comments {
+                position: absolute;
+                right: 0;
+                top: 100px;
+                cursor: pointer;
+                color: $blue;
+                font-size: 12px;
+            }
+
+            // all comments
             .comments {
                 width: 80%;
-                margin-left: 17%;
+                margin: 15px 0 0 10%;
                 border-left: 2px solid $grey;
                 padding-left: 3%;
+                position: relative;
 
+                // each comment
                 .comment {
-                    p {
-                        margin-bottom: 5px;
+                    display: inline-flex;
+                    flex-wrap: wrap;
+                    justify-content: start;
+                    width: 430px;
+
+                    .comment-pic {
+                        width: 40px;
+                        height: 40px;
                     }
-                }
 
-                .delete-comment-container {
-                    position: relative;
+                    // comment words
+                    .comment-words {
+                        width: 350px;
 
-                    .delete-comment {
-                        cursor: pointer;
-                        border: none;
-                        background: none;
-                        color: orangered;
-                        position: absolute;
-                        top: -35px;
-                        right: 0;
+                        .comment-name {
+                            margin-bottom: 10px;
+                        }
 
-                        // on hover
-                        &:hover {
-                            text-decoration: underline;
+                        .comment-body {
+                            width: 100%;
+                        }
+                    }
+
+                    // delete comment button
+                    .delete-comment-container {
+                        position: relative;
+
+                        .delete-comment {
+                            font-size: 12px;
+                            cursor: pointer;
+                            border: none;
+                            background: none;
+                            color: orangered;
+                            position: absolute;
+                            top: 25px;
+                            right: -40px;
+
+                            // on hover
+                            &:hover {
+                                text-decoration: underline;
+                            }
                         }
                     }
                 }
+
+
             }
 
-            // edit form
-            .edit-form {
+            // comment and edit forms
+            .comment-edit-form {
                 width: 100%;
                 display: block;
+                margin: 15px 0 15px 50px;
 
-                // editable box
-                input[type="text"] {
-                    width: 100%;
-                    height: 20px;
+
+                textarea {
+                    width: 90%;
+                    height: 45px;
+                    font-size: 12px;
+                    padding: 2px 0 0 2px;
                 }
 
-                // buttons in form
-                .buttons {
+                // buttons in edit and comment forms
+                .comment-edit-form-buttons {
                     width: 60%;
+                    font-size: 12px;
                     display: inline-flex;
                     justify-content: flex-start;
 
-
-                    // edit post button (same as post button)
+                    // edit/comment post button
                     input {
                         width: auto;
                         margin: 7px 0 0 7px;
@@ -122,43 +175,14 @@
                             box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
                         }
                     }
-                }
-            }
 
-            // comment form
-            .comment-form {
-                width: 100%;
-                display: block;
+                    .close-form {
+                        margin: 10px 0 0 5px;
+                        padding: 0;
+                        height: 25px;
+                        width: 25px;
+                        border-radius: 50%;
 
-                input[type="text"] {
-                    width: 100%;
-                    height: 20px;
-                }
-
-                // buttons in form
-                .buttons {
-                    width: 60%;
-                    display: inline-flex;
-                    justify-content: flex-start;
-
-                    // edit post button (same as post button)
-                    input {
-                        width: auto;
-                        margin: 7px 0 0 7px;
-                        display: block;
-                        border: 1px solid $grey;
-                        border-radius: 2px;
-                        padding: 10px 17px;
-                        background: white;
-                        text-decoration: none;
-                        cursor: pointer;
-                        box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-                        transition: all .3s;
-
-                        // on hover
-                        &:hover {
-                            box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
-                        }
                     }
                 }
 
@@ -168,12 +192,13 @@
             img {
                 border-radius: 50%;
                 max-height: 50px;
-                margin-right: 7px;
+                margin: 4px 7px 0 0;
             }
 
             // all the words
             div {
                 margin-top: 5px;
+                max-width: 500px;
 
                 .author {
                     width: 100%;
@@ -181,8 +206,8 @@
                     color: $grey;
                 }
 
-                #post-body {
-                    max-width: 535px;
+                .post-body {
+                    width: 100%;
                     overflow-wrap: break-word;
                     line-height: 15px;
                 }
@@ -194,7 +219,8 @@
 
 
                     .like-counter {
-                        padding: 5px;
+                        margin: 3px 4px 0 0;
+                        font-size: 12px;
                     }
 
                     .buttons {
@@ -203,6 +229,7 @@
                         background: none;
                         color: $blue;
                         width: auto;
+                        font-size: 12px;
 
                         input {
                             cursor: pointer;

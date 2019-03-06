@@ -1,137 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-/* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-blockquote,
-q {
-  quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
 /*!
  * Bootstrap v4.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
@@ -10628,6 +10496,138 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 html {
   font-family: "Roboto", sans-serif;
 }
@@ -10638,7 +10638,7 @@ html body {
 }
 
 html body p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 html body a {
@@ -10702,8 +10702,10 @@ footer {
 }
 
 #blog #posts {
+  background: #f8fafc;
   width: 600px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 #blog #posts #make-post {
@@ -10712,10 +10714,10 @@ footer {
   padding: 0;
 }
 
-#blog #posts #make-post input[type=text] {
+#blog #posts #make-post textarea {
   width: 100%;
   margin: 0;
-  padding: 0 0 40px;
+  padding: 5px 0 40px 5px;
 }
 
 #blog #posts #make-post input[type=submit] {
@@ -10736,61 +10738,102 @@ footer {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
+#blog #posts #must-log-in p a {
+  color: #3490dc;
+  text-decoration: underline;
+}
+
 #blog #posts .post {
   margin: 10px 30px 30px 0;
-  padding-bottom: 10px;
+  padding-left: 10px;
   width: 100%;
   text-align: left;
   display: inline-flex;
   flex-wrap: wrap;
+  position: relative;
+}
+
+#blog #posts .post .show-comments {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  cursor: pointer;
+  color: #3490dc;
+  font-size: 12px;
 }
 
 #blog #posts .post .comments {
   width: 80%;
-  margin-left: 17%;
+  margin: 15px 0 0 10%;
   border-left: 2px solid #444;
   padding-left: 3%;
-}
-
-#blog #posts .post .comments .comment p {
-  margin-bottom: 5px;
-}
-
-#blog #posts .post .comments .delete-comment-container {
   position: relative;
 }
 
-#blog #posts .post .comments .delete-comment-container .delete-comment {
+#blog #posts .post .comments .comment {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  width: 430px;
+}
+
+#blog #posts .post .comments .comment .comment-pic {
+  width: 40px;
+  height: 40px;
+}
+
+#blog #posts .post .comments .comment .comment-words {
+  width: 350px;
+}
+
+#blog #posts .post .comments .comment .comment-words .comment-name {
+  margin-bottom: 10px;
+}
+
+#blog #posts .post .comments .comment .comment-words .comment-body {
+  width: 100%;
+}
+
+#blog #posts .post .comments .comment .delete-comment-container {
+  position: relative;
+}
+
+#blog #posts .post .comments .comment .delete-comment-container .delete-comment {
+  font-size: 12px;
   cursor: pointer;
   border: none;
   background: none;
   color: orangered;
   position: absolute;
-  top: -35px;
-  right: 0;
+  top: 25px;
+  right: -40px;
 }
 
-#blog #posts .post .comments .delete-comment-container .delete-comment:hover {
+#blog #posts .post .comments .comment .delete-comment-container .delete-comment:hover {
   text-decoration: underline;
 }
 
-#blog #posts .post .edit-form {
+#blog #posts .post .comment-edit-form {
   width: 100%;
   display: block;
+  margin: 15px 0 15px 50px;
 }
 
-#blog #posts .post .edit-form input[type=text] {
-  width: 100%;
-  height: 20px;
+#blog #posts .post .comment-edit-form textarea {
+  width: 90%;
+  height: 45px;
+  font-size: 12px;
+  padding: 2px 0 0 2px;
 }
 
-#blog #posts .post .edit-form .buttons {
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons {
   width: 60%;
+  font-size: 12px;
   display: inline-flex;
   justify-content: flex-start;
 }
 
-#blog #posts .post .edit-form .buttons input {
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons input {
   width: auto;
   margin: 7px 0 0 7px;
   display: block;
@@ -10804,52 +10847,27 @@ footer {
   transition: all 0.3s;
 }
 
-#blog #posts .post .edit-form .buttons input:hover {
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons input:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-#blog #posts .post .comment-form {
-  width: 100%;
-  display: block;
-}
-
-#blog #posts .post .comment-form input[type=text] {
-  width: 100%;
-  height: 20px;
-}
-
-#blog #posts .post .comment-form .buttons {
-  width: 60%;
-  display: inline-flex;
-  justify-content: flex-start;
-}
-
-#blog #posts .post .comment-form .buttons input {
-  width: auto;
-  margin: 7px 0 0 7px;
-  display: block;
-  border: 1px solid #444;
-  border-radius: 2px;
-  padding: 10px 17px;
-  background: white;
-  text-decoration: none;
-  cursor: pointer;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s;
-}
-
-#blog #posts .post .comment-form .buttons input:hover {
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons .close-form {
+  margin: 10px 0 0 5px;
+  padding: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
 }
 
 #blog #posts .post img {
   border-radius: 50%;
   max-height: 50px;
-  margin-right: 7px;
+  margin: 4px 7px 0 0;
 }
 
 #blog #posts .post div {
   margin-top: 5px;
+  max-width: 500px;
 }
 
 #blog #posts .post div .author {
@@ -10858,8 +10876,8 @@ footer {
   color: #444;
 }
 
-#blog #posts .post div #post-body {
-  max-width: 535px;
+#blog #posts .post div .post-body {
+  width: 100%;
   overflow-wrap: break-word;
   line-height: 15px;
 }
@@ -10870,7 +10888,8 @@ footer {
 }
 
 #blog #posts .post div #comment-like .like-counter {
-  padding: 5px;
+  margin: 3px 4px 0 0;
+  font-size: 12px;
 }
 
 #blog #posts .post div #comment-like .buttons {
@@ -10879,6 +10898,7 @@ footer {
   background: none;
   color: #3490dc;
   width: auto;
+  font-size: 12px;
 }
 
 #blog #posts .post div #comment-like .buttons input {
