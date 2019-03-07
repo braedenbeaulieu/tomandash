@@ -76,19 +76,6 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-    public function like($post_id) {
-
-        $post = Post::where('id', $post_id)->get();
-        $post = $post[0];
-        $like = new PostLike;
-        $like->user_id = Auth::user()->id;
-        $like->post_id = $post->id;
-        $like->save();
-
-        return redirect('posts');
-
-    }
-
     public function destroyLike($post_id) {
 
         $like = PostLike::where('post_id', $post_id)->get();

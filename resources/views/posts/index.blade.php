@@ -46,15 +46,12 @@
 
                                 {{--if they've already liked, they can't like again--}}
                                 @if(!Auth::user()->hasLiked($post))
-                                    <form class="like-button buttons" method="post" action="{{ action('PostController@like', ['id' => $post->id])}}">
-                                        @csrf
-                                        <input id="{{$post->id}}" type="submit" value="Like">
+                                    <form>
+                                        <input class="like-button buttons like" id="{{$post->id}}" type="button" value="Like">
                                     </form>
                                 @elseif(Auth::user()->hasLiked($post))
-                                    <form class="like-button" method="post" action="{{ action('PostController@destroyLike', ['id' => $post->id]) }}">
-                                        {{ method_field('DELETE') }}
-                                        @csrf
-                                        <input class="buttons" id="{{$post->id}}" type="submit" value="Unlike">
+                                    <form class="liked">
+                                        <input class="unlike-button buttons unlike" id="{{$post->id}}" type="button" value="Unlike">
                                     </form>
                                 @endif
 

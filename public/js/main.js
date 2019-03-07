@@ -180,7 +180,62 @@ $(document).ready(function () {
             showComments.text("show comment");
           }
         }
-      }
+      } // when you click on the like button
+      else if (target.hasClass('like')) {
+          // gather info
+          var like = target;
+          var post_id = target.attr('id');
+          var likes = like.parent().parent().children('.like-counter'); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
+
+          $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          }); // call PostLikeController with all data (goes from here to web.php, then to the controller)
+
+          $.ajax({
+            url: '/CAKE/public/posts/like',
+            type: 'post',
+            data: {
+              post_id: post_id
+            },
+            success: function success() {
+              likes.text(parseInt(likes.text()) + 1);
+            },
+            error: function error(xhr, status, _error3) {
+              console.log(status + " = " + _error3);
+            }
+          });
+        } // when you click on the unlike button
+        else if (target.hasClass('unlike')) {
+            // gather info
+            var unlike = target;
+
+            var _post_id = target.attr('id');
+
+            var _likes = unlike.parent().parent().children('.like-counter'); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
+
+
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            }); // call PostLikeController with all data (goes from here to web.php, then to the controller)
+
+            $.ajax({
+              url: '/CAKE/public/posts/like/' + _post_id,
+              type: 'delete',
+              data: {
+                post_id: _post_id
+              },
+              success: function success() {
+                _likes.text(parseInt(_likes.text()) - 1);
+              },
+              error: function error(xhr, status, _error4) {
+                console.log(status + " = " + _error4);
+              }
+            });
+          }
   });
 });
 

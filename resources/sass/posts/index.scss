@@ -70,6 +70,7 @@
             // show comments button
             .show-comments {
                 position: absolute;
+                z-index: 100;
                 right: 0;
                 top: 100px;
                 cursor: pointer;
