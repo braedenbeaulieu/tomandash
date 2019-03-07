@@ -260,3 +260,17 @@
         }
     }
 }
+
+@media screen and (max-width: 640px) {
+    #blog {
+        #posts {
+            width: 90%;
+
+            .post {
+                .show-comments {
+                    top: 160px;
+                }
+            }
+        }
+    }
+}

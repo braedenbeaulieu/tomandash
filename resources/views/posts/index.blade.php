@@ -120,7 +120,8 @@
                     {{--you have to click show comments to see the comments--}}
                     @if(count($post->getComments($post)) >= 1)
                         {{--span here to see how many comments are in this post for javascript purpose--}}
-                        <span class="comments-count"hidden>{{count($post->getComments($post))}}</span>
+                        <span class="comments-count" hidden>{{count($post->getComments($post))}}</span>
+
                         @if(count($post->getComments($post)) > 1)
                             <p class="show-comments">show all {{count($post->getComments($post))}} comments</p>
                         @elseif(count($post->getComments($post)) == 1)

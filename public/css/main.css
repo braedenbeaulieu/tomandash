@@ -10920,3 +10920,13 @@ footer {
   color: orangered;
 }
 
+@media screen and (max-width: 640px) {
+  #blog #posts {
+    width: 90%;
+  }
+
+  #blog #posts .post .show-comments {
+    top: 160px;
+  }
+}
+

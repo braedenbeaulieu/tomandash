@@ -89,8 +89,10 @@ class PostController extends Controller
 
     }
 
-    public function destroyLike($like_id) {
-        $like = PostLike::where('id', $like_id)->get();
+    public function destroyLike($post_id) {
+
+        $like = PostLike::where('post_id', $post_id)->get();
+
         $like = $like[0];
         $like->delete();
         return redirect('posts');

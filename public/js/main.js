@@ -159,23 +159,24 @@ $(document).ready(function () {
         var comments = target.parent().children('.comments');
         var showComments = target.parent().children('.show-comments');
         var commentsCount = target.parent().children('.comments-count').text();
+        commentsCount = parseInt(commentsCount);
 
-        if (slideToggle === false) {
+        if (comments.is(':hidden')) {
           comments.slideDown();
           slideToggle = true;
 
-          if (commentsCount < 1) {
+          if (commentsCount > 1) {
             showComments.text("hide all ".concat(commentsCount, " comments"));
-          } else if (commentsCount == 1) {
+          } else if (commentsCount === 1) {
             showComments.text("hide comment");
           }
-        } else if (slideToggle === true) {
+        } else if (comments.is(':visible')) {
           comments.slideUp();
           slideToggle = false;
 
-          if (commentsCount < 1) {
+          if (commentsCount > 1) {
             showComments.text("show all ".concat(commentsCount, " comments"));
-          } else if (commentsCount == 1) {
+          } else if (commentsCount === 1) {
             showComments.text("show comment");
           }
         }
