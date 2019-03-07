@@ -7,7 +7,6 @@
 
     <section id="blog">
         <section id="posts">
-
             {{--check if they're logged in--}}
             @if(Auth::check())
 
@@ -66,10 +65,8 @@
 
 
                                     {{--delete post button--}}
-                                    <form class="delete-button" method="post" action="{{ action('PostController@destroy', ['id' => $post->id]) }}">
-                                        {{ method_field('DELETE') }}
-                                        @csrf
-                                        <input class="buttons" type="submit" value="Delete">
+                                    <form class="delete-button">
+                                        <input class="buttons" type="button" value="Delete">
                                     </form>
 
                                 {{--if they're logged in and if its their post--}}
@@ -78,9 +75,7 @@
 
                                     {{--delete post button--}}
                                     <form class="delete-button buttons" method="post" action="{{ action('PostController@destroy', ['id' => $post->id]) }}">
-                                        {{ method_field('DELETE') }}
-                                        @csrf
-                                        <input type="submit" value="Delete">
+                                        <input type="button" value="Delete">
                                     </form>
                                 @endif
                             @endif
@@ -102,14 +97,14 @@
                         </form>
 
                         {{--create a comment form--}}
-                        <form method="post" action="{{action('PostController@storeComment', $post->id)}}" class="comment-edit-form comment-form">
-                            @csrf
-                            <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
-                            <input name="post_id" type="text" value="{{$post->id}}" hidden>
-                            <textarea name="body" type="text"></textarea>
+                        <form class="comment-edit-form comment-form">
+                            <input class="user-id" type="text" value="{{Auth::user()->id}}" hidden>
+                            <input class="post-id" type="text" value="{{$post->id}}" hidden>
+                            <textarea class="comment-body" name="body" type="text"></textarea>
+
                             <div class="comment-edit-form-buttons">
-                                <input name="button" type="submit" value="Comment">
-                                <input name="button" type="button" value="X" class="close-form">
+                                <input type="button" value="Comment" class="create-comment" id="create-comment">
+                                <input type="button" value="X" class="close-form">
                             </div>
                         </form>
                     @endif
@@ -137,11 +132,8 @@
                                 </div>
                                 {{--delete comment button--}}
                                 @if(Auth::check() && (Auth::user()->role === 1 || Auth::user()->isMyComment($comment)))
-                                    <form class="delete-comment-container" method="post" action="{{ action('PostController@destroyComment', ['id' => $comment->id]) }}">
-                                        {{ method_field('DELETE') }}
-                                        @csrf
-                                        <input class="delete-comment" id="{{$comment->id}}" type="submit" value="Delete">
-
+                                    <form class="delete-comment-container">
+                                        <input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">
                                     </form>
                                 @endif
                             </div>

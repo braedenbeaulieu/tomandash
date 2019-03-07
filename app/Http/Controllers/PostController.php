@@ -69,21 +69,12 @@ class PostController extends Controller
 
     }
 
-    public function destroyComment($comment_id) {
-        $comment = PostComment::where('id', $comment_id)->get();
-        $comment = $comment[0];
-        $comment->delete();
-        return redirect('posts');
-    }
-
-    public function destroyLike($post_id) {
-
-        $like = PostLike::where('post_id', $post_id)->get();
-
-        $like = $like[0];
-        $like->delete();
-        return redirect('posts');
-    }
+//    public function destroyComment($comment_id) {
+//        $comment = PostComment::where('id', $comment_id)->get();
+//        $comment = $comment[0];
+//        $comment->delete();
+//        return redirect('posts');
+//    }
 
 
 
