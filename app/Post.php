@@ -27,7 +27,7 @@ class Post extends Model
     }
 
     public function getComments($post) {
-        return $post->comments()->where('post_id', $post->id)->orderBy('id', 'desc')->get();
+        return $post->comments()->where('post_id', $post->id)->orderBy('id', 'asc')->get();
     }
 
     public function getAuthor($post) {

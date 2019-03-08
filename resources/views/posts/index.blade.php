@@ -103,38 +103,55 @@
                         </form>
                     @endif
 
-                    {{--you have to click show comments to see the comments--}}
-                    @if(count($post->getComments($post)) >= 1)
-                        {{--span here to see how many comments are in this post for javascript purpose--}}
-                        <span class="comments-count" hidden>{{count($post->getComments($post))}}</span>
-
-                        @if(count($post->getComments($post)) > 1)
-                            <p class="show-comments">show all {{count($post->getComments($post))}} comments</p>
-                        @elseif(count($post->getComments($post)) == 1)
-                            <p class="show-comments">show comment</p>
-                        @endif
-
-                    @endif
                     {{--show all comments for this post --}}
                     <div class="comments">
-                        @forelse($post->getComments($post) as $comment)
-                            <div class="comment">
-                                <img src="https://fillmurray.com/50/50" class="comment-pic">
-                                <div class="comment-words">
-                                    <p class="comment-name">{{$comment->getUser($comment)->name}}</p>
-                                    <p class="comment-body">{{$comment->body}}</p>
-                                </div>
-                                {{--delete comment button--}}
-                                @if(Auth::check() && (Auth::user()->role === 1 || Auth::user()->isMyComment($comment)))
-                                    <form class="delete-comment-container">
-                                        <input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">
-                                    </form>
-                                @endif
+                        @if(count($post->getComments($post)) > 0)
+                            <div class="first-comments">
+                                @php $posts = $post->getComments($post) @endphp
+                                @for($i = 0; $i < 3; $i++)
+                                    @php $comment = $posts[$i] @endphp
+
+                                    {{-- as $comment--}}
+                                    <div class="comment">
+                                        <img src="https://fillmurray.com/50/50" class="comment-pic">
+                                        <div class="comment-words">
+                                            <p class="comment-name">{{$comment->getUser($comment)->name}}</p>
+                                            <p class="comment-body">{{$comment->body}}</p>
+                                        </div>
+                                        {{--delete comment button--}}
+                                        @if(Auth::check() && (Auth::user()->role === 1 || Auth::user()->isMyComment($comment)))
+                                            <form class="delete-comment-container">
+                                                <input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">
+                                            </form>
+                                        @endif
+                                    </div>
+                                @endfor
                             </div>
+                            <p class="hidden-comment-count" hidden>{{count($post->getComments($post)) - 3}}</p>
+                            <div class="extra-comments">
+                                @for($i = 0; $i < count($post->getComments($post)) - 3; $i++)
+                                    @php $comment = $posts[$i + 3] @endphp
 
+                                    {{-- as $comment--}}
 
-                        @empty
-                        @endforelse
+                                    <div class="comment hiding">
+                                        <img src="https://fillmurray.com/50/50" class="comment-pic">
+                                        <div class="comment-words">
+                                            <p class="comment-name">hidden{{$comment->getUser($comment)->name}}</p>
+                                            <p class="comment-body">{{$comment->body}}</p>
+                                        </div>
+                                        {{--delete comment button--}}
+                                        @if(Auth::check() && (Auth::user()->role === 1 || Auth::user()->isMyComment($comment)))
+                                            <form class="delete-comment-container">
+                                                <input class="delete-comment" id="{{$comment->id}}" type="button" value="Delete">
+                                            </form>
+                                        @endif
+                                    </div>
+                                @endfor
+                            </div>
+                            <p class="show-comments">Show more comments</p>
+                        @endif
+
                     </div>
 
 

@@ -14,9 +14,9 @@ $(document).ready(function () {
     $('.edit-form').hide();
     $('.comment-form').hide();
 
-    // hide all comments at first, user has to press show comments button to see.
-    // $('.comments').hide();
-    $('.show-comments').hide();
+    // hide all comments with class hiding
+    $('.extra-comments').hide();
+
     // toggle for checking if its slid down or up
     let slideToggle = false;
 
@@ -25,11 +25,8 @@ $(document).ready(function () {
 
         // get element clicked
         let target = $(e.target);
-
         // get current forms
-        let edit_form = target.parent().parent().parent().find('.edit-form');
 
-        let comment_form = target.parent().parent().parent().find('.comment-form');
 
 
         // check if clicked element is close edit form button
@@ -37,7 +34,6 @@ $(document).ready(function () {
             target.parent().parent().slideUp();
             formOpen = false;
         }
-
         // when they click delete post button
         else if(target.hasClass('delete-post')) {
             console.log('delete post');
@@ -148,11 +144,33 @@ $(document).ready(function () {
                         fake_delete_comment_container.append(fake_delete_comment);
                         fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container);
 
+                        let first_comments = target.siblings('.first-comments');
+                        let extra_comments = target.siblings('.extra-comments');
+                        let show_comments = target;
+                        // put it in first comments or extra comments depending if extra comments exists
+                        if(extra_comments.length) {
+                            extra_comments.append(fake_comment);
+                        } else {
+                            first_comments.append(fake_comment);
+                        }
                         // plant the fake comment, slide the form up and delete the words inside the form
-                        comments.prepend(fake_comment);
-                        target.parent().parent().slideUp();
-                        formOpen = false;
+                        comments.append(fake_comment);
+                        // target.parent().parent().slideUp();
+                        // formOpen = false;
                         comment_body.val('');
+
+
+                        // slide down all comments
+                            // display how may comments are hidden
+
+
+                        extra_comments.slideDown();
+                        show_comments.text('Hide more comments');
+
+
+
+
+
                     },
                     error: function (xhr, status, error) {
                         console.log(status + " = " + error);
@@ -163,16 +181,16 @@ $(document).ready(function () {
         // check if any forms are open
         else if (formOpen === true) {
             //alert('Please close form before trying to open another.');
-
-            // check if clicked element is edit button
         }
         // if they click the edit form burron
-        else if ((target.hasClass('edit-button') && formOpen === false)) {
+        else if ((target.hasClass('edit-button'))) {
+            let edit_form = target.parent().parent().parent().find('.edit-form');
             edit_form.slideDown();
             formOpen = true;
         }
         // if they click the comment form button
-        else if (target.hasClass('comment-button') && formOpen === false) {
+        else if (target.hasClass('comment-button')) {
+            let comment_form = target.parent().parent().parent().find('.comment-form');
             comment_form.slideDown();
             formOpen = true;
 
@@ -199,27 +217,24 @@ $(document).ready(function () {
         }
         // if they click the show comments button
         else if (target.hasClass('show-comments')) {
-            let comments = target.parent().children('.comments');
-            let showComments = target.parent().children('.show-comments');
-            let commentsCount = target.parent().children('.comments-count').text();
-            commentsCount = parseInt(commentsCount);
-            if (comments.is(':hidden')) {
-                comments.slideDown();
-                slideToggle = true;
-                if (commentsCount > 1) {
-                    showComments.text(`hide all ${commentsCount} comments`);
-                } else if (commentsCount === 1) {
-                    showComments.text(`hide comment`);
-                }
-            } else if (comments.is(':visible')) {
-                comments.slideUp();
-                slideToggle = false;
-                if (commentsCount > 1) {
-                    showComments.text(`show all ${commentsCount} comments`);
-                } else if (commentsCount === 1) {
-                    showComments.text(`show comment`);
-                }
+            // php will show the button if there are more than 3 comments
+            // every comment after will have class 'hide-comment'
+
+            // slide up or down the rest of the comments
+            let show_comments = target;
+            let extra_comments = show_comments.siblings('.extra-comments');
+
+            if(extra_comments.is(':visible')) {
+                extra_comments.slideUp();
+                show_comments.text(`Show more comments`);
+            } else {
+                extra_comments.slideDown();
+                show_comments.text(`Hide more comments`);
             }
+
+
+
+
         }
         // when you click on the like button
         else if (target.hasClass('like')) {
@@ -320,7 +335,7 @@ $(document).ready(function () {
                     let fake_hidden_comment_form_user_id = $('<input>').attr({class: 'user-id', type: 'text', value: user_id, hidden: 'true'});
                     let fake_hidden_comment_form_post_id = $('<input>').attr({class: 'post-id', type: 'text', value: response.id, hidden: 'true'});
                     let fake_hidden_comment_form_textarea = $('<textarea></textarea>').val('').attr({class: 'comment-body', type: 'text', placeholder: 'Write comment..'});
-                    let fake_hidden_comment_form_div = $('<div></div').attr('class', 'comment-edit-form-buttons');
+                    let fake_hidden_comment_form_div = $('<div></div>').attr('class', 'comment-edit-form-buttons');
                     let fake_hidden_comment_form_div_button = $('<input>').attr({type: 'button', value: 'Comment', class: 'create-comment', id: 'create-comment'});
                     let fake_hidden_comment_form_div_close = $('<input>').attr({type: 'button', value: 'X', class: 'close-form'});
 

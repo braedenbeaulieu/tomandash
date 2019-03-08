@@ -10758,8 +10758,8 @@ footer {
 #blog #posts .post .show-comments {
   position: absolute;
   z-index: 100;
-  right: 0;
-  top: 100px;
+  bottom: -20px;
+  left: 35%;
   cursor: pointer;
   color: #3490dc;
   font-size: 12px;
