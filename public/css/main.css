@@ -10701,26 +10701,19 @@ footer {
   margin: 0 auto;
 }
 
-#blog #posts {
-  background: #f8fafc;
+#blog #make-post {
   width: 600px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
-#blog #posts #make-post {
-  width: 100%;
-  margin: 20px 0;
+  margin: 20px auto;
   padding: 0;
 }
 
-#blog #posts #make-post textarea {
+#blog #make-post textarea {
   width: 100%;
   margin: 0;
   padding: 5px 0 40px 5px;
 }
 
-#blog #posts #make-post input[type=submit] {
+#blog #make-post .create-post {
   width: auto;
   margin: 7px 0 0 7px;
   display: block;
@@ -10734,13 +10727,20 @@ footer {
   transition: all 0.3s;
 }
 
-#blog #posts #make-post input[type=submit]:hover {
+#blog #make-post .create-post:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 
-#blog #posts #must-log-in p a {
+#blog #must-log-in p a {
   color: #3490dc;
   text-decoration: underline;
+}
+
+#blog #posts {
+  background: #f8fafc;
+  width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
 
 #blog #posts .post {

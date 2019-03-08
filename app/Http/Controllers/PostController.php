@@ -21,18 +21,24 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
-    public function create()
-    {
-
-    }
-
     public function store(PostRequest $request)
     {
-        //dd($request->all());
-        $formData = $request->all();
-        Post::create($formData);
+        if($request->ajax()) {
 
-        return redirect('posts');
+            // get user id
+            $user_id = $request->user_id;
+
+            // get post body
+            $post_body = $request->body;
+
+            $post = new Post;
+            $post->user_id = $user_id;
+            $post->body = $post_body;
+            $post->save();
+
+            return $post;
+
+        }
     }
 
 
@@ -47,7 +53,7 @@ class PostController extends Controller
             // get user_id
             $user_id = $request->user_id;
 
-            // get comment body
+            // get post body
             $edited_post = $request->body;
 
             // create update data
@@ -60,10 +66,14 @@ class PostController extends Controller
         }
     }
 
-    public function destroy(Post $post)
+    public function destroy(Request $request)
     {
-        $post->delete();
-        return redirect('posts');
+        if($request->ajax()) {
+            $post_id = $request->post_id;
+            $post = Post::findOrFail($post_id);
+            $post->delete();
+        }
+
     }
 
 

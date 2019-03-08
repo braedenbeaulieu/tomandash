@@ -10,7 +10,7 @@
     <title>Tom + Ash</title>
 </head>
 <body>
-<p id="whos-logged-in" hidden>{{ Auth::user()->name }}</p>
+<p id="whos-logged-in" class="{{Auth::user()->id}}" hidden>{{ Auth::user()->name }}</p>
 <header>
     <nav>
         <div id="left">

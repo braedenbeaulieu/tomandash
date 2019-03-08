@@ -6,24 +6,36 @@
     </section>
 
     <section id="blog">
+        {{--check if they're logged in--}}
+        @if(Auth::check())
+            {{--make post--}}
+            <form id="make-post">
+                <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
+                <textarea name="body" type="text" placeholder="Tell us what you're thinking.."></textarea>
+                <input type="button" value="Post" class="create-post">
+            </form>
+        @else
+            {{--can't make a post--}}
+            <div id="must-log-in">
+                <p>Sorry, you must <a href="{{ route('login') }}">login</a> to post anything.</p>
+            </div>
+        @endif
         <section id="posts">
             {{--check if they're logged in--}}
-            @if(Auth::check())
+            {{--@if(Auth::check())--}}
 
                 {{--make post--}}
-                <form id="make-post" method="post" action="{{action('PostController@store')}}">
-                    @csrf
-                    <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
-                    <textarea name="body" type="text" placeholder="Tell us what you're thinking.."></textarea>
-                    <input type="submit" value="Post" class="edit-post-button">
-
-                </form>
-            @else
+                {{--<form id="make-post">--}}
+                    {{--<input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>--}}
+                    {{--<textarea name="body" type="text" placeholder="Tell us what you're thinking.."></textarea>--}}
+                    {{--<input type="button" value="Post" class="create-post">--}}
+                {{--</form>--}}
+            {{--@else--}}
                 {{--can't make a post--}}
-                <div id="must-log-in">
-                    <p>Sorry, you must <a href="{{ route('login') }}">login</a> to post anything.</p>
-                </div>
-            @endif
+                {{--<div id="must-log-in">--}}
+                    {{--<p>Sorry, you must <a href="{{ route('login') }}">login</a> to post anything.</p>--}}
+                {{--</div>--}}
+            {{--@endif--}}
 
             {{--display all posts--}}
             @forelse($posts as $post)
@@ -49,7 +61,7 @@
                                         <input class="like-button buttons like" id="{{$post->id}}" type="button" value="Like">
                                     </form>
                                 @elseif(Auth::user()->hasLiked($post))
-                                    <form class="liked">
+                                    <form>
                                         <input class="unlike-button buttons unlike" id="{{$post->id}}" type="button" value="Unlike">
                                     </form>
                                 @endif
@@ -66,7 +78,7 @@
 
                                     {{--delete post button--}}
                                     <form class="delete-button">
-                                        <input class="buttons" type="button" value="Delete">
+                                        <input class="buttons delete-post" id="{{$post->id}}" type="button" value="Delete">
                                     </form>
 
                                 {{--if they're logged in and if its their post--}}
@@ -74,8 +86,8 @@
                                     <input class="edit-button buttons" id="{{$post->id}}" type="button" value="Edit">
 
                                     {{--delete post button--}}
-                                    <form class="delete-button buttons" method="post" action="{{ action('PostController@destroy', ['id' => $post->id]) }}">
-                                        <input type="button" value="Delete">
+                                    <form class="delete-button">
+                                        <input class="buttons delete-post" id="{{$post->id}}" type="button" value="Delete">
                                     </form>
                                 @endif
                             @endif
@@ -85,11 +97,11 @@
                     @if(Auth::check())
                         {{--edit post form--}}
                         <form class="comment-edit-form edit-form">
-                            <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
-                            <textarea name="body" type="text">{{$post->body}}</textarea>
+                            <input type="text" value="{{Auth::user()->id}}" hidden>
+                            <textarea type="text">{{$post->body}}</textarea>
                             <div class="comment-edit-form-buttons">
-                                <input name="button" type="button" value="Edit" class="edit-post" id="{{$post->id}}">
-                                <input name="button" type="button" value="X" class="close-form">
+                                <input type="button" value="Edit" class="edit-post" id="{{$post->id}}">
+                                <input type="button" value="X" class="close-form">
                             </div>
 
                         </form>
@@ -98,7 +110,7 @@
                         <form class="comment-edit-form comment-form">
                             <input class="user-id" type="text" value="{{Auth::user()->id}}" hidden>
                             <input class="post-id" type="text" value="{{$post->id}}" hidden>
-                            <textarea class="comment-body" name="body" type="text"></textarea>
+                            <textarea class="comment-body" type="text"></textarea>
 
                             <div class="comment-edit-form-buttons">
                                 <input type="button" value="Comment" class="create-comment" id="create-comment">

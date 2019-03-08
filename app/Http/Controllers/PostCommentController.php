@@ -19,7 +19,7 @@ class PostCommentController extends Controller
 
             if(Auth::check() === true) {
 
-                // add like to posts
+                // add comment to database
                 $comment = new PostComment;
                 $comment->user_id = $user_id;
                 $comment->post_id = $post_id;

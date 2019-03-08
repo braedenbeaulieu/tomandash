@@ -4,58 +4,57 @@
     width: 100%;
     margin: 0 auto;
 
+    // create post form
+    #make-post {
+        width: 600px;
+        margin: 20px auto;
+        padding: 0;
+
+        // post body input box
+        textarea {
+            width: 100%;
+            margin: 0;
+            padding: 5px 0 40px 5px;
+        }
+
+        // post button
+        .create-post {
+            width: auto;
+            margin: 7px 0 0 7px;
+            display: block;
+            border: 1px solid $grey;
+            border-radius: 2px;
+            padding: 10px 17px;
+            background: white;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+            transition: all .3s;
+
+            // on hover
+            &:hover {
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
+            }
+        }
+    }
+
+    #must-log-in {
+        p {
+            a{
+                color: $blue;
+                text-decoration: underline;
+            }
+        }
+    }
+
+
     // all the posts
     #posts {
         background: $white;
         width: 600px;
         margin: 0 auto;
         padding: 0 15px;
-        //border-left: 1px solid rgba(0, 0, 0, .1);
-        //border-right: 1px solid rgba(0, 0, 0, .1);
 
-        // create post form
-        #make-post {
-            width: 100%;
-            margin: 20px 0;
-            padding: 0;
-            //border-bottom: 1px solid rgba(0, 0, 0, .1);
-
-            // post body input box
-            textarea {
-                width: 100%;
-                margin: 0;
-                padding: 5px 0 40px 5px;
-            }
-
-            // post button
-            input[type="submit"] {
-                width: auto;
-                margin: 7px 0 0 7px;
-                display: block;
-                border: 1px solid $grey;
-                border-radius: 2px;
-                padding: 10px 17px;
-                background: white;
-                text-decoration: none;
-                cursor: pointer;
-                box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-                transition: all .3s;
-
-                // on hover
-                &:hover {
-                    box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
-                }
-            }
-        }
-
-        #must-log-in {
-            p {
-                a{
-                    color: $blue;
-                    text-decoration: underline;
-                }
-            }
-        }
 
         // for every post
         .post {
