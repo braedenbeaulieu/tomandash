@@ -84,13 +84,11 @@
 
                     @if(Auth::check())
                         {{--edit post form--}}
-                        <form method="post" action="{{action('PostController@update', $post->id)}}" class="comment-edit-form edit-form">
-                            {{method_field('PATCH')}}
-                            @csrf
+                        <form class="comment-edit-form edit-form">
                             <input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>
                             <textarea name="body" type="text">{{$post->body}}</textarea>
                             <div class="comment-edit-form-buttons">
-                                <input name="button" type="submit" value="Edit">
+                                <input name="button" type="button" value="Edit" class="edit-post" id="{{$post->id}}">
                                 <input name="button" type="button" value="X" class="close-form">
                             </div>
 

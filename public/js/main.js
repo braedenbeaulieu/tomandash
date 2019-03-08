@@ -141,156 +141,194 @@ $(document).ready(function () {
     if (target.hasClass('close-form') && formOpen === true) {
       target.parent().parent().slideUp();
       formOpen = false;
-    } // when they click the create comment button
-    else if (target.hasClass('create-comment')) {
-        // gather info for database
-        var comment_name = $('#whos-logged-in').text();
-        var comment_body = target.parent().parent().children('.comment-body');
-        var post_id = target.parent().parent().children('.post-id').attr('value');
-        var user_id = target.parent().parent().children('.user-id').attr('value'); // create fake comment to show so we wont have to refresh the page
+    } // when they click the edit post button
+    else if (target.hasClass('edit-post')) {
+        // get info
+        var textarea = target.parent().parent().children('textarea');
+        var edited_post = textarea.val();
+        var user_id = target.parent().parent().children('input').attr('value');
+        var post_id = target.attr('id'); // info to fake change the post body
 
-        var fake_comment = $('<div></div>').attr('class', 'comment'); // comment container
-
-        var fake_comment_img = $('<img>').attr({
-          class: 'comment-pic',
-          src: 'https://fillmurray.com/50/50'
-        });
-        var fake_comment_words = $('<div></div>').attr('class', 'comment-words');
-        var fake_comment_name = $('<p></p>').attr('class', 'comment-name').text(comment_name);
-        var fake_comment_body = $('<p></p>').attr('class', 'comment-body').text(comment_body.val());
-        var fake_delete_comment_container = $('<form></form>').attr('class', 'delete-comment-container');
-        var fake_delete_comment = $('<input>').attr({
-          class: 'delete-comment',
-          id: post_id,
-          type: 'button',
-          value: 'Delete'
-        }); // put it all together
-
-        fake_comment_words.append(fake_comment_name, fake_comment_body);
-        fake_delete_comment_container.append(fake_delete_comment);
-        fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container); // select element to place it all in to
-
-        var comments = target.parent().parent().parent().children('.comments'); // call PostCommentController with all data (goes from here to web.php, then to the controller)
+        var current_post = target.parent().parent().parent().children('div').children('.post-body');
+        console.log(user_id); // call PostController with all data (goes from here to web.php, then to the controller)
 
         $.ajax({
-          url: '/CAKE/public/posts/comment',
-          type: 'post',
+          url: '/CAKE/public/posts/' + post_id,
+          type: 'put',
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
           data: {
-            user_id: user_id,
             post_id: post_id,
-            body: comment_body.val()
+            user_id: user_id,
+            body: edited_post
           },
           success: function success(response) {
-            console.log(response); // plant the fake comment, slide the form up and delete the words inside the form
-
-            comments.prepend(fake_comment);
+            // delete words in text area, slide up form, and fake change the post body
+            current_post.text(edited_post);
+            textarea.val(edited_post);
             target.parent().parent().slideUp();
-            comment_body.val('');
+            formOpen = false;
+            console.log(response);
           },
           error: function error(xhr, status, _error) {
             console.log(status + " = " + _error);
           }
         });
-      } // check if any forms are open
-      else if (formOpen === true) {//alert('Please close form before trying to open another.');
-          // check if clicked element is edit button
-        } else if (target.hasClass('edit-button') && formOpen === false) {
-          edit_form.slideDown();
-          formOpen = true; // if they click the comment form button
-        } else if (target.hasClass('comment-button') && formOpen === false) {
-          comment_form.slideDown();
-          formOpen = true;
-        } // if they click the delete comment button
-        else if (target.hasClass('delete-comment')) {
-            // get comment id
-            var comment_id = target.attr('id');
-            $.ajax({
-              url: '/CAKE/public/posts/comment/' + comment_id,
-              type: 'delete',
-              data: {
-                comment_id: comment_id
-              },
-              success: function success(response) {
-                console.log(response);
-                target.parent().parent().slideUp();
-              },
-              error: function error(xhr, status, _error2) {
-                console.log(status + " = " + _error2);
-              }
-            });
-          } // if they click the show comments button
-          else if (target.hasClass('show-comments')) {
-              var _comments = target.parent().children('.comments');
+      } // when they click the create comment button
+      else if (target.hasClass('create-comment')) {
+          // gather info for database
+          var comment_name = $('#whos-logged-in').text();
+          var comment_body = target.parent().parent().children('.comment-body');
 
-              var showComments = target.parent().children('.show-comments');
-              var commentsCount = target.parent().children('.comments-count').text();
-              commentsCount = parseInt(commentsCount);
+          var _post_id = target.parent().parent().children('.post-id').attr('value');
 
-              if (_comments.is(':hidden')) {
-                _comments.slideDown();
+          var _user_id = target.parent().parent().children('.user-id').attr('value'); // create fake comment to show so we wont have to refresh the page
 
-                slideToggle = true;
 
-                if (commentsCount > 1) {
-                  showComments.text("hide all ".concat(commentsCount, " comments"));
-                } else if (commentsCount === 1) {
-                  showComments.text("hide comment");
+          var fake_comment = $('<div></div>').attr('class', 'comment'); // comment container
+
+          var fake_comment_img = $('<img>').attr({
+            class: 'comment-pic',
+            src: 'https://fillmurray.com/50/50'
+          });
+          var fake_comment_words = $('<div></div>').attr('class', 'comment-words');
+          var fake_comment_name = $('<p></p>').attr('class', 'comment-name').text(comment_name);
+          var fake_comment_body = $('<p></p>').attr('class', 'comment-body').text(comment_body.val());
+          var fake_delete_comment_container = $('<form></form>').attr('class', 'delete-comment-container');
+          var fake_delete_comment = $('<input>').attr({
+            class: 'delete-comment',
+            id: _post_id,
+            type: 'button',
+            value: 'Delete'
+          }); // put it all together
+
+          fake_comment_words.append(fake_comment_name, fake_comment_body);
+          fake_delete_comment_container.append(fake_delete_comment);
+          fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container); // select element to place it all in to
+
+          var comments = target.parent().parent().parent().children('.comments'); // call PostCommentController with all data (goes from here to web.php, then to the controller)
+
+          $.ajax({
+            url: '/CAKE/public/posts/comment',
+            type: 'post',
+            data: {
+              user_id: _user_id,
+              post_id: _post_id,
+              body: comment_body.val()
+            },
+            success: function success(response) {
+              console.log(response); // plant the fake comment, slide the form up and delete the words inside the form
+
+              comments.prepend(fake_comment);
+              target.parent().parent().slideUp();
+              formOpen = false;
+              comment_body.val('');
+            },
+            error: function error(xhr, status, _error2) {
+              console.log(status + " = " + _error2);
+            }
+          });
+        } // check if any forms are open
+        else if (formOpen === true) {//alert('Please close form before trying to open another.');
+            // check if clicked element is edit button
+          } else if (target.hasClass('edit-button') && formOpen === false) {
+            edit_form.slideDown();
+            formOpen = true; // if they click the comment form button
+          } else if (target.hasClass('comment-button') && formOpen === false) {
+            comment_form.slideDown();
+            formOpen = true;
+          } // if they click the delete comment button
+          else if (target.hasClass('delete-comment')) {
+              // get comment id
+              var comment_id = target.attr('id');
+              $.ajax({
+                url: '/CAKE/public/posts/comment/' + comment_id,
+                type: 'delete',
+                data: {
+                  comment_id: comment_id
+                },
+                success: function success(response) {
+                  console.log(response);
+                  target.parent().parent().slideUp();
+                },
+                error: function error(xhr, status, _error3) {
+                  console.log(status + " = " + _error3);
                 }
-              } else if (_comments.is(':visible')) {
-                _comments.slideUp();
+              });
+            } // if they click the show comments button
+            else if (target.hasClass('show-comments')) {
+                var _comments = target.parent().children('.comments');
 
-                slideToggle = false;
+                var showComments = target.parent().children('.show-comments');
+                var commentsCount = target.parent().children('.comments-count').text();
+                commentsCount = parseInt(commentsCount);
 
-                if (commentsCount > 1) {
-                  showComments.text("show all ".concat(commentsCount, " comments"));
-                } else if (commentsCount === 1) {
-                  showComments.text("show comment");
-                }
-              }
-            } // when you click on the like button
-            else if (target.hasClass('like')) {
-                // gather info
-                var like = target;
+                if (_comments.is(':hidden')) {
+                  _comments.slideDown();
 
-                var _post_id = target.attr('id');
+                  slideToggle = true;
 
-                var likes = like.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
-
-                $.ajax({
-                  url: '/CAKE/public/posts/like',
-                  type: 'post',
-                  data: {
-                    post_id: _post_id
-                  },
-                  success: function success() {
-                    likes.text(parseInt(likes.text()) + 1);
-                  },
-                  error: function error(xhr, status, _error3) {
-                    console.log(status + " = " + _error3);
+                  if (commentsCount > 1) {
+                    showComments.text("hide all ".concat(commentsCount, " comments"));
+                  } else if (commentsCount === 1) {
+                    showComments.text("hide comment");
                   }
-                });
-              } // when you click on the unlike button
-              else if (target.hasClass('unlike')) {
+                } else if (_comments.is(':visible')) {
+                  _comments.slideUp();
+
+                  slideToggle = false;
+
+                  if (commentsCount > 1) {
+                    showComments.text("show all ".concat(commentsCount, " comments"));
+                  } else if (commentsCount === 1) {
+                    showComments.text("show comment");
+                  }
+                }
+              } // when you click on the like button
+              else if (target.hasClass('like')) {
                   // gather info
+                  var like = target;
+
                   var _post_id2 = target.attr('id');
 
-                  var _likes = target.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
-
+                  var likes = like.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                   $.ajax({
-                    url: '/CAKE/public/posts/like/' + _post_id2,
-                    type: 'delete',
+                    url: '/CAKE/public/posts/like',
+                    type: 'post',
                     data: {
                       post_id: _post_id2
                     },
                     success: function success() {
-                      _likes.text(parseInt(_likes.text()) - 1);
+                      likes.text(parseInt(likes.text()) + 1);
                     },
                     error: function error(xhr, status, _error4) {
                       console.log(status + " = " + _error4);
                     }
                   });
-                }
+                } // when you click on the unlike button
+                else if (target.hasClass('unlike')) {
+                    // gather info
+                    var _post_id3 = target.attr('id');
+
+                    var _likes = target.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
+
+
+                    $.ajax({
+                      url: '/CAKE/public/posts/like/' + _post_id3,
+                      type: 'delete',
+                      data: {
+                        post_id: _post_id3
+                      },
+                      success: function success() {
+                        _likes.text(parseInt(_likes.text()) - 1);
+                      },
+                      error: function error(xhr, status, _error5) {
+                        console.log(status + " = " + _error5);
+                      }
+                    });
+                  }
   });
 });
 

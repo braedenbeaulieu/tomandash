@@ -59,6 +59,74 @@ $(document).ready(function () {
             formOpen = false;
         }
 
+
+
+
+
+
+
+
+
+
+
+        // when they click the edit post button
+        else if(target.hasClass('edit-post')) {
+
+            // get info
+            let textarea = target.parent().parent().children('textarea');
+            let edited_post = textarea.val();
+            let user_id = target.parent().parent().children('input').attr('value');
+            let post_id = target.attr('id');
+
+            // info to fake change the post body
+            let current_post = target.parent().parent().parent().children('div').children('.post-body');
+
+            console.log(user_id);
+
+            // call PostController with all data (goes from here to web.php, then to the controller)
+            $.ajax({
+                url: '/CAKE/public/posts/' + post_id,
+                type: 'put',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    post_id: post_id,
+                    user_id: user_id,
+                    body: edited_post
+                },
+                success: function(response) {
+                    // delete words in text area, slide up form, and fake change the post body
+                    current_post.text(edited_post);
+                    textarea.val(edited_post);
+                    target.parent().parent().slideUp();
+                    formOpen = false;
+
+                    console.log(response);
+
+                },
+                error: function(xhr, status, error) {
+                    console.log(status + " = " + error);
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // when they click the create comment button
         else if(target.hasClass('create-comment')) {
             // gather info for database
@@ -98,6 +166,7 @@ $(document).ready(function () {
                     // plant the fake comment, slide the form up and delete the words inside the form
                     comments.prepend(fake_comment);
                     target.parent().parent().slideUp();
+                    formOpen = false;
                     comment_body.val('');
                 },
                 error: function(xhr, status, error) {

@@ -35,23 +35,29 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-    public function show(Post $post)
+
+    public function update(Request $request)
     {
 
-    }
+        if($request->ajax()) {
 
-    public function edit(Post $post)
-    {
-    }
+            // get posts id
+            $post_id = $request->post_id;
 
-    public function update(Request $request, Post $post)
-    {
-        $formData = $request->all();
-        $post = Post::where('id', $post->id)->get();
-        $post = $post[0];
-        $post->update($formData);
+            // get user_id
+            $user_id = $request->user_id;
 
-        return redirect('posts');
+            // get comment body
+            $edited_post = $request->body;
+
+            // create update data
+            $updateData = $request->all();
+
+            $post = Post::where('id', $post_id)->get();
+            $post = $post[0];
+            $post->update($updateData);
+
+        }
     }
 
     public function destroy(Post $post)
@@ -60,21 +66,6 @@ class PostController extends Controller
         return redirect('posts');
     }
 
-    public function storeComment(Request $request) {
-
-        $formData = $request->all();
-        PostComment::create($formData);
-
-        return redirect('posts');
-
-    }
-
-//    public function destroyComment($comment_id) {
-//        $comment = PostComment::where('id', $comment_id)->get();
-//        $comment = $comment[0];
-//        $comment->delete();
-//        return redirect('posts');
-//    }
 
 
 
