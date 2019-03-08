@@ -288,11 +288,10 @@ $(document).ready(function () {
               } // when you click on the like button
               else if (target.hasClass('like')) {
                   // gather info
-                  var like = target;
-
                   var _post_id2 = target.attr('id');
 
-                  var likes = like.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                  var likes = target.parent().parent().children('.like-counter');
+                  var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                   $.ajax({
                     url: '/CAKE/public/posts/like',
@@ -301,6 +300,11 @@ $(document).ready(function () {
                       post_id: _post_id2
                     },
                     success: function success() {
+                      // change like to unlike (class too) and increment the likes counter
+                      like_button.attr({
+                        class: 'unlike-button buttons unlike',
+                        value: 'Unlike'
+                      });
                       likes.text(parseInt(likes.text()) + 1);
                     },
                     error: function error(xhr, status, _error4) {
@@ -312,8 +316,9 @@ $(document).ready(function () {
                     // gather info
                     var _post_id3 = target.attr('id');
 
-                    var _likes = target.parent().parent().children('.like-counter'); // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                    var _likes = target.parent().parent().children('.like-counter');
 
+                    var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                     $.ajax({
                       url: '/CAKE/public/posts/like/' + _post_id3,
@@ -322,6 +327,12 @@ $(document).ready(function () {
                         post_id: _post_id3
                       },
                       success: function success() {
+                        // change unlike to like (class too) and decrement the likes counter
+                        unlike_button.attr({
+                          class: 'like-button buttons like',
+                          value: 'Like'
+                        });
+
                         _likes.text(parseInt(_likes.text()) - 1);
                       },
                       error: function error(xhr, status, _error5) {

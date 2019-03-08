@@ -249,9 +249,9 @@ $(document).ready(function () {
         else if (target.hasClass('like')) {
 
             // gather info
-            let like = target;
             let post_id = target.attr('id');
-            let likes = like.parent().parent().children('.like-counter');
+            let likes = target.parent().parent().children('.like-counter');
+            let like_button = target;
 
             // call PostLikeController with all data (goes from here to web.php, then to the controller)
             $.ajax({
@@ -259,6 +259,8 @@ $(document).ready(function () {
                 type: 'post',
                 data: {post_id: post_id},
                 success: function() {
+                    // change like to unlike (class too) and increment the likes counter
+                    like_button.attr({class: 'unlike-button buttons unlike', value: 'Unlike'});
                     likes.text(parseInt(likes.text()) + 1);
                 },
                 error: function(xhr, status, error) {
@@ -271,6 +273,7 @@ $(document).ready(function () {
             // gather info
             let post_id = target.attr('id');
             let likes = target.parent().parent().children('.like-counter');
+            let unlike_button = target;
 
             // call PostLikeController with all data (goes from here to web.php, then to the controller)
             $.ajax({
@@ -278,6 +281,9 @@ $(document).ready(function () {
                 type: 'delete',
                 data: {post_id: post_id},
                 success: function() {
+
+                    // change unlike to like (class too) and decrement the likes counter
+                    unlike_button.attr({class: 'like-button buttons like', value: 'Like'});
                     likes.text(parseInt(likes.text()) - 1);
                 },
                 error: function (xhr, status, error) {
