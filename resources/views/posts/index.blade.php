@@ -21,21 +21,6 @@
             </div>
         @endif
         <section id="posts">
-            {{--check if they're logged in--}}
-            {{--@if(Auth::check())--}}
-
-                {{--make post--}}
-                {{--<form id="make-post">--}}
-                    {{--<input name="user_id" type="text" value="{{Auth::user()->id}}" hidden>--}}
-                    {{--<textarea name="body" type="text" placeholder="Tell us what you're thinking.."></textarea>--}}
-                    {{--<input type="button" value="Post" class="create-post">--}}
-                {{--</form>--}}
-            {{--@else--}}
-                {{--can't make a post--}}
-                {{--<div id="must-log-in">--}}
-                    {{--<p>Sorry, you must <a href="{{ route('login') }}">login</a> to post anything.</p>--}}
-                {{--</div>--}}
-            {{--@endif--}}
 
             {{--display all posts--}}
             @forelse($posts as $post)
@@ -43,8 +28,8 @@
 
                     {{--structure for each post--}}
                     <img src="https://fillmurray.com/50/50" class="profile-pic">
-                    <div>
-                        <p class="author" id="user_id">{{$post->getAuthor($post)}}</p>
+                    <div class="post-words">
+                        <p class="author">{{$post->getAuthor($post)}}</p>
                         <p class="post-body">{{$post->body}}</p>
                         <div id="comment-like">
 
@@ -103,14 +88,13 @@
                                 <input type="button" value="Edit" class="edit-post" id="{{$post->id}}">
                                 <input type="button" value="X" class="close-form">
                             </div>
-
                         </form>
 
                         {{--create a comment form--}}
                         <form class="comment-edit-form comment-form">
                             <input class="user-id" type="text" value="{{Auth::user()->id}}" hidden>
                             <input class="post-id" type="text" value="{{$post->id}}" hidden>
-                            <textarea class="comment-body" type="text"></textarea>
+                            <textarea class="comment-body" type="text" placeholder="Write comment.."></textarea>
 
                             <div class="comment-edit-form-buttons">
                                 <input type="button" value="Comment" class="create-comment" id="create-comment">

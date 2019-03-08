@@ -133,6 +133,7 @@ $(document).ready(function () {
             post_id: post_id
           },
           success: function success(response) {
+            // hide from view
             target.parent().parent().parent().parent().slideUp();
           },
           error: function error(xhr, status, _error) {
@@ -418,7 +419,7 @@ $(document).ready(function () {
             hidden: 'true'
           });
           var fake_hidden_edit_form_textarea = $('<textarea></textarea>').val(response.body).attr('type', 'text');
-          var fake_hidden_edit_form_div = $('<div></div').attr('class', 'comment-edit-form-buttons');
+          var fake_hidden_edit_form_div = $('<div></div>').attr('class', 'comment-edit-form-buttons');
           var fake_hidden_edit_form_div_button = $('<input>').attr({
             type: 'button',
             value: 'Edit',
@@ -448,7 +449,8 @@ $(document).ready(function () {
           });
           var fake_hidden_comment_form_textarea = $('<textarea></textarea>').val('').attr({
             class: 'comment-body',
-            type: 'text'
+            type: 'text',
+            placeholder: 'Write comment..'
           });
           var fake_hidden_comment_form_div = $('<div></div').attr('class', 'comment-edit-form-buttons');
           var fake_hidden_comment_form_div_button = $('<input>').attr({

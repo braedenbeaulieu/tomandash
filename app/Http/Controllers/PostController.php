@@ -71,9 +71,10 @@ class PostController extends Controller
         if($request->ajax()) {
             $post_id = $request->post_id;
             $post = Post::findOrFail($post_id);
+            $post->comments()->delete();
+            $post->likes()->delete();
             $post->delete();
         }
-
     }
 
 

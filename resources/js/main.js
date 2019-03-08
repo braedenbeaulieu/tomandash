@@ -49,6 +49,7 @@ $(document).ready(function () {
                 type: 'delete',
                 data: {post_id: post_id},
                 success: function (response) {
+                    // hide from view
                     target.parent().parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
@@ -146,7 +147,7 @@ $(document).ready(function () {
                         fake_comment_words.append(fake_comment_name, fake_comment_body);
                         fake_delete_comment_container.append(fake_delete_comment);
                         fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container);
-                        
+
                         // plant the fake comment, slide the form up and delete the words inside the form
                         comments.prepend(fake_comment);
                         target.parent().parent().slideUp();
@@ -268,8 +269,6 @@ $(document).ready(function () {
         }
     });
 
-
-
     // when they click in the .create-post button
     $('.create-post').on('click', function() {
         let target = $('.create-post');
@@ -311,20 +310,19 @@ $(document).ready(function () {
                     let fake_comments_div = $('<div></div>').attr('class', 'comments');
 
                     let fake_hidden_edit_form = $('<form></form>').attr({class: 'comment-edit-form edit-form', style: 'display: none;'});
-                        let fake_hidden_edit_form_input = $('<input>').attr({type: 'text', value: user_id, hidden: 'true'});
-                        let fake_hidden_edit_form_textarea = $('<textarea></textarea>').val(response.body).attr('type', 'text');
-                        let fake_hidden_edit_form_div = $('<div></div').attr('class', 'comment-edit-form-buttons');
-                            let fake_hidden_edit_form_div_button = $('<input>').attr({type: 'button', value: 'Edit', class: 'edit-post', id: response.id});
-                            let fake_hidden_edit_form_div_close = $('<input>').attr({type: 'button', value: 'X', class: 'close-form'});
+                    let fake_hidden_edit_form_input = $('<input>').attr({type: 'text', value: user_id, hidden: 'true'});
+                    let fake_hidden_edit_form_textarea = $('<textarea></textarea>').val(response.body).attr('type', 'text');
+                    let fake_hidden_edit_form_div = $('<div></div>').attr('class', 'comment-edit-form-buttons');
+                    let fake_hidden_edit_form_div_button = $('<input>').attr({type: 'button', value: 'Edit', class: 'edit-post', id: response.id});
+                    let fake_hidden_edit_form_div_close = $('<input>').attr({type: 'button', value: 'X', class: 'close-form'});
 
                     let fake_hidden_comment_form = $('<form></form>').attr({class: 'comment-edit-form comment-form', style: 'display: none;'});
                     let fake_hidden_comment_form_user_id = $('<input>').attr({class: 'user-id', type: 'text', value: user_id, hidden: 'true'});
                     let fake_hidden_comment_form_post_id = $('<input>').attr({class: 'post-id', type: 'text', value: response.id, hidden: 'true'});
-                    let fake_hidden_comment_form_textarea = $('<textarea></textarea>').val('').attr({class: 'comment-body', type: 'text'});
+                    let fake_hidden_comment_form_textarea = $('<textarea></textarea>').val('').attr({class: 'comment-body', type: 'text', placeholder: 'Write comment..'});
                     let fake_hidden_comment_form_div = $('<div></div').attr('class', 'comment-edit-form-buttons');
                     let fake_hidden_comment_form_div_button = $('<input>').attr({type: 'button', value: 'Comment', class: 'create-comment', id: 'create-comment'});
                     let fake_hidden_comment_form_div_close = $('<input>').attr({type: 'button', value: 'X', class: 'close-form'});
-
 
                     // put it all together
                     fake_like_form.append(fake_like_button);
@@ -339,6 +337,7 @@ $(document).ready(function () {
                     fake_hidden_edit_form.append(fake_hidden_edit_form_input, fake_hidden_edit_form_textarea, fake_hidden_edit_form_div);
 
                     fake_post.append(fake_post_img, fake_div, fake_hidden_edit_form, fake_hidden_comment_form, fake_comments_div);
+
                     // place the comment before the top post
                     $('#posts').prepend(fake_post);
 
@@ -348,12 +347,8 @@ $(document).ready(function () {
                 },
                 error: function(xhr, status, error) {
                     console.log(status + " = " + error);
-
                 }
             });
         }
-
-
     });
-
 });

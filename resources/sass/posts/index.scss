@@ -15,6 +15,8 @@
             width: 100%;
             margin: 0;
             padding: 5px 0 40px 5px;
+            border: 1px solid rgba(0, 0, 0, .5);
+            border-radius: 8px;
         }
 
         // post button
@@ -147,6 +149,8 @@
                     height: 45px;
                     font-size: 12px;
                     padding: 2px 0 0 2px;
+                    border-radius: 4px;
+                    border: 1px solid rgba(0, 0, 0, .5);
                 }
 
                 // buttons in edit and comment forms
