@@ -25,7 +25,7 @@ class PostCommentController extends Controller
                 $comment->post_id = $post_id;
                 $comment->body = $comment_body;
                 $comment->save();
-                return 'commented ';
+                return $comment;
             } else {
                 return 'must log in';
             }

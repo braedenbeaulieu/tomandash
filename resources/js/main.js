@@ -57,7 +57,6 @@ $(document).ready(function () {
             });
 
         }
-
         // when they click the edit post button
         else if(target.hasClass('edit-post')) {
             // get info
@@ -103,7 +102,6 @@ $(document).ready(function () {
                 });
             }
         }
-
         // when they click the create comment button
         else if(target.hasClass('create-comment')) {
 
@@ -116,26 +114,8 @@ $(document).ready(function () {
             if(comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
                 alert('cant be empty');
             } else {
-                // create fake comment to show so we wont have to refresh the page
-                let fake_comment = $('<div></div>').attr('class', 'comment'); // comment container
-                let fake_comment_img = $('<img>').attr({class: 'comment-pic', src: 'https://fillmurray.com/50/50'});
-                let fake_comment_words = $('<div></div>').attr('class', 'comment-words');
-                let fake_comment_name = $('<p></p>').attr('class', 'comment-name').text(comment_name);
-                let fake_comment_body = $('<p></p>').attr('class', 'comment-body').text(comment_body.val());
-                let fake_delete_comment_container = $('<form></form>').attr('class', 'delete-comment-container');
-                let fake_delete_comment = $('<input>').attr({
-                    class: 'delete-comment',
-                    id: post_id,
-                    type: 'button',
-                    value: 'Delete'
-                });
 
-                // put it all together
-                fake_comment_words.append(fake_comment_name, fake_comment_body);
-                fake_delete_comment_container.append(fake_delete_comment);
-                fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container);
-
-                // select element to place it all in to
+                // select element to place teh fake comment into
                 let comments = target.parent().parent().parent().children('.comments');
 
                 // call PostCommentController with all data (goes from here to web.php, then to the controller)
@@ -148,7 +128,25 @@ $(document).ready(function () {
                         body: comment_body.val()
                     },
                     success: function (response) {
-                        console.log(response);
+                        // create fake comment to show so we wont have to refresh the page
+                        let fake_comment = $('<div></div>').attr('class', 'comment'); // comment container
+                        let fake_comment_img = $('<img>').attr({class: 'comment-pic', src: 'https://fillmurray.com/50/50'});
+                        let fake_comment_words = $('<div></div>').attr('class', 'comment-words');
+                        let fake_comment_name = $('<p></p>').attr('class', 'comment-name').text(comment_name);
+                        let fake_comment_body = $('<p></p>').attr('class', 'comment-body').text(comment_body.val());
+                        let fake_delete_comment_container = $('<form></form>').attr('class', 'delete-comment-container');
+                        let fake_delete_comment = $('<input>').attr({
+                            class: 'delete-comment',
+                            id: response.id,
+                            type: 'button',
+                            value: 'Delete'
+                        });
+
+                        // put it all together
+                        fake_comment_words.append(fake_comment_name, fake_comment_body);
+                        fake_delete_comment_container.append(fake_delete_comment);
+                        fake_comment.append(fake_comment_img, fake_comment_words, fake_delete_comment_container);
+                        
                         // plant the fake comment, slide the form up and delete the words inside the form
                         comments.prepend(fake_comment);
                         target.parent().parent().slideUp();
@@ -161,23 +159,23 @@ $(document).ready(function () {
                 });
             }
         }
-
         // check if any forms are open
         else if (formOpen === true) {
             //alert('Please close form before trying to open another.');
 
             // check if clicked element is edit button
-        } else if ((target.hasClass('edit-button') && formOpen === false)) {
+        }
+        // if they click the edit form burron
+        else if ((target.hasClass('edit-button') && formOpen === false)) {
             edit_form.slideDown();
             formOpen = true;
-
-            // if they click the comment form button
-        } else if (target.hasClass('comment-button') && formOpen === false) {
+        }
+        // if they click the comment form button
+        else if (target.hasClass('comment-button') && formOpen === false) {
             comment_form.slideDown();
             formOpen = true;
 
         }
-
         // if they click the delete comment button
         else if (target.hasClass('delete-comment')) {
 
@@ -198,7 +196,6 @@ $(document).ready(function () {
             });
 
         }
-
         // if they click the show comments button
         else if (target.hasClass('show-comments')) {
             let comments = target.parent().children('.comments');
@@ -273,10 +270,6 @@ $(document).ready(function () {
 
 
 
-
-
-
-
     // when they click in the .create-post button
     $('.create-post').on('click', function() {
         let target = $('.create-post');
@@ -314,7 +307,7 @@ $(document).ready(function () {
                     let fake_comment_button = $('<input>').attr({class: 'comment-button buttons', type: 'button', value: 'Comment'});
                     let fake_edit_button = $('<input>').attr({class: 'edit-button buttons', id: response.id, type: 'button', value: 'Edit'});
                     let fake_delete_form = $('<form></form>').attr('class', 'delete-button');
-                    let fake_delete_button = $('<input>').attr({class: 'buttons', type: 'button', value: 'Delete'});
+                    let fake_delete_button = $('<input>').attr({class: 'buttons delete-post', id: response.id, type: 'button', value: 'Delete'});
                     let fake_comments_div = $('<div></div>').attr('class', 'comments');
 
                     let fake_hidden_edit_form = $('<form></form>').attr({class: 'comment-edit-form edit-form', style: 'display: none;'});
@@ -348,7 +341,6 @@ $(document).ready(function () {
                     fake_post.append(fake_post_img, fake_div, fake_hidden_edit_form, fake_hidden_comment_form, fake_comments_div);
                     // place the comment before the top post
                     $('#posts').prepend(fake_post);
-                    //fake_post.after($('#make-post'));
 
                     // clear the textarea
                     textarea.val('');
