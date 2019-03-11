@@ -17,7 +17,7 @@ class PostCommentController extends Controller
             //get comment body
             $comment_body = $request->body;
 
-            if(Auth::check() === true) {
+            if(Auth::check()) {
 
                 // add comment to database
                 $comment = new PostComment;
@@ -37,7 +37,7 @@ class PostCommentController extends Controller
             // get posts id
             $comment_id = $request->comment_id;
 
-            if(Auth::check() === true) {
+            if(Auth::check()) {
                 // find comment it refers to
                 $comment = PostComment::where('id', $comment_id)->get();
                 $comment = $comment[0];

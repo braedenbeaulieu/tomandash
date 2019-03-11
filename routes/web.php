@@ -18,6 +18,7 @@ Auth::routes();
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 // routing for posts controller
+Route::get('/posts/allPosts', 'PostController@allPosts');
 Route::resource('/posts', 'PostController');
 
 // routing for PostLikeController

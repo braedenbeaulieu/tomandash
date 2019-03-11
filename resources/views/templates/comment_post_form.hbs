@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<form class="comment-edit-form comment-form">
+    <input class="user-id" type="text" value="{{user_id}}" hidden>
+    <input class="post-id" type="text" value="{{post_id}}" hidden>
+    <textarea class="comment-body" type="text" placeholder="Write comment.."></textarea>
+
+    <div class="comment-edit-form-buttons">
+        <input type="button" value="Comment" class="create-comment" id="create-comment">
+        <input type="button" value="X" class="close-form">
+    </div>
+</form>

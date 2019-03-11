@@ -1,0 +1,20 @@
+<div class="post {{post_id}}">
+    <img src="https://fillmurray.com/50/50" class="profile-pic">
+    <div class="post-words">
+        <p class="author">{{post_author}}</p>
+        <p class="post-body">{{post_body}}</p>
+        <div class="comment-like">
+            <p class="like-counter">{{post_likes}}</p>
+
+            {{#if has_liked}}
+                <input class="unlike-button buttons unlike" id="{{post_id}}" type="button" value="Unlike">
+            {{else}}
+                <input class="like-button buttons like" id="{{post_id}}" type="button" value="Like">
+            {{/if}}
+
+            <input class="comment-button buttons" id="{{post_id}}" type="button" value="Comment">
+
+        </div>
+    </div>
+    <div class="comments"></div>
+</div>

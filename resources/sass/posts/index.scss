@@ -31,7 +31,7 @@
             text-decoration: none;
             cursor: pointer;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
-            transition: all .3s;
+            transition: box-shadow .3s;
 
             // on hover
             &:hover {
@@ -217,13 +217,14 @@
                 }
 
                 // div for the like and comment button
-                #comment-like {
+                .comment-like {
                     display: inline-flex;
+                    align-items: center;
                     margin-left: -7px;
 
 
                     .like-counter {
-                        margin: 3px 4px 0 0;
+                        margin: 0 4px 0 0;
                         font-size: 12px;
                     }
 
@@ -235,28 +236,43 @@
                         width: auto;
                         font-size: 12px;
 
-                        input {
-                            cursor: pointer;
-                            border: none;
-                            background: none;
-                            color: $blue;
-
-                            &:hover {
-                                text-decoration: underline;
-                            }
-                        }
-
                         // on hover
                         &:hover {
                             text-decoration: underline;
                         }
                     }
 
-                    // delete post form
-                    .delete-button {
-                        input {
-                            color: orangered;
+                    .dropdown {
+                        margin-left: 10px;
+
+                        button {
+                            background-color: transparent;
+                            border: none;
+                            height: auto;
+                            padding: 0;
+
+                            .fa-ellipsis-h {
+                                text-align: center;
+                                color: $blue;
+                                font-size: 20px;
+                                margin-bottom: 1px;
+                            }
                         }
+                        .dropdown-menu.show {
+                            text-align: center;
+                            max-width: 50px;
+
+                            .delete-button {
+                                color: orangered;
+                            }
+                        }
+
+                    }
+
+
+
+                    .grey-button {
+                        color: rgba(0, 0, 0, .5);
                     }
                 }
             }

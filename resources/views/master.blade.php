@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{secure_asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/main.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Pinyon+Script|Roboto" rel="stylesheet">
     <link rel="icon" href="">
@@ -12,6 +14,9 @@
 <body>
 @if(Auth::check())
     <p id="whos-logged-in" class="{{Auth::user()->id}}" hidden>{{ Auth::user()->name }}</p>
+    <p id="user-role" hidden>{{Auth::user()->role}}</p>
+@else
+    <p id="whos-logged-in" class="none" hidden>none</p>
 @endif
 <header>
     <nav>
@@ -45,6 +50,6 @@
     <p>all content &copy; 2019</p>
 </footer>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="{{secure_asset('js/app.js')}}"></script>
 <script src="{{secure_asset('js/main.js')}}"></script>
 </html>
