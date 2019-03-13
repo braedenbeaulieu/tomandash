@@ -72,6 +72,7 @@ class LoginController extends Controller
 
         if ($account) {
             return $account->user;
+
         } else {
             $user = User::whereEmail($providerUser->getEmail())->first();
 
@@ -86,6 +87,7 @@ class LoginController extends Controller
                 'provider_id'   => $providerUser->getId(),
                 'provider_name' => $provider,
             ]);
+
 
             return $user;
         }

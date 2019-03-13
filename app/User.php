@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Post;
 use App\PostLike;
 use Auth;
+use App\SocialIdentity;
 
 class User extends Authenticatable
 {
@@ -33,7 +34,13 @@ class User extends Authenticatable
 
     // for social media log in
     public function identities() {
-        return $this->hasMany('App\SocialIdentity');
+        return $this->hasMany(SocialIdentity::class);
+    }
+
+    public function getFacebookId() {
+        $user = Auth::user();
+        $provider = SocialIdentity::all();
+        return $provider;
     }
 
     public function posts() {
