@@ -29,3 +29,7 @@ Route::delete('/posts/like/{like_id}', 'PostLikeController@destroy');
 Route::post('/posts/comment', 'PostCommentController@store');
 Route::put('/posts/comment/{comment_id}', 'PostCommentController@update');
 Route::delete('/posts/comment/{comment_id}', 'PostCommentController@destroy');
+
+// routing for social media login
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');

@@ -18,6 +18,7 @@
 @else
     <p id="whos-logged-in" class="none" hidden>none</p>
 @endif
+
 <header>
     <nav>
         <div id="left">
@@ -52,4 +53,5 @@
 </body>
 <script src="{{secure_asset('js/app.js')}}"></script>
 <script src="{{secure_asset('js/main.js')}}"></script>
+</body>
 </html>
