@@ -4,31 +4,52 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PostComment;
+use App\Post;
 use Auth;
 
 class PostCommentController extends Controller
 {
     public function store(Request $request) {
         if($request->ajax()) {
-            // get posts id
-            $post_id = $request->post_id;
-            //get user_id
-            $user_id = Auth::user()->id;
-            //get comment body
-            $comment_body = $request->body;
+            // check if post exists
+            if(Post::findOrFail($request->post_id)) {
 
-            if(Auth::check()) {
 
-                // add comment to database
-                $comment = new PostComment;
-                $comment->user_id = $user_id;
-                $comment->post_id = $post_id;
-                $comment->body = $comment_body;
-                $comment->save();
-                return $comment;
+                // get posts id
+                $post_id = $request->post_id;
+                //get user_id
+                $user_id = Auth::user()->id;
+                //get comment body
+                $comment_body = $request->body;
+
+                if (Auth::check()) {
+                    // add comment to database
+                    $comment = new PostComment;
+                    $comment->user_id = $user_id;
+                    $comment->post_id = $post_id;
+                    $comment->body = $comment_body;
+                    $comment->save();
+                    return $comment;
+                } else {
+                    return 'must log in';
+                }
             } else {
-                return 'must log in';
+                return 'not found';
             }
+        }
+    }
+
+    public function update(Request $request)
+    {
+        if ($request->ajax()) {
+
+            // create update data
+            $updateData = $request->all();
+
+
+            $comment = PostComment::where('id', $request->comment_id)->first();
+            $comment->update($updateData);
+
         }
     }
 

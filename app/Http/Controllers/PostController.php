@@ -39,6 +39,8 @@ class PostController extends Controller
 
             return $post;
 
+        } else {
+            return 'can\'t use this data';
         }
     }
 
@@ -71,7 +73,7 @@ class PostController extends Controller
 
     public function allPosts(Request $request) {
         if($request->ajax()) {
-            $posts = Post::orderBy('id', 'desc')->get();
+            $posts = Post::orderBy('id', 'asc')->get();
             foreach($posts as $post) {
                 $post->author = $post->getAuthor($post);
                 $post->post_likes = $post->countLikes($post);

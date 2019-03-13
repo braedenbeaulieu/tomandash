@@ -1454,255 +1454,309 @@ $(document).ready(function () {
     }
   }); // to check if they have a form open
 
-  var formOpen = false; // hide all forms at first so we can slide in when needed
-
-  $('.edit-form').hide();
-  $('.comment-form').hide(); // hide all comments with class hiding
-
-  $('.extra-comments').hide(); // toggle for checking if its slid down or up
-
-  var slideToggle = false; // when they click a button on their post
+  var formOpen = false; // when they click a button on their post
 
   $('#posts').on('click', function (e) {
     // get element clicked
-    var target = $(e.target); // get current forms
-    // check if clicked element is close edit form button
+    var target = $(e.target); // check if clicked element is close edit form button
 
-    if (target.hasClass('close-form') && formOpen === true) {
+    if (target.hasClass('close-form')) {
       target.parent().parent().slideUp();
       formOpen = false;
-    } // when they click delete post button
-    else if (target.hasClass('delete-post')) {
-        // get comment id
-        var post_id = target.attr('id');
-        $.ajax({
-          url: '/CAKE/public/posts/' + post_id,
-          type: 'delete',
-          data: {
-            post_id: post_id
-          },
-          success: function success(response) {
-            // hide from view
-            target.parent().parent().parent().slideUp();
-          },
-          error: function error(xhr, status, _error) {
-            console.log(status + " = " + _error);
-          }
-        });
-      } // when they click the edit post button
-      else if (target.hasClass('edit-post')) {
-          // get info
-          var textarea = target.parent().parent().children('textarea');
-          var edited_post = textarea.val();
+    } // when you click a grey button
+    else if (target.hasClass('.grey-button.buttons')) {
+        alert('Sorry, you must log in to do this');
+      } // when you press the edit comment button
+      else if (target.hasClass('edit-comment')) {
+          var textarea = target.parent().siblings('textarea');
+          var edited_comment = textarea.val();
 
-          var _user_id = target.parent().parent().children('input').attr('value');
+          var _user_id = target.parent().siblings('input').attr('value');
 
-          var _post_id = target.attr('id');
+          var comment_id = target.attr('id');
 
-          if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
+          if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
             alert('cant be empty');
           } else {
-            // info to fake change the post body
-            var current_post = target.parent().parent().siblings('div').children('.post-body');
-            console.log("".concat(current_post.text())); // call PostController with all data (goes from here to web.php, then to the controller)
-
+            // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
-              url: '/CAKE/public/posts/' + _post_id,
+              url: '/CAKE/public/posts/comment/' + comment_id,
               type: 'put',
               headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
               },
               data: {
-                post_id: _post_id,
+                comment_id: comment_id,
                 user_id: _user_id,
-                body: edited_post
+                body: edited_comment
               },
               success: function success(response) {
-                // delete words in text area, slide up form, and fake change the post body
-                current_post.text(edited_post);
-                textarea.val(edited_post);
+                var current_post = target.parent().parent().siblings('.comment-words').children('.comment-body'); // change the words in text area, slide up form, and change the post body
+
+                current_post.text(edited_comment);
+                textarea.val(edited_comment);
                 target.parent().parent().slideUp();
-                formOpen = false;
-                console.log(response);
+              },
+              error: function error(xhr, status, _error) {
+                console.log(status + " = " + _error);
+              }
+            });
+          }
+        } // when they click delete post button
+        else if (target.hasClass('delete-post')) {
+            // get comment id
+            var post_id = target.attr('id');
+            $.ajax({
+              url: '/CAKE/public/posts/' + post_id,
+              type: 'delete',
+              data: {
+                post_id: post_id
+              },
+              success: function success(response) {
+                // hide from view
+                target.parent().parent().parent().parent().parent().slideUp();
               },
               error: function error(xhr, status, _error2) {
                 console.log(status + " = " + _error2);
               }
             });
-          }
-        } // when they click the create comment button
-        else if (target.hasClass('create-comment')) {
-            // gather info for database
-            var comment_name = $('#whos-logged-in').text();
-            var comment_body = target.parent().parent().children('.comment-body');
+          } // when they click the edit post button
+          else if (target.hasClass('edit-post')) {
+              // get info
+              var _textarea = target.parent().siblings('textarea');
 
-            var _post_id2 = target.parent().siblings('.post-id').attr('value');
+              var edited_post = _textarea.val();
 
-            var _user_id2 = target.parent().siblings('.user-id').attr('value');
+              var _user_id2 = target.parent().siblings('input').attr('value');
 
-            if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-              alert('cant be empty');
-            } else {
-              // call PostCommentController with all data (goes from here to web.php, then to the controller)
-              $.ajax({
-                url: '/CAKE/public/posts/comment',
-                type: 'post',
-                data: {
-                  user_id: _user_id2,
-                  post_id: _post_id2,
-                  body: comment_body.val()
-                },
-                success: function success(response) {
-                  // select element to place the fake comment into
-                  var comments = target.parent().parent().siblings('.comments');
+              var _post_id = target.attr('id');
 
-                  var template = __webpack_require__(/*! ../views/templates/comment/comment.hbs */ "./resources/views/templates/comment/comment.hbs");
+              if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
+                alert('cant be empty');
+              } else {
+                // info to fake change the post body
+                var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
 
-                  $(template({
-                    comment_author: comment_name,
-                    comment_body: response.body,
-                    comment_id: response.id
-                  })).appendTo(comments);
-                  comment_body.val('');
-                },
-                error: function error(xhr, status, _error3) {
-                  console.log(status + " = " + _error3);
-                }
-              });
-            }
-          } // check if any forms are open
-          else if (formOpen === true) {} //alert('Please close form before trying to open another.');
-            // if they click the edit form burron
-            else if (target.hasClass('edit-button')) {
-                var template = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
+                $.ajax({
+                  url: '/CAKE/public/posts/' + _post_id,
+                  type: 'put',
+                  headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  },
+                  data: {
+                    post_id: _post_id,
+                    user_id: _user_id2,
+                    body: edited_post
+                  },
+                  success: function success() {
+                    // delete words in text area, slide up form, and fake change the post body
+                    current_post.text(edited_post);
 
-                var post_body = target.parent().siblings('.post-body').text();
+                    _textarea.val(edited_post);
 
-                var _post_id3 = target.attr('id');
-
-                var post = target.parent().parent().parent(); // if theres already a form delete it
-
-                if (post.children('form')) {
-                  post.children('form').remove();
-                }
-
-                $(template({
-                  user_id: window.user_info.user_id,
-                  post_body: post_body,
-                  post_id: _post_id3
-                })).hide().appendTo(post).slideDown();
-                formOpen = true;
-              } // if they click the comment form button
-              else if (target.hasClass('comment-button')) {
-                  var _template = __webpack_require__(/*! ../views/templates/comment_post_form.hbs */ "./resources/views/templates/comment_post_form.hbs");
-
-                  var _post_body = target.parent().siblings('.post-body').text();
-
-                  var _post_id4 = target.attr('id');
-
-                  var _post = target.parent().parent().parent();
-
-                  console.log(_post_id4); // if theres already a form delete it
-
-                  if (_post.children('form')) {
-                    _post.children('form').remove();
+                    target.parent().parent().slideUp();
+                  },
+                  error: function error(xhr, status, _error3) {
+                    console.log(status + " = " + _error3);
                   }
+                });
+              }
+            } // when they click the create comment button
+            else if (target.hasClass('create-comment')) {
+                // gather info for database
+                var comment_name = $('#whos-logged-in').text();
+                var comment_body = target.parent().parent().children('.comment-body');
 
-                  console.log(_post_body);
-                  $(_template({
-                    user_id: window.user_info.user_id,
-                    post_body: _post_body,
-                    post_id: _post_id4
-                  })).hide().appendTo(_post).slideDown();
-                  formOpen = true;
-                } // if they click the delete comment button
-                else if (target.hasClass('delete-comment')) {
-                    // get comment id
-                    var comment_id = target.attr('id');
-                    $.ajax({
-                      url: '/CAKE/public/posts/comment/' + comment_id,
-                      type: 'delete',
-                      data: {
-                        comment_id: comment_id
-                      },
-                      success: function success(response) {
-                        console.log(response);
-                        target.parent().parent().slideUp();
-                      },
-                      error: function error(xhr, status, _error4) {
-                        console.log(status + " = " + _error4);
+                var _post_id2 = target.parent().siblings('.post-id').attr('value');
+
+                var _user_id3 = target.parent().siblings('.user-id').attr('value');
+
+                if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
+                  alert('cant be empty');
+                } else {
+                  // call PostCommentController with all data (goes from here to web.php, then to the controller)
+                  $.ajax({
+                    url: '/CAKE/public/posts/comment',
+                    type: 'post',
+                    data: {
+                      user_id: _user_id3,
+                      post_id: _post_id2,
+                      body: comment_body.val()
+                    },
+                    success: function success(response) {
+                      // select element to place the fake comment into
+                      var comments = target.parent().parent().siblings('.comments');
+
+                      var template = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
+
+                      $(template({
+                        comment_author: comment_name,
+                        comment_body: response.body,
+                        comment_id: response.id
+                      })).appendTo(comments);
+                      comment_body.val('');
+                    },
+                    error: function error() {
+                      alert('Sorry, this post no longer exists.'); // hide from view
+
+                      target.parent().parent().parent().slideUp();
+                    }
+                  });
+                }
+              } // check if any forms are open
+              else if (formOpen === true) {} //alert('Please close form before trying to open another.');
+                // if they click the edit form burron
+                else if (target.hasClass('edit-button')) {
+                    var template = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
+
+                    var post_body = target.parent().parent().parent().siblings('.post-body').text();
+
+                    var _post_id3 = target.attr('id');
+
+                    var post_words = target.parent().parent().parent().parent(); // if theres already a form delete it
+
+                    if (post_words.children('form')) {
+                      post_words.children('form').remove();
+                    }
+
+                    $(template({
+                      user_id: window.user_info.user_id,
+                      edit_body: post_body,
+                      edit_id: _post_id3,
+                      edit_type: 'post'
+                    })).hide().appendTo(post_words).slideDown();
+                  } // if they click the comment form button
+                  else if (target.hasClass('comment-button')) {
+                      var _template = __webpack_require__(/*! ../views/templates/comment_post_form.hbs */ "./resources/views/templates/comment_post_form.hbs");
+
+                      var _post_body = target.parent().siblings('.post-body').text();
+
+                      var _post_id4 = target.attr('id');
+
+                      var post = target.parent().parent().parent(); // if theres already a form delete it
+
+                      if (post.children('form')) {
+                        post.children('form').remove();
                       }
-                    });
-                  } // if they click the show comments button
-                  else if (target.hasClass('show-comments')) {
-                      // php will show the button if there are more than 3 comments
-                      // every comment after will have class 'hide-comment'
-                      // slide up or down the rest of the comments
-                      var show_comments = target;
-                      var extra_comments = show_comments.siblings('.extra-comments');
 
-                      if (extra_comments.is(':visible')) {
-                        extra_comments.slideUp();
-                        show_comments.text("Show more comments");
-                      } else {
-                        extra_comments.slideDown();
-                        show_comments.text("Hide more comments");
-                      }
-                    } // when you click on the like button
-                    else if (target.hasClass('like')) {
-                        // gather info
-                        var _post_id5 = target.attr('id');
-
-                        var likes = target.siblings('.like-counter');
-                        var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                      $(_template({
+                        user_id: window.user_info.user_id,
+                        post_body: _post_body,
+                        post_id: _post_id4
+                      })).hide().appendTo(post).slideDown();
+                    } // if they click the delete comment button
+                    else if (target.hasClass('delete-comment')) {
+                        // get comment id
+                        var _comment_id = target.attr('id');
 
                         $.ajax({
-                          url: '/CAKE/public/posts/like',
-                          type: 'post',
+                          url: '/CAKE/public/posts/comment/' + _comment_id,
+                          type: 'delete',
                           data: {
-                            post_id: _post_id5
+                            comment_id: _comment_id
                           },
-                          success: function success() {
-                            // change like to unlike (class too) and increment the likes counter
-                            like_button.attr({
-                              class: 'unlike-button buttons unlike',
-                              value: 'Unlike'
-                            });
-                            likes.text(parseInt(likes.text()) + 1);
+                          success: function success(response) {
+                            console.log(response);
+                            target.parent().parent().parent().slideUp();
                           },
-                          error: function error(xhr, status, _error5) {
-                            console.log(status + " = " + _error5);
+                          error: function error(xhr, status, _error4) {
+                            console.log(status + " = " + _error4);
                           }
                         });
-                      } // when you click on the unlike button
-                      else if (target.hasClass('unlike')) {
-                          // gather info
-                          var _post_id6 = target.attr('id');
+                      } // if they click the show comments button
+                      else if (target.hasClass('show-comments')) {
+                          // php will show the button if there are more than 3 comments
+                          // every comment after will have class 'hide-comment'
+                          // slide up or down the rest of the comments
+                          var show_comments = target;
+                          var extra_comments = show_comments.siblings('.extra-comments');
 
-                          var _likes = target.siblings('.like-counter');
+                          if (extra_comments.is(':visible')) {
+                            extra_comments.slideUp();
+                            show_comments.text("Show more comments");
+                          } else {
+                            extra_comments.slideDown();
+                            show_comments.text("Hide more comments");
+                          }
+                        } // when you click on the like button
+                        else if (target.hasClass('like')) {
+                            // gather info
+                            var _post_id5 = target.attr('id');
 
-                          var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                            var likes = target.siblings('.like-counter');
+                            var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
-                          $.ajax({
-                            url: '/CAKE/public/posts/like/' + _post_id6,
-                            type: 'delete',
-                            data: {
-                              post_id: _post_id6
-                            },
-                            success: function success() {
-                              // change unlike to like (class too) and decrement the likes counter
-                              unlike_button.attr({
-                                class: 'like-button buttons like',
-                                value: 'Like'
+                            $.ajax({
+                              url: '/CAKE/public/posts/like',
+                              type: 'post',
+                              data: {
+                                post_id: _post_id5
+                              },
+                              success: function success() {
+                                // change like to unlike (class too) and increment the likes counter
+                                like_button.attr({
+                                  class: 'unlike-button buttons unlike',
+                                  value: 'Unlike'
+                                });
+                                likes.text(parseInt(likes.text()) + 1);
+                              },
+                              error: function error() {
+                                alert('Sorry, this post no longer exists.'); // hide from view
+
+                                target.parent().parent().parent().slideUp();
+                              }
+                            });
+                          } // when you click on the unlike button
+                          else if (target.hasClass('unlike')) {
+                              // gather info
+                              var _post_id6 = target.attr('id');
+
+                              var _likes = target.siblings('.like-counter');
+
+                              var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+
+                              $.ajax({
+                                url: '/CAKE/public/posts/like/' + _post_id6,
+                                type: 'delete',
+                                data: {
+                                  post_id: _post_id6
+                                },
+                                success: function success() {
+                                  // change unlike to like (class too) and decrement the likes counter
+                                  unlike_button.attr({
+                                    class: 'like-button buttons like',
+                                    value: 'Like'
+                                  });
+
+                                  _likes.text(parseInt(_likes.text()) - 1);
+                                },
+                                error: function error() {
+                                  alert('Sorry, this post no longer exists.'); // hide from view
+
+                                  target.parent().parent().parent().slideUp();
+                                }
                               });
+                            } // when you click edit comment button
+                            else if (target.hasClass('comment-edit-button')) {
+                                var _template2 = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
 
-                              _likes.text(parseInt(_likes.text()) - 1);
-                            },
-                            error: function error(xhr, status, _error6) {
-                              console.log(status + " = " + _error6);
-                            }
-                          });
-                        }
+                                var _comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
+
+                                var _comment_id2 = target.attr('id');
+
+                                var comment = target.parent().parent().parent(); // if theres already a form delete it
+
+                                if (comment.children('form')) {
+                                  comment.children('form').remove();
+                                }
+
+                                $(_template2({
+                                  user_id: window.user_info.user_id,
+                                  edit_body: _comment_body,
+                                  edit_id: _comment_id2,
+                                  edit_type: 'comment'
+                                })).appendTo(comment).hide().slideDown();
+                              }
   }); // when they click in the .create-post button
 
   $('.create-post').on('click', function () {
@@ -1725,9 +1779,6 @@ $(document).ready(function () {
           body: post_body
         },
         success: function success(response) {
-          var post_div = $('<div></div>').attr('class', 'post');
-          var comments_div = $('<div></div>').attr('class', 'comments');
-
           var template = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
 
           $(template({
@@ -1735,15 +1786,12 @@ $(document).ready(function () {
             post_body: response.body,
             post_id: response.id,
             post_likes: '0'
-          })).appendTo(post_div);
-          post_div.append(comments_div);
-          $('#posts').prepend(post_div);
-          showAllActionButtons(response.id); // clear the textarea
+          })).prependTo($('#posts')); // clear the textarea
 
           textarea.val('');
         },
-        error: function error(xhr, status, _error7) {
-          console.log(status + " = " + _error7);
+        error: function error(xhr, status, _error5) {
+          console.log(status + " = " + _error5);
         }
       });
     }
@@ -1762,8 +1810,7 @@ $(document).ready(function () {
       // object of each post
       getEveryPost = $.parseJSON(response);
       getEveryPost.forEach(function (post) {
-        console.log(post.author); // if they're not logged in, display posts-none
-
+        // if they're not logged in, display posts-none
         if (user_name === 'none') {
           var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
 
@@ -1774,9 +1821,9 @@ $(document).ready(function () {
             post_likes: post.post_likes
           })).prependTo(posts); // if they are admin or if its their post
         } else if (user_role == '1' || user_id == post.user_id) {
-          var _template2 = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
+          var _template3 = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
 
-          $(_template2({
+          $(_template3({
             post_author: post.author,
             post_body: post.body,
             post_id: post.id,
@@ -1784,9 +1831,9 @@ $(document).ready(function () {
             has_liked: post.has_liked
           })).prependTo(posts); // if they are logged in but its not their post and they arent admin
         } else if (user_name != 'none') {
-          var _template3 = __webpack_require__(/*! ../views/templates/post/post-like-comment.hbs */ "./resources/views/templates/post/post-like-comment.hbs");
+          var _template4 = __webpack_require__(/*! ../views/templates/post/post-like-comment.hbs */ "./resources/views/templates/post/post-like-comment.hbs");
 
-          $(_template3({
+          $(_template4({
             post_author: post.author,
             post_body: post.body,
             post_id: post.id,
@@ -1799,10 +1846,18 @@ $(document).ready(function () {
         var comments = $('.post.' + post.id).children('.comments'); // for each post.comments
 
         post_comments.forEach(function (comment) {
-          if (comment.post_id == post.id) {
-            var _template4 = __webpack_require__(/*! ../views/templates/comment/comment.hbs */ "./resources/views/templates/comment/comment.hbs");
+          if (user_role == '1' || user_id == post.user_id) {
+            var _template5 = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
 
-            $(_template4({
+            $(_template5({
+              comment_author: comment.author,
+              comment_body: comment.body,
+              comment_id: comment.id
+            })).appendTo(comments);
+          } else if (user_name === 'none') {
+            var _template6 = __webpack_require__(/*! ../views/templates/comment/comment-none.hbs */ "./resources/views/templates/comment/comment-none.hbs");
+
+            $(_template6({
               comment_author: comment.author,
               comment_body: comment.body,
               comment_id: comment.id
@@ -1811,40 +1866,10 @@ $(document).ready(function () {
         });
       });
     },
-    error: function error(xhr, status, _error8) {
-      console.log(status + " = " + _error8);
+    error: function error(xhr, status, _error6) {
+      console.log(status + " = " + _error6);
     }
-  }); // this function is called when a post is made because everyoen can do anything to their own post.
-  // function showAllActionButtons(post_id) {
-  //     $('<input>').attr({class: 'like-button buttons like', id: post_id, type: 'button', value: 'Like'}).appendTo($('.comment-like.' + post_id));
-  //     $('<input>').attr({class: 'comment-button buttons', id: post_id, type: 'button', value: 'Comment'}).appendTo($('.comment-like.' + post_id));
-  //     $('<input>').attr({class: 'edit-button buttons', id: post_id, type: 'button', value: 'Edit'}).appendTo($('.comment-like.' + post_id));
-  //     $('<input>').attr({class: 'buttons delete-post delete-button', id: post_id, type: 'button', value: 'Delete'}).appendTo($('.comment-like.' + post_id));
-  // }
-  // function to check whether or not someone has liked a post when the page loads
-
-  function hasLiked(user_id, post_id) {
-    $.ajax({
-      url: '/CAKE/public/posts/hasLiked',
-      type: 'get',
-      data: {
-        user_id: user_id,
-        post_id: post_id
-      },
-      success: function success(response) {
-        console.log(response);
-
-        if (response == 'yes') {
-          return true;
-        } else if (response == 'no') {
-          return false;
-        }
-      },
-      error: function error(xhr, status, _error9) {
-        console.log(status + " = " + _error9);
-      }
-    }); //$('<input>').attr({class: 'like-button buttons like', id: post.id, type: 'button', value: 'Like'}).appendTo($('.comment-like.' + post.id));
-  }
+  });
 });
 
 /***/ }),
@@ -1871,10 +1896,10 @@ $(document).ready(function () {
 
 /***/ }),
 
-/***/ "./resources/views/templates/comment/comment.hbs":
-/*!*******************************************************!*\
-  !*** ./resources/views/templates/comment/comment.hbs ***!
-  \*******************************************************/
+/***/ "./resources/views/templates/comment/comment-edit-delete.hbs":
+/*!*******************************************************************!*\
+  !*** ./resources/views/templates/comment/comment-edit-delete.hbs ***!
+  \*******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1887,9 +1912,32 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.comment_author || (depth0 != null ? depth0.comment_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"comment-body\">"
     + alias4(((helper = (helper = helpers.comment_body || (depth0 != null ? depth0.comment_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_body","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n\n    <form class=\"delete-comment-container\">\n        <input class=\"delete-comment\" id=\""
+    + "</p>\n    </div>\n\n    <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            <i class=\"fas fa-ellipsis-h\"></i>\n        </button>\n        <div class=\"comment-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n            <input class=\"buttons comment-edit-button\" id=\""
     + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Delete\">\n    </form>\n</div>";
+    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".comment-dropdown-menu\">\n            <input class=\"buttons delete-comment\" id=\""
+    + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
+    + "\" type=\"button\" value=\"Delete\">\n        </div>\n    </div>\n</div>\n";
+},"useData":true});
+
+/***/ }),
+
+/***/ "./resources/views/templates/comment/comment-none.hbs":
+/*!************************************************************!*\
+  !*** ./resources/views/templates/comment/comment-none.hbs ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Handlebars = __webpack_require__(/*! ../../../../node_modules/handlebars/runtime.js */ "./node_modules/handlebars/runtime.js");
+function __default(obj) { return obj && (obj.__esModule ? obj["default"] : obj); }
+module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "<div class=\"comment\">\n    <img src=\"https://fillmurray.com/50/50\" class=\"comment-pic\">\n    <div class=\"comment-words\">\n        <p class=\"comment-name\">"
+    + alias4(((helper = (helper = helpers.comment_author || (depth0 != null ? depth0.comment_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_author","hash":{},"data":data}) : helper)))
+    + "</p>\n        <p class=\"comment-body\">"
+    + alias4(((helper = (helper = helpers.comment_body || (depth0 != null ? depth0.comment_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_body","hash":{},"data":data}) : helper)))
+    + "</p>\n    </div>\n\n</div>\n";
 },"useData":true});
 
 /***/ }),
@@ -1930,9 +1978,11 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
   return "<form class=\"comment-edit-form edit-form\">\n    <input type=\"text\" value=\""
     + alias4(((helper = (helper = helpers.user_id || (depth0 != null ? depth0.user_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"user_id","hash":{},"data":data}) : helper)))
     + "\" hidden>\n    <textarea type=\"text\">"
-    + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</textarea>\n    <div class=\"comment-edit-form-buttons\">\n        <input type=\"button\" value=\"Edit\" class=\"edit-post\" id=\""
-    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
+    + alias4(((helper = (helper = helpers.edit_body || (depth0 != null ? depth0.edit_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"edit_body","hash":{},"data":data}) : helper)))
+    + "</textarea>\n    <div class=\"comment-edit-form-buttons\">\n        <input type=\"button\" value=\"Edit\" class=\"edit-"
+    + alias4(((helper = (helper = helpers.edit_type || (depth0 != null ? depth0.edit_type : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"edit_type","hash":{},"data":data}) : helper)))
+    + "\" id=\""
+    + alias4(((helper = (helper = helpers.edit_id || (depth0 != null ? depth0.edit_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"edit_id","hash":{},"data":data}) : helper)))
     + "\">\n        <input type=\"button\" value=\"X\" class=\"close-form\">\n    </div>\n</form>";
 },"useData":true});
 
@@ -1974,11 +2024,11 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "            <input class=\"comment-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Edit\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
+    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Delete\">\n                </div>\n            </div>\n\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
+    + "\" type=\"button\" value=\"Delete\">\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});
 
 /***/ }),
@@ -2046,7 +2096,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
     + "\">\n            <p class=\"like-counter\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
-    + "</p>\n            <input class=\"grey-button buttons like\" type=\"button\" value=\"Like\">\n\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Comment\">\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
+    + "</p>\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Like\">\n\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Comment\">\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});
 
 /***/ }),

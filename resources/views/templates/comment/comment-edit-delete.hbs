@@ -5,7 +5,13 @@
         <p class="comment-body">{{comment_body}}</p>
     </div>
 
-    <form class="delete-comment-container">
-        <input class="delete-comment" id="{{comment_id}}" type="button" value="Delete">
-    </form>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <div class="comment-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <input class="buttons comment-edit-button" id="{{comment_id}}" type="button" value="Edit" data-toggle="collapse" data-target=".comment-dropdown-menu">
+            <input class="buttons delete-comment" id="{{comment_id}}" type="button" value="Delete">
+        </div>
+    </div>
 </div>

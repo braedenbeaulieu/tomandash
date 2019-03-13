@@ -1,8 +1,8 @@
 <form class="comment-edit-form edit-form">
     <input type="text" value="{{user_id}}" hidden>
-    <textarea type="text">{{post_body}}</textarea>
+    <textarea type="text">{{edit_body}}</textarea>
     <div class="comment-edit-form-buttons">
-        <input type="button" value="Edit" class="edit-post" id="{{post_id}}">
+        <input type="button" value="Edit" class="edit-{{edit_type}}" id="{{edit_id}}">
         <input type="button" value="X" class="close-form">
     </div>
 </form>

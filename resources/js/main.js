@@ -15,30 +15,61 @@ $(document).ready(function () {
     // to check if they have a form open
     let formOpen = false;
 
-    // hide all forms at first so we can slide in when needed
-    $('.edit-form').hide();
-    $('.comment-form').hide();
-
-    // hide all comments with class hiding
-    $('.extra-comments').hide();
-
-    // toggle for checking if its slid down or up
-    let slideToggle = false;
 
     // when they click a button on their post
     $('#posts').on('click', function(e) {
 
         // get element clicked
         let target = $(e.target);
-        // get current forms
-
-
 
         // check if clicked element is close edit form button
-        if(target.hasClass('close-form') && formOpen === true) {
+        if(target.hasClass('close-form')) {
             target.parent().parent().slideUp();
 
             formOpen = false;
+        }
+        // when you click a grey button
+        else if(target.hasClass('.grey-button.buttons')) {
+            alert('Sorry, you must log in to do this');
+        }
+        // when you press the edit comment button
+        else if(target.hasClass('edit-comment')) {
+            let textarea = target.parent().siblings('textarea');
+            let edited_comment = textarea.val();
+            let user_id = target.parent().siblings('input').attr('value');
+            let comment_id = target.attr('id');
+
+
+            if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
+                alert('cant be empty');
+            } else {
+                // call PostController with all data (goes from here to web.php, then to the controller)
+                $.ajax({
+                    url: '/CAKE/public/posts/comment/' + comment_id,
+                    type: 'put',
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data: {
+                        comment_id: comment_id,
+                        user_id: user_id,
+                        body: edited_comment
+                    },
+                    success: function(response) {
+                        let current_post = target.parent().parent().siblings('.comment-words').children('.comment-body');
+
+                        // change the words in text area, slide up form, and change the post body
+                        current_post.text(edited_comment);
+                        textarea.val(edited_comment);
+                        target.parent().parent().slideUp();
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.log(status + " = " + error);
+                    }
+                });
+            }
+
         }
         // when they click delete post button
         else if(target.hasClass('delete-post')) {
@@ -51,7 +82,7 @@ $(document).ready(function () {
                 data: {post_id: post_id},
                 success: function (response) {
                     // hide from view
-                    target.parent().parent().parent().slideUp();
+                    target.parent().parent().parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
                     console.log(status + " = " + error);
@@ -62,9 +93,9 @@ $(document).ready(function () {
         // when they click the edit post button
         else if(target.hasClass('edit-post')) {
             // get info
-            let textarea = target.parent().parent().children('textarea');
+            let textarea = target.parent().siblings('textarea');
             let edited_post = textarea.val();
-            let user_id = target.parent().parent().children('input').attr('value');
+            let user_id = target.parent().siblings('input').attr('value');
             let post_id = target.attr('id');
 
 
@@ -74,8 +105,7 @@ $(document).ready(function () {
             } else {
 
                 // info to fake change the post body
-                let current_post = target.parent().parent().siblings('div').children('.post-body');
-                console.log(`${current_post.text()}`);
+                let current_post = target.parent().parent().siblings('.post-body');
                 // call PostController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
                     url: '/CAKE/public/posts/' + post_id,
@@ -88,14 +118,11 @@ $(document).ready(function () {
                         user_id: user_id,
                         body: edited_post
                     },
-                    success: function (response) {
+                    success: function() {
                         // delete words in text area, slide up form, and fake change the post body
                         current_post.text(edited_post);
                         textarea.val(edited_post);
                         target.parent().parent().slideUp();
-                        formOpen = false;
-
-                        console.log(response);
 
                     },
                     error: function (xhr, status, error) {
@@ -129,13 +156,19 @@ $(document).ready(function () {
                         // select element to place the fake comment into
                         let comments = target.parent().parent().siblings('.comments');
 
-                        let template = require('../views/templates/comment/comment.hbs');
+                        let template = require('../views/templates/comment/comment-edit-delete.hbs');
 
-                        $(template({ comment_author: comment_name, comment_body: response.body, comment_id: response.id })).appendTo(comments);
+                        $(template({
+                            comment_author: comment_name,
+                            comment_body: response.body,
+                            comment_id: response.id
+                        })).appendTo(comments);
                         comment_body.val('');
                     },
-                    error: function (xhr, status, error) {
-                        console.log(status + " = " + error);
+                    error: function() {
+                        alert('Sorry, this post no longer exists.');
+                        // hide from view
+                        target.parent().parent().parent().slideUp();
                     }
                 });
             }
@@ -148,18 +181,16 @@ $(document).ready(function () {
         else if ((target.hasClass('edit-button'))) {
 
             let template = require('../views/templates/edit_post_form.hbs');
-            let post_body = target.parent().siblings('.post-body').text();
+            let post_body = target.parent().parent().parent().siblings('.post-body').text();
             let post_id = target.attr('id');
-            let post = target.parent().parent().parent();
+            let post_words = target.parent().parent().parent().parent();
 
             // if theres already a form delete it
-            if(post.children('form')) {
-                post.children('form').remove();
+            if(post_words.children('form')) {
+                post_words.children('form').remove();
             }
 
-            $(template({user_id: window.user_info.user_id, post_body: post_body, post_id: post_id})).hide().appendTo(post).slideDown();
-
-            formOpen = true;
+            $(template({user_id: window.user_info.user_id, edit_body: post_body, edit_id: post_id, edit_type: 'post'})).hide().appendTo(post_words).slideDown();
 
         }
         // if they click the comment form button
@@ -168,18 +199,13 @@ $(document).ready(function () {
             let post_body = target.parent().siblings('.post-body').text();
             let post_id = target.attr('id');
             let post = target.parent().parent().parent();
-            console.log(post_id);
 
             // if theres already a form delete it
             if(post.children('form')) {
                 post.children('form').remove();
             }
 
-            console.log(post_body);
-
             $(template({user_id: window.user_info.user_id, post_body: post_body, post_id: post_id})).hide().appendTo(post).slideDown();
-
-            formOpen = true;
 
         }
         // if they click the delete comment button
@@ -194,7 +220,7 @@ $(document).ready(function () {
                 data: {comment_id: comment_id},
                 success: function (response) {
                     console.log(response);
-                    target.parent().parent().slideUp();
+                    target.parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
                     console.log(status + " = " + error);
@@ -241,8 +267,10 @@ $(document).ready(function () {
                     like_button.attr({class: 'unlike-button buttons unlike', value: 'Unlike'});
                     likes.text(parseInt(likes.text()) + 1);
                 },
-                error: function(xhr, status, error) {
-                    console.log(status + " = " + error);
+                error: function() {
+                    alert('Sorry, this post no longer exists.');
+                    // hide from view
+                    target.parent().parent().parent().slideUp();
                 }
             });
         }
@@ -264,12 +292,29 @@ $(document).ready(function () {
                     unlike_button.attr({class: 'like-button buttons like', value: 'Like'});
                     likes.text(parseInt(likes.text()) - 1);
                 },
-                error: function (xhr, status, error) {
-                    console.log(status + " = " + error);
+                error: function() {
+                    alert('Sorry, this post no longer exists.');
+                    // hide from view
+                    target.parent().parent().parent().slideUp();
                 }
             });
         }
+        // when you click edit comment button
+        else if(target.hasClass('comment-edit-button')) {
+            let template = require('../views/templates/edit_post_form.hbs');
+            let comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
+            let comment_id = target.attr('id');
+            let comment = target.parent().parent().parent();
+
+            // if theres already a form delete it
+            if(comment.children('form')) {
+                comment.children('form').remove();
+            }
+
+            $(template({user_id: window.user_info.user_id, edit_body: comment_body, edit_id: comment_id, edit_type: 'comment'})).appendTo(comment).hide().slideDown();
+        }
     });
+
 
     // when they click in the .create-post button
     $('.create-post').on('click', function() {
@@ -295,13 +340,8 @@ $(document).ready(function () {
                     body: post_body
                 },
                 success: function(response) {
-                    let post_div = $('<div></div>').attr('class', 'post');
-                    let comments_div = $('<div></div>').attr('class', 'comments');
                     let template = require('../views/templates/post/post-like-comment-edit-delete.hbs');
-                    $(template({post_author: user_name, post_body: response.body, post_id: response.id, post_likes: '0'})).appendTo(post_div);
-                    post_div.append(comments_div);
-                    $('#posts').prepend(post_div);
-                    showAllActionButtons(response.id);
+                    $(template({post_author: user_name, post_body: response.body, post_id: response.id, post_likes: '0'})).prependTo($('#posts'));
 
                     // clear the textarea
                     textarea.val('');
@@ -313,17 +353,6 @@ $(document).ready(function () {
             });
         }
     });
-
-
-
-
-
-
-
-
-
-
-
 
 
     // drawing all posts
@@ -342,7 +371,6 @@ $(document).ready(function () {
             getEveryPost = $.parseJSON(response);
 
             getEveryPost.forEach(function(post) {
-                console.log(post.author);
 
                 // if they're not logged in, display posts-none
                 if(user_name === 'none') {
@@ -366,9 +394,20 @@ $(document).ready(function () {
 
                 // for each post.comments
                 post_comments.forEach(function(comment) {
-                    if(comment.post_id == post.id) {
-                        let template = require('../views/templates/comment/comment.hbs');
-                        $(template({comment_author: comment.author, comment_body: comment.body, comment_id: comment.id})).appendTo(comments);
+                    if(user_role == '1' || user_id == post.user_id) {
+                        let template = require('../views/templates/comment/comment-edit-delete.hbs');
+                        $(template({
+                            comment_author: comment.author,
+                            comment_body: comment.body,
+                            comment_id: comment.id
+                        })).appendTo(comments);
+                    } else if(user_name === 'none') {
+                        let template = require('../views/templates/comment/comment-none.hbs');
+                        $(template({
+                            comment_author: comment.author,
+                            comment_body: comment.body,
+                            comment_id: comment.id
+                        })).appendTo(comments);
                     }
                 });
             });
@@ -378,53 +417,4 @@ $(document).ready(function () {
         }
     });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // this function is called when a post is made because everyoen can do anything to their own post.
-    // function showAllActionButtons(post_id) {
-    //     $('<input>').attr({class: 'like-button buttons like', id: post_id, type: 'button', value: 'Like'}).appendTo($('.comment-like.' + post_id));
-    //     $('<input>').attr({class: 'comment-button buttons', id: post_id, type: 'button', value: 'Comment'}).appendTo($('.comment-like.' + post_id));
-    //     $('<input>').attr({class: 'edit-button buttons', id: post_id, type: 'button', value: 'Edit'}).appendTo($('.comment-like.' + post_id));
-    //     $('<input>').attr({class: 'buttons delete-post delete-button', id: post_id, type: 'button', value: 'Delete'}).appendTo($('.comment-like.' + post_id));
-    // }
-
-    // function to check whether or not someone has liked a post when the page loads
-    function hasLiked(user_id, post_id) {
-        $.ajax({
-            url: '/CAKE/public/posts/hasLiked',
-            type: 'get',
-            data: {user_id: user_id, post_id: post_id},
-            success: function (response) {
-                console.log(response);
-                if(response == 'yes') {
-                    return true;
-                } else if(response == 'no') {
-                    return false;
-                }
-            },
-            error: function (xhr, status, error) {
-                console.log(status + " = " + error);
-            }
-        });
-        //$('<input>').attr({class: 'like-button buttons like', id: post.id, type: 'button', value: 'Like'}).appendTo($('.comment-like.' + post.id));
-    }
 });

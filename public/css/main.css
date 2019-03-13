@@ -299,23 +299,45 @@ footer {
   width: 100%;
 }
 
-#blog #posts .post .comments .comment .delete-comment-container {
-  position: relative;
+#blog #posts .post .comments .comment .dropdown {
+  margin-left: 10px;
 }
 
-#blog #posts .post .comments .comment .delete-comment-container .delete-comment {
-  font-size: 12px;
+#blog #posts .post .comments .comment .dropdown button {
+  background-color: transparent;
+  border: none;
+  height: auto;
+  padding: 0;
+  text-align: center;
+}
+
+#blog #posts .post .comments .comment .dropdown button .fa-ellipsis-h {
+  text-align: center;
+  color: #3490dc;
+  font-size: 20px;
+  margin-bottom: 1px;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show {
+  text-align: center;
+  max-width: 50px;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons {
   cursor: pointer;
   border: none;
   background: none;
-  color: orangered;
-  position: absolute;
-  top: 25px;
-  right: -40px;
+  color: #3490dc;
+  width: auto;
+  font-size: 12px;
 }
 
-#blog #posts .post .comments .comment .delete-comment-container .delete-comment:hover {
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons:hover {
   text-decoration: underline;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .delete-comment {
+  color: orangered;
 }
 
 #blog #posts .post .comment-edit-form {

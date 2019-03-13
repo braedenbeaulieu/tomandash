@@ -112,25 +112,46 @@
                         }
                     }
 
-                    // delete comment button
-                    .delete-comment-container {
-                        position: relative;
+                    .dropdown {
+                        margin-left: 10px;
 
-                        .delete-comment {
-                            font-size: 12px;
-                            cursor: pointer;
+                        button {
+                            background-color: transparent;
                             border: none;
-                            background: none;
-                            color: orangered;
-                            position: absolute;
-                            top: 25px;
-                            right: -40px;
+                            height: auto;
+                            padding: 0;
+                            text-align: center;
 
-                            // on hover
-                            &:hover {
-                                text-decoration: underline;
+                            .fa-ellipsis-h {
+                                text-align: center;
+                                color: $blue;
+                                font-size: 20px;
+                                margin-bottom: 1px;
                             }
                         }
+                        .dropdown-menu.show {
+                            text-align: center;
+                            max-width: 50px;
+
+                            .buttons {
+                                cursor: pointer;
+                                border: none;
+                                background: none;
+                                color: $blue;
+                                width: auto;
+                                font-size: 12px;
+
+                                // on hover
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            .delete-comment {
+                                color: orangered;
+                            }
+                        }
+
                     }
                 }
 

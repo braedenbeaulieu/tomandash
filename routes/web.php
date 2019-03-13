@@ -27,4 +27,5 @@ Route::delete('/posts/like/{like_id}', 'PostLikeController@destroy');
 
 // routing for PostCommentController
 Route::post('/posts/comment', 'PostCommentController@store');
+Route::put('/posts/comment/{comment_id}', 'PostCommentController@update');
 Route::delete('/posts/comment/{comment_id}', 'PostCommentController@destroy');
