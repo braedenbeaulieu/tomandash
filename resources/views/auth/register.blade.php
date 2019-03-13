@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
 <div class="container">
@@ -68,7 +68,14 @@
                                 </button>
                             </div>
                         </div>
+                        <hr>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                            </div>
+                        </div>
                     </form>
+
                 </div>
             </div>
         </div>

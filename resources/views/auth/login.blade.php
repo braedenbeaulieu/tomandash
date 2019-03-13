@@ -4,8 +4,13 @@
 
     <div id="container">
         <div id="facebook-login-container">
-            <p>FACEBOOK</p>
-        </p>
+
+            <div class="form-group">
+                <div class="col-md-12">
+                    <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                </div>
+            </div>
+        </div>
         <div id="email-login-container">
             <form method="post" action="{{route('login')}}">
 

@@ -31,6 +31,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // for social media log in
+    public function identities() {
+        return $this->hasMany('App\SocialIdentity');
+    }
+
     public function posts() {
         $this->hasMany(Post::class);
     }
