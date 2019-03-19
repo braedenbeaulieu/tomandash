@@ -33,3 +33,7 @@ Route::delete('/posts/comment/{comment_id}', 'PostCommentController@destroy');
 // routing for social media login
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
+// routing for RsvpController
+Route::get('/rsvp', 'RSVPController@show');
+Route::post('/rsvp', 'RSVPController@mailToTAA');

@@ -367,8 +367,12 @@ $(document).ready(function () {
         type: 'get',
         data: {},
         success: function (response) {
+
             // object of each post
             getEveryPost = $.parseJSON(response);
+
+            console.log(getEveryPost);
+
 
             getEveryPost.forEach(function(post) {
 

@@ -1,1 +1,483 @@
-a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:after,blockquote:before,q:after,q:before{content:"";content:none}table{border-collapse:collapse;border-spacing:0}html{font-family:Roboto,sans-serif}html body{width:100%;text-align:center}html body p{font-size:14px}html body a{text-decoration:none;color:#000}html body #subtitle{font-size:3em;padding:60px 0;font-family:Pinyon Script,cursive}header{width:100%;color:#f8fafc}header nav{display:inline-flex;justify-content:center;align-items:center;text-align:center;padding:15px 0;width:100%;margin:auto;background:#444}header nav #left a{color:#f8fafc;width:92px;padding:0 7px;margin:0 15px}header nav #logo{font-size:50px;margin:0 120px;background:#444}header nav #right a{color:#f8fafc;width:92px;padding:15px 7px;margin:0 15px}footer{width:100%;background:#d3d3d3;text-align:center;margin-top:1000px}#blog{display:block;width:100%;margin:0 auto}#blog #make-post{width:600px;margin:20px auto;padding:0}#blog #make-post textarea{width:100%;margin:0;padding:5px 0 40px 5px;border:1px solid rgba(0,0,0,.5);border-radius:8px}#blog #make-post .create-post{width:auto;margin:7px 0 0 7px;display:block;border:1px solid #444;border-radius:2px;padding:10px 17px;background:#fff;text-decoration:none;cursor:pointer;box-shadow:2px 2px 5px rgba(0,0,0,.2);transition:box-shadow .3s}#blog #make-post .create-post:hover{box-shadow:1px 1px 5px rgba(0,0,0,.1)}#blog #must-log-in p a{color:#3490dc;text-decoration:underline}#blog #posts{background:#f8fafc;width:600px;margin:0 auto;padding:0 15px}#blog #posts .post{margin:10px auto 30px;background:#fff;padding:10px;width:100%;text-align:left;display:inline-flex;flex-wrap:wrap;position:relative;box-shadow:0 0 10px rgba(0,0,0,.1);border-radius:10px;border:.75px solid rgba(0,0,0,.2)}#blog #posts .post .show-comments{position:absolute;z-index:100;bottom:-20px;left:35%;cursor:pointer;color:#3490dc;font-size:12px}#blog #posts .post .comments{width:80%;margin:15px 0 0 10%;border-left:2px solid #444;padding-left:3%;position:relative}#blog #posts .post .comments .comment{display:inline-flex;flex-wrap:wrap;justify-content:flex-start;width:430px}#blog #posts .post .comments .comment .comment-pic{width:40px;height:40px}#blog #posts .post .comments .comment .comment-words{width:350px}#blog #posts .post .comments .comment .comment-words .comment-name{margin-bottom:10px}#blog #posts .post .comments .comment .comment-words .comment-body{width:100%}#blog #posts .post .comments .comment .dropdown{margin-left:10px}#blog #posts .post .comments .comment .dropdown button{background-color:transparent;border:none;height:auto;padding:0;text-align:center}#blog #posts .post .comments .comment .dropdown button .fa-ellipsis-h{text-align:center;color:#3490dc;font-size:20px;margin-bottom:1px}#blog #posts .post .comments .comment .dropdown .dropdown-menu.show{text-align:center;max-width:50px}#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons{cursor:pointer;border:none;background:none;color:#3490dc;width:auto;font-size:12px}#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons:hover{text-decoration:underline}#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .delete-comment{color:#ff4500}#blog #posts .post .comment-edit-form{width:100%;display:block;margin:15px 0 15px 50px}#blog #posts .post .comment-edit-form textarea{width:90%;height:45px;font-size:12px;padding:2px 0 0 2px;border-radius:4px;border:1px solid rgba(0,0,0,.5)}#blog #posts .post .comment-edit-form .comment-edit-form-buttons{width:60%;font-size:12px;display:inline-flex;justify-content:flex-start}#blog #posts .post .comment-edit-form .comment-edit-form-buttons input{width:auto;margin:7px 0 0 7px;display:block;border:1px solid #444;border-radius:2px;padding:10px 17px;background:#fff;text-decoration:none;cursor:pointer;box-shadow:2px 2px 5px rgba(0,0,0,.2);transition:all .3s}#blog #posts .post .comment-edit-form .comment-edit-form-buttons input:hover{box-shadow:1px 1px 5px rgba(0,0,0,.1)}#blog #posts .post .comment-edit-form .comment-edit-form-buttons .close-form{margin:10px 0 0 5px;padding:0;height:25px;width:25px;border-radius:50%}#blog #posts .post img{border-radius:50%;border:.75px solid rgba(0,0,0,.2);max-height:50px;margin:4px 7px 0 0}#blog #posts .post div{margin-top:5px;max-width:500px}#blog #posts .post div .author{width:100%;margin-bottom:15px;color:#444}#blog #posts .post div .post-body{width:100%;overflow-wrap:break-word;line-height:15px}#blog #posts .post div .comment-like{display:inline-flex;align-items:center;margin-left:-7px}#blog #posts .post div .comment-like .like-counter{margin:0 4px 0 0;font-size:12px}#blog #posts .post div .comment-like .buttons{cursor:pointer;border:none;background:none;color:#3490dc;width:auto;font-size:12px}#blog #posts .post div .comment-like .buttons:hover{text-decoration:underline}#blog #posts .post div .comment-like .dropdown{margin-left:10px}#blog #posts .post div .comment-like .dropdown button{background-color:transparent;border:none;height:auto;padding:0}#blog #posts .post div .comment-like .dropdown button .fa-ellipsis-h{text-align:center;color:#3490dc;font-size:20px;margin-bottom:1px}#blog #posts .post div .comment-like .dropdown .dropdown-menu.show{text-align:center;max-width:50px}#blog #posts .post div .comment-like .dropdown .dropdown-menu.show .delete-button{color:#ff4500}#blog #posts .post div .comment-like .grey-button{color:rgba(0,0,0,.5)}@media screen and (max-width:640px){#blog #posts{width:90%}#blog #posts .post .show-comments{top:160px}}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+html body {
+  width: 100%;
+  text-align: center;
+}
+
+html body p {
+  font-size: 14px;
+}
+
+html body a {
+  text-decoration: none;
+  color: black;
+}
+
+html body #subtitle {
+  font-size: 3em;
+  padding: 60px 0;
+  font-family: "Pinyon Script", cursive;
+}
+
+header {
+  width: 100%;
+  color: #f8fafc;
+}
+
+header nav {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px 0;
+  width: 100%;
+  margin: auto;
+  background: #444;
+}
+
+header nav #left a {
+  color: #f8fafc;
+  width: 92px;
+  padding: 0 7px;
+  margin: 0 15px;
+}
+
+header nav #logo {
+  font-size: 50px;
+  margin: 0 120px;
+  background: #444;
+}
+
+header nav #right a {
+  color: #f8fafc;
+  width: 92px;
+  padding: 15px 7px;
+  margin: 0 15px;
+}
+
+footer {
+  width: 100%;
+  background: lightgrey;
+  text-align: center;
+  margin-top: 1000px;
+}
+
+#blog {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#blog #make-post {
+  width: 600px;
+  margin: 20px auto;
+  padding: 0;
+}
+
+#blog #make-post textarea {
+  width: 100%;
+  margin: 0;
+  padding: 5px 0 40px 5px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+#blog #make-post .create-post {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s;
+}
+
+#blog #make-post .create-post:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #must-log-in p a {
+  color: #3490dc;
+  text-decoration: underline;
+}
+
+#blog #posts {
+  background: #f8fafc;
+  width: 600px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+#blog #posts .post {
+  margin: 10px auto 30px;
+  background: white;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 0.75px solid rgba(0, 0, 0, 0.2);
+}
+
+#blog #posts .post .show-comments {
+  position: absolute;
+  z-index: 100;
+  bottom: -20px;
+  left: 35%;
+  cursor: pointer;
+  color: #3490dc;
+  font-size: 12px;
+}
+
+#blog #posts .post .comments {
+  width: 80%;
+  margin: 15px 0 0 10%;
+  border-left: 2px solid #444;
+  padding-left: 3%;
+  position: relative;
+}
+
+#blog #posts .post .comments .comment {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 430px;
+}
+
+#blog #posts .post .comments .comment .comment-pic {
+  width: 40px;
+  height: 40px;
+}
+
+#blog #posts .post .comments .comment .comment-words {
+  width: 350px;
+}
+
+#blog #posts .post .comments .comment .comment-words .comment-name {
+  margin-bottom: 10px;
+}
+
+#blog #posts .post .comments .comment .comment-words .comment-body {
+  width: 100%;
+}
+
+#blog #posts .post .comments .comment .dropdown {
+  margin-left: 10px;
+}
+
+#blog #posts .post .comments .comment .dropdown button {
+  background-color: transparent;
+  border: none;
+  height: auto;
+  padding: 0;
+  text-align: center;
+}
+
+#blog #posts .post .comments .comment .dropdown button .fa-ellipsis-h {
+  text-align: center;
+  color: #3490dc;
+  font-size: 20px;
+  margin-bottom: 1px;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show {
+  text-align: center;
+  max-width: 50px;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #3490dc;
+  width: auto;
+  font-size: 12px;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post .comments .comment .dropdown .dropdown-menu.show .delete-comment {
+  color: orangered;
+}
+
+#blog #posts .post .comment-edit-form {
+  width: 100%;
+  display: block;
+  margin: 15px 0 15px 50px;
+}
+
+#blog #posts .post .comment-edit-form textarea {
+  width: 90%;
+  height: 45px;
+  font-size: 12px;
+  padding: 2px 0 0 2px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons {
+  width: 60%;
+  font-size: 12px;
+  display: inline-flex;
+  justify-content: flex-start;
+}
+
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons input {
+  width: auto;
+  margin: 7px 0 0 7px;
+  display: block;
+  border: 1px solid #444;
+  border-radius: 2px;
+  padding: 10px 17px;
+  background: white;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+}
+
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons input:hover {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#blog #posts .post .comment-edit-form .comment-edit-form-buttons .close-form {
+  margin: 10px 0 0 5px;
+  padding: 0;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+#blog #posts .post img {
+  border-radius: 50%;
+  border: 0.75px solid rgba(0, 0, 0, 0.2);
+  max-height: 50px;
+  margin: 4px 7px 0 0;
+}
+
+#blog #posts .post div {
+  margin-top: 5px;
+  max-width: 500px;
+}
+
+#blog #posts .post div .author {
+  width: 100%;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+#blog #posts .post div .post-body {
+  width: 100%;
+  overflow-wrap: break-word;
+  line-height: 15px;
+}
+
+#blog #posts .post div .comment-like {
+  display: inline-flex;
+  align-items: center;
+  margin-left: -7px;
+}
+
+#blog #posts .post div .comment-like .like-counter {
+  margin: 0 4px 0 0;
+  font-size: 12px;
+}
+
+#blog #posts .post div .comment-like .buttons {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: #3490dc;
+  width: auto;
+  font-size: 12px;
+}
+
+#blog #posts .post div .comment-like .buttons:hover {
+  text-decoration: underline;
+}
+
+#blog #posts .post div .comment-like .dropdown {
+  margin-left: 10px;
+}
+
+#blog #posts .post div .comment-like .dropdown button {
+  background-color: transparent;
+  border: none;
+  height: auto;
+  padding: 0;
+}
+
+#blog #posts .post div .comment-like .dropdown button .fa-ellipsis-h {
+  text-align: center;
+  color: #3490dc;
+  font-size: 20px;
+  margin-bottom: 1px;
+}
+
+#blog #posts .post div .comment-like .dropdown .dropdown-menu.show {
+  text-align: center;
+  max-width: 50px;
+}
+
+#blog #posts .post div .comment-like .dropdown .dropdown-menu.show .delete-button {
+  color: orangered;
+}
+
+#blog #posts .post div .comment-like .grey-button {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 640px) {
+  #blog #posts {
+    width: 90%;
+  }
+
+  #blog #posts .post .show-comments {
+    top: 160px;
+  }
+}
+

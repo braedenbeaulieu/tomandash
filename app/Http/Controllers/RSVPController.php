@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use App\Notifications\InboxMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RSVPFormRequest;
-use App\TAA
+use App\TAA;
 
 
 class RSVPController extends Controller
 {
     public function show()
     {
-        return view('contact');
+        return view('rsvp.index');
     }
 
     public function mailToTAA(RSVPFormRequest $message, TAA $TAA)
