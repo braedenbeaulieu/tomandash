@@ -8,16 +8,6 @@
 
     <section id="blog">
 
-        @if(Auth::check())
-            @php $userInfo = Auth::user()->getFacebookId() @endphp
-
-            @forelse($userInfo as $user)
-                <p>{{$user->provider_id}}</p>
-                <img src="http://graph.facebook.com/{{$user->provider_id}}/picture?type=square">
-            @empty
-            @endforelse
-        @endif
-
         {{--check if they're logged in--}}
         @if(Auth::check())
             {{--make post--}}

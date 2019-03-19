@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\SocialIdentity;
 use Illuminate\Http\Request;
 use App\PostComment;
 use App\Post;
@@ -12,8 +13,8 @@ class PostCommentController extends Controller
     public function store(Request $request) {
         if($request->ajax()) {
             // check if post exists
-            if(Post::findOrFail($request->post_id)) {
-
+            $post = Post::findOrFail($request->post_id);
+            if($post) {
 
                 // get posts id
                 $post_id = $request->post_id;
@@ -29,6 +30,15 @@ class PostCommentController extends Controller
                     $comment->post_id = $post_id;
                     $comment->body = $comment_body;
                     $comment->save();
+
+                    // get provider id from user model
+                    $comment_provider_id = Auth::user()->getProviderId();
+
+                    if($comment_provider_id != 'is not on facebook') {
+                        $comment->avatar = 'http://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
+                    } else if($comment_provider_id === 'is not on facebook') {
+                        $comment->avatar = 'http://fillmurray.com/50/50';
+                    }
                     return $comment;
                 } else {
                     return 'must log in';

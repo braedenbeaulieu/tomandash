@@ -13,8 +13,16 @@
 </head>
 <body>
 @if(Auth::check())
+    {{--@if(Auth::user()->identities()->provider_name === 'facebook')--}}
+        {{--<p id="whos-logged-in" class="{{Auth::user()->identities()->user_id}}" hidden>{{ Auth::user()->name }}</p>--}}
+        {{--<p id="user-role" hidden>{{Auth::user()->role}}</p>--}}
+    {{--@else--}}
+        {{--<p id="whos-logged-in" class="{{Auth::user()->id}}" hidden>{{ Auth::user()->name }}</p>--}}
+        {{--<p id="user-role" hidden>{{Auth::user()->role}}</p>--}}
+    {{--@endif--}}
     <p id="whos-logged-in" class="{{Auth::user()->id}}" hidden>{{ Auth::user()->name }}</p>
     <p id="user-role" hidden>{{Auth::user()->role}}</p>
+
 @else
     <p id="whos-logged-in" class="none" hidden>none</p>
 @endif

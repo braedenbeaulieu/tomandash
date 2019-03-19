@@ -21,7 +21,6 @@ $(document).ready(function () {
 
         // get element clicked
         let target = $(e.target);
-
         // check if clicked element is close edit form button
         if(target.hasClass('close-form')) {
             target.parent().parent().slideUp();
@@ -161,14 +160,16 @@ $(document).ready(function () {
                         $(template({
                             comment_author: comment_name,
                             comment_body: response.body,
-                            comment_id: response.id
+                            comment_id: response.id,
+                            comment_avatar: response.avatar
                         })).appendTo(comments);
                         comment_body.val('');
                     },
                     error: function() {
-                        alert('Sorry, this post no longer exists.');
-                        // hide from view
-                        target.parent().parent().parent().slideUp();
+                        console.log('error');
+                        // alert('Sorry, this post no longer exists.');
+                        // // hide from view
+                        // target.parent().parent().parent().slideUp();
                     }
                 });
             }
@@ -219,7 +220,6 @@ $(document).ready(function () {
                 type: 'delete',
                 data: {comment_id: comment_id},
                 success: function (response) {
-                    console.log(response);
                     target.parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
@@ -341,7 +341,7 @@ $(document).ready(function () {
                 },
                 success: function(response) {
                     let template = require('../views/templates/post/post-like-comment-edit-delete.hbs');
-                    $(template({post_author: user_name, post_body: response.body, post_id: response.id, post_likes: '0'})).prependTo($('#posts'));
+                    $(template({post_author: user_name, post_body: response.body, post_id: response.id, post_likes: '0', post_avatar: response.avatar})).prependTo($('#posts'));
 
                     // clear the textarea
                     textarea.val('');
@@ -375,38 +375,40 @@ $(document).ready(function () {
                 // if they're not logged in, display posts-none
                 if(user_name === 'none') {
                     let template = require('../views/templates/post/post-none.hbs');
-                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes})).prependTo(posts);
+                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes, post_avatar: post.avatar})).prependTo(posts);
 
                     // if they are admin or if its their post
                 } else if(user_role == '1' || user_id == post.user_id) {
                     let template = require('../views/templates/post/post-like-comment-edit-delete.hbs');
-                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes, has_liked: post.has_liked})).prependTo(posts);
+                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes, has_liked: post.has_liked, post_avatar: post.avatar})).prependTo(posts);
 
                 // if they are logged in but its not their post and they arent admin
                 } else if(user_name != 'none') {
                     let template = require('../views/templates/post/post-like-comment.hbs');
-                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes, has_liked: post.has_liked})).prependTo(posts);
+                    $(template({post_author: post.author, post_body: post.body, post_id: post.id, post_likes: post.post_likes, has_liked: post.has_liked, post_avatar: post.avatar})).prependTo(posts);
                 }
 
                 let post_comments = post.comments;
                 let comments = $('.post.' + post.id).children('.comments');
 
-
                 // for each post.comments
                 post_comments.forEach(function(comment) {
-                    if(user_role == '1' || user_id == post.user_id) {
+                    if(user_role == '1' || user_id == comment.user_id) {
+
                         let template = require('../views/templates/comment/comment-edit-delete.hbs');
                         $(template({
                             comment_author: comment.author,
                             comment_body: comment.body,
-                            comment_id: comment.id
+                            comment_id: comment.id,
+                            comment_avatar: comment.avatar
                         })).appendTo(comments);
-                    } else if(user_name === 'none') {
+                    } else {
                         let template = require('../views/templates/comment/comment-none.hbs');
                         $(template({
                             comment_author: comment.author,
                             comment_body: comment.body,
-                            comment_id: comment.id
+                            comment_id: comment.id,
+                            comment_avatar: comment.avatar
                         })).appendTo(comments);
                     }
                 });

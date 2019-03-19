@@ -37,10 +37,14 @@ class User extends Authenticatable
         return $this->hasMany(SocialIdentity::class);
     }
 
-    public function getFacebookId() {
+    public function getProviderId() {
         $user = Auth::user();
-        $provider = SocialIdentity::all();
-        return $provider;
+        $provider = SocialIdentity::where('user_id', $user->id)->get();
+        if(!$provider->isEmpty()) {
+            return $user->identities()->where('user_id',$user->id)->first()->provider_id;
+        } else {
+            return 'is not on facebook';
+        }
     }
 
     public function posts() {

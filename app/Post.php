@@ -54,4 +54,14 @@ class Post extends Model
             return false;
         }
     }
+
+    public function getProviderId($post) {
+        $provider = SocialIdentity::where('user_id', $post->user_id)->get();
+        if(!$provider->isEmpty()) {
+            $user = User::findOrFail($post->user_id);
+            return $user->identities()->where('user_id',$user->id)->first()->provider_id;
+        } else {
+            return 'is not on facebook';
+        }
+    }
 }
