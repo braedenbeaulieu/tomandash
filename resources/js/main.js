@@ -44,7 +44,7 @@ $(document).ready(function () {
             } else {
                 // call PostController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
-                    url: '/CAKE/public/posts/comment/' + comment_id,
+                    url: '/CAKE/public/guestbook/comment/' + comment_id,
                     type: 'put',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -76,7 +76,7 @@ $(document).ready(function () {
             let post_id = target.attr('id');
 
             $.ajax({
-                url: '/CAKE/public/posts/' + post_id,
+                url: '/CAKE/public/guestbook/' + post_id,
                 type: 'delete',
                 data: {post_id: post_id},
                 success: function (response) {
@@ -107,7 +107,7 @@ $(document).ready(function () {
                 let current_post = target.parent().parent().siblings('.post-body');
                 // call PostController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
-                    url: '/CAKE/public/posts/' + post_id,
+                    url: '/CAKE/public/guestbook/' + post_id,
                     type: 'put',
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -144,7 +144,7 @@ $(document).ready(function () {
             } else {
                 // call PostCommentController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
-                    url: '/CAKE/public/posts/comment',
+                    url: '/CAKE/public/guestbook/comment',
                     type: 'post',
                     data: {
                         user_id: user_id,
@@ -216,7 +216,7 @@ $(document).ready(function () {
             let comment_id = target.attr('id');
 
             $.ajax({
-                url: '/CAKE/public/posts/comment/' + comment_id,
+                url: '/CAKE/public/guestbook/comment/' + comment_id,
                 type: 'delete',
                 data: {comment_id: comment_id},
                 success: function (response) {
@@ -259,7 +259,7 @@ $(document).ready(function () {
 
             // call PostLikeController with all data (goes from here to web.php, then to the controller)
             $.ajax({
-                url: '/CAKE/public/posts/like',
+                url: '/CAKE/public/guestbook/like',
                 type: 'post',
                 data: {post_id: post_id},
                 success: function() {
@@ -283,7 +283,7 @@ $(document).ready(function () {
 
             // call PostLikeController with all data (goes from here to web.php, then to the controller)
             $.ajax({
-                url: '/CAKE/public/posts/like/' + post_id,
+                url: '/CAKE/public/guestbook/like/' + post_id,
                 type: 'delete',
                 data: {post_id: post_id},
                 success: function() {
@@ -332,8 +332,9 @@ $(document).ready(function () {
         if(post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
             alert('cant be empty');
         } else {
+
             $.ajax({
-                url: '/CAKE/public/posts',
+                url: '/CAKE/public/guestbook',
                 type: 'post',
                 data: {
                     user_id: user_id,
@@ -363,7 +364,7 @@ $(document).ready(function () {
     let posts = $('#posts');
 
     $.ajax({
-        url: '/CAKE/public/posts/allPosts',
+        url: '/CAKE/public/guestbook/allPosts',
         type: 'get',
         data: {},
         success: function (response) {
@@ -371,11 +372,9 @@ $(document).ready(function () {
             // object of each post
             getEveryPost = $.parseJSON(response);
 
-            console.log(getEveryPost);
-
-
             getEveryPost.forEach(function(post) {
 
+                console.log(post.has_liked);
                 // if they're not logged in, display posts-none
                 if(user_name === 'none') {
                     let template = require('../views/templates/post/post-none.hbs');

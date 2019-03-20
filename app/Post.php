@@ -39,7 +39,8 @@ class Post extends Model
     }
 
     public function hasLiked($post) {
-        $user = User::findOrFail($post->user_id);
+        //$user = User::findOrFail($post->user_id);
+        $user = Auth::user();
 
         // returns arrays
         $like_user_id = $user->likes()->where('user_id', $user->id)->get();

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\PostComment;
+use App\PostLike;
 use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\User;
@@ -19,8 +19,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::orderBy('id', 'desc')->get();
-        return view('posts.index', compact('posts'));
+        return view('posts.index');
     }
 
     public function store(PostRequest $request)
@@ -93,14 +92,13 @@ class PostController extends Controller
                 $post->author = $post->getAuthor($post);
                 $post->post_likes = $post->countLikes($post);
                 $post->comments = $post->getComments($post);
-                $post->has_liked = $post->hasLiked($post);
+
+
                 if($post_provider_id != 'is not on facebook') {
                     $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
                 } else if($post_provider_id === 'is not on facebook') {
                     $post->avatar = 'http://fillmurray.com/50/50';
                 }
-                //$post->provider_id = $provider_id;
-                //$post->avatar = $post->getFacebookAvatarUrl($post);
 
                 foreach($post->comments as $comment) {
                     // get comment provider id
@@ -118,21 +116,24 @@ class PostController extends Controller
         }
     }
 
-    public function hasLiked(Request $request) {
-        if($request->ajax()) {
-            $user = User::findOrFail($request->user_id);
-
-            // returns arrays
-            $like_user_id = $user->likes()->where('user_id', $request->user_id)->get();
-            $like_post_id = $user->likes()->where('post_id', $request->post_id)->get();
-            // if the record is already in the database, its been liked by this user
-            if(count($like_post_id) > 0 && count($like_user_id) > 0) {
-                return 'yes';
-
-                // it hasn't been liked by this user
-            } else {
-                return 'no';
-            }
-        }
-    }
+//    public function hasLiked(Request $request) {
+//
+//        // get logged in user
+//        $logged_in_user_id = Auth::user()->id;
+//
+//        // returns arrays
+//        $like_user_id = PostLike::where('user_id', $request->user_id)->first();
+//        $like_post_id = PostLike::where('post_id', $request->post_id)->get();
+//
+//
+//
+//        // if the record is already in the database, its been liked by this user
+//        if($logged_in_user_id == $like_user_id) {
+//            return true;
+//
+//            // it hasn't been liked by this user
+//        } else {
+//            return false;
+//        }
+//    }
 }

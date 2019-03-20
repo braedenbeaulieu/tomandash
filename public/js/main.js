@@ -1480,7 +1480,7 @@ $(document).ready(function () {
           } else {
             // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
-              url: '/CAKE/public/posts/comment/' + comment_id,
+              url: '/CAKE/public/guestbook/comment/' + comment_id,
               type: 'put',
               headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1507,7 +1507,7 @@ $(document).ready(function () {
             // get comment id
             var post_id = target.attr('id');
             $.ajax({
-              url: '/CAKE/public/posts/' + post_id,
+              url: '/CAKE/public/guestbook/' + post_id,
               type: 'delete',
               data: {
                 post_id: post_id
@@ -1538,7 +1538,7 @@ $(document).ready(function () {
                 var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
 
                 $.ajax({
-                  url: '/CAKE/public/posts/' + _post_id,
+                  url: '/CAKE/public/guestbook/' + _post_id,
                   type: 'put',
                   headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1576,7 +1576,7 @@ $(document).ready(function () {
                 } else {
                   // call PostCommentController with all data (goes from here to web.php, then to the controller)
                   $.ajax({
-                    url: '/CAKE/public/posts/comment',
+                    url: '/CAKE/public/guestbook/comment',
                     type: 'post',
                     data: {
                       user_id: _user_id3,
@@ -1651,7 +1651,7 @@ $(document).ready(function () {
                         var _comment_id = target.attr('id');
 
                         $.ajax({
-                          url: '/CAKE/public/posts/comment/' + _comment_id,
+                          url: '/CAKE/public/guestbook/comment/' + _comment_id,
                           type: 'delete',
                           data: {
                             comment_id: _comment_id
@@ -1687,7 +1687,7 @@ $(document).ready(function () {
                             var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                             $.ajax({
-                              url: '/CAKE/public/posts/like',
+                              url: '/CAKE/public/guestbook/like',
                               type: 'post',
                               data: {
                                 post_id: _post_id5
@@ -1716,7 +1716,7 @@ $(document).ready(function () {
                               var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                               $.ajax({
-                                url: '/CAKE/public/posts/like/' + _post_id6,
+                                url: '/CAKE/public/guestbook/like/' + _post_id6,
                                 type: 'delete',
                                 data: {
                                   post_id: _post_id6
@@ -1772,7 +1772,7 @@ $(document).ready(function () {
       alert('cant be empty');
     } else {
       $.ajax({
-        url: '/CAKE/public/posts',
+        url: '/CAKE/public/guestbook',
         type: 'post',
         data: {
           user_id: user_id,
@@ -1804,15 +1804,15 @@ $(document).ready(function () {
   var user_id = $('#whos-logged-in').attr('class');
   var posts = $('#posts');
   $.ajax({
-    url: '/CAKE/public/posts/allPosts',
+    url: '/CAKE/public/guestbook/allPosts',
     type: 'get',
     data: {},
     success: function success(response) {
       // object of each post
       getEveryPost = $.parseJSON(response);
-      console.log(getEveryPost);
       getEveryPost.forEach(function (post) {
-        // if they're not logged in, display posts-none
+        console.log(post.has_liked); // if they're not logged in, display posts-none
+
         if (user_name === 'none') {
           var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
 

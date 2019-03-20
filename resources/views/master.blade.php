@@ -30,7 +30,7 @@
         <div id="logo">LOGO</div>
 
         <div id="right">
-            <a href="">Guestbook</a>
+            <a href="{{url('/guestbook')}}">Guestbook</a>
             <a href="">The Wedding</a>
             <a href="{{url('/rsvp')}}">RSVP</a>
             @if(Auth::check())
