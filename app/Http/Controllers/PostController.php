@@ -92,7 +92,7 @@ class PostController extends Controller
                 $post->author = $post->getAuthor($post);
                 $post->post_likes = $post->countLikes($post);
                 $post->comments = $post->getComments($post);
-
+                $post->has_liked = $post->hasLiked($post);
 
                 if($post_provider_id != 'is not on facebook') {
                     $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
@@ -116,19 +116,16 @@ class PostController extends Controller
         }
     }
 
-//    public function hasLiked(Request $request) {
+//    public function hasLiked($post) {
 //
-//        // get logged in user
-//        $logged_in_user_id = Auth::user()->id;
+//        $user = Auth::user();
 //
 //        // returns arrays
-//        $like_user_id = PostLike::where('user_id', $request->user_id)->first();
-//        $like_post_id = PostLike::where('post_id', $request->post_id)->get();
-//
-//
+//        $like_user_id = $user->likes()->where('user_id', $user->id)->get();
+//        $like_post_id = $user->likes()->where('post_id', $post->id)->get();
 //
 //        // if the record is already in the database, its been liked by this user
-//        if($logged_in_user_id == $like_user_id) {
+//        if(count($like_post_id) > 0 && count($like_user_id) > 0) {
 //            return true;
 //
 //            // it hasn't been liked by this user

@@ -11,7 +11,7 @@
 |
 */
 
-
+Route::get('/', 'PostController@index');
 
 // routing for auth stuff
 Auth::routes();

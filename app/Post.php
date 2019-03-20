@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Post extends Model
 {
@@ -40,7 +41,8 @@ class Post extends Model
 
     public function hasLiked($post) {
         //$user = User::findOrFail($post->user_id);
-        $user = Auth::user();
+        if(Auth::check())
+            $user = Auth::user();
 
         // returns arrays
         $like_user_id = $user->likes()->where('user_id', $user->id)->get();
