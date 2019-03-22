@@ -1,0 +1,17 @@
+<div class="comment">
+    <img src="{{comment_avatar}}" class="profile-pic">
+    <div class="comment-words">
+        <p class="comment-name">{{comment_author}}</p>
+        <p class="comment-body">{{comment_body}}</p>
+    </div>
+
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <div class="comment-dropdown-menu-{{comment_id}} dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <input class="buttons comment-edit-button" id="{{comment_id}}" type="button" value="Edit" data-toggle="collapse" data-target=".comment-dropdown-menu-{{comment_id}}">
+            <input class="buttons delete-comment" id="{{comment_id}}" type="button" value="Delete">
+        </div>
+    </div>
+</div>

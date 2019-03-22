@@ -1,0 +1,32 @@
+<div class="post {{post_id}}">
+    <img src="{{post_avatar}}" class="profile-pic">
+    <div class="post-words">
+        <p class="author">{{post_author}}</p>
+        <p class="post-body">{{post_body}}</p>
+
+        <div class="comment-like">
+            <p class="like-counter">{{post_likes}}</p>
+
+            {{#if has_liked}}
+                <input class="unlike-button buttons unlike" id="{{post_id}}" type="button" value="Unlike">
+            {{else}}
+                <input class="like-button buttons like" id="{{post_id}}" type="button" value="Like">
+            {{/if}}
+            <input class="comment-button buttons" id="{{post_id}}" type="button" value="Comment">
+
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+                <div class="post-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input class="edit-button buttons" id="{{post_id}}" type="button" value="Edit" data-toggle="collapse" data-target=".post-dropdown-menu">
+                    <input class="buttons delete-post delete-button" id="{{post_id}}" type="button" value="Delete">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="comments"></div>
+</div>

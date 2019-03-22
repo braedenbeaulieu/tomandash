@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/main.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Pinyon+Script|Roboto" rel="stylesheet">
@@ -10,32 +12,12 @@
     <title>Tom + Ash</title>
 </head>
 <body>
-{{--<script>--}}
-    {{--window.fbAsyncInit = function() {--}}
-        {{--FB.init({--}}
-            {{--appId      : '379173002666814',--}}
-            {{--cookie     : true,--}}
-            {{--xfbml      : true,--}}
-            {{--version    : 'v3.2'--}}
-        {{--});--}}
-
-        {{--FB.AppEvents.logPageView();--}}
-
-    {{--};--}}
-
-    {{--(function(d, s, id){--}}
-        {{--var js, fjs = d.getElementsByTagName(s)[0];--}}
-        {{--if (d.getElementById(id)) {return;}--}}
-        {{--js = d.createElement(s); js.id = id;--}}
-        {{--js.src = "https://connect.facebook.net/en_US/sdk.js";--}}
-        {{--fjs.parentNode.insertBefore(js, fjs);--}}
-    {{--}(document, 'script', 'facebook-jssdk'));--}}
-
-
-    {{--FB.getLoginStatus(function(response) {--}}
-        {{--statusChangeCallback(response);--}}
-    {{--});--}}
-{{--</script>--}}
+@if(Auth::check())
+    <p id="whos-logged-in" class="{{Auth::user()->id}}" hidden>{{ Auth::user()->name }}</p>
+    <p id="user-role" hidden>{{Auth::user()->role}}</p>
+@else
+    <p id="whos-logged-in" class="none" hidden>none</p>
+@endif
 
 <header>
     <nav>
@@ -48,7 +30,7 @@
         <div id="logo">LOGO</div>
 
         <div id="right">
-            <a href="">Guestbook</a>
+            <a href="{{url('/guestbook')}}">Guestbook</a>
             <a href="">The Wedding</a>
             <a href="">RSVP</a>
             @if(Auth::check())
@@ -66,9 +48,10 @@
 </section>
 
 <footer>
-    <p>all content &copy; 2018</p>
+    <p>all content &copy; 2019</p>
 </footer>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</body>
+<script src="{{secure_asset('js/app.js')}}"></script>
 <script src="{{secure_asset('js/main.js')}}"></script>
 </body>
 </html>

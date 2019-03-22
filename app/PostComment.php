@@ -23,6 +23,16 @@ class PostComment extends Model
         return $username[0];
     }
 
+    public function getProviderId($comment) {
+        $provider = SocialIdentity::where('user_id', $comment->user_id)->get();
+        if(!$provider->isEmpty()) {
+            $user = User::findOrFail($comment->user_id);
+            return $user->identities()->where('user_id',$user->id)->first()->provider_id;
+        } else {
+            return 'is not on facebook';
+        }
+    }
+
     public function timeAgo($timestamp) {
 
         $timeAgo = strtotime($timestamp);

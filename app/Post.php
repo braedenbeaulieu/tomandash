@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Post extends Model
 {
@@ -27,7 +28,7 @@ class Post extends Model
     }
 
     public function getComments($post) {
-        return $post->comments()->where('post_id', $post->id)->orderBy('id', 'desc')->get();
+        return $post->comments()->where('post_id', $post->id)->orderBy('id', 'asc')->get();
     }
 
     public function getAuthor($post) {
@@ -36,5 +37,38 @@ class Post extends Model
 
     public function getAuthorId($post) {
         return $post->user()->where('id', $post->user_id)->value('id');
+    }
+
+    public function hasLiked($post)
+    {
+        //$user = User::findOrFail($post->user_id);
+        if(Auth::check()) {
+            $user = Auth::user();
+
+            // returns arrays
+            $like_user_id = $user->likes()->where('user_id', $user->id)->get();
+            $like_post_id = $user->likes()->where('post_id', $post->id)->get();
+
+            // if the record is already in the database, its been liked by this user
+            if(count($like_post_id) > 0 && count($like_user_id) > 0) {
+                return true;
+
+                // it hasn't been liked by this user
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public function getProviderId($post) {
+        $provider = SocialIdentity::where('user_id', $post->user_id)->get();
+        if(!$provider->isEmpty()) {
+            $user = User::findOrFail($post->user_id);
+            return $user->identities()->where('user_id',$user->id)->first()->provider_id;
+        } else {
+            return 'is not on facebook';
+        }
     }
 }
