@@ -32,7 +32,7 @@
         <div id="right">
             <a href="{{url('/guestbook')}}">Guestbook</a>
             <a href="">The Wedding</a>
-            <a href="{{url('/rsvp')}}">RSVP</a>
+            <a href="">RSVP</a>
             @if(Auth::check())
                 <a href="{{ url('/logout') }}">Log Out</a>
             @else

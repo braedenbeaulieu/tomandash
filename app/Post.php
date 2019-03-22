@@ -39,20 +39,24 @@ class Post extends Model
         return $post->user()->where('id', $post->user_id)->value('id');
     }
 
-    public function hasLiked($post) {
+    public function hasLiked($post)
+    {
         //$user = User::findOrFail($post->user_id);
-        if(Auth::check())
+        if(Auth::check()) {
             $user = Auth::user();
 
-        // returns arrays
-        $like_user_id = $user->likes()->where('user_id', $user->id)->get();
-        $like_post_id = $user->likes()->where('post_id', $post->id)->get();
+            // returns arrays
+            $like_user_id = $user->likes()->where('user_id', $user->id)->get();
+            $like_post_id = $user->likes()->where('post_id', $post->id)->get();
 
-        // if the record is already in the database, its been liked by this user
-        if(count($like_post_id) > 0 && count($like_user_id) > 0) {
-            return true;
+            // if the record is already in the database, its been liked by this user
+            if(count($like_post_id) > 0 && count($like_user_id) > 0) {
+                return true;
 
-            // it hasn't been liked by this user
+                // it hasn't been liked by this user
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
