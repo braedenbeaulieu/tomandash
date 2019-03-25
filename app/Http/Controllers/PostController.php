@@ -43,7 +43,7 @@ class PostController extends Controller
             if($post_provider_id != 'is not on facebook') {
                 $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
             } else if($post_provider_id === 'is not on facebook') {
-                $post->avatar = 'http://fillmurray.com/50/50';
+                $post->avatar = 'img/GenericAvatar.jpg';
             }
 
             return $post;
@@ -95,7 +95,7 @@ class PostController extends Controller
                 if($post_provider_id != 'is not on facebook') {
                     $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
                 } else if($post_provider_id === 'is not on facebook') {
-                    $post->avatar = 'http://fillmurray.com/50/50';
+                    $post->avatar = 'img/GenericAvatar.jpg';
                 }
 
                 foreach($post->comments as $comment) {
@@ -106,29 +106,11 @@ class PostController extends Controller
                     if($comment_provider_id != 'is not on facebook') {
                         $comment->avatar = 'http://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
                     } else if($comment_provider_id === 'is not on facebook') {
-                        $comment->avatar = 'http://fillmurray.com/50/50';
+                        $comment->avatar = 'img/GenericAvatar.jpg';
                     }
                 }
             }
             return json_encode($posts);
         }
     }
-
-//    public function hasLiked($post) {
-//
-//        $user = Auth::user();
-//
-//        // returns arrays
-//        $like_user_id = $user->likes()->where('user_id', $user->id)->get();
-//        $like_post_id = $user->likes()->where('post_id', $post->id)->get();
-//
-//        // if the record is already in the database, its been liked by this user
-//        if(count($like_post_id) > 0 && count($like_user_id) > 0) {
-//            return true;
-//
-//            // it hasn't been liked by this user
-//        } else {
-//            return false;
-//        }
-//    }
 }
