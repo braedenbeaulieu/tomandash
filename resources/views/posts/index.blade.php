@@ -16,11 +16,13 @@
                 <textarea name="body" type="text" placeholder="Tell us what you're thinking.."></textarea>
                 <input type="button" value="Post" class="create-post">
             </form>
+
         @else
 
             {{--can't make a post--}}
             <div id="must-log-in">
-                <p>Sorry, you must <a href="{{ route('login') }}">login</a> to post anything.</p>
+                <textarea placeholder="Tell us what you're thinking.."></textarea>
+                <input type="button" value="Post">
             </div>
         @endif
         <section id="posts">

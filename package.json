@@ -16,7 +16,7 @@
         "cross-env": "^5.1",
         "file-loader": "^3.0.1",
         "fs": "0.0.1-security",
-        "handlebars": "^4.1.0",
+        "handlebars": "^4.1.1",
         "handlebars-loader": "^1.7.1",
         "jquery": "^3.2",
         "laravel-mix": "^4.0.7",
