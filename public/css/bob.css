@@ -1,0 +1,29 @@
+/* General */
+body { background-color: azure; }
+.content { margin: 6rem 0 }
+
+/*!* Headings *!*/
+h1 { font-size: 32px; } h2 { font-size: 26px; margin: 2rem 0 1rem; } h3 { font-size: 20px; margin: 2rem 0 1rem; }
+
+/* Navbar */
+.navbar { color: darkred !important; background-color: seashell !important; border: solid 1px darkred; }
+.navbar-brand { font-family: 'Dancing Script', cursive; }
+.navbar li a, .navbar .navbar-brand { color: darkred !important; margin: .6rem 0 0 0;  }
+.navbar-nav li a:hover { color: red !important; }
+
+/* Images */
+.image { width: 80%; border: solid 2px darkred; box-shadow: 1px 1px 1px 1px grey; }
+
+/* Carousel */
+div.carousel-item h1 { font-size: 40px; color: darkred; font-family: 'Dancing Script', cursive; }
+div.carousel-item img { max-width: 30rem; filter: drop-shadow(5px 5px 5px grey); }
+.carousel-control-prev-icon { background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%238b0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important; }
+.carousel-control-next-icon { background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%238b0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important; }
+
+input, textarea, select { background-color: seashell !important; border: solid 1px slategray !important; }
+button { background: seashell !important; color: darkred; font-weight: bold !important;
+  border: solid 1px slategray; cursor: pointer; padding:8px 16px; border-radius: 4px;
+}
+button:hover { background: darkred !important; color: lime; }
+
+.hidden { display: none; }
