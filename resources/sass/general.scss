@@ -11,12 +11,27 @@ html {
         a {
             text-decoration: none;
             color: black;
+            transition: background .3s;
+
+            &:hover {
+                background: rgba(255, 255, 255, .2);
+            }
         }
 
         #subtitle {
             font-size: 3em;
             padding: 60px 0;
             font-family: 'Pinyon Script', cursive;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    html {
+        body {
+            #subtitle {
+                padding: 40px 0 25px;
+            }
         }
     }
 }

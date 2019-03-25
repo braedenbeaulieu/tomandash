@@ -1446,7 +1446,19 @@ $(document).ready(function () {
   window.user_info = {
     user_id: $('#whos-logged-in').attr('class'),
     user_name: $('#whos-logged-in').text()
-  }; // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
+  };
+  $('.grey-post-button').on('click', function () {
+    $.alert('You must log in to make a post.', {
+      autoClose: true,
+      // auto close time
+      closeTime: 3500,
+      // with timer
+      withTime: false,
+      // Alert type
+      type: 'danger',
+      title: 'Error'
+    });
+  }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
 
   $.ajaxSetup({
     headers: {
@@ -1464,8 +1476,17 @@ $(document).ready(function () {
       target.parent().parent().slideUp();
       formOpen = false;
     } // when you click a grey button
-    else if (target.hasClass('.grey-button.buttons')) {
-        alert('Sorry, you must log in to do this');
+    else if (target.hasClass('grey-button')) {
+        $.alert('You must log in to like and comment.', {
+          autoClose: true,
+          // auto close time
+          closeTime: 3500,
+          // with timer
+          withTime: false,
+          // Alert type
+          type: 'danger',
+          title: 'Error'
+        });
       } // when you press the edit comment button
       else if (target.hasClass('edit-comment')) {
           var textarea = target.parent().siblings('textarea');
@@ -1476,7 +1497,16 @@ $(document).ready(function () {
           var comment_id = target.attr('id');
 
           if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-            alert('cant be empty');
+            $.alert('You cannot leave the textarea empty.', {
+              autoClose: true,
+              // auto close time
+              closeTime: 3500,
+              // with timer
+              withTime: false,
+              // Alert type
+              type: 'danger',
+              title: 'Error'
+            });
           } else {
             // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
@@ -1498,7 +1528,16 @@ $(document).ready(function () {
                 target.parent().parent().slideUp();
               },
               error: function error(xhr, status, _error) {
-                console.log(status + " = " + _error);
+                $.alert('Sorry, this comment no longer exists.', {
+                  autoClose: true,
+                  // auto close time
+                  closeTime: 3500,
+                  // with timer
+                  withTime: false,
+                  // Alert type
+                  type: 'danger',
+                  title: 'Error'
+                });
               }
             });
           }
@@ -1516,9 +1555,7 @@ $(document).ready(function () {
                 // hide from view
                 target.parent().parent().parent().parent().parent().slideUp();
               },
-              error: function error(xhr, status, _error2) {
-                console.log(status + " = " + _error2);
-              }
+              error: function error(xhr, status, _error2) {}
             });
           } // when they click the edit post button
           else if (target.hasClass('edit-post')) {
@@ -1532,7 +1569,16 @@ $(document).ready(function () {
               var _post_id = target.attr('id');
 
               if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                alert('cant be empty');
+                $.alert('You cannot leave the textarea empty.', {
+                  autoClose: true,
+                  // auto close time
+                  closeTime: 3500,
+                  // with timer
+                  withTime: false,
+                  // Alert type
+                  type: 'danger',
+                  title: 'Error'
+                });
               } else {
                 // info to fake change the post body
                 var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
@@ -1557,7 +1603,16 @@ $(document).ready(function () {
                     target.parent().parent().slideUp();
                   },
                   error: function error(xhr, status, _error3) {
-                    console.log(status + " = " + _error3);
+                    $.alert('Sorry, this post no longer exists.', {
+                      autoClose: true,
+                      // auto close time
+                      closeTime: 3500,
+                      // with timer
+                      withTime: false,
+                      // Alert type
+                      type: 'danger',
+                      title: 'Error'
+                    });
                   }
                 });
               }
@@ -1572,7 +1627,16 @@ $(document).ready(function () {
                 var _user_id3 = target.parent().siblings('.user-id').attr('value');
 
                 if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-                  alert('cant be empty');
+                  $.alert('You cannot leave the textarea empty.', {
+                    autoClose: true,
+                    // auto close time
+                    closeTime: 3500,
+                    // with timer
+                    withTime: false,
+                    // Alert type
+                    type: 'danger',
+                    title: 'Error'
+                  });
                 } else {
                   // call PostCommentController with all data (goes from here to web.php, then to the controller)
                   $.ajax({
@@ -1598,9 +1662,18 @@ $(document).ready(function () {
                       comment_body.val('');
                     },
                     error: function error() {
-                      console.log('error'); // alert('Sorry, this post no longer exists.');
-                      // // hide from view
-                      // target.parent().parent().parent().slideUp();
+                      $.alert('Sorry, this post no longer exists.', {
+                        autoClose: true,
+                        // auto close time
+                        closeTime: 3500,
+                        // with timer
+                        withTime: false,
+                        // Alert type
+                        type: 'danger',
+                        title: 'Error'
+                      }); // // hide from view
+
+                      target.parent().parent().parent().slideUp();
                     }
                   });
                 }
@@ -1701,7 +1774,16 @@ $(document).ready(function () {
                                 likes.text(parseInt(likes.text()) + 1);
                               },
                               error: function error() {
-                                alert('Sorry, this post no longer exists.'); // hide from view
+                                $.alert('Sorry, this post no longer exists.', {
+                                  autoClose: true,
+                                  // auto close time
+                                  closeTime: 3500,
+                                  // with timer
+                                  withTime: false,
+                                  // Alert type
+                                  type: 'danger',
+                                  title: 'Error'
+                                }); // hide from view
 
                                 target.parent().parent().parent().slideUp();
                               }
@@ -1769,7 +1851,16 @@ $(document).ready(function () {
     var user_name = whos_logged_in.text(); // check if textarea is empty
 
     if (post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-      alert('cant be empty');
+      $.alert('You cannot leave the textarea empty.', {
+        autoClose: true,
+        // auto close time
+        closeTime: 3500,
+        // with timer
+        withTime: false,
+        // Alert type
+        type: 'danger',
+        title: 'Error'
+      });
     } else {
       $.ajax({
         url: '/CAKE/public/guestbook',
@@ -1877,7 +1968,42 @@ $(document).ready(function () {
       console.log(status + " = " + _error6);
     }
   });
-});
+}); // $ .alert("Alert Message," {
+//
+//         // Position, the first position, followed by offset, if it is between 1 and -1 percentage
+//         position: ['center', [-0.42, 0]],
+//
+//         // Alert title
+//         title: false, // title
+//
+//         // Alert icons
+//         // e.g. icon:'glyphicon glyphicon-heart'
+//         icon: false ,
+//
+//         // Close event
+//         close: '',
+//
+//         // <a href="https://www.jqueryscript.net/animation/">Animation</a> speed
+//         speed: 'normal',
+//
+//         // If there is only one
+//         isOnly: true,
+//
+//         // Minimum Top position
+//         minTop: 10,
+//
+//         // Animation options
+//         animation: false,
+//         animShow: 'fadeIn',
+//         animHide: 'fadeOut',
+//
+//         // callbacks
+//         onShow: function () {
+//     },
+//     onClose: function () {
+//     }
+//
+// })
 
 /***/ }),
 
@@ -1921,7 +2047,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.comment_author || (depth0 != null ? depth0.comment_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"comment-body\">"
     + alias4(((helper = (helper = helpers.comment_body || (depth0 != null ? depth0.comment_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_body","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n\n    <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            <i class=\"fas fa-ellipsis-h\"></i>\n        </button>\n        <div class=\"comment-dropdown-menu-"
+    + "</p>\n    </div>\n\n    <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            <i class=\"fas fa-ellipsis-h\"></i>\n        </button>\n        <div class=\"comment-dropdown-menu-"
     + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
     + " dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n            <input class=\"buttons comment-edit-button\" id=\""
     + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
@@ -2035,13 +2161,13 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n\n        <div class=\"comment-like\">\n            <p class=\"like-counter\">"
+    + "</p>\n\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "            <input class=\"comment-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
     + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
@@ -2082,7 +2208,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\">"
+    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
@@ -2115,7 +2241,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
     + "</p>\n        <div class=\"comment-like "
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\">\n            <p class=\"like-counter\">"
+    + "\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Like\">\n\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Comment\">\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});

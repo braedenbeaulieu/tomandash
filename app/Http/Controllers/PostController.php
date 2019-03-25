@@ -32,14 +32,12 @@ class PostController extends Controller
             // get post body
             $post_body = $request->body;
 
-            // get provider id
-            //$provider_id = SocialIdentity::all()->where('user_id', $post->user_id)->first()->provider_id;
-
             $post = new Post;
             $post->user_id = $user_id;
             $post->body = $post_body;
             $post->save();
-          // get provider id from user model
+
+            // get provider id from user model
             $post_provider_id = Auth::user()->getProviderId();
 
             if($post_provider_id != 'is not on facebook') {

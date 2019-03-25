@@ -52,6 +52,7 @@
 </footer>
 </body>
 <script src="{{secure_asset('js/app.js')}}"></script>
+<script src="{{secure_asset('js/flash-alert.js')}}"></script>
 <script src="{{secure_asset('js/main.js')}}"></script>
 </body>
 </html>

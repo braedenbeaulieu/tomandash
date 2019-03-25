@@ -4,6 +4,19 @@ $(document).ready(function () {
     window.user_info = {user_id: $('#whos-logged-in').attr('class'), user_name: $('#whos-logged-in').text()};
 
 
+    $('.grey-post-button').on('click', function() {
+
+        $.alert('You must log in to make a post.', {
+            autoClose: true,
+            // auto close time
+            closeTime: 3500,
+            // with timer
+            withTime: false,
+            // Alert type
+            type: 'danger',
+            title: 'Error'
+        });
+    });
 
     // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
     $.ajaxSetup({
@@ -28,8 +41,18 @@ $(document).ready(function () {
             formOpen = false;
         }
         // when you click a grey button
-        else if(target.hasClass('.grey-button.buttons')) {
-            alert('Sorry, you must log in to do this');
+        else if(target.hasClass('grey-button')) {
+            $.alert('You must log in to like and comment.', {
+
+                autoClose: true,
+                // auto close time
+                closeTime: 3500,
+                // with timer
+                withTime: false,
+                // Alert type
+                type: 'danger',
+                title: 'Error'
+            });
         }
         // when you press the edit comment button
         else if(target.hasClass('edit-comment')) {
@@ -40,7 +63,17 @@ $(document).ready(function () {
 
 
             if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-                alert('cant be empty');
+                $.alert('You cannot leave the textarea empty.', {
+
+                    autoClose: true,
+                    // auto close time
+                    closeTime: 3500,
+                    // with timer
+                    withTime: false,
+                    // Alert type
+                    type: 'danger',
+                    title: 'Error'
+                });
             } else {
                 // call PostController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
@@ -64,7 +97,17 @@ $(document).ready(function () {
 
                     },
                     error: function (xhr, status, error) {
-                        console.log(status + " = " + error);
+                        $.alert('Sorry, this comment no longer exists.', {
+
+                            autoClose: true,
+                            // auto close time
+                            closeTime: 3500,
+                            // with timer
+                            withTime: false,
+                            // Alert type
+                            type: 'danger',
+                            title: 'Error'
+                        });
                     }
                 });
             }
@@ -84,7 +127,6 @@ $(document).ready(function () {
                     target.parent().parent().parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
-                    console.log(status + " = " + error);
                 }
             });
 
@@ -100,7 +142,17 @@ $(document).ready(function () {
 
 
             if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                alert('cant be empty');
+                $.alert('You cannot leave the textarea empty.', {
+
+                    autoClose: true,
+                    // auto close time
+                    closeTime: 3500,
+                    // with timer
+                    withTime: false,
+                    // Alert type
+                    type: 'danger',
+                    title: 'Error'
+                });
             } else {
 
                 // info to fake change the post body
@@ -125,7 +177,17 @@ $(document).ready(function () {
 
                     },
                     error: function (xhr, status, error) {
-                        console.log(status + " = " + error);
+                        $.alert('Sorry, this post no longer exists.', {
+
+                            autoClose: true,
+                            // auto close time
+                            closeTime: 3500,
+                            // with timer
+                            withTime: false,
+                            // Alert type
+                            type: 'danger',
+                            title: 'Error'
+                        });
                     }
                 });
             }
@@ -140,7 +202,17 @@ $(document).ready(function () {
             let user_id = target.parent().siblings('.user-id').attr('value');
 
             if(comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-                alert('cant be empty');
+                $.alert('You cannot leave the textarea empty.', {
+
+                    autoClose: true,
+                    // auto close time
+                    closeTime: 3500,
+                    // with timer
+                    withTime: false,
+                    // Alert type
+                    type: 'danger',
+                    title: 'Error'
+                });
             } else {
                 // call PostCommentController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
@@ -166,10 +238,19 @@ $(document).ready(function () {
                         comment_body.val('');
                     },
                     error: function() {
-                        console.log('error');
-                        // alert('Sorry, this post no longer exists.');
+                        $.alert('Sorry, this post no longer exists.', {
+
+                            autoClose: true,
+                            // auto close time
+                            closeTime: 3500,
+                            // with timer
+                            withTime: false,
+                            // Alert type
+                            type: 'danger',
+                            title: 'Error'
+                        });
                         // // hide from view
-                        // target.parent().parent().parent().slideUp();
+                        target.parent().parent().parent().slideUp();
                     }
                 });
             }
@@ -268,7 +349,17 @@ $(document).ready(function () {
                     likes.text(parseInt(likes.text()) + 1);
                 },
                 error: function() {
-                    alert('Sorry, this post no longer exists.');
+                    $.alert('Sorry, this post no longer exists.', {
+
+                        autoClose: true,
+                        // auto close time
+                        closeTime: 3500,
+                        // with timer
+                        withTime: false,
+                        // Alert type
+                        type: 'danger',
+                        title: 'Error'
+                    });
                     // hide from view
                     target.parent().parent().parent().slideUp();
                 }
@@ -330,7 +421,18 @@ $(document).ready(function () {
 
         // check if textarea is empty
         if(post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-            alert('cant be empty');
+            $.alert('You cannot leave the textarea empty.', {
+
+                autoClose: true,
+                // auto close time
+                closeTime: 3500,
+                // with timer
+                withTime: false,
+                // Alert type
+                type: 'danger',
+                title: 'Error'
+            });
+
         } else {
 
             $.ajax({
@@ -423,3 +525,42 @@ $(document).ready(function () {
     });
 
 });
+
+
+
+// $ .alert("Alert Message," {
+//
+//         // Position, the first position, followed by offset, if it is between 1 and -1 percentage
+//         position: ['center', [-0.42, 0]],
+//
+//         // Alert title
+//         title: false, // title
+//
+//         // Alert icons
+//         // e.g. icon:'glyphicon glyphicon-heart'
+//         icon: false ,
+//
+//         // Close event
+//         close: '',
+//
+//         // <a href="https://www.jqueryscript.net/animation/">Animation</a> speed
+//         speed: 'normal',
+//
+//         // If there is only one
+//         isOnly: true,
+//
+//         // Minimum Top position
+//         minTop: 10,
+//
+//         // Animation options
+//         animation: false,
+//         animShow: 'fadeIn',
+//         animHide: 'fadeOut',
+//
+//         // callbacks
+//         onShow: function () {
+//     },
+//     onClose: function () {
+//     }
+//
+// })

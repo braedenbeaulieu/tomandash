@@ -21,8 +21,8 @@
 
             {{--can't make a post--}}
             <div id="must-log-in">
-                <textarea placeholder="Tell us what you're thinking.."></textarea>
-                <input type="button" value="Post">
+                <textarea placeholder="Tell us what you're thinking.." disabled="disabled"></textarea>
+                <input type="button" class="grey-post-button" value="Post">
             </div>
         @endif
         <section id="posts">
