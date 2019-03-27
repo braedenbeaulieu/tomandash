@@ -1443,21 +1443,15 @@ module.exports = g;
 
 //loader('handlebars');
 $(document).ready(function () {
+  var error_message = $('<p></p>').attr('class', 'error-message').hide();
   window.user_info = {
     user_id: $('#whos-logged-in').attr('class'),
     user_name: $('#whos-logged-in').text()
-  };
+  }; // when they clic kthe post button without being logged in
+
   $('.grey-post-button').on('click', function () {
-    $.alert('You must log in to make a post.', {
-      autoClose: true,
-      // auto close time
-      closeTime: 3500,
-      // with timer
-      withTime: false,
-      // Alert type
-      type: 'danger',
-      title: 'Error'
-    });
+    // display error message
+    error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
   }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
 
   $.ajaxSetup({
@@ -1469,7 +1463,12 @@ $(document).ready(function () {
   var formOpen = false; // when they click a button on their post
 
   $('#posts').on('click', function (e) {
-    // get element clicked
+    // check if there is an error message out, and delete it
+    if ($('.error-message')) {
+      error_message.fadeOut();
+    } // get element clicked
+
+
     var target = $(e.target); // check if clicked element is close edit form button
 
     if (target.hasClass('close-form')) {
@@ -1477,16 +1476,8 @@ $(document).ready(function () {
       formOpen = false;
     } // when you click a grey button
     else if (target.hasClass('grey-button')) {
-        $.alert('You must log in to like and comment.', {
-          autoClose: true,
-          // auto close time
-          closeTime: 3500,
-          // with timer
-          withTime: false,
-          // Alert type
-          type: 'danger',
-          title: 'Error'
-        });
+        // display error message
+        error_message.text('You must log in to like and comment.').appendTo(target.parent().parent()).hide().fadeIn();
       } // when you press the edit comment button
       else if (target.hasClass('edit-comment')) {
           var textarea = target.parent().siblings('textarea');
@@ -1497,16 +1488,8 @@ $(document).ready(function () {
           var comment_id = target.attr('id');
 
           if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-            $.alert('You cannot leave the textarea empty.', {
-              autoClose: true,
-              // auto close time
-              closeTime: 3500,
-              // with timer
-              withTime: false,
-              // Alert type
-              type: 'danger',
-              title: 'Error'
-            });
+            // display error message
+            error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
           } else {
             // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
@@ -1528,16 +1511,8 @@ $(document).ready(function () {
                 target.parent().parent().slideUp();
               },
               error: function error(xhr, status, _error) {
-                $.alert('Sorry, this comment no longer exists.', {
-                  autoClose: true,
-                  // auto close time
-                  closeTime: 3500,
-                  // with timer
-                  withTime: false,
-                  // Alert type
-                  type: 'danger',
-                  title: 'Error'
-                });
+                // display error message
+                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
               }
             });
           }
@@ -1555,7 +1530,12 @@ $(document).ready(function () {
                 // hide from view
                 target.parent().parent().parent().parent().parent().slideUp();
               },
-              error: function error(xhr, status, _error2) {}
+              error: function error(xhr, status, _error2) {
+                // display error message
+                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+
+                target.parent().parent().parent().parent().parent().slideUp();
+              }
             });
           } // when they click the edit post button
           else if (target.hasClass('edit-post')) {
@@ -1569,16 +1549,8 @@ $(document).ready(function () {
               var _post_id = target.attr('id');
 
               if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                $.alert('You cannot leave the textarea empty.', {
-                  autoClose: true,
-                  // auto close time
-                  closeTime: 3500,
-                  // with timer
-                  withTime: false,
-                  // Alert type
-                  type: 'danger',
-                  title: 'Error'
-                });
+                // display error message
+                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
               } else {
                 // info to fake change the post body
                 var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
@@ -1603,16 +1575,8 @@ $(document).ready(function () {
                     target.parent().parent().slideUp();
                   },
                   error: function error(xhr, status, _error3) {
-                    $.alert('Sorry, this post no longer exists.', {
-                      autoClose: true,
-                      // auto close time
-                      closeTime: 3500,
-                      // with timer
-                      withTime: false,
-                      // Alert type
-                      type: 'danger',
-                      title: 'Error'
-                    });
+                    // display error message
+                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                   }
                 });
               }
@@ -1627,16 +1591,8 @@ $(document).ready(function () {
                 var _user_id3 = target.parent().siblings('.user-id').attr('value');
 
                 if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-                  $.alert('You cannot leave the textarea empty.', {
-                    autoClose: true,
-                    // auto close time
-                    closeTime: 3500,
-                    // with timer
-                    withTime: false,
-                    // Alert type
-                    type: 'danger',
-                    title: 'Error'
-                  });
+                  // display error message
+                  error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
                 } else {
                   // call PostCommentController with all data (goes from here to web.php, then to the controller)
                   $.ajax({
@@ -1662,18 +1618,9 @@ $(document).ready(function () {
                       comment_body.val('');
                     },
                     error: function error() {
-                      $.alert('Sorry, this post no longer exists.', {
-                        autoClose: true,
-                        // auto close time
-                        closeTime: 3500,
-                        // with timer
-                        withTime: false,
-                        // Alert type
-                        type: 'danger',
-                        title: 'Error'
-                      }); // // hide from view
-
-                      target.parent().parent().parent().slideUp();
+                      // display error message
+                      error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // // hide from view
+                      //target.parent().parent().parent().slideUp();
                     }
                   });
                 }
@@ -1729,7 +1676,7 @@ $(document).ready(function () {
                           data: {
                             comment_id: _comment_id
                           },
-                          success: function success(response) {
+                          success: function success() {
                             target.parent().parent().parent().slideUp();
                           },
                           error: function error(xhr, status, _error4) {
@@ -1774,18 +1721,9 @@ $(document).ready(function () {
                                 likes.text(parseInt(likes.text()) + 1);
                               },
                               error: function error() {
-                                $.alert('Sorry, this post no longer exists.', {
-                                  autoClose: true,
-                                  // auto close time
-                                  closeTime: 3500,
-                                  // with timer
-                                  withTime: false,
-                                  // Alert type
-                                  type: 'danger',
-                                  title: 'Error'
-                                }); // hide from view
-
-                                target.parent().parent().parent().slideUp();
+                                // display error message
+                                error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                //target.parent().parent().parent().slideUp();
                               }
                             });
                           } // when you click on the unlike button
@@ -1813,9 +1751,9 @@ $(document).ready(function () {
                                   _likes.text(parseInt(_likes.text()) - 1);
                                 },
                                 error: function error() {
-                                  alert('Sorry, this post no longer exists.'); // hide from view
-
-                                  target.parent().parent().parent().slideUp();
+                                  // display error message
+                                  error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                  //target.parent().parent().parent().slideUp();
                                 }
                               });
                             } // when you click edit comment button
@@ -1851,16 +1789,10 @@ $(document).ready(function () {
     var user_name = whos_logged_in.text(); // check if textarea is empty
 
     if (post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-      $.alert('You cannot leave the textarea empty.', {
-        autoClose: true,
-        // auto close time
-        closeTime: 3500,
-        // with timer
-        withTime: false,
-        // Alert type
-        type: 'danger',
-        title: 'Error'
-      });
+      // display error message
+      error_message.text('You cannot leave the textbox empty.').appendTo('#make-post').hide().fadeIn(); // make the textbox = "" (incase they added spaces)
+
+      textarea.val('');
     } else {
       $.ajax({
         url: '/CAKE/public/guestbook',
@@ -1902,8 +1834,7 @@ $(document).ready(function () {
       // object of each post
       getEveryPost = $.parseJSON(response);
       getEveryPost.forEach(function (post) {
-        console.log(post.has_liked); // if they're not logged in, display posts-none
-
+        // if they're not logged in, display posts-none
         if (user_name === 'none') {
           var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
 
@@ -1968,42 +1899,7 @@ $(document).ready(function () {
       console.log(status + " = " + _error6);
     }
   });
-}); // $ .alert("Alert Message," {
-//
-//         // Position, the first position, followed by offset, if it is between 1 and -1 percentage
-//         position: ['center', [-0.42, 0]],
-//
-//         // Alert title
-//         title: false, // title
-//
-//         // Alert icons
-//         // e.g. icon:'glyphicon glyphicon-heart'
-//         icon: false ,
-//
-//         // Close event
-//         close: '',
-//
-//         // <a href="https://www.jqueryscript.net/animation/">Animation</a> speed
-//         speed: 'normal',
-//
-//         // If there is only one
-//         isOnly: true,
-//
-//         // Minimum Top position
-//         minTop: 10,
-//
-//         // Animation options
-//         animation: false,
-//         animShow: 'fadeIn',
-//         animHide: 'fadeOut',
-//
-//         // callbacks
-//         onShow: function () {
-//     },
-//     onClose: function () {
-//     }
-//
-// })
+});
 
 /***/ }),
 
@@ -2167,9 +2063,13 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "            <input class=\"comment-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu-"
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
+    + " dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
+    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu-"
+    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
+    + "\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
     + "\" type=\"button\" value=\"Delete\">\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});
@@ -2239,9 +2139,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n        <div class=\"comment-like "
-    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\">\n            <p class=\"like-counter\" title=\"Likes\">"
+    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Like\">\n\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Comment\">\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});

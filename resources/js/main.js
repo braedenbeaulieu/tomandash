@@ -1,21 +1,14 @@
 //loader('handlebars');
 $(document).ready(function () {
 
+    let error_message = $('<p></p>').attr('class', 'error-message').hide();
+
     window.user_info = {user_id: $('#whos-logged-in').attr('class'), user_name: $('#whos-logged-in').text()};
 
-
+    // when they clic kthe post button without being logged in
     $('.grey-post-button').on('click', function() {
-
-        $.alert('You must log in to make a post.', {
-            autoClose: true,
-            // auto close time
-            closeTime: 3500,
-            // with timer
-            withTime: false,
-            // Alert type
-            type: 'danger',
-            title: 'Error'
-        });
+        // display error message
+        error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
     });
 
     // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
@@ -32,6 +25,11 @@ $(document).ready(function () {
     // when they click a button on their post
     $('#posts').on('click', function(e) {
 
+        // check if there is an error message out, and delete it
+        if($('.error-message')) {
+            error_message.fadeOut();
+        }
+
         // get element clicked
         let target = $(e.target);
         // check if clicked element is close edit form button
@@ -42,17 +40,9 @@ $(document).ready(function () {
         }
         // when you click a grey button
         else if(target.hasClass('grey-button')) {
-            $.alert('You must log in to like and comment.', {
+            // display error message
+            error_message.text('You must log in to like and comment.').appendTo(target.parent().parent()).hide().fadeIn();
 
-                autoClose: true,
-                // auto close time
-                closeTime: 3500,
-                // with timer
-                withTime: false,
-                // Alert type
-                type: 'danger',
-                title: 'Error'
-            });
         }
         // when you press the edit comment button
         else if(target.hasClass('edit-comment')) {
@@ -63,17 +53,8 @@ $(document).ready(function () {
 
 
             if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-                $.alert('You cannot leave the textarea empty.', {
-
-                    autoClose: true,
-                    // auto close time
-                    closeTime: 3500,
-                    // with timer
-                    withTime: false,
-                    // Alert type
-                    type: 'danger',
-                    title: 'Error'
-                });
+                // display error message
+                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
             } else {
                 // call PostController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
@@ -97,17 +78,8 @@ $(document).ready(function () {
 
                     },
                     error: function (xhr, status, error) {
-                        $.alert('Sorry, this comment no longer exists.', {
-
-                            autoClose: true,
-                            // auto close time
-                            closeTime: 3500,
-                            // with timer
-                            withTime: false,
-                            // Alert type
-                            type: 'danger',
-                            title: 'Error'
-                        });
+                        // display error message
+                        error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                     }
                 });
             }
@@ -127,6 +99,10 @@ $(document).ready(function () {
                     target.parent().parent().parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
+                    // display error message
+                    error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
+                    // hide from view
+                    target.parent().parent().parent().parent().parent().slideUp();
                 }
             });
 
@@ -142,17 +118,8 @@ $(document).ready(function () {
 
 
             if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                $.alert('You cannot leave the textarea empty.', {
-
-                    autoClose: true,
-                    // auto close time
-                    closeTime: 3500,
-                    // with timer
-                    withTime: false,
-                    // Alert type
-                    type: 'danger',
-                    title: 'Error'
-                });
+                // display error message
+                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
             } else {
 
                 // info to fake change the post body
@@ -177,17 +144,8 @@ $(document).ready(function () {
 
                     },
                     error: function (xhr, status, error) {
-                        $.alert('Sorry, this post no longer exists.', {
-
-                            autoClose: true,
-                            // auto close time
-                            closeTime: 3500,
-                            // with timer
-                            withTime: false,
-                            // Alert type
-                            type: 'danger',
-                            title: 'Error'
-                        });
+                        // display error message
+                        error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                     }
                 });
             }
@@ -202,17 +160,8 @@ $(document).ready(function () {
             let user_id = target.parent().siblings('.user-id').attr('value');
 
             if(comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-                $.alert('You cannot leave the textarea empty.', {
-
-                    autoClose: true,
-                    // auto close time
-                    closeTime: 3500,
-                    // with timer
-                    withTime: false,
-                    // Alert type
-                    type: 'danger',
-                    title: 'Error'
-                });
+                // display error message
+                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
             } else {
                 // call PostCommentController with all data (goes from here to web.php, then to the controller)
                 $.ajax({
@@ -238,19 +187,10 @@ $(document).ready(function () {
                         comment_body.val('');
                     },
                     error: function() {
-                        $.alert('Sorry, this post no longer exists.', {
-
-                            autoClose: true,
-                            // auto close time
-                            closeTime: 3500,
-                            // with timer
-                            withTime: false,
-                            // Alert type
-                            type: 'danger',
-                            title: 'Error'
-                        });
+                        // display error message
+                        error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                         // // hide from view
-                        target.parent().parent().parent().slideUp();
+                        //target.parent().parent().parent().slideUp();
                     }
                 });
             }
@@ -300,7 +240,7 @@ $(document).ready(function () {
                 url: '/CAKE/public/guestbook/comment/' + comment_id,
                 type: 'delete',
                 data: {comment_id: comment_id},
-                success: function (response) {
+                success: function () {
                     target.parent().parent().parent().slideUp();
                 },
                 error: function (xhr, status, error) {
@@ -349,19 +289,10 @@ $(document).ready(function () {
                     likes.text(parseInt(likes.text()) + 1);
                 },
                 error: function() {
-                    $.alert('Sorry, this post no longer exists.', {
-
-                        autoClose: true,
-                        // auto close time
-                        closeTime: 3500,
-                        // with timer
-                        withTime: false,
-                        // Alert type
-                        type: 'danger',
-                        title: 'Error'
-                    });
+                    // display error message
+                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                     // hide from view
-                    target.parent().parent().parent().slideUp();
+                    //target.parent().parent().parent().slideUp();
                 }
             });
         }
@@ -384,9 +315,10 @@ $(document).ready(function () {
                     likes.text(parseInt(likes.text()) - 1);
                 },
                 error: function() {
-                    alert('Sorry, this post no longer exists.');
+                    // display error message
+                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                     // hide from view
-                    target.parent().parent().parent().slideUp();
+                    //target.parent().parent().parent().slideUp();
                 }
             });
         }
@@ -409,6 +341,7 @@ $(document).ready(function () {
 
     // when they click in the .create-post button
     $('.create-post').on('click', function() {
+
         let target = $('.create-post');
 
         // get info
@@ -421,17 +354,11 @@ $(document).ready(function () {
 
         // check if textarea is empty
         if(post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-            $.alert('You cannot leave the textarea empty.', {
 
-                autoClose: true,
-                // auto close time
-                closeTime: 3500,
-                // with timer
-                withTime: false,
-                // Alert type
-                type: 'danger',
-                title: 'Error'
-            });
+            // display error message
+            error_message.text('You cannot leave the textbox empty.').appendTo('#make-post').hide().fadeIn();
+            // make the textbox = "" (incase they added spaces)
+            textarea.val('');
 
         } else {
 
@@ -475,8 +402,6 @@ $(document).ready(function () {
             getEveryPost = $.parseJSON(response);
 
             getEveryPost.forEach(function(post) {
-
-                console.log(post.has_liked);
                 // if they're not logged in, display posts-none
                 if(user_name === 'none') {
                     let template = require('../views/templates/post/post-none.hbs');

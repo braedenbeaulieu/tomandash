@@ -143,6 +143,11 @@ html body p {
   font-size: 14px;
 }
 
+html body .error-message {
+  color: #f44e42;
+  margin: 8px 0;
+}
+
 html body a {
   text-decoration: none;
   color: black;
