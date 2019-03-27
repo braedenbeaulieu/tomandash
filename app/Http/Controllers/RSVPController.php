@@ -18,6 +18,6 @@ class RSVPController extends Controller
     public function mailToTAA(RSVPFormRequest $message, TAA $TAA)
     {
         $TAA->notify(new InboxMessage($message));
-        return redirect()->back()->with('message', 'Thank You! Your RSVP has been sent to Tom and Ash!');
+        return redirect()->back()->with('message', 'Thank You! Your RSVP has been sent to Thomas and Ashley!');
     }
 }

@@ -1,20 +1,16 @@
 @extends('master')
 
 @section('title')
-    Tom and Ash: RSVP
+    Thomas and Ashley: RSVP
 @endsection
 
 @section('content')
     
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{secure_asset('js/rsvp.js')}}"></script>
 
-    <div class="container-fluid page-heading-section">
-        <h2 class="headings text-center page-heading-word">RSVP</h2>
-    </div>
-
-    <div class="container">
+    <div class="container mt-5">
         <div class="row">
 
             @if(session('message'))
@@ -30,8 +26,12 @@
                 <div class="col-sm-3"></div>
 
                 <div class="col-sm-6 text-left">
-                    <form class="form-horizontal" id="rsvp" method="POST" action="{{ action('RSVPController@show') }}">
+                    <form class="form-horizontal box pb-3 pl-5 pr-5" id="rsvp" method="POST" action="{{ action('RSVPController@show') }}">
                         {{ csrf_field() }}
+
+                        <div class="container-fluid page-heading-section" style="">
+                            <h2 class="headings text-center page-heading-word">R S V P</h2>
+                        </div>
 
                         <div class="form-group">
                             <label class="font-weight-bold" for="guestname1">Your Full Name</label>
@@ -106,15 +106,15 @@
 
             @endif
 
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+            {{--@if ($errors->any())--}}
+                {{--<div class="alert alert-danger">--}}
+                    {{--<ul>--}}
+                        {{--@foreach ($errors->all() as $error)--}}
+                            {{--<li>{{ $error }}</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--@endif--}}
 
         </div>
     </div>

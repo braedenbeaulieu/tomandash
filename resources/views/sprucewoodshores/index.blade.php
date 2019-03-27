@@ -1,37 +1,33 @@
 @extends('master')
 
 @section('title')
-    Tom and Ash: Venue
+    Thomas and Ashley: Spruce Wood Shores Estate Winery
 @endsection
 
 @section('content')
 
-    <div class="container-fluid page-heading-section" style="">
-        <h2 class="headings text-center page-heading-word">Sprucewood Shores Estate Winery</h2>
-    </div>
-
     <div class="container">
-        <div class="row">
+        <div class="row box">
+
+            <div class="container-fluid page-heading-section" style="">
+                <h2 class="headings text-center page-heading-word">Sprucewood Shores Estate Winery</h2>
+            </div>
 
             <div class="col-sm-4 text-center">
-
                 <h3>Sprucewood Shores</h3>
                 <a href="https://www.sprucewoodshores.com/" target="_blank" >
                     <img src="{{ asset('img/sprucewoodshores.jpg') }}" class="image img-responsive img-fluid" title="Sprucewood Shores Estate Winery" alt="Sprucewood Shores Estate Winery"/>
+                    <div class="small">Sprucewood Shores Website</div>
                 </a>
-                <p class="small">Sprucewood Shores Website</p>
-
             </div>
-
-
 
             <div class="col-sm-4 text-center">
 
                 <h3>Map and Directions</h3>
                 <a href="https://www.sprucewoodshores.com/directions" target="_blank" >
                     <img src="{{ asset('img/mapanddirections.png') }}" class="image img-responsive img-fluid" title="Map and Directions" alt="Map and Directions"/>
+                    <div class="small">Sprucewood Shores Maps/Directions</div>
                 </a>
-                <p class="small">Sprucewood Shores Maps/Directions</p>
 
                 <h3>Amherstburg Weather</h3>
                 <a href="https://www.theweathernetwork.com/ca/weather/ontario/amherstburg?utm_campaign=WeatherWidget&utm_source=php.scweb.ca&utm_medium=234x120&utm_content=text_city" target="_blank">
@@ -58,20 +54,20 @@
                             s.parentNode.insertBefore(px, s);
                             s.parentNode.insertBefore(py, s);
                         })(document, 'script', 'plmxbtn');</script>
+                    <div class="small">The Weather Network</div>
                 </a>
-                <p class="small">The Weather Network</p>
+
 
             </div>
 
             <div class="col-sm-4 text-center">
-
                 <h3>Dinner Menu</h3>
                 <a href="{{ url('menu') }}">
                     <img src="{{ asset('img/menu_mini.jpg') }}" class="image img-responsive img-fluid w-80" title="Menu" alt="Menu"/>
+                <div class="small">Dinner Menu</div>
                 </a>
-                <p class="small">Dinner Menu</p>
-
             </div>
+
         </div>
 
         <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
