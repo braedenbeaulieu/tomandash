@@ -41,7 +41,6 @@ class Post extends Model
 
     public function hasLiked($post)
     {
-        //$user = User::findOrFail($post->user_id);
         if(Auth::check()) {
             $user = Auth::user();
 

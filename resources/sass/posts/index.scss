@@ -40,13 +40,44 @@
         }
     }
 
+    // when not logged in
     #must-log-in {
-        p {
-            a{
-                color: $blue;
-                text-decoration: underline;
+        width: 600px;
+        margin: 20px auto;
+        padding: 0;
+
+        // post body input box
+        textarea {
+            width: 100%;
+            margin: 0;
+            padding: 5px 0 40px 5px;
+            border: 1px solid rgba(0, 0, 0, .5);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, .1);
+            cursor: default;
+        }
+
+        // post button
+        input {
+
+            width: auto;
+            margin: 7px 0 0 7px;
+            display: block;
+            border: 1px solid $grey;
+            border-radius: 2px;
+            padding: 10px 17px;
+            background: white;
+            text-decoration: none;
+            cursor: default;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, .2);
+            transition: box-shadow .3s;
+
+            // on hover
+            &:hover {
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
             }
         }
+
     }
 
 
@@ -226,9 +257,9 @@
             }
 
             // all the words
-            div {
+            .post-words {
                 margin-top: 5px;
-                max-width: 500px;
+                max-width: 480px;
 
                 .author {
                     width: 100%;
@@ -247,7 +278,7 @@
                     display: inline-flex;
                     align-items: center;
                     margin-left: -7px;
-
+                    padding-top: 10px;
 
                     .like-counter {
                         margin: 0 4px 0 0;
@@ -307,14 +338,32 @@
     }
 }
 
-@media screen and (max-width: 640px) {
+
+
+@media screen and (max-width: 768px) {
     #blog {
+        #must-log-in, #make-post {
+            width: 95%;
+        }
         #posts {
-            width: 90%;
+            width: 95%;
 
             .post {
-                .show-comments {
-                    top: 160px;
+                .post-words {
+                    width: 80%;
+                }
+
+                .comments {
+                    margin-left: 5px;
+                    width: 100%;
+
+                    .comment {
+                        width: 100%;
+
+                        .comment-words {
+                            width: 79%;
+                        }
+                    }
                 }
             }
         }

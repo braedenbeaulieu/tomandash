@@ -37,7 +37,7 @@ class PostCommentController extends Controller
                     if($comment_provider_id != 'is not on facebook') {
                         $comment->avatar = 'http://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
                     } else if($comment_provider_id === 'is not on facebook') {
-                        $comment->avatar = 'http://fillmurray.com/50/50';
+                        $comment->avatar = 'img/GenericAvatar.jpg';
                     }
                     return $comment;
                 } else {

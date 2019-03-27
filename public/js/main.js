@@ -194,7 +194,7 @@ var _logger = __webpack_require__(/*! ./logger */ "./node_modules/handlebars/dis
 
 var _logger2 = _interopRequireDefault(_logger);
 
-var VERSION = '4.1.0';
+var VERSION = '4.1.1';
 exports.VERSION = VERSION;
 var COMPILER_REVISION = 7;
 
@@ -275,7 +275,7 @@ var log = _logger2['default'].log;
 exports.log = log;
 exports.createFrame = _utils.createFrame;
 exports.logger = _logger2['default'];
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLE9BQU8sQ0FBQzs7QUFDeEIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4xLjAnO1xuZXhwb3J0IGNvbnN0IENPTVBJTEVSX1JFVklTSU9OID0gNztcblxuZXhwb3J0IGNvbnN0IFJFVklTSU9OX0NIQU5HRVMgPSB7XG4gIDE6ICc8PSAxLjAucmMuMicsIC8vIDEuMC5yYy4yIGlzIGFjdHVhbGx5IHJldjIgYnV0IGRvZXNuJ3QgcmVwb3J0IGl0XG4gIDI6ICc9PSAxLjAuMC1yYy4zJyxcbiAgMzogJz09IDEuMC4wLXJjLjQnLFxuICA0OiAnPT0gMS54LngnLFxuICA1OiAnPT0gMi4wLjAtYWxwaGEueCcsXG4gIDY6ICc+PSAyLjAuMC1iZXRhLjEnLFxuICA3OiAnPj0gNC4wLjAnXG59O1xuXG5jb25zdCBvYmplY3RUeXBlID0gJ1tvYmplY3QgT2JqZWN0XSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBIYW5kbGViYXJzRW52aXJvbm1lbnQoaGVscGVycywgcGFydGlhbHMsIGRlY29yYXRvcnMpIHtcbiAgdGhpcy5oZWxwZXJzID0gaGVscGVycyB8fCB7fTtcbiAgdGhpcy5wYXJ0aWFscyA9IHBhcnRpYWxzIHx8IHt9O1xuICB0aGlzLmRlY29yYXRvcnMgPSBkZWNvcmF0b3JzIHx8IHt9O1xuXG4gIHJlZ2lzdGVyRGVmYXVsdEhlbHBlcnModGhpcyk7XG4gIHJlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnModGhpcyk7XG59XG5cbkhhbmRsZWJhcnNFbnZpcm9ubWVudC5wcm90b3R5cGUgPSB7XG4gIGNvbnN0cnVjdG9yOiBIYW5kbGViYXJzRW52aXJvbm1lbnQsXG5cbiAgbG9nZ2VyOiBsb2dnZXIsXG4gIGxvZzogbG9nZ2VyLmxvZyxcblxuICByZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSwgZm4pIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgaWYgKGZuKSB7IHRocm93IG5ldyBFeGNlcHRpb24oJ0FyZyBub3Qgc3VwcG9ydGVkIHdpdGggbXVsdGlwbGUgaGVscGVycycpOyB9XG4gICAgICBleHRlbmQodGhpcy5oZWxwZXJzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgdGhpcy5oZWxwZXJzW25hbWVdID0gZm47XG4gICAgfVxuICB9LFxuICB1bnJlZ2lzdGVySGVscGVyOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMuaGVscGVyc1tuYW1lXTtcbiAgfSxcblxuICByZWdpc3RlclBhcnRpYWw6IGZ1bmN0aW9uKG5hbWUsIHBhcnRpYWwpIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgZXh0ZW5kKHRoaXMucGFydGlhbHMsIG5hbWUpO1xuICAgIH0gZWxzZSB7XG4gICAgICBpZiAodHlwZW9mIHBhcnRpYWwgPT09ICd1bmRlZmluZWQnKSB7XG4gICAgICAgIHRocm93IG5ldyBFeGNlcHRpb24oYEF0dGVtcHRpbmcgdG8gcmVnaXN0ZXIgYSBwYXJ0aWFsIGNhbGxlZCBcIiR7bmFtZX1cIiBhcyB1bmRlZmluZWRgKTtcbiAgICAgIH1cbiAgICAgIHRoaXMucGFydGlhbHNbbmFtZV0gPSBwYXJ0aWFsO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlclBhcnRpYWw6IGZ1bmN0aW9uKG5hbWUpIHtcbiAgICBkZWxldGUgdGhpcy5wYXJ0aWFsc1tuYW1lXTtcbiAgfSxcblxuICByZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSwgZm4pIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgaWYgKGZuKSB7IHRocm93IG5ldyBFeGNlcHRpb24oJ0FyZyBub3Qgc3VwcG9ydGVkIHdpdGggbXVsdGlwbGUgZGVjb3JhdG9ycycpOyB9XG4gICAgICBleHRlbmQodGhpcy5kZWNvcmF0b3JzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgdGhpcy5kZWNvcmF0b3JzW25hbWVdID0gZm47XG4gICAgfVxuICB9LFxuICB1bnJlZ2lzdGVyRGVjb3JhdG9yOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMuZGVjb3JhdG9yc1tuYW1lXTtcbiAgfVxufTtcblxuZXhwb3J0IGxldCBsb2cgPSBsb2dnZXIubG9nO1xuXG5leHBvcnQge2NyZWF0ZUZyYW1lLCBsb2dnZXJ9O1xuIl19
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2xpYi9oYW5kbGViYXJzL2Jhc2UuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7cUJBQTRDLFNBQVM7O3lCQUMvQixhQUFhOzs7O3VCQUNFLFdBQVc7OzBCQUNSLGNBQWM7O3NCQUNuQyxVQUFVOzs7O0FBRXRCLElBQU0sT0FBTyxHQUFHLE9BQU8sQ0FBQzs7QUFDeEIsSUFBTSxpQkFBaUIsR0FBRyxDQUFDLENBQUM7OztBQUU1QixJQUFNLGdCQUFnQixHQUFHO0FBQzlCLEdBQUMsRUFBRSxhQUFhO0FBQ2hCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxlQUFlO0FBQ2xCLEdBQUMsRUFBRSxVQUFVO0FBQ2IsR0FBQyxFQUFFLGtCQUFrQjtBQUNyQixHQUFDLEVBQUUsaUJBQWlCO0FBQ3BCLEdBQUMsRUFBRSxVQUFVO0NBQ2QsQ0FBQzs7O0FBRUYsSUFBTSxVQUFVLEdBQUcsaUJBQWlCLENBQUM7O0FBRTlCLFNBQVMscUJBQXFCLENBQUMsT0FBTyxFQUFFLFFBQVEsRUFBRSxVQUFVLEVBQUU7QUFDbkUsTUFBSSxDQUFDLE9BQU8sR0FBRyxPQUFPLElBQUksRUFBRSxDQUFDO0FBQzdCLE1BQUksQ0FBQyxRQUFRLEdBQUcsUUFBUSxJQUFJLEVBQUUsQ0FBQztBQUMvQixNQUFJLENBQUMsVUFBVSxHQUFHLFVBQVUsSUFBSSxFQUFFLENBQUM7O0FBRW5DLGtDQUF1QixJQUFJLENBQUMsQ0FBQztBQUM3Qix3Q0FBMEIsSUFBSSxDQUFDLENBQUM7Q0FDakM7O0FBRUQscUJBQXFCLENBQUMsU0FBUyxHQUFHO0FBQ2hDLGFBQVcsRUFBRSxxQkFBcUI7O0FBRWxDLFFBQU0scUJBQVE7QUFDZCxLQUFHLEVBQUUsb0JBQU8sR0FBRzs7QUFFZixnQkFBYyxFQUFFLHdCQUFTLElBQUksRUFBRSxFQUFFLEVBQUU7QUFDakMsUUFBSSxnQkFBUyxJQUFJLENBQUMsSUFBSSxDQUFDLEtBQUssVUFBVSxFQUFFO0FBQ3RDLFVBQUksRUFBRSxFQUFFO0FBQUUsY0FBTSwyQkFBYyx5Q0FBeUMsQ0FBQyxDQUFDO09BQUU7QUFDM0Usb0JBQU8sSUFBSSxDQUFDLE9BQU8sRUFBRSxJQUFJLENBQUMsQ0FBQztLQUM1QixNQUFNO0FBQ0wsVUFBSSxDQUFDLE9BQU8sQ0FBQyxJQUFJLENBQUMsR0FBRyxFQUFFLENBQUM7S0FDekI7R0FDRjtBQUNELGtCQUFnQixFQUFFLDBCQUFTLElBQUksRUFBRTtBQUMvQixXQUFPLElBQUksQ0FBQyxPQUFPLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDM0I7O0FBRUQsaUJBQWUsRUFBRSx5QkFBUyxJQUFJLEVBQUUsT0FBTyxFQUFFO0FBQ3ZDLFFBQUksZ0JBQVMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLFVBQVUsRUFBRTtBQUN0QyxvQkFBTyxJQUFJLENBQUMsUUFBUSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQzdCLE1BQU07QUFDTCxVQUFJLE9BQU8sT0FBTyxLQUFLLFdBQVcsRUFBRTtBQUNsQyxjQUFNLHlFQUEwRCxJQUFJLG9CQUFpQixDQUFDO09BQ3ZGO0FBQ0QsVUFBSSxDQUFDLFFBQVEsQ0FBQyxJQUFJLENBQUMsR0FBRyxPQUFPLENBQUM7S0FDL0I7R0FDRjtBQUNELG1CQUFpQixFQUFFLDJCQUFTLElBQUksRUFBRTtBQUNoQyxXQUFPLElBQUksQ0FBQyxRQUFRLENBQUMsSUFBSSxDQUFDLENBQUM7R0FDNUI7O0FBRUQsbUJBQWlCLEVBQUUsMkJBQVMsSUFBSSxFQUFFLEVBQUUsRUFBRTtBQUNwQyxRQUFJLGdCQUFTLElBQUksQ0FBQyxJQUFJLENBQUMsS0FBSyxVQUFVLEVBQUU7QUFDdEMsVUFBSSxFQUFFLEVBQUU7QUFBRSxjQUFNLDJCQUFjLDRDQUE0QyxDQUFDLENBQUM7T0FBRTtBQUM5RSxvQkFBTyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxDQUFDO0tBQy9CLE1BQU07QUFDTCxVQUFJLENBQUMsVUFBVSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQztLQUM1QjtHQUNGO0FBQ0QscUJBQW1CLEVBQUUsNkJBQVMsSUFBSSxFQUFFO0FBQ2xDLFdBQU8sSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztHQUM5QjtDQUNGLENBQUM7O0FBRUssSUFBSSxHQUFHLEdBQUcsb0JBQU8sR0FBRyxDQUFDOzs7UUFFcEIsV0FBVztRQUFFLE1BQU0iLCJmaWxlIjoiYmFzZS5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Y3JlYXRlRnJhbWUsIGV4dGVuZCwgdG9TdHJpbmd9IGZyb20gJy4vdXRpbHMnO1xuaW1wb3J0IEV4Y2VwdGlvbiBmcm9tICcuL2V4Y2VwdGlvbic7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdEhlbHBlcnN9IGZyb20gJy4vaGVscGVycyc7XG5pbXBvcnQge3JlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnN9IGZyb20gJy4vZGVjb3JhdG9ycyc7XG5pbXBvcnQgbG9nZ2VyIGZyb20gJy4vbG9nZ2VyJztcblxuZXhwb3J0IGNvbnN0IFZFUlNJT04gPSAnNC4xLjEnO1xuZXhwb3J0IGNvbnN0IENPTVBJTEVSX1JFVklTSU9OID0gNztcblxuZXhwb3J0IGNvbnN0IFJFVklTSU9OX0NIQU5HRVMgPSB7XG4gIDE6ICc8PSAxLjAucmMuMicsIC8vIDEuMC5yYy4yIGlzIGFjdHVhbGx5IHJldjIgYnV0IGRvZXNuJ3QgcmVwb3J0IGl0XG4gIDI6ICc9PSAxLjAuMC1yYy4zJyxcbiAgMzogJz09IDEuMC4wLXJjLjQnLFxuICA0OiAnPT0gMS54LngnLFxuICA1OiAnPT0gMi4wLjAtYWxwaGEueCcsXG4gIDY6ICc+PSAyLjAuMC1iZXRhLjEnLFxuICA3OiAnPj0gNC4wLjAnXG59O1xuXG5jb25zdCBvYmplY3RUeXBlID0gJ1tvYmplY3QgT2JqZWN0XSc7XG5cbmV4cG9ydCBmdW5jdGlvbiBIYW5kbGViYXJzRW52aXJvbm1lbnQoaGVscGVycywgcGFydGlhbHMsIGRlY29yYXRvcnMpIHtcbiAgdGhpcy5oZWxwZXJzID0gaGVscGVycyB8fCB7fTtcbiAgdGhpcy5wYXJ0aWFscyA9IHBhcnRpYWxzIHx8IHt9O1xuICB0aGlzLmRlY29yYXRvcnMgPSBkZWNvcmF0b3JzIHx8IHt9O1xuXG4gIHJlZ2lzdGVyRGVmYXVsdEhlbHBlcnModGhpcyk7XG4gIHJlZ2lzdGVyRGVmYXVsdERlY29yYXRvcnModGhpcyk7XG59XG5cbkhhbmRsZWJhcnNFbnZpcm9ubWVudC5wcm90b3R5cGUgPSB7XG4gIGNvbnN0cnVjdG9yOiBIYW5kbGViYXJzRW52aXJvbm1lbnQsXG5cbiAgbG9nZ2VyOiBsb2dnZXIsXG4gIGxvZzogbG9nZ2VyLmxvZyxcblxuICByZWdpc3RlckhlbHBlcjogZnVuY3Rpb24obmFtZSwgZm4pIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgaWYgKGZuKSB7IHRocm93IG5ldyBFeGNlcHRpb24oJ0FyZyBub3Qgc3VwcG9ydGVkIHdpdGggbXVsdGlwbGUgaGVscGVycycpOyB9XG4gICAgICBleHRlbmQodGhpcy5oZWxwZXJzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgdGhpcy5oZWxwZXJzW25hbWVdID0gZm47XG4gICAgfVxuICB9LFxuICB1bnJlZ2lzdGVySGVscGVyOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMuaGVscGVyc1tuYW1lXTtcbiAgfSxcblxuICByZWdpc3RlclBhcnRpYWw6IGZ1bmN0aW9uKG5hbWUsIHBhcnRpYWwpIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgZXh0ZW5kKHRoaXMucGFydGlhbHMsIG5hbWUpO1xuICAgIH0gZWxzZSB7XG4gICAgICBpZiAodHlwZW9mIHBhcnRpYWwgPT09ICd1bmRlZmluZWQnKSB7XG4gICAgICAgIHRocm93IG5ldyBFeGNlcHRpb24oYEF0dGVtcHRpbmcgdG8gcmVnaXN0ZXIgYSBwYXJ0aWFsIGNhbGxlZCBcIiR7bmFtZX1cIiBhcyB1bmRlZmluZWRgKTtcbiAgICAgIH1cbiAgICAgIHRoaXMucGFydGlhbHNbbmFtZV0gPSBwYXJ0aWFsO1xuICAgIH1cbiAgfSxcbiAgdW5yZWdpc3RlclBhcnRpYWw6IGZ1bmN0aW9uKG5hbWUpIHtcbiAgICBkZWxldGUgdGhpcy5wYXJ0aWFsc1tuYW1lXTtcbiAgfSxcblxuICByZWdpc3RlckRlY29yYXRvcjogZnVuY3Rpb24obmFtZSwgZm4pIHtcbiAgICBpZiAodG9TdHJpbmcuY2FsbChuYW1lKSA9PT0gb2JqZWN0VHlwZSkge1xuICAgICAgaWYgKGZuKSB7IHRocm93IG5ldyBFeGNlcHRpb24oJ0FyZyBub3Qgc3VwcG9ydGVkIHdpdGggbXVsdGlwbGUgZGVjb3JhdG9ycycpOyB9XG4gICAgICBleHRlbmQodGhpcy5kZWNvcmF0b3JzLCBuYW1lKTtcbiAgICB9IGVsc2Uge1xuICAgICAgdGhpcy5kZWNvcmF0b3JzW25hbWVdID0gZm47XG4gICAgfVxuICB9LFxuICB1bnJlZ2lzdGVyRGVjb3JhdG9yOiBmdW5jdGlvbihuYW1lKSB7XG4gICAgZGVsZXRlIHRoaXMuZGVjb3JhdG9yc1tuYW1lXTtcbiAgfVxufTtcblxuZXhwb3J0IGxldCBsb2cgPSBsb2dnZXIubG9nO1xuXG5leHBvcnQge2NyZWF0ZUZyYW1lLCBsb2dnZXJ9O1xuIl19
 
 
 /***/ }),
@@ -1443,10 +1443,16 @@ module.exports = g;
 
 //loader('handlebars');
 $(document).ready(function () {
+  var error_message = $('<p></p>').attr('class', 'error-message').hide();
   window.user_info = {
     user_id: $('#whos-logged-in').attr('class'),
     user_name: $('#whos-logged-in').text()
-  }; // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
+  }; // when they clic kthe post button without being logged in
+
+  $('.grey-post-button').on('click', function () {
+    // display error message
+    error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
+  }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
 
   $.ajaxSetup({
     headers: {
@@ -1457,15 +1463,21 @@ $(document).ready(function () {
   var formOpen = false; // when they click a button on their post
 
   $('#posts').on('click', function (e) {
-    // get element clicked
+    // check if there is an error message out, and delete it
+    if ($('.error-message')) {
+      error_message.fadeOut();
+    } // get element clicked
+
+
     var target = $(e.target); // check if clicked element is close edit form button
 
     if (target.hasClass('close-form')) {
       target.parent().parent().slideUp();
       formOpen = false;
     } // when you click a grey button
-    else if (target.hasClass('.grey-button.buttons')) {
-        alert('Sorry, you must log in to do this');
+    else if (target.hasClass('grey-button')) {
+        // display error message
+        error_message.text('You must log in to like and comment.').appendTo(target.parent().parent()).hide().fadeIn();
       } // when you press the edit comment button
       else if (target.hasClass('edit-comment')) {
           var textarea = target.parent().siblings('textarea');
@@ -1476,7 +1488,8 @@ $(document).ready(function () {
           var comment_id = target.attr('id');
 
           if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-            alert('cant be empty');
+            // display error message
+            error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
           } else {
             // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
@@ -1498,7 +1511,8 @@ $(document).ready(function () {
                 target.parent().parent().slideUp();
               },
               error: function error(xhr, status, _error) {
-                console.log(status + " = " + _error);
+                // display error message
+                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
               }
             });
           }
@@ -1517,7 +1531,10 @@ $(document).ready(function () {
                 target.parent().parent().parent().parent().parent().slideUp();
               },
               error: function error(xhr, status, _error2) {
-                console.log(status + " = " + _error2);
+                // display error message
+                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+
+                target.parent().parent().parent().parent().parent().slideUp();
               }
             });
           } // when they click the edit post button
@@ -1532,7 +1549,8 @@ $(document).ready(function () {
               var _post_id = target.attr('id');
 
               if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                alert('cant be empty');
+                // display error message
+                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
               } else {
                 // info to fake change the post body
                 var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
@@ -1557,7 +1575,8 @@ $(document).ready(function () {
                     target.parent().parent().slideUp();
                   },
                   error: function error(xhr, status, _error3) {
-                    console.log(status + " = " + _error3);
+                    // display error message
+                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                   }
                 });
               }
@@ -1572,7 +1591,8 @@ $(document).ready(function () {
                 var _user_id3 = target.parent().siblings('.user-id').attr('value');
 
                 if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
-                  alert('cant be empty');
+                  // display error message
+                  error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
                 } else {
                   // call PostCommentController with all data (goes from here to web.php, then to the controller)
                   $.ajax({
@@ -1598,9 +1618,9 @@ $(document).ready(function () {
                       comment_body.val('');
                     },
                     error: function error() {
-                      console.log('error'); // alert('Sorry, this post no longer exists.');
-                      // // hide from view
-                      // target.parent().parent().parent().slideUp();
+                      // display error message
+                      error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // // hide from view
+                      //target.parent().parent().parent().slideUp();
                     }
                   });
                 }
@@ -1656,7 +1676,7 @@ $(document).ready(function () {
                           data: {
                             comment_id: _comment_id
                           },
-                          success: function success(response) {
+                          success: function success() {
                             target.parent().parent().parent().slideUp();
                           },
                           error: function error(xhr, status, _error4) {
@@ -1701,9 +1721,9 @@ $(document).ready(function () {
                                 likes.text(parseInt(likes.text()) + 1);
                               },
                               error: function error() {
-                                alert('Sorry, this post no longer exists.'); // hide from view
-
-                                target.parent().parent().parent().slideUp();
+                                // display error message
+                                error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                //target.parent().parent().parent().slideUp();
                               }
                             });
                           } // when you click on the unlike button
@@ -1731,9 +1751,9 @@ $(document).ready(function () {
                                   _likes.text(parseInt(_likes.text()) - 1);
                                 },
                                 error: function error() {
-                                  alert('Sorry, this post no longer exists.'); // hide from view
-
-                                  target.parent().parent().parent().slideUp();
+                                  // display error message
+                                  error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                  //target.parent().parent().parent().slideUp();
                                 }
                               });
                             } // when you click edit comment button
@@ -1769,7 +1789,10 @@ $(document).ready(function () {
     var user_name = whos_logged_in.text(); // check if textarea is empty
 
     if (post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-      alert('cant be empty');
+      // display error message
+      error_message.text('You cannot leave the textbox empty.').appendTo('#make-post').hide().fadeIn(); // make the textbox = "" (incase they added spaces)
+
+      textarea.val('');
     } else {
       $.ajax({
         url: '/CAKE/public/guestbook',
@@ -1811,8 +1834,7 @@ $(document).ready(function () {
       // object of each post
       getEveryPost = $.parseJSON(response);
       getEveryPost.forEach(function (post) {
-        console.log(post.has_liked); // if they're not logged in, display posts-none
-
+        // if they're not logged in, display posts-none
         if (user_name === 'none') {
           var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
 
@@ -1921,7 +1943,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.comment_author || (depth0 != null ? depth0.comment_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"comment-body\">"
     + alias4(((helper = (helper = helpers.comment_body || (depth0 != null ? depth0.comment_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_body","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n\n    <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            <i class=\"fas fa-ellipsis-h\"></i>\n        </button>\n        <div class=\"comment-dropdown-menu-"
+    + "</p>\n    </div>\n\n    <div class=\"dropdown\">\n        <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n            <i class=\"fas fa-ellipsis-h\"></i>\n        </button>\n        <div class=\"comment-dropdown-menu-"
     + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
     + " dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n            <input class=\"buttons comment-edit-button\" id=\""
     + alias4(((helper = (helper = helpers.comment_id || (depth0 != null ? depth0.comment_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"comment_id","hash":{},"data":data}) : helper)))
@@ -2035,15 +2057,19 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n\n        <div class=\"comment-like\">\n            <p class=\"like-counter\">"
+    + "</p>\n\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
     + "            <input class=\"comment-button buttons\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + "\" type=\"button\" value=\"Comment\">\n\n\n            <div class=\"dropdown\">\n                <button class=\"btn btn-secondary dropdown-toggle\" title=\"edit and delete\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                    <i class=\"fas fa-ellipsis-h\"></i>\n                </button>\n                <div class=\"post-dropdown-menu-"
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
+    + " dropdown-menu\" aria-labelledby=\"dropdownMenuButton\">\n                    <input class=\"edit-button buttons\" id=\""
+    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
+    + "\" type=\"button\" value=\"Edit\" data-toggle=\"collapse\" data-target=\".post-dropdown-menu-"
+    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
+    + "\">\n                    <input class=\"buttons delete-post delete-button\" id=\""
     + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
     + "\" type=\"button\" value=\"Delete\">\n                </div>\n            </div>\n\n\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});
@@ -2082,7 +2108,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"1":function(co
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\">"
+    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.has_liked : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.program(3, data, 0),"data":data})) != null ? stack1 : "")
@@ -2113,9 +2139,7 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
     + alias4(((helper = (helper = helpers.post_author || (depth0 != null ? depth0.post_author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_author","hash":{},"data":data}) : helper)))
     + "</p>\n        <p class=\"post-body\">"
     + alias4(((helper = (helper = helpers.post_body || (depth0 != null ? depth0.post_body : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_body","hash":{},"data":data}) : helper)))
-    + "</p>\n        <div class=\"comment-like "
-    + alias4(((helper = (helper = helpers.post_id || (depth0 != null ? depth0.post_id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_id","hash":{},"data":data}) : helper)))
-    + "\">\n            <p class=\"like-counter\">"
+    + "</p>\n        <div class=\"comment-like\">\n            <p class=\"like-counter\" title=\"Likes\">"
     + alias4(((helper = (helper = helpers.post_likes || (depth0 != null ? depth0.post_likes : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"post_likes","hash":{},"data":data}) : helper)))
     + "</p>\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Like\">\n\n            <input class=\"grey-button buttons\" type=\"button\" value=\"Comment\">\n        </div>\n    </div>\n    <div class=\"comments\"></div>\n</div>";
 },"useData":true});
