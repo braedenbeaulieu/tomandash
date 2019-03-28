@@ -139,6 +139,12 @@ html body {
   text-align: center;
 }
 
+html body h2 {
+  margin: 120px 0 60px;
+  font-size: 40px;
+  font-family: "Dancing Script", cursive;
+}
+
 html body p {
   font-size: 14px;
 }
@@ -158,52 +164,34 @@ html body a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-html body #subtitle {
-  font-size: 3em;
-  padding: 60px 0;
-  font-family: "Pinyon Script", cursive;
-}
-
 @media screen and (max-width: 768px) {
   html body #subtitle {
     padding: 40px 0 25px;
   }
 }
 
-header {
-  width: 100%;
-  color: #f8fafc;
-}
-
-header nav {
-  display: inline-flex;
-  justify-content: center;
+.navbar .navbar-brand {
   align-items: center;
-  text-align: center;
-  padding: 15px 0;
-  width: 100%;
-  margin: auto;
-  background: #444;
+  font-family: "Dancing Script", cursive;
 }
 
-header nav #left a {
-  color: #f8fafc;
-  width: 92px;
-  padding: 0 7px;
-  margin: 0 15px;
+.navbar .navbar-brand img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: none;
 }
 
-header nav #logo {
-  font-size: 50px;
-  margin: 0 120px;
-  background: #444;
+.navbar .navbar-brand span {
+  font-size: 2.5em;
+  padding: 0 15px 100px 0;
 }
 
-header nav #right a {
-  color: #f8fafc;
-  width: 92px;
-  padding: 15px 7px;
-  margin: 0 15px;
+.navbar .navbar-nav li a {
+  color: white !important;
+  letter-spacing: 0.5px;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: lighter;
 }
 
 footer {
@@ -303,16 +291,6 @@ footer {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   border: 0.75px solid rgba(0, 0, 0, 0.2);
-}
-
-#blog #posts .post .show-comments {
-  position: absolute;
-  z-index: 100;
-  bottom: -20px;
-  left: 35%;
-  cursor: pointer;
-  color: #3490dc;
-  font-size: 12px;
 }
 
 #blog #posts .post .comments {

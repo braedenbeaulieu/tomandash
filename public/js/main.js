@@ -1441,8 +1441,8 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-//loader('handlebars');
 $(document).ready(function () {
+  var url = '/CAKE/public';
   var error_message = $('<p></p>').attr('class', 'error-message').hide();
   window.user_info = {
     user_id: $('#whos-logged-in').attr('class'),
@@ -1493,7 +1493,7 @@ $(document).ready(function () {
           } else {
             // call PostController with all data (goes from here to web.php, then to the controller)
             $.ajax({
-              url: '/CAKE/public/guestbook/comment/' + comment_id,
+              url: url + '/guestbook/comment/' + comment_id,
               type: 'put',
               headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1521,7 +1521,7 @@ $(document).ready(function () {
             // get comment id
             var post_id = target.attr('id');
             $.ajax({
-              url: '/CAKE/public/guestbook/' + post_id,
+              url: url + '/guestbook' + post_id,
               type: 'delete',
               data: {
                 post_id: post_id
@@ -1556,7 +1556,7 @@ $(document).ready(function () {
                 var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
 
                 $.ajax({
-                  url: '/CAKE/public/guestbook/' + _post_id,
+                  url: url + '/guestbook/' + _post_id,
                   type: 'put',
                   headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1596,7 +1596,7 @@ $(document).ready(function () {
                 } else {
                   // call PostCommentController with all data (goes from here to web.php, then to the controller)
                   $.ajax({
-                    url: '/CAKE/public/guestbook/comment',
+                    url: url + '/guestbook/comment',
                     type: 'post',
                     data: {
                       user_id: _user_id3,
@@ -1671,7 +1671,7 @@ $(document).ready(function () {
                         var _comment_id = target.attr('id');
 
                         $.ajax({
-                          url: '/CAKE/public/guestbook/comment/' + _comment_id,
+                          url: url + '/guestbook/comment/' + _comment_id,
                           type: 'delete',
                           data: {
                             comment_id: _comment_id
@@ -1707,7 +1707,7 @@ $(document).ready(function () {
                             var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                             $.ajax({
-                              url: '/CAKE/public/guestbook/like',
+                              url: url + '/guestbook/like',
                               type: 'post',
                               data: {
                                 post_id: _post_id5
@@ -1736,7 +1736,7 @@ $(document).ready(function () {
                               var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                               $.ajax({
-                                url: '/CAKE/public/guestbook/like/' + _post_id6,
+                                url: url + '/guestbook/like/' + _post_id6,
                                 type: 'delete',
                                 data: {
                                   post_id: _post_id6
@@ -1795,7 +1795,7 @@ $(document).ready(function () {
       textarea.val('');
     } else {
       $.ajax({
-        url: '/CAKE/public/guestbook',
+        url: url + '/guestbook',
         type: 'post',
         data: {
           user_id: user_id,
@@ -1827,7 +1827,7 @@ $(document).ready(function () {
   var user_id = $('#whos-logged-in').attr('class');
   var posts = $('#posts');
   $.ajax({
-    url: '/CAKE/public/guestbook/allPosts',
+    url: url + '/guestbook/allPosts',
     type: 'get',
     data: {},
     success: function success(response) {

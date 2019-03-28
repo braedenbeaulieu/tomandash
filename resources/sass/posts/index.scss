@@ -103,17 +103,6 @@
             border-radius: 10px;
             border: .75px solid rgba(0, 0, 0, .2);
 
-            // show comments button
-            .show-comments {
-                position: absolute;
-                z-index: 100;
-                bottom: -20px;
-                left: 35%;
-                cursor: pointer;
-                color: $blue;
-                font-size: 12px;
-            }
-
             // all comments
             .comments {
                 width: 80%;

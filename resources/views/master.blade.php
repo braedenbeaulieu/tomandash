@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/app.css')}}">
     <link rel="stylesheet" type="text/css" href="{{secure_asset('css/main.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Pinyon+Script|Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
@@ -39,7 +38,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
             <div class="container">
 
-                <a class="navbar-brand mt-0 mr-5 mb-0 ml-0" href="{{ url('/') }}"><img class="logo m-0 p-0 mr-2" src="{{ asset('img/logo.jpg') }}" width="42px" height="42px" alt="Thomas and Ashley"><span class="logo">Thomas and Ashley</span></a>
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    <img src="{{ asset('img/logo.jpg') }}" alt="Thomas and Ashley">
+                    <span class="logo">Thomas and Ashley</span>
+                </a>
                 <button class="navbar-toggler border-0 ml-0 p-1 mr-2" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar">
                     &#9776;
                 </button>
@@ -97,7 +99,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 </header>
@@ -106,13 +107,13 @@
     @yield('content')
 </section>
 
-<div class="video-background">
-    <div class="video-foreground">
-        <video playsinline autoplay muted loop id="backgroundvideo">
-            <source src="{{ asset('media/weddingtravel.mp4') }}" type="video/mp4">
-        </video>
-    </div>
-</div>
+{{--<div class="video-background">--}}
+    {{--<div class="video-foreground">--}}
+        {{--<video playsinline autoplay muted loop id="backgroundvideo">--}}
+            {{--<source src="{{ asset('media/weddingtravel.mp4') }}" type="video/mp4">--}}
+        {{--</video>--}}
+    {{--</div>--}}
+{{--</div>--}}
 
 <footer class="container-fluid">
     @yield('footer')

@@ -4,6 +4,16 @@ html {
         width: 100%;
         text-align: center;
 
+        #content {
+            //margin-top: 100px;
+        }
+
+        h2 {
+            margin: 120px 0 60px;
+            font-size: 40px;
+            font-family: 'Dancing Script', cursive;
+        }
+
         p {
             font-size: 14px;
         }
@@ -21,12 +31,6 @@ html {
             &:hover {
                 background: rgba(255, 255, 255, .2);
             }
-        }
-
-        #subtitle {
-            font-size: 3em;
-            padding: 60px 0;
-            font-family: 'Pinyon Script', cursive;
         }
     }
 }
