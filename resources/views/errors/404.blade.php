@@ -11,7 +11,7 @@
 
             <div class="container-fluid page-heading-section">
                 <h2 class="headings text-center page-heading-word">Oops!</h2>
-                <div class="headings text-center page-heading-word">Our apologies for accidentally directing you to our Lost and Found... press <a href="{{ url('/') }}" ><strong class="text-danger"> [HERE] </strong></a>for a quick safe trip back home!</div>
+                <div class="headings text-center page-heading-word">Our apologies for sending you to our Lost and Found... press <a href="{{ url('/') }}" ><strong class="text-danger"> [HOME] </strong></a>for a quick safe trip back Home!</div>
             <br>
             </div>
 
