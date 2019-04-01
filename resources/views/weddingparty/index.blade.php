@@ -5,17 +5,15 @@
 @endsection
 
 @section('content')
-
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word">The Wedding Party</h2>
+    </div>
     <div class="container-fluid">
-        <div class="carousel slide carousel-fullscreen align-content-center w-100 mt-5" data-ride="carousel">
+        <div class="carousel slide carousel-fullscreen align-content-center w-100 mt-5 wedding-party" data-ride="carousel">
 
             <div class="col-sm-3"></div>
 
             <div class="col-sm-6 box m-auto">
-
-                <div class="container-fluid page-heading-section">
-                    <h2 class="headings text-center page-heading-word">The Wedding Party</h2>
-                </div>
 
                 <div class="carousel-inner">
 

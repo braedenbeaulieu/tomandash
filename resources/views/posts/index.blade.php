@@ -2,9 +2,12 @@
 
 @section('content')
 
-    <section id="subtitle">
-        <h2>Guestbook</h2>
-    </section>
+    {{--<section id="subtitle">--}}
+        {{--<h2>Guestbook</h2>--}}
+    {{--</section>--}}
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word">Guestbook</h2>
+    </div>
 
     <section id="blog">
 

@@ -5,19 +5,18 @@
 @endsection
 
 @section('content')
-
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word">Registry</h2>
+    </div>
     <div class="container">
-        <div class="row box">
+        <div class="row box registry">
 
-            <div class="container-fluid page-heading-section">
-                <h2 class="headings text-center page-heading-word">Registry</h2>
-            </div>
+
 
             <div class="col-sm-6 text-center">
                 <h3>Wedding Registry</h3>
                 <a href="https://www.amazon.com/wedding/share/bettyandgary" target="_blank" >
                     <img src="{{ asset('img/registry.jpg') }}" class="image img-responsive img-fluid" title="Registry" alt="Registry" target="_blank"/>
-                    <div class="caption">Wedding Registry</div>
                 </a>
             </div>
 
