@@ -1,7 +1,25 @@
-.navbar {
+header {
+
+    .navbar-toggler-icon {
+        color: white !important;
+        font-size: 30px;
+        height: 30px;
+        border: 1px solid white;
+        border-radius: 4px;
+        padding: 3px 0 34px;
+    }
+
+    .navbar {
+        background-color: $p-blue-dark;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, .7);
+        //height: 65px;
+    }
+
     .navbar-brand {
         align-items: center;
-        font-family: 'Dancing Script', cursive;
+        @include font(cursive);
+        color: white;
+        transition: all .3s;
 
         img {
             border-radius: 50%;
@@ -11,18 +29,105 @@
         }
         span {
             font-size: 2.5em;
-            padding: 0 15px 100px 0;
+            padding: 0 15px 0 0;
+        }
+
+        &:hover {
+            color: $p-pink-light;
+            background-color: transparent;
         }
 
     }
     .navbar-nav {
+
+
         li {
             a {
-                color: white !important;
+                color: $p-gold;
                 letter-spacing: .5px;
-                font-family: 'Roboto', sans-serif !important;
                 font-weight: lighter;
+                transition: all .3s;
+
+                &:hover {
+                    background-color: transparent;
+                    color: $p-pink-light;
+                }
             }
+
+
+        }
+
+    }
+
+    .facebook-button {
+        background: #3b5998;
+        width: 100%;
+        text-align: center !important;
+
+        a {
+            color: white !important;
+            text-align: center !important;
+
+            &:hover {
+                background: transparent;
+            }
+        }
+    }
+
+    .login-dropdown {
+
+        .login-button {
+            background: transparent;
+            color: $p-pink-light;
+            //font-weight: 300 !important;
+            border-color: $p-pink-light;
+
+            &:hover {
+                background: $p-pink-light;
+                color: $p-blue-dark;
+                border-color: $p-blue-dark;
+            }
+        }
+
+        form {
+            width: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 1202px) {
+    header {
+        .navbar-brand {
+            //margin: 0 auto;
+            text-align: center;
+        }
+    }
+}
+
+@media screen and (max-width: 520px) {
+    header {
+        .navbar-brand {
+            font-size: .8em;
+        }
+
+        .navbar-toggler-icon {
+            font-size: 25px;
+            height: 25px;
+            padding: 3px 0 29px;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    header {
+        .navbar-brand {
+            font-size: .7em;
+        }
+
+        .navbar-toggler-icon {
+            font-size: 22px;
+            height: 22px;
+            padding: 3px 0 27px;
         }
     }
 }

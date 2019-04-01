@@ -1,0 +1,24 @@
+.registry {
+    margin-top: 80px;
+    background: $p-blue-dark;
+    padding: 10px 10px 20px;
+    border-radius: 10px;
+
+    h3 {
+        font-size: 1.3em;
+        color: $p-gold;
+        padding: 15px;
+    }
+
+    p {
+        color: $p-gold;
+        line-height: 20px;
+        font-size: 1em;
+        text-indent: 20px;
+        margin-top: 30px;
+    }
+
+    img {
+        border-radius: 10px;
+    }
+}

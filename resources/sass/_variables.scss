@@ -1,4 +1,14 @@
 
+// Mixins
+//fonts
+@mixin font($type) {
+    @if $type == cursive {
+        font-family: 'Dancing Script', cursive;
+    } @else if $type == sans-serif {
+        font-family: 'Raleway', sans-serif;
+    }
+}
+
 // Body
 
 
@@ -8,9 +18,19 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$grey: #444;
+$grey: rgba(0, 0, 0, .8);
+$dark-grey: #585860;
 $white: #f8fafc;
 $danger: #f44e42;
+
+$p-blue: #95a7ce;
+$p-blue-dark: #2a2e37;
+$p-red: #e79782 ;
+$p-gold: #eed3ab;
+$p-gold-dark: #a0845b;
+$p-green: #5d914a;
+$p-pink: #e15671;
+$p-pink-light: #ff879f;
 
 
 $blue: #3490dc;
