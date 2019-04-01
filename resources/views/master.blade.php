@@ -61,7 +61,7 @@
                                     <form class="form" role="form" method="post" action="{{route('login')}}">
                                         @csrf
                                         <div class="form-group facebook-button mt-2">
-                                            <a href="{{ url('/login/facebook') }}" class="btn btn-facebook text-center"><i class="fab fa-facebook-square"></i><strong>Login</strong></a>
+                                            <a href="{{ url('/login/facebook') }}" class="btn btn-facebook text-center"><i class="fab fa-facebook-square"></i> <strong>Login</strong></a>
                                         </div>
                                         <p class="pb-3 text-center">or</p>
                                         <div class="form-group">
