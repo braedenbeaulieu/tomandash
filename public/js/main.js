@@ -1442,313 +1442,288 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 $(document).ready(function () {
-  var url = '/CAKE/public';
-  var error_message = $('<p></p>').attr('class', 'error-message').hide();
-  window.user_info = {
-    user_id: $('#whos-logged-in').attr('class'),
-    user_name: $('#whos-logged-in').text()
-  }; // when they clic kthe post button without being logged in
+  var page_title = $('h2').text();
+  var header_title = $('.header-links').children('.' + page_title.replace(/\s/g, '')).children('a');
+  header_title.css('color', '#ff879f');
 
-  $('.grey-post-button').on('click', function () {
-    // display error message
-    error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
-  }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
+  if ($('h2').text() === 'Guestbook') {
+    var url = '/CAKE/public';
+    var error_message = $('<p></p>').attr('class', 'error-message').hide();
+    window.user_info = {
+      user_id: $('#whos-logged-in').attr('class'),
+      user_name: $('#whos-logged-in').text()
+    }; // when they clic kthe post button without being logged in
 
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  }); // to check if they have a form open
+    $('.grey-post-button').on('click', function () {
+      // display error message
+      error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
+    }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
 
-  var formOpen = false; // when they click a button on their post
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    }); // to check if they have a form open
 
-  $('#posts').on('click', function (e) {
-    // check if there is an error message out, and delete it
-    if ($('.error-message')) {
-      error_message.fadeOut();
-    } // get element clicked
+    var formOpen = false; // when they click a button on their post
+
+    $('#posts').on('click', function (e) {
+      // check if there is an error message out, and delete it
+      if ($('.error-message')) {
+        error_message.fadeOut();
+      } // get element clicked
 
 
-    var target = $(e.target); // check if clicked element is close edit form button
+      var target = $(e.target); // check if clicked element is close edit form button
 
-    if (target.hasClass('close-form')) {
-      target.parent().parent().slideUp();
-      formOpen = false;
-    } // when you click a grey button
-    else if (target.hasClass('grey-button')) {
-        // display error message
-        error_message.text('You must log in to like and comment.').appendTo(target.parent().parent()).hide().fadeIn();
-      } // when you press the edit comment button
-      else if (target.hasClass('edit-comment')) {
-          var textarea = target.parent().siblings('textarea');
-          var edited_comment = textarea.val();
+      if (target.hasClass('close-form')) {
+        target.parent().parent().slideUp();
+        formOpen = false;
+      } // when you click a grey button
+      else if (target.hasClass('grey-button')) {
+          // display error message
+          error_message.text('You must log in to like and comment.').appendTo(target.parent().parent()).hide().fadeIn();
+        } // when you press the edit comment button
+        else if (target.hasClass('edit-comment')) {
+            var textarea = target.parent().siblings('textarea');
+            var edited_comment = textarea.val();
 
-          var _user_id = target.parent().siblings('input').attr('value');
+            var _user_id = target.parent().siblings('input').attr('value');
 
-          var comment_id = target.attr('id');
+            var comment_id = target.attr('id');
 
-          if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
-            // display error message
-            error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
-          } else {
-            // call PostController with all data (goes from here to web.php, then to the controller)
-            $.ajax({
-              url: url + '/guestbook/comment/' + comment_id,
-              type: 'put',
-              headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              },
-              data: {
-                comment_id: comment_id,
-                user_id: _user_id,
-                body: edited_comment
-              },
-              success: function success(response) {
-                var current_post = target.parent().parent().siblings('.comment-words').children('.comment-body'); // change the words in text area, slide up form, and change the post body
+            if (edited_comment.length === 0 || edited_comment === " " || edited_comment === "  " || edited_comment === "   ") {
+              // display error message
+              error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
+            } else {
+              // call PostController with all data (goes from here to web.php, then to the controller)
+              $.ajax({
+                url: url + '/guestbook/comment/' + comment_id,
+                type: 'put',
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                  comment_id: comment_id,
+                  user_id: _user_id,
+                  body: edited_comment
+                },
+                success: function success(response) {
+                  var current_post = target.parent().parent().siblings('.comment-words').children('.comment-body'); // change the words in text area, slide up form, and change the post body
 
-                current_post.text(edited_comment);
-                textarea.val(edited_comment);
-                target.parent().parent().slideUp();
-              },
-              error: function error(xhr, status, _error) {
-                // display error message
-                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
-              }
-            });
-          }
-        } // when they click delete post button
-        else if (target.hasClass('delete-post')) {
-            // get comment id
-            var post_id = target.attr('id');
-            $.ajax({
-              url: url + '/guestbook' + post_id,
-              type: 'delete',
-              data: {
-                post_id: post_id
-              },
-              success: function success(response) {
-                // hide from view
-                target.parent().parent().parent().parent().parent().slideUp();
-              },
-              error: function error(xhr, status, _error2) {
-                // display error message
-                error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                  current_post.text(edited_comment);
+                  textarea.val(edited_comment);
+                  target.parent().parent().slideUp();
+                },
+                error: function error(xhr, status, _error) {
+                  // display error message
+                  error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
+                }
+              });
+            }
+          } // when they click delete post button
+          else if (target.hasClass('delete-post')) {
+              // get comment id
+              var post_id = target.attr('id');
+              $.ajax({
+                url: url + '/guestbook' + post_id,
+                type: 'delete',
+                data: {
+                  post_id: post_id
+                },
+                success: function success(response) {
+                  // hide from view
+                  target.parent().parent().parent().parent().parent().slideUp();
+                },
+                error: function error(xhr, status, _error2) {
+                  // display error message
+                  error_message.text('This comment no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
 
-                target.parent().parent().parent().parent().parent().slideUp();
-              }
-            });
-          } // when they click the edit post button
-          else if (target.hasClass('edit-post')) {
-              // get info
-              var _textarea = target.parent().siblings('textarea');
+                  target.parent().parent().parent().parent().parent().slideUp();
+                }
+              });
+            } // when they click the edit post button
+            else if (target.hasClass('edit-post')) {
+                // get info
+                var _textarea = target.parent().siblings('textarea');
 
-              var edited_post = _textarea.val();
+                var edited_post = _textarea.val();
 
-              var _user_id2 = target.parent().siblings('input').attr('value');
+                var _user_id2 = target.parent().siblings('input').attr('value');
 
-              var _post_id = target.attr('id');
+                var _post_id = target.attr('id');
 
-              if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
-                // display error message
-                error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
-              } else {
-                // info to fake change the post body
-                var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
-
-                $.ajax({
-                  url: url + '/guestbook/' + _post_id,
-                  type: 'put',
-                  headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  },
-                  data: {
-                    post_id: _post_id,
-                    user_id: _user_id2,
-                    body: edited_post
-                  },
-                  success: function success() {
-                    // delete words in text area, slide up form, and fake change the post body
-                    current_post.text(edited_post);
-
-                    _textarea.val(edited_post);
-
-                    target.parent().parent().slideUp();
-                  },
-                  error: function error(xhr, status, _error3) {
-                    // display error message
-                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
-                  }
-                });
-              }
-            } // when they click the create comment button
-            else if (target.hasClass('create-comment')) {
-                // gather info for database
-                var comment_name = $('#whos-logged-in').text();
-                var comment_body = target.parent().parent().children('.comment-body');
-
-                var _post_id2 = target.parent().siblings('.post-id').attr('value');
-
-                var _user_id3 = target.parent().siblings('.user-id').attr('value');
-
-                if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
+                if (edited_post.length === 0 || edited_post === " " || edited_post === "  " || edited_post === "   ") {
                   // display error message
                   error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
                 } else {
-                  // call PostCommentController with all data (goes from here to web.php, then to the controller)
+                  // info to fake change the post body
+                  var current_post = target.parent().parent().siblings('.post-body'); // call PostController with all data (goes from here to web.php, then to the controller)
+
                   $.ajax({
-                    url: url + '/guestbook/comment',
-                    type: 'post',
+                    url: url + '/guestbook/' + _post_id,
+                    type: 'put',
+                    headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
                     data: {
-                      user_id: _user_id3,
-                      post_id: _post_id2,
-                      body: comment_body.val()
+                      post_id: _post_id,
+                      user_id: _user_id2,
+                      body: edited_post
                     },
-                    success: function success(response) {
-                      // select element to place the fake comment into
-                      var comments = target.parent().parent().siblings('.comments');
+                    success: function success() {
+                      // delete words in text area, slide up form, and fake change the post body
+                      current_post.text(edited_post);
 
-                      var template = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
+                      _textarea.val(edited_post);
 
-                      $(template({
-                        comment_author: comment_name,
-                        comment_body: response.body,
-                        comment_id: response.id,
-                        comment_avatar: response.avatar
-                      })).appendTo(comments);
-                      comment_body.val('');
+                      target.parent().parent().slideUp();
                     },
-                    error: function error() {
+                    error: function error(xhr, status, _error3) {
                       // display error message
-                      error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // // hide from view
-                      //target.parent().parent().parent().slideUp();
+                      error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
                     }
                   });
                 }
-              } // check if any forms are open
-              else if (formOpen === true) {} //alert('Please close form before trying to open another.');
-                // if they click the edit form burron
-                else if (target.hasClass('edit-button')) {
-                    var template = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
+              } // when they click the create comment button
+              else if (target.hasClass('create-comment')) {
+                  // gather info for database
+                  var comment_name = $('#whos-logged-in').text();
+                  var comment_body = target.parent().parent().children('.comment-body');
 
-                    var post_body = target.parent().parent().parent().siblings('.post-body').text();
+                  var _post_id2 = target.parent().siblings('.post-id').attr('value');
 
-                    var _post_id3 = target.attr('id');
+                  var _user_id3 = target.parent().siblings('.user-id').attr('value');
 
-                    var post_words = target.parent().parent().parent().parent(); // if theres already a form delete it
+                  if (comment_body.val().length === 0 || comment_body.val() === " " || comment_body.val() === "  " || comment_body.val() === "   ") {
+                    // display error message
+                    error_message.text('You cannot leave the textbox empty.').appendTo(target.parent().parent()).hide().fadeIn();
+                  } else {
+                    // call PostCommentController with all data (goes from here to web.php, then to the controller)
+                    $.ajax({
+                      url: url + '/guestbook/comment',
+                      type: 'post',
+                      data: {
+                        user_id: _user_id3,
+                        post_id: _post_id2,
+                        body: comment_body.val()
+                      },
+                      success: function success(response) {
+                        // select element to place the fake comment into
+                        var comments = target.parent().parent().siblings('.comments');
 
-                    if (post_words.children('form')) {
-                      post_words.children('form').remove();
-                    }
+                        var template = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
 
-                    $(template({
-                      user_id: window.user_info.user_id,
-                      edit_body: post_body,
-                      edit_id: _post_id3,
-                      edit_type: 'post'
-                    })).hide().appendTo(post_words).slideDown();
-                  } // if they click the comment form button
-                  else if (target.hasClass('comment-button')) {
-                      var _template = __webpack_require__(/*! ../views/templates/comment_post_form.hbs */ "./resources/views/templates/comment_post_form.hbs");
+                        $(template({
+                          comment_author: comment_name,
+                          comment_body: response.body,
+                          comment_id: response.id,
+                          comment_avatar: response.avatar
+                        })).appendTo(comments);
+                        comment_body.val('');
+                      },
+                      error: function error() {
+                        // display error message
+                        error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // // hide from view
+                        //target.parent().parent().parent().slideUp();
+                      }
+                    });
+                  }
+                } // check if any forms are open
+                else if (formOpen === true) {} //alert('Please close form before trying to open another.');
+                  // if they click the edit form burron
+                  else if (target.hasClass('edit-button')) {
+                      var template = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
 
-                      var _post_body = target.parent().siblings('.post-body').text();
+                      var post_body = target.parent().parent().parent().siblings('.post-body').text();
 
-                      var _post_id4 = target.attr('id');
+                      var _post_id3 = target.attr('id');
 
-                      var post = target.parent().parent().parent(); // if theres already a form delete it
+                      var post_words = target.parent().parent().parent().parent(); // if theres already a form delete it
 
-                      if (post.children('form')) {
-                        post.children('form').remove();
+                      if (post_words.children('form')) {
+                        post_words.children('form').remove();
                       }
 
-                      $(_template({
+                      $(template({
                         user_id: window.user_info.user_id,
-                        post_body: _post_body,
-                        post_id: _post_id4
-                      })).hide().appendTo(post).slideDown();
-                    } // if they click the delete comment button
-                    else if (target.hasClass('delete-comment')) {
-                        // get comment id
-                        var _comment_id = target.attr('id');
+                        edit_body: post_body,
+                        edit_id: _post_id3,
+                        edit_type: 'post'
+                      })).hide().appendTo(post_words).slideDown();
+                    } // if they click the comment form button
+                    else if (target.hasClass('comment-button')) {
+                        var _template = __webpack_require__(/*! ../views/templates/comment_post_form.hbs */ "./resources/views/templates/comment_post_form.hbs");
 
-                        $.ajax({
-                          url: url + '/guestbook/comment/' + _comment_id,
-                          type: 'delete',
-                          data: {
-                            comment_id: _comment_id
-                          },
-                          success: function success() {
-                            target.parent().parent().parent().slideUp();
-                          },
-                          error: function error(xhr, status, _error4) {
-                            console.log(status + " = " + _error4);
-                          }
-                        });
-                      } // if they click the show comments button
-                      else if (target.hasClass('show-comments')) {
-                          // php will show the button if there are more than 3 comments
-                          // every comment after will have class 'hide-comment'
-                          // slide up or down the rest of the comments
-                          var show_comments = target;
-                          var extra_comments = show_comments.siblings('.extra-comments');
+                        var _post_body = target.parent().siblings('.post-body').text();
 
-                          if (extra_comments.is(':visible')) {
-                            extra_comments.slideUp();
-                            show_comments.text("Show more comments");
-                          } else {
-                            extra_comments.slideDown();
-                            show_comments.text("Hide more comments");
-                          }
-                        } // when you click on the like button
-                        else if (target.hasClass('like')) {
-                            // gather info
-                            var _post_id5 = target.attr('id');
+                        var _post_id4 = target.attr('id');
 
-                            var likes = target.siblings('.like-counter');
-                            var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                        var post = target.parent().parent().parent(); // if theres already a form delete it
 
-                            $.ajax({
-                              url: url + '/guestbook/like',
-                              type: 'post',
-                              data: {
-                                post_id: _post_id5
-                              },
-                              success: function success() {
-                                // change like to unlike (class too) and increment the likes counter
-                                like_button.attr({
-                                  class: 'unlike-button buttons unlike',
-                                  value: 'Unlike'
-                                });
-                                likes.text(parseInt(likes.text()) + 1);
-                              },
-                              error: function error() {
-                                // display error message
-                                error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
-                                //target.parent().parent().parent().slideUp();
-                              }
-                            });
-                          } // when you click on the unlike button
-                          else if (target.hasClass('unlike')) {
+                        if (post.children('form')) {
+                          post.children('form').remove();
+                        }
+
+                        $(_template({
+                          user_id: window.user_info.user_id,
+                          post_body: _post_body,
+                          post_id: _post_id4
+                        })).hide().appendTo(post).slideDown();
+                      } // if they click the delete comment button
+                      else if (target.hasClass('delete-comment')) {
+                          // get comment id
+                          var _comment_id = target.attr('id');
+
+                          $.ajax({
+                            url: url + '/guestbook/comment/' + _comment_id,
+                            type: 'delete',
+                            data: {
+                              comment_id: _comment_id
+                            },
+                            success: function success() {
+                              target.parent().parent().parent().slideUp();
+                            },
+                            error: function error(xhr, status, _error4) {
+                              console.log(status + " = " + _error4);
+                            }
+                          });
+                        } // if they click the show comments button
+                        else if (target.hasClass('show-comments')) {
+                            // php will show the button if there are more than 3 comments
+                            // every comment after will have class 'hide-comment'
+                            // slide up or down the rest of the comments
+                            var show_comments = target;
+                            var extra_comments = show_comments.siblings('.extra-comments');
+
+                            if (extra_comments.is(':visible')) {
+                              extra_comments.slideUp();
+                              show_comments.text("Show more comments");
+                            } else {
+                              extra_comments.slideDown();
+                              show_comments.text("Hide more comments");
+                            }
+                          } // when you click on the like button
+                          else if (target.hasClass('like')) {
                               // gather info
-                              var _post_id6 = target.attr('id');
+                              var _post_id5 = target.attr('id');
 
-                              var _likes = target.siblings('.like-counter');
-
-                              var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                              var likes = target.siblings('.like-counter');
+                              var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                               $.ajax({
-                                url: url + '/guestbook/like/' + _post_id6,
-                                type: 'delete',
+                                url: url + '/guestbook/like',
+                                type: 'post',
                                 data: {
-                                  post_id: _post_id6
+                                  post_id: _post_id5
                                 },
                                 success: function success() {
-                                  // change unlike to like (class too) and decrement the likes counter
-                                  unlike_button.attr({
-                                    class: 'like-button buttons like',
-                                    value: 'Like'
+                                  // change like to unlike (class too) and increment the likes counter
+                                  like_button.attr({
+                                    class: 'unlike-button buttons unlike',
+                                    value: 'Unlike'
                                   });
-
-                                  _likes.text(parseInt(_likes.text()) - 1);
+                                  likes.text(parseInt(likes.text()) + 1);
                                 },
                                 error: function error() {
                                   // display error message
@@ -1756,149 +1731,180 @@ $(document).ready(function () {
                                   //target.parent().parent().parent().slideUp();
                                 }
                               });
-                            } // when you click edit comment button
-                            else if (target.hasClass('comment-edit-button')) {
-                                var _template2 = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
+                            } // when you click on the unlike button
+                            else if (target.hasClass('unlike')) {
+                                // gather info
+                                var _post_id6 = target.attr('id');
 
-                                var _comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
+                                var _likes = target.siblings('.like-counter');
 
-                                var _comment_id2 = target.attr('id');
+                                var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
-                                var comment = target.parent().parent().parent(); // if theres already a form delete it
+                                $.ajax({
+                                  url: url + '/guestbook/like/' + _post_id6,
+                                  type: 'delete',
+                                  data: {
+                                    post_id: _post_id6
+                                  },
+                                  success: function success() {
+                                    // change unlike to like (class too) and decrement the likes counter
+                                    unlike_button.attr({
+                                      class: 'like-button buttons like',
+                                      value: 'Like'
+                                    });
 
-                                if (comment.children('form')) {
-                                  comment.children('form').remove();
+                                    _likes.text(parseInt(_likes.text()) - 1);
+                                  },
+                                  error: function error() {
+                                    // display error message
+                                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                    //target.parent().parent().parent().slideUp();
+                                  }
+                                });
+                              } // when you click edit comment button
+                              else if (target.hasClass('comment-edit-button')) {
+                                  var _template2 = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
+
+                                  var _comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
+
+                                  var _comment_id2 = target.attr('id');
+
+                                  var comment = target.parent().parent().parent(); // if theres already a form delete it
+
+                                  if (comment.children('form')) {
+                                    comment.children('form').remove();
+                                  }
+
+                                  $(_template2({
+                                    user_id: window.user_info.user_id,
+                                    edit_body: _comment_body,
+                                    edit_id: _comment_id2,
+                                    edit_type: 'comment'
+                                  })).appendTo(comment).hide().slideDown();
                                 }
+    }); // when they click in the .create-post button
 
-                                $(_template2({
-                                  user_id: window.user_info.user_id,
-                                  edit_body: _comment_body,
-                                  edit_id: _comment_id2,
-                                  edit_type: 'comment'
-                                })).appendTo(comment).hide().slideDown();
-                              }
-  }); // when they click in the .create-post button
+    $('.create-post').on('click', function () {
+      var target = $('.create-post'); // get info
 
-  $('.create-post').on('click', function () {
-    var target = $('.create-post'); // get info
+      var textarea = target.siblings('textarea');
+      var post_body = textarea.val();
+      var whos_logged_in = $('#whos-logged-in');
+      var user_id = whos_logged_in.attr('class');
+      var user_name = whos_logged_in.text(); // check if textarea is empty
 
-    var textarea = target.siblings('textarea');
-    var post_body = textarea.val();
-    var whos_logged_in = $('#whos-logged-in');
-    var user_id = whos_logged_in.attr('class');
-    var user_name = whos_logged_in.text(); // check if textarea is empty
+      if (post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
+        // display error message
+        error_message.text('You cannot leave the textbox empty.').appendTo('#make-post').hide().fadeIn(); // make the textbox = "" (incase they added spaces)
 
-    if (post_body.length === 0 || post_body === " " || post_body === "  " || post_body === "   ") {
-      // display error message
-      error_message.text('You cannot leave the textbox empty.').appendTo('#make-post').hide().fadeIn(); // make the textbox = "" (incase they added spaces)
+        textarea.val('');
+      } else {
+        $.ajax({
+          url: url + '/guestbook',
+          type: 'post',
+          data: {
+            user_id: user_id,
+            body: post_body
+          },
+          success: function success(response) {
+            var template = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
 
-      textarea.val('');
-    } else {
-      $.ajax({
-        url: url + '/guestbook',
-        type: 'post',
-        data: {
-          user_id: user_id,
-          body: post_body
-        },
-        success: function success(response) {
-          var template = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
+            $(template({
+              post_author: user_name,
+              post_body: response.body,
+              post_id: response.id,
+              post_likes: '0',
+              post_avatar: response.avatar
+            })).prependTo($('#posts')); // clear the textarea
 
-          $(template({
-            post_author: user_name,
-            post_body: response.body,
-            post_id: response.id,
-            post_likes: '0',
-            post_avatar: response.avatar
-          })).prependTo($('#posts')); // clear the textarea
-
-          textarea.val('');
-        },
-        error: function error(xhr, status, _error5) {
-          console.log(status + " = " + _error5);
-        }
-      });
-    }
-  }); // drawing all posts
-
-  var getEveryPost = {};
-  var user_name = $('#whos-logged-in').text();
-  var user_role = $('#user-role').text();
-  var user_id = $('#whos-logged-in').attr('class');
-  var posts = $('#posts');
-  $.ajax({
-    url: url + '/guestbook/allPosts',
-    type: 'get',
-    data: {},
-    success: function success(response) {
-      // object of each post
-      getEveryPost = $.parseJSON(response);
-      getEveryPost.forEach(function (post) {
-        // if they're not logged in, display posts-none
-        if (user_name === 'none') {
-          var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
-
-          $(template({
-            post_author: post.author,
-            post_body: post.body,
-            post_id: post.id,
-            post_likes: post.post_likes,
-            post_avatar: post.avatar
-          })).prependTo(posts); // if they are admin or if its their post
-        } else if (user_role == '1' || user_id == post.user_id) {
-          var _template3 = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
-
-          $(_template3({
-            post_author: post.author,
-            post_body: post.body,
-            post_id: post.id,
-            post_likes: post.post_likes,
-            has_liked: post.has_liked,
-            post_avatar: post.avatar
-          })).prependTo(posts); // if they are logged in but its not their post and they arent admin
-        } else if (user_name != 'none') {
-          var _template4 = __webpack_require__(/*! ../views/templates/post/post-like-comment.hbs */ "./resources/views/templates/post/post-like-comment.hbs");
-
-          $(_template4({
-            post_author: post.author,
-            post_body: post.body,
-            post_id: post.id,
-            post_likes: post.post_likes,
-            has_liked: post.has_liked,
-            post_avatar: post.avatar
-          })).prependTo(posts);
-        }
-
-        var post_comments = post.comments;
-        var comments = $('.post.' + post.id).children('.comments'); // for each post.comments
-
-        post_comments.forEach(function (comment) {
-          if (user_role == '1' || user_id == comment.user_id) {
-            var _template5 = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
-
-            $(_template5({
-              comment_author: comment.author,
-              comment_body: comment.body,
-              comment_id: comment.id,
-              comment_avatar: comment.avatar
-            })).appendTo(comments);
-          } else {
-            var _template6 = __webpack_require__(/*! ../views/templates/comment/comment-none.hbs */ "./resources/views/templates/comment/comment-none.hbs");
-
-            $(_template6({
-              comment_author: comment.author,
-              comment_body: comment.body,
-              comment_id: comment.id,
-              comment_avatar: comment.avatar
-            })).appendTo(comments);
+            textarea.val('');
+          },
+          error: function error(xhr, status, _error5) {
+            console.log(status + " = " + _error5);
           }
         });
-      });
-    },
-    error: function error(xhr, status, _error6) {
-      console.log(status + " = " + _error6);
-    }
-  });
+      }
+    }); // drawing all posts
+
+    var getEveryPost = {};
+    var user_name = $('#whos-logged-in').text();
+    var user_role = $('#user-role').text();
+    var user_id = $('#whos-logged-in').attr('class');
+    var posts = $('#posts');
+    $.ajax({
+      url: url + '/guestbook/allPosts',
+      type: 'get',
+      data: {},
+      success: function success(response) {
+        // object of each post
+        getEveryPost = $.parseJSON(response);
+        getEveryPost.forEach(function (post) {
+          // if they're not logged in, display posts-none
+          if (user_name === 'none') {
+            var template = __webpack_require__(/*! ../views/templates/post/post-none.hbs */ "./resources/views/templates/post/post-none.hbs");
+
+            $(template({
+              post_author: post.author,
+              post_body: post.body,
+              post_id: post.id,
+              post_likes: post.post_likes,
+              post_avatar: post.avatar
+            })).prependTo(posts); // if they are admin or if its their post
+          } else if (user_role == '1' || user_id == post.user_id) {
+            var _template3 = __webpack_require__(/*! ../views/templates/post/post-like-comment-edit-delete.hbs */ "./resources/views/templates/post/post-like-comment-edit-delete.hbs");
+
+            $(_template3({
+              post_author: post.author,
+              post_body: post.body,
+              post_id: post.id,
+              post_likes: post.post_likes,
+              has_liked: post.has_liked,
+              post_avatar: post.avatar
+            })).prependTo(posts); // if they are logged in but its not their post and they arent admin
+          } else if (user_name != 'none') {
+            var _template4 = __webpack_require__(/*! ../views/templates/post/post-like-comment.hbs */ "./resources/views/templates/post/post-like-comment.hbs");
+
+            $(_template4({
+              post_author: post.author,
+              post_body: post.body,
+              post_id: post.id,
+              post_likes: post.post_likes,
+              has_liked: post.has_liked,
+              post_avatar: post.avatar
+            })).prependTo(posts);
+          }
+
+          var post_comments = post.comments;
+          var comments = $('.post.' + post.id).children('.comments'); // for each post.comments
+
+          post_comments.forEach(function (comment) {
+            if (user_role == '1' || user_id == comment.user_id) {
+              var _template5 = __webpack_require__(/*! ../views/templates/comment/comment-edit-delete.hbs */ "./resources/views/templates/comment/comment-edit-delete.hbs");
+
+              $(_template5({
+                comment_author: comment.author,
+                comment_body: comment.body,
+                comment_id: comment.id,
+                comment_avatar: comment.avatar
+              })).appendTo(comments);
+            } else {
+              var _template6 = __webpack_require__(/*! ../views/templates/comment/comment-none.hbs */ "./resources/views/templates/comment/comment-none.hbs");
+
+              $(_template6({
+                comment_author: comment.author,
+                comment_body: comment.body,
+                comment_id: comment.id,
+                comment_avatar: comment.avatar
+              })).appendTo(comments);
+            }
+          });
+        });
+      },
+      error: function error(xhr, status, _error6) {
+        console.log(status + " = " + _error6);
+      }
+    });
+  }
 });
 
 /***/ }),
