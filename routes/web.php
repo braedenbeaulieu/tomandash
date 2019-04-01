@@ -42,7 +42,6 @@ Route::get('/ourstory', function () {return view('/ourstory.index');});
 Route::get('/thewedding', function () {return view('/thewedding.index');});
 Route::get('/weddingparty', function () {return view('/weddingparty.index');});
 Route::get('/menu', function () {return view('/menu.index');});
-Route::get('/rsvp', function () {return view('/rsvp.index');});
 Route::get('/livestream', function () {return view('/livestream.index');});
 Route::get('/registry', function () {return view('/registry.index');});
 Route::get('/sprucewoodshores', function () {return view('/sprucewoodshores.index');});

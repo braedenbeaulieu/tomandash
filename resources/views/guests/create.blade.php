@@ -6,6 +6,10 @@
 
 @section('content')
 
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word" style="letter-spacing: .6em;">RSVP</h2>
+    </div>
+
     <div class="container">
         <div class="row text-center">
 
@@ -13,9 +17,7 @@
                     <form class="form-horizontal box text-left" id="rsvp" method="POST" action="{{ action('GuestController@index') }}">
                         {{ csrf_field() }}
 
-                        <div class="container-fluid page-heading-section">
-                            <h2 class="headings text-center page-heading-word">R S V P</h2>
-                        </div>
+
 
                         <div class="form-group">
                             <label class="font-weight-bold" for="guestname01">Full Name</label>
