@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-    
-    <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{secure_asset('js/rsvp.js')}}"></script>
 
     <div class="container mt-5">
