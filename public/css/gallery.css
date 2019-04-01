@@ -1,0 +1,35 @@
+.galleryimage {
+    float: left;
+    height: 15em;
+    margin-right: 1%;
+    margin-bottom: 0.5em;
+}
+
+.wrap {
+    margin-left: 4%;
+}
+ul {
+    list-style: none;
+}
+#filter {
+    margin-left: 2.5%;
+}
+#filter li {
+    display: inline;
+    text-align: center;
+}
+
+#filter li a {
+    text-decoration: none;
+    margin-left: 0.2%;
+    font-size: 15px;
+}
+
+p {
+    text-align: center;
+}
+
+#imageupload {
+    display: block;
+    text-align: center;
+}

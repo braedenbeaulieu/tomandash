@@ -50,7 +50,7 @@
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('guests/create') }}">RSVP</a></li>
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('registry') }}">Registry</a></li>
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('guestbook') }}">Guestbook</a></li>
-                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('gallery') }}">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('images') }}">Gallery</a></li>
                     </ul>
                     <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li class="dropdown order-1">
