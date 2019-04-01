@@ -12,7 +12,6 @@ header {
     .navbar {
         background-color: $p-blue-dark;
         box-shadow: 0 2px 20px rgba(0, 0, 0, .7);
-        //height: 65px;
     }
 
     .navbar-brand {
@@ -79,7 +78,6 @@ header {
         .login-button {
             background: transparent;
             color: $p-pink-light;
-            //font-weight: 300 !important;
             border-color: $p-pink-light;
 
             &:hover {

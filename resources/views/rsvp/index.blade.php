@@ -28,11 +28,6 @@
                     <form class="form-horizontal box pb-3 pl-5 pr-5" id="rsvp" method="POST" action="{{ action('RSVPController@show') }}">
                         {{ csrf_field() }}
 
-                        {{--<div class="container-fluid page-heading-section" style="">--}}
-                            {{--<h2 class="headings text-center page-heading-word">R S V P</h2>--}}
-                        {{--</div>--}}
-
-
                         <div class="form-group">
                             <label class="font-weight-bold" for="guestname1">Your Full Name</label>
                             <input type="text" class="form-control{{ $errors->has('guestname1') ? ' is-invalid' : '' }}" id="guestname1" placeholder="Your full name as printed on your Invitation..." name="guestname1" value="{{old('guestname1')}}">

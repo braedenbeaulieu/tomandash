@@ -53,6 +53,6 @@ Route::get('/guests', 'GuestController@index');
 Route::get('/guests/thankyou', function () {return view('/guests/thankyou');});
 
 //Gallery Routes
-Route::resource('images', 'ImageController', ['except' => ['show']]);
+Route::resource('/gallery', 'ImageController', ['except' => ['show']]);
 Route::resource('tags', 'TagController', ['except' => ['show']]);
 

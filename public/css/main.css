@@ -848,20 +848,20 @@ footer p a {
   cursor: pointer;
 }
 
-.registry {
+.registry-container {
   margin-top: 80px;
   background: #2a2e37;
   padding: 10px 10px 20px;
   border-radius: 10px;
 }
 
-.registry h3 {
+.registry-container h3 {
   font-size: 1.3em;
   color: #eed3ab;
   padding: 15px;
 }
 
-.registry p {
+.registry-container p {
   color: #eed3ab;
   line-height: 20px;
   font-size: 1em;
@@ -869,7 +869,7 @@ footer p a {
   margin-top: 30px;
 }
 
-.registry img {
+.registry-container img {
   border-radius: 10px;
 }
 
