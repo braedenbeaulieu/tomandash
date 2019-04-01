@@ -1,0 +1,87 @@
+.the-wedding {
+
+    .boxes {
+        display: inline-flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        flex-direction: row;
+        width: 100%;
+        margin: 100px 0;
+        transition: all .3s;
+
+        .a-box {
+            width: 350px;
+            margin-bottom: 20px;
+            background: $p-blue-dark;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, .5);
+
+            h3 {
+                font-size: 1.3em;
+                color: $p-gold;
+                margin-bottom: 10px;
+                padding: 20px 0 10px;
+
+            }
+
+            a {
+                text-decoration: none;
+                transition: all .3s;
+
+                //&:hover {
+                //    text-decoration: underline;
+                //    text-decoration-color: $p-pink;
+                //}
+            }
+
+
+            img {
+                border-radius: 8px 8px 0 0;
+                width: 100%;
+                margin-bottom: -2px;
+            }
+
+            .small {
+                display: none;
+                text-align: center;
+                width: 100%;
+                padding: 4px 0;
+                background: rgba(0, 0, 0, .3);
+                border-radius: 0 0 10px 10px;
+                position: absolute;
+                bottom: 0;
+                font-weight: bolder !important;
+                color: white !important;
+            }
+
+        }
+
+        .weather-box {
+
+        }
+
+
+    }
+
+    .bottom-sentence {
+        margin: 0 0 30px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .the-wedding {
+        .boxes {
+            margin: 50px auto;
+
+            .a-box {
+                width: 80%;
+
+                h3 {
+                    font-size: 1em;
+                    padding: 14px 0 4px;
+                }
+            }
+        }
+    }
+}

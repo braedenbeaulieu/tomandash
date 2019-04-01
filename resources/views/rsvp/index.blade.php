@@ -6,8 +6,10 @@
 
 @section('content')
     <script src="{{secure_asset('js/rsvp.js')}}"></script>
-
-    <div class="container mt-5">
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word" style="letter-spacing: .6em;">RSVP</h2>
+    </div>
+    <div class="container mt-5 rsvp">
         <div class="row">
 
             @if(session('message'))
@@ -26,9 +28,10 @@
                     <form class="form-horizontal box pb-3 pl-5 pr-5" id="rsvp" method="POST" action="{{ action('RSVPController@show') }}">
                         {{ csrf_field() }}
 
-                        <div class="container-fluid page-heading-section" style="">
-                            <h2 class="headings text-center page-heading-word">R S V P</h2>
-                        </div>
+                        {{--<div class="container-fluid page-heading-section" style="">--}}
+                            {{--<h2 class="headings text-center page-heading-word">R S V P</h2>--}}
+                        {{--</div>--}}
+
 
                         <div class="form-group">
                             <label class="font-weight-bold" for="guestname1">Your Full Name</label>
@@ -102,16 +105,6 @@
                 <div class="col-sm-3"></div>
 
             @endif
-
-            {{--@if ($errors->any())--}}
-                {{--<div class="alert alert-danger">--}}
-                    {{--<ul>--}}
-                        {{--@foreach ($errors->all() as $error)--}}
-                            {{--<li>{{ $error }}</li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--@endif--}}
 
         </div>
     </div>

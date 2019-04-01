@@ -6,18 +6,23 @@
 
 @section('content')
 
-    <div class="container mt-5">
-        <div class="row">
+    <div class="home">
 
-            <div class="container-fluid page-heading-section">
-                <h2 class="headings text-center page-heading-word"></h2>
-            </div>
+        <h2>The Pagliarella Wedding</h2>
 
-            <div class="col-sm-12 text-center mt-5">
-                <img src="{{ asset('img/landing.jpg') }}" class="landing img-responsive img-fluid" title="Thomas and Ashley" alt="Thomas and Ashley" />
-            </div>
+        {{--<div class="row">--}}
 
-        </div>
+
+
+            {{--<div class="container-fluid page-heading-section">--}}
+                {{--<h2 class="headings text-center page-heading-word">Thomas and Ashley</h2>--}}
+            {{--</div>--}}
+
+            {{--<div class="bg-pic col-sm-12 text-center mt-5">--}}
+                {{--<img src="{{ asset('img/landing2.jpg') }}" class="landing img-responsive img-fluid" title="Thomas and Ashley" alt="Thomas and Ashley" />--}}
+            {{--</div>--}}
+
+        {{--</div>--}}
     </div>
 
 @endsection

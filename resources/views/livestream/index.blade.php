@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word">Live Stream</h2>
+    </div>
     <div class="container mt-5">
         <div class="row box">
 
-            <div class="container-fluid page-heading-section">
-                <h2 class="headings text-center page-heading-word">Live Stream</h2>
-            </div>
+
 
             <div class="col-sm-12 text-center">
                 <img src="{{ asset('img/livestream.jpg') }}" class="image img-responsive img-fluid" title="Registry" alt="Registry" target="_blank"/>

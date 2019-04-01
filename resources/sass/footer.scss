@@ -1,5 +1,41 @@
 footer {
     width: 100%;
-    background: lightgrey;
     text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    margin: 0;
+    background: $dark-grey;
+    padding: 10px 0;
+
+    p {
+        margin: 0 20px;
+        color: white;
+
+        a {
+            color: white;
+        }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    footer {
+        width: 100%;
+        text-align: center;
+        display: block;
+        margin: 0;
+        background: $dark-grey;
+        padding: 10px 0;
+        font-size: 10px;
+
+        p {
+            text-align: center;
+            margin: 10px auto;
+            color: white;
+            font-size: 10px;
+
+            a {
+                color: white;
+            }
+        }
+    }
 }

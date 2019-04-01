@@ -1,17 +1,18 @@
 html {
-    font-family: 'Roboto', sans-serif;
+    @include font(sans-serif);
+    font-weight: 100;
+
     body {
         width: 100%;
         text-align: center;
 
-        #content {
-            //margin-top: 100px;
-        }
-
         h2 {
-            margin: 120px 0 60px;
-            font-size: 40px;
-            font-family: 'Dancing Script', cursive;
+            margin: 120px 0 0;
+            font-size: 60px;
+            @include font(cursive);
+            padding-bottom: 50px;
+            border-bottom: 1px solid $grey;
+            color: $grey;
         }
 
         p {
@@ -32,14 +33,34 @@ html {
                 background: rgba(255, 255, 255, .2);
             }
         }
+
+        input:focus, select:focus, button:focus, .form-control:focus, .dropdown-toggle:focus {
+            border-color: rgba(225, 86, 113, .4);
+            box-shadow: 0 0px 1px rgba(225, 86, 113, .4) inset, 0 0 8px rgba(225, 86, 113, .4);
+            outline: 0 none;
+        }
+
+        .btn-primary {
+            background: $p-pink;
+            border-color: $p-pink;
+            transition: all .3s;
+
+            &:hover {
+                background-color: #e14b68;
+                border-color: #e14b68;
+            }
+        }
     }
 }
 
 @media screen and (max-width: 768px) {
     html {
         body {
-            #subtitle {
-                padding: 40px 0 25px;
+
+            h2 {
+                font-size: 45px;
+                margin-top: 80px;
+                padding-bottom: 20px;
             }
         }
     }
