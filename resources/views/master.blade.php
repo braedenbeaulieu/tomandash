@@ -1,4 +1,4 @@
-<!DOCTYPE html>
++<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -49,10 +49,10 @@
                     <ul class="nav navbar-nav">
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('ourstory') }}">Our Story</a></li>
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('thewedding') }}">The Wedding</a></li>
-                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('rsvp') }}">RSVP</a></li>
+                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('guests/create') }}">RSVP</a></li>
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('registry') }}">Registry</a></li>
                         <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('guestbook') }}">Guestbook</a></li>
-                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('gallery') }}">Gallery</a></li>
+                        <li class="nav-item"><a class="nav-link ml-2 mr-2" href="{{ url('images') }}">Gallery</a></li>
                     </ul>
                     <ul class="nav navbar-nav flex-row justify-content-between ml-auto">
                         <li class="dropdown order-1">
@@ -117,15 +117,21 @@
 
 <footer class="container-fluid">
     @yield('footer')
+
     <nav class="navbar navbar-expand-md fixed-bottom border border-secondary small">
         <div class="container-fluid text-center">
             <div class="row w-100">
-                <div class="foot"><a href="https://pixabay.com/" >PIXABAY!</a> Media (CC0 1.0)</div>
+                <div class="foot">
+                    <a href="https://www.facebook.com/ashley.lehman.16?__tn__=%2Cd-]-h-R&eid=ARBcy4WI2Fu42AkWjNSElKOXUs4bC70sy35btNFQHO2mbSTVHch0Q2alytgdPqi4jtyCx118dxI42ot_" target="_blank" ><img class="socialmedia" src="img/facebook.png" alt="Facebook" title="Facebook"></a>
+                    <a href="mailto:thepagliarellawedding@gmail.com?subject=The Pagliarella Wedding" ><img class="socialmedia" src="img/email.png" alt="E-Mail" title="E-Mail"></a>
+                    <a href="tel:1-519-969-4810"><img class="socialmedia" src="img/phone.png" alt="Phone" title="Phone"></a>
+                </div>
                 <div class="foot" id="countdown"></div>
                 <div class="foot">&copy;&nbsp2019&nbspCAKE&nbspWeb&nbspConsulting</div>
             </div>
         </div>
     </nav>
+
 </footer>
 
 <script src="{{secure_asset('js/app.js')}}"></script>

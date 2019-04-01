@@ -35,6 +35,8 @@ Route::delete('/guestbook/comment/{comment_id}', 'PostCommentController@destroy'
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
+
+
 Route::get('/ourstory', function () {return view('/ourstory.index');});
 Route::get('/thewedding', function () {return view('/thewedding.index');});
 Route::get('/weddingparty', function () {return view('/weddingparty.index');});
@@ -43,5 +45,13 @@ Route::get('/livestream', function () {return view('/livestream.index');});
 Route::get('/registry', function () {return view('/registry.index');});
 Route::get('/sprucewoodshores', function () {return view('/sprucewoodshores.index');});
 
-Route::get('/rsvp', 'RSVPController@show');
-Route::post('/rsvp', 'RSVPController@mailToTAA');
+
+Route::get('/guests/create', 'GuestController@create');
+Route::post('/guests', 'GuestController@store');
+Route::get('/guests', 'GuestController@index');
+Route::get('/guests/thankyou', function () {return view('/guests/thankyou');});
+
+//Gallery Routes
+Route::resource('images', 'ImageController', ['except' => ['show']]);
+Route::resource('tags', 'TagController', ['except' => ['show']]);
+
