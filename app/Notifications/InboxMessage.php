@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use App\Http\Requests\RSVPFormRequest;
+use App\Http\Requests\GuestFormRequest;
 
 class InboxMessage extends Notification
 {
@@ -18,7 +18,7 @@ class InboxMessage extends Notification
 	 * @return void
 	 */
 	protected $message;
-	public function __construct(RSVPFormRequest $message)
+	public function __construct(GuestFormRequest $message)
 	{
 		$this->message = $message;
 	}
@@ -43,17 +43,17 @@ class InboxMessage extends Notification
 	public function toMail($notifiable)
 	{
 		return (new MailMessage)
-			->subject( $this->message->guestname1 . ' sent you an RSVP!')
-			->greeting($this->message->guestname1 . ' sent you an RSVP!')
-			->salutation('Guest Names: ' .
-			             $this->message->guestname1 . ' ' .
-			             $this->message->guestname2 . ' ' .
-			             $this->message->guestname3 . ' ' .
-			             $this->message->guestname4 . ' ' .
-			             $this->message->guestname5 . '.'
+			->subject( $this->message->guestname01 . ' sent you an RSVP!')
+			->greeting($this->message->guestname01 . ' sent you an RSVP!')
+			->salutation('Guest Names:     ' .
+			             $this->message->guestname01 . ' - ' .
+			             $this->message->guestname02 . ' - ' .
+			             $this->message->guestname03 . ' - ' .
+			             $this->message->guestname04 . ' - ' .
+			             $this->message->guestname05
 			)
 			->line('Attendees: ' . $this->message->guests)
-			->from('thepagliarellawedding@gmail.com', $this->message->guestname1);
+			->from('thepagliarellawedding@gmail.com', $this->message->guestname01);
 	}
 
 	/**
