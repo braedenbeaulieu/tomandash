@@ -8,7 +8,7 @@
     <div class="container-fluid page-heading-section">
         <h2 class="headings text-center page-heading-word">Our Story</h2>
     </div>
-    <div class="container ourstory">
+    <div class="ourstory">
         <div class="row box">
 
 
@@ -22,10 +22,7 @@
 
             </div>
 
-            <div class="picture">
-                {{--<br>--}}
-                {{--<img src="{{ asset('img/tomandash.jpg') }}" class="image img-responsive img-fluid" title="Thomas and Ashley" alt="Thomas and Ashley"/>--}}
-                {{--<div class="small caption">Denver, Colorado, December 15, 2018</div>--}}
+            <div class="middle-picture">
             </div>
 
             <div class="ash">
