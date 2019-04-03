@@ -6,6 +6,8 @@
 
 @section('content')
 
+    <style>.logo {color: #e15671}</style>
+
     <div class="home">
 
         <h2>The Pagliarella Wedding</h2>

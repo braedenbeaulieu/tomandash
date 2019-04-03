@@ -1687,42 +1687,57 @@ $(document).ready(function () {
                               console.log(status + " = " + _error4);
                             }
                           });
-                        } // if they click the show comments button
-                        else if (target.hasClass('show-comments')) {
-                            // php will show the button if there are more than 3 comments
-                            // every comment after will have class 'hide-comment'
-                            // slide up or down the rest of the comments
-                            var show_comments = target;
-                            var extra_comments = show_comments.siblings('.extra-comments');
+                        } // when you click on the like button
+                        else if (target.hasClass('like')) {
+                            // gather info
+                            var _post_id5 = target.attr('id');
 
-                            if (extra_comments.is(':visible')) {
-                              extra_comments.slideUp();
-                              show_comments.text("Show more comments");
-                            } else {
-                              extra_comments.slideDown();
-                              show_comments.text("Hide more comments");
-                            }
-                          } // when you click on the like button
-                          else if (target.hasClass('like')) {
+                            var likes = target.siblings('.like-counter');
+                            var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+
+                            $.ajax({
+                              url: url + '/guestbook/like',
+                              type: 'post',
+                              data: {
+                                post_id: _post_id5
+                              },
+                              success: function success() {
+                                // change like to unlike (class too) and increment the likes counter
+                                like_button.attr({
+                                  "class": 'unlike-button buttons unlike',
+                                  value: 'Unlike'
+                                });
+                                likes.text(parseInt(likes.text()) + 1);
+                              },
+                              error: function error() {
+                                // display error message
+                                error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
+                                //target.parent().parent().parent().slideUp();
+                              }
+                            });
+                          } // when you click on the unlike button
+                          else if (target.hasClass('unlike')) {
                               // gather info
-                              var _post_id5 = target.attr('id');
+                              var _post_id6 = target.attr('id');
 
-                              var likes = target.siblings('.like-counter');
-                              var like_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                              var _likes = target.siblings('.like-counter');
+
+                              var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
 
                               $.ajax({
-                                url: url + '/guestbook/like',
-                                type: 'post',
+                                url: url + '/guestbook/like/' + _post_id6,
+                                type: 'delete',
                                 data: {
-                                  post_id: _post_id5
+                                  post_id: _post_id6
                                 },
                                 success: function success() {
-                                  // change like to unlike (class too) and increment the likes counter
-                                  like_button.attr({
-                                    "class": 'unlike-button buttons unlike',
-                                    value: 'Unlike'
+                                  // change unlike to like (class too) and decrement the likes counter
+                                  unlike_button.attr({
+                                    "class": 'like-button buttons like',
+                                    value: 'Like'
                                   });
-                                  likes.text(parseInt(likes.text()) + 1);
+
+                                  _likes.text(parseInt(_likes.text()) - 1);
                                 },
                                 error: function error() {
                                   // display error message
@@ -1730,57 +1745,27 @@ $(document).ready(function () {
                                   //target.parent().parent().parent().slideUp();
                                 }
                               });
-                            } // when you click on the unlike button
-                            else if (target.hasClass('unlike')) {
-                                // gather info
-                                var _post_id6 = target.attr('id');
+                            } // when you click edit comment button
+                            else if (target.hasClass('comment-edit-button')) {
+                                var _template2 = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
 
-                                var _likes = target.siblings('.like-counter');
+                                var _comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
 
-                                var unlike_button = target; // call PostLikeController with all data (goes from here to web.php, then to the controller)
+                                var _comment_id2 = target.attr('id');
 
-                                $.ajax({
-                                  url: url + '/guestbook/like/' + _post_id6,
-                                  type: 'delete',
-                                  data: {
-                                    post_id: _post_id6
-                                  },
-                                  success: function success() {
-                                    // change unlike to like (class too) and decrement the likes counter
-                                    unlike_button.attr({
-                                      "class": 'like-button buttons like',
-                                      value: 'Like'
-                                    });
+                                var comment = target.parent().parent().parent(); // if theres already a form delete it
 
-                                    _likes.text(parseInt(_likes.text()) - 1);
-                                  },
-                                  error: function error() {
-                                    // display error message
-                                    error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn(); // hide from view
-                                    //target.parent().parent().parent().slideUp();
-                                  }
-                                });
-                              } // when you click edit comment button
-                              else if (target.hasClass('comment-edit-button')) {
-                                  var _template2 = __webpack_require__(/*! ../views/templates/edit_post_form.hbs */ "./resources/views/templates/edit_post_form.hbs");
-
-                                  var _comment_body = target.parent().parent().siblings('.comment-words').children('.comment-body').text();
-
-                                  var _comment_id2 = target.attr('id');
-
-                                  var comment = target.parent().parent().parent(); // if theres already a form delete it
-
-                                  if (comment.children('form')) {
-                                    comment.children('form').remove();
-                                  }
-
-                                  $(_template2({
-                                    user_id: window.user_info.user_id,
-                                    edit_body: _comment_body,
-                                    edit_id: _comment_id2,
-                                    edit_type: 'comment'
-                                  })).appendTo(comment).hide().slideDown();
+                                if (comment.children('form')) {
+                                  comment.children('form').remove();
                                 }
+
+                                $(_template2({
+                                  user_id: window.user_info.user_id,
+                                  edit_body: _comment_body,
+                                  edit_id: _comment_id2,
+                                  edit_type: 'comment'
+                                })).appendTo(comment).hide().slideDown();
+                              }
     }); // when they click in the .create-post button
 
     $('.create-post').on('click', function () {
@@ -1912,6 +1897,17 @@ $(document).ready(function () {
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
   \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/lightbox.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/lightbox.scss ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2152,15 +2148,16 @@ module.exports = (Handlebars["default"] || Handlebars).template({"compiler":[7,"
 /***/ }),
 
 /***/ 0:
-/*!*****************************************************************************************!*\
-  !*** multi ./resources/js/main.js ./resources/sass/main.scss ./resources/sass/app.scss ***!
-  \*****************************************************************************************/
+/*!************************************************************************************************************************!*\
+  !*** multi ./resources/js/main.js ./resources/sass/main.scss ./resources/sass/app.scss ./resources/sass/lightbox.scss ***!
+  \************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/Braeden/Library/Mobile Documents/com~apple~CloudDocs/Filing Cabinet/web stuff/school.nosync/CAKE/resources/js/main.js */"./resources/js/main.js");
 __webpack_require__(/*! /Users/Braeden/Library/Mobile Documents/com~apple~CloudDocs/Filing Cabinet/web stuff/school.nosync/CAKE/resources/sass/main.scss */"./resources/sass/main.scss");
-module.exports = __webpack_require__(/*! /Users/Braeden/Library/Mobile Documents/com~apple~CloudDocs/Filing Cabinet/web stuff/school.nosync/CAKE/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/Braeden/Library/Mobile Documents/com~apple~CloudDocs/Filing Cabinet/web stuff/school.nosync/CAKE/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /Users/Braeden/Library/Mobile Documents/com~apple~CloudDocs/Filing Cabinet/web stuff/school.nosync/CAKE/resources/sass/lightbox.scss */"./resources/sass/lightbox.scss");
 
 
 /***/ })

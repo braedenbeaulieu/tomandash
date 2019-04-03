@@ -6,8 +6,8 @@
 
 @section('content')
 
-    <div class="container">
-        <div class="row box">
+    
+    <div class="container guests-container">
 
             <div class="container-fluid page-heading-section">
                 <h2 class="headings text-center page-heading-word">Guest List</h2>
@@ -43,10 +43,6 @@
 
             </table>
 
-        </div>
     </div>
-
-
-    <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
 
 @endsection

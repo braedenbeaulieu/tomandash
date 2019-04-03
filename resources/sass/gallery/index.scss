@@ -40,9 +40,16 @@
         width: 100%;
         margin: 20px 0;
         padding: 0;
+        cursor: pointer;
 
         li {
             margin-left: 8px;
+            cursor: pointer;
+        }
+
+        .highlight {
+            cursor: pointer;
+            color: $p-pink;
         }
     }
 

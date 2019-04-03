@@ -11,10 +11,17 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/main.js', 'public/js')
+mix.options({
+        processCssUrls: false
+    })
+    .js('resources/js/main.js', 'public/js')
     .js('resources/js/app.js', 'public/js')
+    .js('resources/js/lightbox.js', 'public/js')
+    .js('resources/js/gallery.js', 'public/js')
+    .js('resources/js/rsvp.js', 'public/js')
     .sass('resources/sass/main.scss', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')
+    .sass('resources/sass/lightbox.scss', 'public/css')
     .webpackConfig({
         module: {
             rules: [{

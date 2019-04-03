@@ -1,6 +1,10 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/gallery.js": "/js/gallery.js",
+    "/js/lightbox.js": "/js/lightbox.js",
     "/js/main.js": "/js/main.js",
     "/css/main.css": "/css/main.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/lightbox.css": "/css/lightbox.css",
+    "/js/rsvp.js": "/js/rsvp.js"
 }
