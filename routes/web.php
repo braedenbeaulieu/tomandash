@@ -36,7 +36,8 @@ Route::delete('/guestbook/comment/{comment_id}', 'PostCommentController@destroy'
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
-
+// Admin Routes
+Route::get('/admin', function () {return view('/admin.index');});
 
 Route::get('/ourstory', function () {return view('/ourstory.index');});
 Route::get('/thewedding', function () {return view('/thewedding.index');});
@@ -46,7 +47,7 @@ Route::get('/livestream', function () {return view('/livestream.index');});
 Route::get('/registry', function () {return view('/registry.index');});
 Route::get('/sprucewoodshores', function () {return view('/sprucewoodshores.index');});
 
-
+// RSVP Routes
 Route::get('/guests/create', 'GuestController@create');
 Route::post('/guests', 'GuestController@store');
 Route::get('/guests', 'GuestController@index');

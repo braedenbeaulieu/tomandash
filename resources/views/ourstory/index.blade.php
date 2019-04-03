@@ -14,7 +14,7 @@
 
 
             <div class="tom">
-                <h3>Tom's Side</h3>
+                <h3>Tom's Story</h3>
 
                 <p>Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake. Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake.</p>
                 <p>Marshmallow sweet sweet tart sweet gingerbread muffin bear claw. Liquorice sesame snaps cupcake sesame snaps chocolate cake gingerbread sweet roll. Sweet roll dessert chocolate cake macaroon bear claw cheesecake gummi bears jelly beans. Danish  Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake.</p>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="ash">
-                <h3>Ash's Side</h3>
+                <h3>Ash's Story</h3>
 
                 <p>Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake. Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake.</p>
                 <p>Marshmallow sweet sweet tart sweet gingerbread muffin bear claw. Liquorice sesame snaps cupcake sesame snaps chocolate cake gingerbread sweet roll. Sweet roll dessert chocolate cake macaroon bear claw cheesecake gummi bears jelly beans. Danish  Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake.</p>

@@ -14,7 +14,7 @@
         <div class="row text-center">
 
                 <div class="col-sm-6 offset-sm-3 text-center justify-content-center guests-form">
-                    <h3>Please let us know if you're coming and who you're bringing!</h3>
+                    <h3>We sure hope you can make it!  Let us know if you plan to attend and who will be coming with you!<br><br></h3>
                     <form class="form-horizontal box text-left" id="rsvp" method="POST" action="{{ action('GuestController@index') }}">
                         {{ csrf_field() }}
 
@@ -74,8 +74,8 @@
                             @endif
                         </div>
                         <div class="form-group">
-                            <label class="font-weight-bold" for="passcode">Pass Phrase <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Please, refer to your invitation for the Pass Phrase."></i></label>
-                            <input type="text" class="form-control{{ $errors->has('passcode') ? ' is-invalid' : '' }}" id="passcode" placeholder="Invitation Pass Phrase..." name="passcode" value="{{old('passcode')}}">
+                            <label class="font-weight-bold" for="passcode">Pass Code <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Refer to the Pass Code as printed on your Invitation."></i></label>
+                            <input type="text" class="form-control{{ $errors->has('passcode') ? ' is-invalid' : '' }}" id="passcode" placeholder="Invitation Pass Code..." name="passcode" value="{{old('passcode')}}">
                             @if ($errors->has('passcode'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('passcode') }}</strong></span>
                             @endif

@@ -1,37 +1,26 @@
 @extends('master')
+
 @section('title')
     Thomas and Ashley: Gallery
 @endsection
 
-
-
 @section('content')
-
-
-
-
-
-
 
     <div class="container-fluid page-heading-section">
         <h2 class="headings text-center page-heading-word">Gallery</h2>
     </div>
+
     <div class="gallery-container">
         <div class="admin-controls">
             <h3 class="pb-3">Admin Controls</h3>
             <div class="gallery-links">
-
                 <a href="{{action('ImageController@create')}}" id="imageupload">[UPLOAD IMAGE]</a><br/>
                 <a href="{{action('TagController@create')}}">[CREATE TAG]</a><br/>
                 <a href="{{action('TagController@index')}}">[TAG CONTROL]</a><br/><br/>
             </div>
-        </div>
+        </div><br><br>
 
-
-
-        <p>Share a memory with us! Upload a moment from our special day!</p>
-
-
+        <p>Share a memory with us!  <span><a class="text-warning" href="{{action('ImageController@create')}}" > [ UPLOAD ] </a></span> your images and add to our story!</p>
 
         <ul id="filter" class="tags">
             <li class="highlight">

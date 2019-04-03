@@ -39,9 +39,7 @@
                         <a href="{{ url('livestream') }}"><h3>Live Stream</h3></a>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12 center bottom-sentence">
-                <p>Caramels sweet carrot cake dessert sesame snaps. Wafer brownie marshmallow soufflé cookie sweet cake. Croissant halvah chocolate cheesecake sugar plum pudding. Jelly-o biscuit topping carrot cake. Chocolate biscuit chocolate bar caramels gingerbread. Liquorice candy canes candy canes chupa chups cake pastry sweet roll.</p>
+
             </div>
 
         </div>
