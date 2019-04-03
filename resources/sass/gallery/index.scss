@@ -36,7 +36,7 @@
 
     .tags {
         display: inline-flex;
-        justify-content: flex-start;
+        justify-content: center;
         width: 100%;
         margin: 20px 0;
         padding: 0;
@@ -69,6 +69,66 @@
                     border-radius: 4px;
                     margin: 10px 0;
                 }
+            }
+        }
+    }
+}
+
+.upload-modal {
+    color: $p-gold;
+
+    .modal-content {
+        background: $p-blue-dark;
+        border-radius: 10px;
+
+        .modal-header {
+            border-color: rgba(0, 0, 0, .9);
+        }
+
+        .upload-form {
+            text-align: left;
+            width: 90%;
+            margin: 0 auto;
+
+            .upload-image-container {
+                display: inline-flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                text-align: center;
+                width: 100%;
+
+                label {
+                    width: 100%;
+                }
+
+                input {
+                    text-align: center;
+                    min-width: 225px;
+                    margin-left: 100px;
+                    color: $p-gold;
+                }
+            }
+
+            label {
+                width: 100%;
+                margin: 25px 0 25px 20px;
+                display: block;
+
+                textarea {
+                    border-radius: 4px;
+                    height: 70px;
+                    width: 80%;
+                    margin: 10px auto;
+                    display: block;
+                }
+
+                input {
+                    margin-left: 10px;
+                }
+            }
+
+            .modal-footer {
+                border-color: rgba(0, 0, 0, .9);
             }
         }
     }

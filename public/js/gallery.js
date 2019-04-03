@@ -94,7 +94,15 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  // masonry stuff
+  // error handling
+  var error_message = $('<p></p>').attr('class', 'error-message').hide(); // when you arent logged in
+
+  $('.cant-upload').on('click', function () {
+    error_message.text('You must log in to upload an image.').appendTo($('.cant-upload').parents()).hide().fadeIn();
+  }); // when you click the upload image in the modal
+
+  $('.upload-image-button').on('click', function () {}); // masonry stuff
+
   var $grid = $('.grid').imagesLoaded(function () {
     // init Masonry after all images have loaded
     $grid.masonry({

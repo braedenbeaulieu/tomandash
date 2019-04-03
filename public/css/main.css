@@ -763,7 +763,7 @@ footer:hover {
 }
 .gallery-container .tags {
   display: inline-flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
   margin: 20px 0;
   padding: 0;
@@ -791,6 +791,56 @@ footer:hover {
   max-width: 100%;
   border-radius: 4px;
   margin: 10px 0;
+}
+
+.upload-modal {
+  color: #eed3ab;
+}
+.upload-modal .modal-content {
+  background: #2a2e37;
+  border-radius: 10px;
+}
+.upload-modal .modal-content .modal-header {
+  border-color: rgba(0, 0, 0, 0.9);
+}
+.upload-modal .modal-content .upload-form {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+}
+.upload-modal .modal-content .upload-form .upload-image-container {
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  width: 100%;
+}
+.upload-modal .modal-content .upload-form .upload-image-container label {
+  width: 100%;
+}
+.upload-modal .modal-content .upload-form .upload-image-container input {
+  text-align: center;
+  min-width: 225px;
+  margin-left: 100px;
+  color: #eed3ab;
+}
+.upload-modal .modal-content .upload-form label {
+  width: 100%;
+  margin: 25px 0 25px 20px;
+  display: block;
+}
+.upload-modal .modal-content .upload-form label textarea {
+  border-radius: 4px;
+  height: 70px;
+  width: 80%;
+  margin: 10px auto;
+  display: block;
+}
+.upload-modal .modal-content .upload-form label input {
+  margin-left: 10px;
+}
+.upload-modal .modal-content .upload-form .modal-footer {
+  border-color: rgba(0, 0, 0, 0.9);
 }
 
 @media screen and (max-width: 1170px) {
