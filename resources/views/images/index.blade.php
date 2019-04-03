@@ -29,10 +29,11 @@
 
 
 
-        <p class="py-3">Share a memory with us! Upload a moment from our special day!</p>
+        <p class="pt-3 pb-1">Share a memory with us!</p>
+        <p class="pt-1 pb-4">Upload a moment from our special day, or post to Instagram with the <a href="https://www.instagram.com" target="_blank">#tomandash</a>!</p>
 
         @if(Auth::check())
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addImageModal">
+            <button type="button" class="btn btn-primary upload-image-button" data-toggle="modal" data-target="#addImageModal">
                 Upload Image
             </button>
         @else
@@ -91,8 +92,9 @@
                         </div>
                         <label for="name"hidden>Image Name:
                         <input name="name" type="text" value="name" ></label>
-                        <label for="description">Description:
-                            <textarea name="description">{{old('description')}}</textarea></label>
+                        <label class="description-image" for="description">Description:
+                            <textarea class="image-description" name="description">{{old('description')}}</textarea>
+                        </label>
                         <label for="tags">Choose Tags:
                             @foreach($tags as $t)
                                 &nbsp;<input type="checkbox" name="tags[]" value="{{$t->id}}" {{--@if(in_array($t->id, $tagsArray)) checked @endif--}}>&nbsp;{{$t->name}}
@@ -101,7 +103,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <input type="submit" class="btn btn-primary" value="Upload">
+                            <input type="button" class="btn btn-primary upload-image-submit" value="Upload">
                         </div>
                     </form>
                 </div>

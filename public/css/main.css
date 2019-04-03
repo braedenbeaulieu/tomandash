@@ -84,12 +84,12 @@ html body input:focus, html body select:focus, html body button:focus, html body
   box-shadow: 0 0px 1px rgba(225, 86, 113, 0.4) inset, 0 0 8px rgba(225, 86, 113, 0.4);
   outline: 0 none;
 }
-html body .btn-primary {
+html body .btn.btn-primary {
   background: #e15671;
   border-color: #e15671;
   transition: all 0.3s;
 }
-html body .btn-primary:hover {
+html body .btn.btn-primary:hover {
   background-color: #e14b68;
   border-color: #e14b68;
 }
@@ -739,6 +739,13 @@ footer:hover {
   border-radius: 10px;
   color: #eed3ab;
 }
+.gallery-container p a {
+  color: #e15671;
+  transition: all 0.3s;
+}
+.gallery-container p a:hover {
+  text-decoration: underline;
+}
 .gallery-container a {
   color: #eed3ab;
   transition: all 0.3s;
@@ -841,6 +848,10 @@ footer:hover {
 }
 .upload-modal .modal-content .upload-form .modal-footer {
   border-color: rgba(0, 0, 0, 0.9);
+}
+.upload-modal .modal-content .upload-form .modal-footer .btn.btn-primary:disabled {
+  background-color: #e15671;
+  border-color: #e15671;
 }
 
 @media screen and (max-width: 1170px) {

@@ -7,6 +7,17 @@
     border-radius: 10px;
     color: $p-gold;
 
+    p {
+        a {
+            color: $p-pink;
+            transition: all.3s;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
     a {
         color: $p-gold;
         transition: all .3s;
@@ -129,6 +140,11 @@
 
             .modal-footer {
                 border-color: rgba(0, 0, 0, .9);
+
+                .btn.btn-primary:disabled {
+                    background-color: $p-pink;
+                    border-color: $p-pink;
+                }
             }
         }
     }
