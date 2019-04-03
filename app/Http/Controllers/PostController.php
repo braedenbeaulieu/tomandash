@@ -41,7 +41,7 @@ class PostController extends Controller
             $post_provider_id = Auth::user()->getProviderId();
 
             if($post_provider_id != 'is not on facebook') {
-                $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
+                $post->avatar = 'https://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
             } else if($post_provider_id === 'is not on facebook') {
                 $post->avatar = 'img/GenericAvatar.jpg';
             }
@@ -93,7 +93,7 @@ class PostController extends Controller
                 $post->has_liked = $post->hasLiked($post);
 
                 if($post_provider_id != 'is not on facebook') {
-                    $post->avatar = 'http://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
+                    $post->avatar = 'https://graph.facebook.com/' . $post_provider_id . '/picture?type=square';
                 } else if($post_provider_id === 'is not on facebook') {
                     $post->avatar = 'img/GenericAvatar.jpg';
                 }
@@ -104,7 +104,7 @@ class PostController extends Controller
 
                     $comment->author = $comment->getUser($comment)->name;
                     if($comment_provider_id != 'is not on facebook') {
-                        $comment->avatar = 'http://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
+                        $comment->avatar = 'https://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
                     } else if($comment_provider_id === 'is not on facebook') {
                         $comment->avatar = 'img/GenericAvatar.jpg';
                     }

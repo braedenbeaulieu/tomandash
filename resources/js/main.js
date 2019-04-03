@@ -5,6 +5,12 @@ $(document).ready(function () {
 
     header_title.css('color', '#ff879f');
 
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
     if($('h2').text() === 'Guestbook') {
 
         const url = '/CAKE/public';
@@ -13,22 +19,14 @@ $(document).ready(function () {
 
         window.user_info = {user_id: $('#whos-logged-in').attr('class'), user_name: $('#whos-logged-in').text()};
 
-        // when they clic kthe post button without being logged in
+        // when they click the post button without being logged in
         $('.grey-post-button').on('click', function () {
             // display error message
             error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
         });
 
-        // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
         // to check if they have a form open
         let formOpen = false;
-
 
         // when they click a button on their post
         $('#posts').on('click', function (e) {

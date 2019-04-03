@@ -130,6 +130,10 @@ table {
   border-spacing: 0;
 }
 
+*:hover {
+  background-color: transparent;
+}
+
 html {
   font-family: "Raleway", sans-serif;
   font-weight: 100;
@@ -430,6 +434,7 @@ footer p a {
 }
 
 #blog #posts .post {
+  transition: all 0.3s;
   margin: 10px auto 30px;
   background: white;
   padding: 10px;
@@ -470,6 +475,7 @@ footer p a {
 #blog #posts .post .comments .comment .comment-words .comment-name {
   margin-bottom: 10px;
   font-size: 12px;
+  color: #e15671;
 }
 
 #blog #posts .post .comments .comment .comment-words .comment-body {
@@ -746,10 +752,8 @@ footer p a {
   width: 40%;
 }
 
-.rsvp h2 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 930px;
+.rsvp-container {
+  min-height: 100vh;
 }
 
 .the-wedding .boxes {
@@ -871,5 +875,98 @@ footer p a {
 
 .registry-container img {
   border-radius: 10px;
+}
+
+.gallery-container {
+  min-height: 80vh;
+  width: 1130px;
+  margin: 20px auto;
+  padding: 10px;
+  background: #2a2e37;
+  border-radius: 10px;
+  color: #eed3ab;
+}
+
+.gallery-container a {
+  color: #eed3ab;
+  transition: all 0.3s;
+}
+
+.gallery-container a:hover {
+  color: #ff879f;
+  text-decoration: none;
+  background: transparent;
+}
+
+.gallery-container .admin-controls {
+  padding: 10px 0;
+}
+
+.gallery-container .gallery-links {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.gallery-container .gallery-links a {
+  margin: 0 10px;
+  padding: 0;
+  width: auto;
+}
+
+.gallery-container .tags {
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 20px 0;
+  padding: 0;
+}
+
+.gallery-container .tags li {
+  margin-left: 8px;
+}
+
+.gallery-container .grid {
+  margin: 0 0 0 10px;
+  width: 100%;
+}
+
+.gallery-container .grid .grid-sizer {
+  width: 33%;
+}
+
+.gallery-container .grid .picture {
+  width: 31%;
+}
+
+.gallery-container .grid .picture a .galleryimage {
+  max-width: 100%;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 1170px) {
+  .gallery-container {
+    width: 750px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .gallery-container {
+    width: 80%;
+  }
+
+  .gallery-container .grid {
+    margin: 0 auto;
+  }
+
+  .gallery-container .grid .grid-sizer {
+    width: 100%;
+  }
+
+  .gallery-container .grid .picture {
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 

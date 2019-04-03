@@ -11,7 +11,6 @@
     <div class="container">
         <div class="the-wedding">
 
-
             <div class="boxes">
                 <div class="text-center a-box">
                     <a href="{{ url('sprucewoodshores') }}" >

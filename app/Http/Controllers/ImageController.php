@@ -37,7 +37,7 @@ class ImageController extends Controller
         $image->save();
         $image->tags()->sync($request->tags);
         $file->move('img/gallery', $imagename);
-        return redirect('images');
+        return redirect('gallery');
     }
 
     public function edit($image) {
@@ -56,10 +56,11 @@ class ImageController extends Controller
         $image = Image::findOrFail($image);
         $image->update($formdata);
         $image->tags()->sync($request->tags);
-        return  redirect('images');
+        return  redirect('gallery');
     }
-    public function destroy(Image $image) {
+    public function destroy($image_id) {
+        $image = Image::findOrFail($image_id);
         $image->delete();
-        return redirect('images');
+        return redirect('gallery');
     }
 }

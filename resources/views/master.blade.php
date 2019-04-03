@@ -1,5 +1,4 @@
-+<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
 
 <head>
     <meta name="description" content="">
@@ -46,7 +45,7 @@
                     <ul class="nav navbar-nav header-links">
                         <li class="nav-item OurStory"><a class="nav-link ml-2 mr-2" href="{{ url('ourstory') }}">Our Story</a></li>
                         <li class="nav-item TheWedding"><a class="nav-link ml-2 mr-2" href="{{ url('thewedding') }}">The Wedding</a></li>
-                        <li class="nav-item RSVP"><a class="nav-link ml-2 mr-2" href="{{ url('rsvp') }}">RSVP</a></li>
+                        <li class="nav-item RSVP"><a class="nav-link ml-2 mr-2" href="{{ url('guests/create') }}">RSVP</a></li>
                         <li class="nav-item Registry"><a class="nav-link ml-2 mr-2" href="{{ url('registry') }}">Registry</a></li>
                         <li class="nav-item Guestbook"><a class="nav-link ml-2 mr-2" href="{{ url('guestbook') }}">Guestbook</a></li>
                         <li class="nav-item Gallery"><a class="nav-link ml-2 mr-2" href="{{ url('gallery') }}">Gallery</a></li>
@@ -61,7 +60,7 @@
                                     <form class="form" role="form" method="post" action="{{route('login')}}">
                                         @csrf
                                         <div class="form-group facebook-button mt-2">
-                                            <a href="{{ url('/login/facebook') }}" class="btn btn-facebook text-center"><i class="fab fa-facebook-square"></i><strong>Login</strong></a>
+                                            <a href="{{ url('/login/facebook') }}" class="btn btn-facebook text-center"><i class="fab fa-facebook-square"></i> <strong>Login</strong></a>
                                         </div>
                                         <p class="pb-3 text-center">or</p>
                                         <div class="form-group">
@@ -77,6 +76,9 @@
 
                                         <div class="form-group text-center mb-2">
                                             <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot Password?</a></small>
+                                        </div>
+                                        <div class="form-group text-center mb-2">
+                                            <small><a href="{{route('register')}}">Register</a></small>
                                         </div>
                                     </form>
 
@@ -141,9 +143,13 @@
 
 </footer>
 
-<script src="{{secure_asset('js/app.js')}}"></script>
-<script src="{{secure_asset('js/main.js')}}"></script>
-<script src="{{secure_asset('js/countdown.js')}}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/main.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/countdown.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/masonry.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/imagesLoaded.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/lightbox.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/gallery.js') }}"></script>
 
 </body>
 </html>

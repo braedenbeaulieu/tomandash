@@ -1445,6 +1445,11 @@ $(document).ready(function () {
   var page_title = $('h2').text();
   var header_title = $('.header-links').children('.' + page_title.replace(/\s/g, '')).children('a');
   header_title.css('color', '#ff879f');
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
 
   if ($('h2').text() === 'Guestbook') {
     var url = '/CAKE/public';
@@ -1452,17 +1457,11 @@ $(document).ready(function () {
     window.user_info = {
       user_id: $('#whos-logged-in').attr('class'),
       user_name: $('#whos-logged-in').text()
-    }; // when they clic kthe post button without being logged in
+    }; // when they click the post button without being logged in
 
     $('.grey-post-button').on('click', function () {
       // display error message
       error_message.text('You must log in to post.').appendTo('#must-log-in').hide().fadeIn();
-    }); // found on the internet https://stackoverflow.com/questions/39350918/how-to-delete-record-in-laravel-5-3-using-ajax-request
-
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
     }); // to check if they have a form open
 
     var formOpen = false; // when they click a button on their post
@@ -1720,7 +1719,7 @@ $(document).ready(function () {
                                 success: function success() {
                                   // change like to unlike (class too) and increment the likes counter
                                   like_button.attr({
-                                    class: 'unlike-button buttons unlike',
+                                    "class": 'unlike-button buttons unlike',
                                     value: 'Unlike'
                                   });
                                   likes.text(parseInt(likes.text()) + 1);
@@ -1749,7 +1748,7 @@ $(document).ready(function () {
                                   success: function success() {
                                     // change unlike to like (class too) and decrement the likes counter
                                     unlike_button.attr({
-                                      class: 'like-button buttons like',
+                                      "class": 'like-button buttons like',
                                       value: 'Like'
                                     });
 

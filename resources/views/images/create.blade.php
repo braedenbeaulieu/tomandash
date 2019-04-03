@@ -4,9 +4,12 @@
 @endsection
 
 @section('content')
-<h1>New Image</h1>
+    <div class="container-fluid page-heading-section">
+        <h2 class="headings text-center page-heading-word">Upload Image</h2>
+    </div>
 <form method="POST" action="{{action ('ImageController@store')}}" enctype="multipart/form-data">
-    <label for="image_url">Upload Image: </label><input type="file" name="filename"><br/>
+    <label for="filename">Upload Image: </label>
+    <input type="file" name="filename"><br/>
     @include('partials.imageForm',
     ['buttonName' => 'Upload',
      'name'       => old('name'),
