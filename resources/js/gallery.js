@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-
+    // masonry stuff
     let $grid = $('.grid').imagesLoaded( function() {
         // init Masonry after all images have loaded
         $grid.masonry({
@@ -13,7 +13,26 @@ $(document).ready(function() {
         });
     });
 
-    $('#filter a').on('click', function() {
+    // dealing with tags
+    $('#filter a').on('click', function(e) {
+
+
+        // get the li
+        let target = $(e.target).parents();
+        // turn on highlight
+        target.addClass('highlight');
+
+        // if any other sibling has the class
+        if(target.siblings().hasClass('highlight')) {
+            // remove it
+            target.siblings().removeClass('highlight');
+        }
+
+
+
+
+
+
 
         let filterName = $(this).text().toLowerCase().replace(' ', '-');
 
@@ -38,29 +57,5 @@ $(document).ready(function() {
         }
         return(false);
     });
-
-
-
-
-
-
-
-    // for masonry stuff
-    // if($(window).width() >= 1110) {
-    //     $('grid').masonry({
-    //         // options
-    //         itemSelector: '.grid-item',
-    //         columnWidth: 370
-    //     });
-    // }
-    // // $(window).on('resize', function() {
-    // //     if($(window).width() >= 960) {
-    // //         grid.masonry({
-    // //             // options
-    // //             itemSelector: '.grid-item',
-    // //             columnWidth: 370
-    // //         });
-    // //     }
-    // // });
 
 });

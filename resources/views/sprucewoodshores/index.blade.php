@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="container-fluid page-heading-section" style="">
-        <h2 class="headings text-center page-heading-word">Sprucewood Shores Estate Winery</h2>
+        <h2 class="headings text-center page-heading-word">Sprucewood Shores Estate&nbsp;Winery</h2>
     </div>
     <div class="container the-wedding">
         <div class="row box">

@@ -93,6 +93,14 @@
                                 <ul class="dropdown-menu dropdown-menu-right mt-2">
                                     <li class="px-3 py-2">
 
+                                        @if(Auth::user()->role === 1)
+                                            <form class="form">
+                                                <div class="form-group pt-3">
+                                                    <a class="btn btn-primary btn-block" style="color: white;" href="{{url('gallery')}}">Admin Panel</a>
+                                                </div>
+                                            </form>
+                                        @endif
+
 
                                         <form class="form" role="form" method="post" action="{{route('logout')}}">
                                             @csrf
@@ -150,6 +158,7 @@
 <script type="text/javascript" src="{{ secure_asset('js/imagesLoaded.js') }}"></script>
 <script type="text/javascript" src="{{ secure_asset('js/lightbox.js') }}"></script>
 <script type="text/javascript" src="{{ secure_asset('js/gallery.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/rsvp.js') }}"></script>
 
 </body>
 </html>

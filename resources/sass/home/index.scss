@@ -1,5 +1,5 @@
 .home {
-    background: url('/CAKE/public/img/landing2.jpg') no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('../img/landing2.jpg') no-repeat;
     background-size: cover;
     background-position: center 30px;
     display: flex;
@@ -13,9 +13,9 @@
         top: 5%;
         font-size: 5em;
         font-weight: bold;
-        text-shadow: 0px 0px 10px rgba(0, 0, 0, .6);
+        text-shadow: 2px 2px 15px rgba(0, 0, 0, .9);
         //background: rgba(0, 0, 0, .5);
-        color: $white;
+        color: $p-gold;
         border: none;
     }
 }
@@ -24,7 +24,7 @@
     .home {
         h2 {
             font-size: 3em;
-            top: -30px;
+            top: 50px;
         }
     }
 }

@@ -34,12 +34,12 @@
 
 
         <ul id="filter" class="tags">
-            <li>
-                <a href="#">All</a>
+            <li class="highlight">
+                <a>All</a>
             </li>
             @foreach($tags as $t)
                 <li class="{{$t->name}}">
-                    <a href="#">{{$t->name}}</a>
+                    <a>{{$t->name}}</a>
                 </li>
             @endforeach
         </ul>

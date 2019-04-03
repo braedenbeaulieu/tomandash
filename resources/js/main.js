@@ -263,25 +263,6 @@ $(document).ready(function () {
                 });
 
             }
-            // if they click the show comments button
-            else if (target.hasClass('show-comments')) {
-                // php will show the button if there are more than 3 comments
-                // every comment after will have class 'hide-comment'
-
-                // slide up or down the rest of the comments
-                let show_comments = target;
-                let extra_comments = show_comments.siblings('.extra-comments');
-
-                if (extra_comments.is(':visible')) {
-                    extra_comments.slideUp();
-                    show_comments.text(`Show more comments`);
-                } else {
-                    extra_comments.slideDown();
-                    show_comments.text(`Hide more comments`);
-                }
-
-
-            }
             // when you click on the like button
             else if (target.hasClass('like')) {
 

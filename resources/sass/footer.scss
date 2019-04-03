@@ -4,16 +4,20 @@ footer {
     display: inline-flex;
     justify-content: center;
     margin: 0;
-    background: $dark-grey;
+    background: $p-blue-dark;
     padding: 10px 0;
 
     p {
         margin: 0 20px;
-        color: white;
+        color: $p-gold;
 
         a {
-            color: white;
+            color: $p-gold;
         }
+    }
+
+    &:hover {
+        background: $p-blue-dark;
     }
 }
 

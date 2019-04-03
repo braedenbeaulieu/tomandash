@@ -1,84 +1,16 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -88,18 +20,8 @@ video {
 }
 
 /* HTML5 display-role reset for older browsers */
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
   display: block;
 }
 
@@ -107,20 +29,16 @@ body {
   line-height: 1;
 }
 
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
 
-blockquote,
-q {
+blockquote, q {
   quotes: none;
 }
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
+blockquote:before, blockquote:after,
+q:before, q:after {
   content: "";
   content: none;
 }
@@ -130,20 +48,14 @@ table {
   border-spacing: 0;
 }
 
-*:hover {
-  background-color: transparent;
-}
-
 html {
   font-family: "Raleway", sans-serif;
   font-weight: 100;
 }
-
 html body {
   width: 100%;
   text-align: center;
 }
-
 html body h2 {
   margin: 120px 0 0;
   font-size: 60px;
@@ -152,42 +64,31 @@ html body h2 {
   border-bottom: 1px solid rgba(0, 0, 0, 0.8);
   color: rgba(0, 0, 0, 0.8);
 }
-
 html body p {
   font-size: 14px;
 }
-
 html body .error-message {
   color: #f44e42;
   margin: 8px 0;
 }
-
 html body a {
   text-decoration: none;
   color: black;
   transition: background 0.3s;
 }
-
 html body a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
-
-html body input:focus,
-html body select:focus,
-html body button:focus,
-html body .form-control:focus,
-html body .dropdown-toggle:focus {
+html body input:focus, html body select:focus, html body button:focus, html body .form-control:focus, html body .dropdown-toggle:focus {
   border-color: rgba(225, 86, 113, 0.4);
   box-shadow: 0 0px 1px rgba(225, 86, 113, 0.4) inset, 0 0 8px rgba(225, 86, 113, 0.4);
   outline: 0 none;
 }
-
 html body .btn-primary {
   background: #e15671;
   border-color: #e15671;
   transition: all 0.3s;
 }
-
 html body .btn-primary:hover {
   background-color: #e14b68;
   border-color: #e14b68;
@@ -200,7 +101,6 @@ html body .btn-primary:hover {
     padding-bottom: 20px;
   }
 }
-
 header .navbar-toggler-icon {
   color: white !important;
   font-size: 30px;
@@ -209,75 +109,65 @@ header .navbar-toggler-icon {
   border-radius: 4px;
   padding: 3px 0 34px;
 }
-
 header .navbar {
   background-color: #2a2e37;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
 }
-
 header .navbar-brand {
   align-items: center;
   font-family: "Dancing Script", cursive;
   color: white;
   transition: all 0.3s;
 }
-
 header .navbar-brand img {
   border-radius: 50%;
   width: 50px;
   height: 50px;
   display: none;
 }
-
 header .navbar-brand span {
   font-size: 2.5em;
   padding: 0 15px 0 0;
 }
-
 header .navbar-brand:hover {
   color: #ff879f;
   background-color: transparent;
 }
-
 header .navbar-nav li a {
   color: #eed3ab;
   letter-spacing: 0.5px;
   font-weight: lighter;
   transition: all 0.3s;
 }
-
 header .navbar-nav li a:hover {
   background-color: transparent;
   color: #ff879f;
 }
-
 header .facebook-button {
   background: #3b5998;
   width: 100%;
   text-align: center !important;
 }
-
 header .facebook-button a {
   color: white !important;
   text-align: center !important;
 }
-
 header .facebook-button a:hover {
   background: transparent;
 }
-
+header .login-dropdown {
+  background: #2a2e37;
+}
 header .login-dropdown .login-button {
   background: transparent;
   color: #ff879f;
   border-color: #ff879f;
 }
-
 header .login-dropdown .login-button:hover {
   background: #ff879f;
   color: #2a2e37;
   border-color: #2a2e37;
 }
-
 header .login-dropdown form {
   width: 200px;
 }
@@ -287,48 +177,44 @@ header .login-dropdown form {
     text-align: center;
   }
 }
-
 @media screen and (max-width: 520px) {
   header .navbar-brand {
     font-size: 0.8em;
   }
-
   header .navbar-toggler-icon {
     font-size: 25px;
     height: 25px;
     padding: 3px 0 29px;
   }
 }
-
 @media screen and (max-width: 350px) {
   header .navbar-brand {
     font-size: 0.7em;
   }
-
   header .navbar-toggler-icon {
     font-size: 22px;
     height: 22px;
     padding: 3px 0 27px;
   }
 }
-
 footer {
   width: 100%;
   text-align: center;
   display: inline-flex;
   justify-content: center;
   margin: 0;
-  background: #585860;
+  background: #2a2e37;
   padding: 10px 0;
 }
-
 footer p {
   margin: 0 20px;
-  color: white;
+  color: #eed3ab;
 }
-
 footer p a {
-  color: white;
+  color: #eed3ab;
+}
+footer:hover {
+  background: #2a2e37;
 }
 
 @media screen and (max-width: 740px) {
@@ -341,31 +227,26 @@ footer p a {
     padding: 10px 0;
     font-size: 10px;
   }
-
   footer p {
     text-align: center;
     margin: 10px auto;
     color: white;
     font-size: 10px;
   }
-
   footer p a {
     color: white;
   }
 }
-
 #blog {
   display: block;
   width: 100%;
   margin: 0 auto;
 }
-
 #blog #make-post {
   width: 600px;
   margin: 20px auto;
   padding: 0;
 }
-
 #blog #make-post textarea {
   width: 100%;
   margin: 0;
@@ -373,7 +254,6 @@ footer p a {
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
 }
-
 #blog #make-post .create-post {
   width: auto;
   margin: 7px 0 0 7px;
@@ -387,17 +267,14 @@ footer p a {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
 }
-
 #blog #make-post .create-post:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
-
 #blog #must-log-in {
   width: 600px;
   margin: 20px auto;
   padding: 0;
 }
-
 #blog #must-log-in textarea {
   width: 100%;
   margin: 0;
@@ -407,7 +284,6 @@ footer p a {
   background: rgba(0, 0, 0, 0.1);
   cursor: default;
 }
-
 #blog #must-log-in input {
   width: auto;
   margin: 7px 0 0 7px;
@@ -421,18 +297,15 @@ footer p a {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s;
 }
-
 #blog #must-log-in input:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
-
 #blog #posts {
   background: #f8fafc;
   width: 600px;
   margin: 0 auto;
   padding: 0 15px;
 }
-
 #blog #posts .post {
   transition: all 0.3s;
   margin: 10px auto 30px;
@@ -447,7 +320,6 @@ footer p a {
   border-radius: 10px;
   border: 0.75px solid rgba(0, 0, 0, 0.2);
 }
-
 #blog #posts .post .comments {
   width: 80%;
   margin: 15px 0 0 10%;
@@ -455,38 +327,31 @@ footer p a {
   padding-left: 3%;
   position: relative;
 }
-
 #blog #posts .post .comments .comment {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 430px;
 }
-
 #blog #posts .post .comments .comment .comment-pic {
   width: 40px;
   height: 40px;
 }
-
 #blog #posts .post .comments .comment .comment-words {
   width: 350px;
 }
-
 #blog #posts .post .comments .comment .comment-words .comment-name {
   margin-bottom: 10px;
   font-size: 12px;
   color: #e15671;
 }
-
 #blog #posts .post .comments .comment .comment-words .comment-body {
   width: 100%;
   font-size: 16px;
 }
-
 #blog #posts .post .comments .comment .dropdown {
   margin-left: 10px;
 }
-
 #blog #posts .post .comments .comment .dropdown button {
   background-color: transparent;
   border: none;
@@ -494,19 +359,16 @@ footer p a {
   padding: 0;
   text-align: center;
 }
-
 #blog #posts .post .comments .comment .dropdown button .fa-ellipsis-h {
   text-align: center;
   color: #ff879f;
   font-size: 20px;
   margin-bottom: 1px;
 }
-
 #blog #posts .post .comments .comment .dropdown .dropdown-menu.show {
   text-align: center;
   max-width: 50px;
 }
-
 #blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons {
   cursor: pointer;
   border: none;
@@ -515,17 +377,14 @@ footer p a {
   width: auto;
   font-size: 12px;
 }
-
 #blog #posts .post .comments .comment .dropdown .dropdown-menu.show .buttons:hover {
   color: #ff879f;
 }
-
 #blog #posts .post .comment-edit-form {
   width: 100%;
   display: block;
   margin: 15px 0 15px 50px;
 }
-
 #blog #posts .post .comment-edit-form textarea {
   width: 90%;
   height: 45px;
@@ -534,14 +393,12 @@ footer p a {
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
-
 #blog #posts .post .comment-edit-form .comment-edit-form-buttons {
   width: 60%;
   font-size: 12px;
   display: inline-flex;
   justify-content: flex-start;
 }
-
 #blog #posts .post .comment-edit-form .comment-edit-form-buttons input {
   width: auto;
   margin: 7px 0 0 7px;
@@ -555,11 +412,9 @@ footer p a {
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
 }
-
 #blog #posts .post .comment-edit-form .comment-edit-form-buttons input:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
-
 #blog #posts .post .comment-edit-form .comment-edit-form-buttons .close-form {
   margin: 10px 0 0 5px;
   padding: 0;
@@ -567,45 +422,38 @@ footer p a {
   width: 25px;
   border-radius: 50%;
 }
-
 #blog #posts .post img {
   border-radius: 50%;
   border: 0.75px solid rgba(0, 0, 0, 0.2);
   max-height: 50px;
   margin: 4px 7px 0 0;
 }
-
 #blog #posts .post .post-words {
   margin-top: 5px;
   max-width: 480px;
 }
-
 #blog #posts .post .post-words .author {
   width: 100%;
   margin-bottom: 15px;
   color: #e15671;
   font-size: 12px;
 }
-
 #blog #posts .post .post-words .post-body {
   width: 100%;
   overflow-wrap: break-word;
   line-height: 15px;
   font-size: 16px;
 }
-
 #blog #posts .post .post-words .comment-like {
   display: inline-flex;
   align-items: center;
   margin-left: -7px;
   padding-top: 10px;
 }
-
 #blog #posts .post .post-words .comment-like .like-counter {
   margin: 0 4px 0 0;
   font-size: 12px;
 }
-
 #blog #posts .post .post-words .comment-like .buttons {
   cursor: pointer;
   border: none;
@@ -614,72 +462,58 @@ footer p a {
   width: auto;
   font-size: 12px;
 }
-
 #blog #posts .post .post-words .comment-like .buttons:hover {
   color: #ff879f;
 }
-
 #blog #posts .post .post-words .comment-like .grey-button {
   color: rgba(0, 0, 0, 0.5);
 }
-
 #blog i.fa-ellipsis-h {
   text-align: center;
   color: #ff879f;
   font-size: 20px;
   margin-bottom: 1px;
 }
-
 #blog .dropdown {
   margin-left: 10px;
 }
-
 #blog .dropdown button {
   background-color: transparent;
   border: none;
   height: auto;
   padding: 0;
 }
-
 #blog .dropdown .dropdown-menu.show {
   text-align: center;
   max-width: 50px;
 }
-
 #blog .dropdown .dropdown-menu.show .delete-button {
   color: orangered;
 }
 
 @media screen and (max-width: 768px) {
-  #blog #must-log-in,
-  #blog #make-post {
+  #blog #must-log-in, #blog #make-post {
     width: 95%;
   }
-
   #blog #posts {
     width: 95%;
   }
-
   #blog #posts .post .post-words {
     width: 80%;
   }
-
   #blog #posts .post .comments {
     margin-left: 5px;
     width: 100%;
   }
-
   #blog #posts .post .comments .comment {
     width: 100%;
   }
-
   #blog #posts .post .comments .comment .comment-words {
     width: 79%;
   }
 }
-
 .home {
-  background: url("/CAKE/public/img/landing2.jpg") no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../img/landing2.jpg") no-repeat;
   background-size: cover;
   background-position: center 30px;
   display: flex;
@@ -688,30 +522,26 @@ footer p a {
   justify-content: center;
   align-items: center;
 }
-
 .home h2 {
   position: absolute;
   top: 5%;
   font-size: 5em;
   font-weight: bold;
-  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
-  color: #f8fafc;
+  text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.9);
+  color: #eed3ab;
   border: none;
 }
 
 @media screen and (max-width: 735px) {
   .home h2 {
     font-size: 3em;
-    top: -30px;
+    top: 50px;
   }
 }
-
 .ourstory h2 {
   margin-bottom: 0;
 }
-
-.ourstory .tom,
-.ourstory .ash {
+.ourstory .tom, .ourstory .ash {
   width: 30%;
   margin: 110px 0;
   background: #2a2e37;
@@ -719,18 +549,13 @@ footer p a {
   border-radius: 10px;
   padding: 15px 0;
 }
-
-.ourstory .tom h3,
-.ourstory .ash h3 {
+.ourstory .tom h3, .ourstory .ash h3 {
   margin-bottom: 10px;
   font-family: "Dancing Script", cursive;
   font-size: 2.3em;
   color: #e15671;
 }
-
-.ourstory .tom p,
-.ourstory .ash p {
-  text-indent: 20px;
+.ourstory .tom p, .ourstory .ash p {
   text-align: center;
   line-height: 24px;
   font-size: 1em;
@@ -738,24 +563,57 @@ footer p a {
   width: 90%;
   margin: 0 auto 100px;
 }
-
-.ourstory .tom p:last-of-type,
-.ourstory .ash p:last-of-type {
+.ourstory .tom p:last-of-type, .ourstory .ash p:last-of-type {
   margin-bottom: 0;
 }
-
 .ourstory .picture {
-  background: url("/CAKE/public/img/tallFlowerDarker.png") no-repeat;
+  background: url("../img/tallFlowerDarker.png") no-repeat;
   background-position: center 0;
   background-size: 80%;
   height: 1200px;
   width: 40%;
 }
 
-.rsvp-container {
+.guests-container {
   min-height: 100vh;
 }
+.guests-container p {
+  width: 100%;
+}
+.guests-container .guests-form {
+  background: #2a2e37;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px 80px 5px;
+  color: #eed3ab;
+}
+.guests-container .guests-form label {
+  margin: 10px 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+}
+.guests-container .guests-form label i {
+  color: #ff879f;
+  cursor: pointer;
+}
+.guests-container .guests-form button {
+  background: #2a2e37;
+  color: #ff879f;
+  transition: all 0.3s;
+  border: 1px solid #ff879f;
+}
+.guests-container .guests-form button:hover {
+  background-color: #ff879f;
+  color: #2a2e37;
+  border-color: #2a2e37;
+}
+.guests-container .guests-form input:hover, .guests-container .guests-form select:hover {
+  background: white;
+}
 
+.the-wedding {
+  margin-bottom: 100px;
+}
 .the-wedding .boxes {
   display: inline-flex;
   justify-content: space-around;
@@ -765,7 +623,6 @@ footer p a {
   margin: 100px 0;
   transition: all 0.3s;
 }
-
 .the-wedding .boxes .a-box {
   width: 350px;
   margin-bottom: 20px;
@@ -774,25 +631,21 @@ footer p a {
   position: relative;
   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
 }
-
 .the-wedding .boxes .a-box h3 {
   font-size: 1.3em;
   color: #eed3ab;
   margin-bottom: 10px;
   padding: 20px 0 10px;
 }
-
 .the-wedding .boxes .a-box a {
   text-decoration: none;
   transition: all 0.3s;
 }
-
 .the-wedding .boxes .a-box img {
   border-radius: 8px 8px 0 0;
   width: 100%;
   margin-bottom: -2px;
 }
-
 .the-wedding .boxes .a-box .small {
   display: none;
   text-align: center;
@@ -805,7 +658,6 @@ footer p a {
   font-weight: bolder !important;
   color: white !important;
 }
-
 .the-wedding .bottom-sentence {
   margin: 0 0 30px;
 }
@@ -814,42 +666,46 @@ footer p a {
   .the-wedding .boxes {
     margin: 50px auto;
   }
-
   .the-wedding .boxes .a-box {
     width: 80%;
   }
-
   .the-wedding .boxes .a-box h3 {
     font-size: 1em;
     padding: 14px 0 4px;
   }
 }
-
+.wedding-party {
+  min-height: 100vh;
+}
 .wedding-party .carousel-inner {
   margin-bottom: 200px;
+  background: #2a2e37;
+  border-radius: 10px;
+  padding: 20px 10px;
 }
-
-.wedding-party div.carousel-item h1 {
+.wedding-party .carousel-inner .carousel-item h1 {
   font-size: 40px;
   color: #e15671;
   margin-bottom: 15px;
   font-family: "Dancing Script", cursive;
 }
-
-.wedding-party div.carousel-item img {
+.wedding-party .carousel-inner .carousel-item img {
   max-width: 30rem;
   -webkit-filter: drop-shadow(5px 5px 5px grey);
           filter: drop-shadow(5px 5px 5px grey);
 }
-
-.wedding-party .carousel-control-prev-icon {
+.wedding-party .carousel-inner .carousel-item p {
+  color: #eed3ab;
+}
+.wedding-party .carousel-inner .carousel-control-prev-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%238b0000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
   cursor: pointer;
+  display: none;
 }
-
-.wedding-party .carousel-control-next-icon {
+.wedding-party .carousel-inner .carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%238b0000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
   cursor: pointer;
+  display: none;
 }
 
 .registry-container {
@@ -858,13 +714,11 @@ footer p a {
   padding: 10px 10px 20px;
   border-radius: 10px;
 }
-
 .registry-container h3 {
   font-size: 1.3em;
   color: #eed3ab;
   padding: 15px;
 }
-
 .registry-container p {
   color: #eed3ab;
   line-height: 20px;
@@ -872,7 +726,6 @@ footer p a {
   text-indent: 20px;
   margin-top: 30px;
 }
-
 .registry-container img {
   border-radius: 10px;
 }
@@ -886,59 +739,54 @@ footer p a {
   border-radius: 10px;
   color: #eed3ab;
 }
-
 .gallery-container a {
   color: #eed3ab;
   transition: all 0.3s;
 }
-
 .gallery-container a:hover {
   color: #ff879f;
   text-decoration: none;
   background: transparent;
 }
-
 .gallery-container .admin-controls {
   padding: 10px 0;
 }
-
 .gallery-container .gallery-links {
   display: inline-flex;
   width: 100%;
   justify-content: center;
 }
-
 .gallery-container .gallery-links a {
   margin: 0 10px;
   padding: 0;
   width: auto;
 }
-
 .gallery-container .tags {
   display: inline-flex;
   justify-content: flex-start;
   width: 100%;
   margin: 20px 0;
   padding: 0;
+  cursor: pointer;
 }
-
 .gallery-container .tags li {
   margin-left: 8px;
+  cursor: pointer;
 }
-
+.gallery-container .tags .highlight {
+  cursor: pointer;
+  color: #e15671;
+}
 .gallery-container .grid {
   margin: 0 0 0 10px;
   width: 100%;
 }
-
 .gallery-container .grid .grid-sizer {
   width: 33%;
 }
-
 .gallery-container .grid .picture {
   width: 31%;
 }
-
 .gallery-container .grid .picture a .galleryimage {
   max-width: 100%;
   border-radius: 4px;
@@ -950,23 +798,18 @@ footer p a {
     width: 750px;
   }
 }
-
 @media screen and (max-width: 800px) {
   .gallery-container {
     width: 80%;
   }
-
   .gallery-container .grid {
     margin: 0 auto;
   }
-
   .gallery-container .grid .grid-sizer {
     width: 100%;
   }
-
   .gallery-container .grid .picture {
     margin: 0 auto;
     width: 100%;
   }
 }
-
