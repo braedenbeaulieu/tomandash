@@ -1,25 +1,66 @@
 $(document).ready(function() {
-    $('ul#filter a').click(function() {
+
+
+
+    let $grid = $('.grid').imagesLoaded( function() {
+        // init Masonry after all images have loaded
+        $grid.masonry({
+            // set itemSelector so .grid-sizer is not used in layout
+            itemSelector: '.grid-item',
+            // use element for option
+            columnWidth: '.grid-sizer',
+            percentPosition: true
+        });
+    });
+
+    $('#filter a').on('click', function() {
 
         let filterName = $(this).text().toLowerCase().replace(' ', '-');
 
-        if (filterName == "all") {
-            $('ul#gallery li.hidden').fadeIn(1).removeClass('hidden');
-            $('ul#gallery li a').attr('data-lightbox','gallery');
+        if (filterName === "all") {
+            $('.d-none').show().removeClass('d-none');
+            $('.picture a').attr('data-lightbox','gallery');
+            $grid.masonry('layout');
         }
         else {
-            $('ul#gallery li').each(function() {
+            $('.picture').each(function() {
                 if(!$(this).hasClass(filterName)){
-                    $(this).fadeOut(1).addClass('hidden');
+                    $(this).hide().addClass('d-none');
                     $(this).find('a').attr('data-lightbox', '');
+
                 }
                 else {
-                    $(this).fadeIn(1).removeClass('hidden');
+                    $(this).show().removeClass('d-none');
                     $(this).find('a').attr('data-lightbox', 'gallery');
+                    $grid.masonry('layout');
                 }
-            })
+            });
         }
         return(false);
-    })
+    });
+
+
+
+
+
+
+
+    // for masonry stuff
+    // if($(window).width() >= 1110) {
+    //     $('grid').masonry({
+    //         // options
+    //         itemSelector: '.grid-item',
+    //         columnWidth: 370
+    //     });
+    // }
+    // // $(window).on('resize', function() {
+    // //     if($(window).width() >= 960) {
+    // //         grid.masonry({
+    // //             // options
+    // //             itemSelector: '.grid-item',
+    // //             columnWidth: 370
+    // //         });
+    // //     }
+    // // });
 
 });

@@ -35,7 +35,7 @@ class PostCommentController extends Controller
                     $comment_provider_id = Auth::user()->getProviderId();
 
                     if($comment_provider_id != 'is not on facebook') {
-                        $comment->avatar = 'http://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
+                        $comment->avatar = 'https://graph.facebook.com/' . $comment_provider_id . '/picture?type=square';
                     } else if($comment_provider_id === 'is not on facebook') {
                         $comment->avatar = 'img/GenericAvatar.jpg';
                     }

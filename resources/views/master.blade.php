@@ -1,5 +1,4 @@
-+<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
 
 <head>
     <meta name="description" content="">
@@ -78,6 +77,9 @@
                                         <div class="form-group text-center mb-2">
                                             <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot Password?</a></small>
                                         </div>
+                                        <div class="form-group text-center mb-2">
+                                            <small><a href="{{route('register')}}">Register</a></small>
+                                        </div>
                                     </form>
 
                                 </li>
@@ -141,9 +143,13 @@
 
 </footer>
 
-<script src="{{secure_asset('js/app.js')}}"></script>
-<script src="{{secure_asset('js/main.js')}}"></script>
-<script src="{{secure_asset('js/countdown.js')}}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/main.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/countdown.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/masonry.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/imagesLoaded.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/lightbox.js') }}"></script>
+<script type="text/javascript" src="{{ secure_asset('js/gallery.js') }}"></script>
 
 </body>
 </html>

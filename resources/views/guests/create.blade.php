@@ -10,7 +10,7 @@
         <h2 class="headings text-center page-heading-word" style="letter-spacing: .6em;">RSVP</h2>
     </div>
 
-    <div class="container">
+    <div class="container rsvp-container">
         <div class="row text-center">
 
                 <div class="col-sm-6 offset-sm-3 text-center justify-content-center">
@@ -73,41 +73,41 @@
                             @endif
                         </div>
 
-                        <div class="form-group hidden" id="guestname06">
-                            <label class="font-weight-bold" for="guestname06">Guest #6</label>
-                            <input type="text" class="form-control{{ $errors->has('guestname06') ? ' is-invalid' : '' }}" placeholder="Guest #6 Full Name..." name="guestname06" value="{{old('guestname06')}}">
-                            @if ($errors->has('guestname06'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('guestname06') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group hidden" id="guestname07">
-                            <label class="font-weight-bold" for="guestname07">Guest #7</label>
-                            <input type="text" class="form-control{{ $errors->has('guestname07') ? ' is-invalid' : '' }}" placeholder="Guest # 7 Full Name..." name="guestname07" value="{{old('guestname07')}}">
-                            @if ($errors->has('guestname07'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('guestname07') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group hidden" id="guestname08">
-                            <label class="font-weight-bold" for="guestname08">Guest #8</label>
-                            <input type="text" class="form-control{{ $errors->has('guestname08') ? ' is-invalid' : '' }}" placeholder="Guest #8 Full Name..." name="guestname08" value="{{old('guestname08')}}">
-                            @if ($errors->has('guestname08'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('guestname08') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group hidden" id="guestname09">
-                            <label class="font-weight-bold" for="guestname09">Guest #9</label>
-                            <input type="text" class="form-control{{ $errors->has('guestname09') ? ' is-invalid' : '' }}" placeholder="Guest #9 Full Name..." name="guestname09" value="{{old('guestname09')}}">
-                            @if ($errors->has('guestname09'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('guestname09') }}</strong></span>
-                            @endif
-                        </div>
-                        <div class="form-group hidden" id="guestname10">
-                            <label class="font-weight-bold" for="guestname10">Guest #10</label>
-                            <input type="text" class="form-control{{ $errors->has('guestname10') ? ' is-invalid' : '' }}" placeholder="Guest #10 Full Name..." name="guestname10" value="{{old('guestname10')}}">
-                            @if ($errors->has('guestname10'))
-                                <span class="invalid-feedback"><strong>{{ $errors->first('guestname10') }}</strong></span>
-                            @endif
-                        </div>
+                        {{--<div class="form-group hidden" id="guestname06">--}}
+                            {{--<label class="font-weight-bold" for="guestname06">Guest #6</label>--}}
+                            {{--<input type="text" class="form-control{{ $errors->has('guestname06') ? ' is-invalid' : '' }}" placeholder="Guest #6 Full Name..." name="guestname06" value="{{old('guestname06')}}">--}}
+                            {{--@if ($errors->has('guestname06'))--}}
+                                {{--<span class="invalid-feedback"><strong>{{ $errors->first('guestname06') }}</strong></span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group hidden" id="guestname07">--}}
+                            {{--<label class="font-weight-bold" for="guestname07">Guest #7</label>--}}
+                            {{--<input type="text" class="form-control{{ $errors->has('guestname07') ? ' is-invalid' : '' }}" placeholder="Guest # 7 Full Name..." name="guestname07" value="{{old('guestname07')}}">--}}
+                            {{--@if ($errors->has('guestname07'))--}}
+                                {{--<span class="invalid-feedback"><strong>{{ $errors->first('guestname07') }}</strong></span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group hidden" id="guestname08">--}}
+                            {{--<label class="font-weight-bold" for="guestname08">Guest #8</label>--}}
+                            {{--<input type="text" class="form-control{{ $errors->has('guestname08') ? ' is-invalid' : '' }}" placeholder="Guest #8 Full Name..." name="guestname08" value="{{old('guestname08')}}">--}}
+                            {{--@if ($errors->has('guestname08'))--}}
+                                {{--<span class="invalid-feedback"><strong>{{ $errors->first('guestname08') }}</strong></span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group hidden" id="guestname09">--}}
+                            {{--<label class="font-weight-bold" for="guestname09">Guest #9</label>--}}
+                            {{--<input type="text" class="form-control{{ $errors->has('guestname09') ? ' is-invalid' : '' }}" placeholder="Guest #9 Full Name..." name="guestname09" value="{{old('guestname09')}}">--}}
+                            {{--@if ($errors->has('guestname09'))--}}
+                                {{--<span class="invalid-feedback"><strong>{{ $errors->first('guestname09') }}</strong></span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
+                        {{--<div class="form-group hidden" id="guestname10">--}}
+                            {{--<label class="font-weight-bold" for="guestname10">Guest #10</label>--}}
+                            {{--<input type="text" class="form-control{{ $errors->has('guestname10') ? ' is-invalid' : '' }}" placeholder="Guest #10 Full Name..." name="guestname10" value="{{old('guestname10')}}">--}}
+                            {{--@if ($errors->has('guestname10'))--}}
+                                {{--<span class="invalid-feedback"><strong>{{ $errors->first('guestname10') }}</strong></span>--}}
+                            {{--@endif--}}
+                        {{--</div>--}}
 
                         <div class="form-group">
                             <label class="font-weight-bold" for="passcode">Pass Code</label>
@@ -126,7 +126,5 @@
 
         </div>
     </div>
-
-    <link rel="stylesheet" type="text/css" href="{{secure_asset('css/bob.css')}}">
 
 @endsection

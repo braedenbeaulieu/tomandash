@@ -93,6 +93,10 @@ class User extends Authenticatable
     }
 
     public function getFirstName($user) {
-        return strstr($user->name, ' ', true);
+        if(stripos($user->name, ' ') !== false) {
+            return strstr($user->name, ' ', true);
+        } else {
+            return $user->name;
+        }
     }
 }

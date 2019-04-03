@@ -81,7 +81,6 @@
 
     }
 
-
     // all the posts
     #posts {
         background: $white;
@@ -92,6 +91,7 @@
 
         // for every post
         .post {
+            transition: all .3s;
             margin: 10px auto 30px;
             background: white;
             padding: 10px;
@@ -131,7 +131,7 @@
                         .comment-name {
                             margin-bottom: 10px;
                             font-size: 12px;
-
+                            color: $p-pink;
                         }
 
                         .comment-body {
