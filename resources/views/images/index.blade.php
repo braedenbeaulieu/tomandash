@@ -62,7 +62,20 @@
             @foreach($images as $i)
                 <div class="picture grid-item @foreach($i->tags as $tag){{str_replace(' ', '-', strtolower($tag->name)) . ' '}} @endforeach ">
                     <a href="img/gallery/{{$i->image_url}}" data-lightbox="gallery" data-title="{{$i->description}}">
-                        <img src="img/gallery/{{$i->image_url}}" alt="{{$i->name}}: {{$i->description}}" class="galleryimage">
+                        <img class="galleryimage" src="img/gallery/{{$i->image_url}}" alt="{{$i->name}}: {{$i->description}}">
+                        @if(Auth::check())
+                            @if(Auth::user()->role === 1)
+                                <div class="dropdown edit-delete-image">
+                                    <button class="btn dropdown-toggle" title="edit and delete" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                    </button>
+                                    <div class="image-dropdown-menu-{{$i->id}} dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <input class="edit-button buttons" id="{{$i->id}}" type="button" value="Edit" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">
+                                        <input class="buttons delete-post delete-button" id="{{$i->id}}" type="button" value="Delete" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
                     </a>
                 </div>
             @endforeach
@@ -79,7 +92,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="addImageModalLabel">Upload Image</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                        <span style="color: #eed3ab;" aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
@@ -95,7 +108,7 @@
                         <label class="description-image" for="description">Description:
                             <textarea class="image-description" name="description">{{old('description')}}</textarea>
                         </label>
-                        <label for="tags">Choose Tags:
+                        <label class="tags-container" for="tags">Choose Tags:
                             @foreach($tags as $t)
                                 &nbsp;<input type="checkbox" name="tags[]" value="{{$t->id}}" {{--@if(in_array($t->id, $tagsArray)) checked @endif--}}>&nbsp;{{$t->name}}
                             @endforeach

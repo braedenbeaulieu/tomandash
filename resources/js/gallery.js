@@ -13,12 +13,10 @@ $(document).ready(function() {
     let error_message = $('<p></p>').attr('class', 'error-message').hide();
     let hasImageSelected = false;
     let hasDescription = false;
+    let hasTags = false;
 
     // if you click the submit button and its type is button
     $('.upload-image-submit').on('click', function() {
-        // if ($('.error-message')) {
-        //     error_message.fadeOut();
-        // }
         if($(this).attr('type') === 'button') {
             if(hasDescription === false) {
                 error_message.text('You must write an image description.').appendTo($('.description-image')).hide().fadeIn();
@@ -28,6 +26,11 @@ $(document).ready(function() {
                error_message.text('You must select an image.').appendTo($('.upload-image-container')).hide().fadeIn();
             }
 
+            // if hasImageSelected is false send error
+            if(hasTags === false) {
+                error_message.text('You must select at least one tag.').appendTo($('.tags-container')).hide().fadeIn();
+            }
+
         }
     });
 
@@ -35,11 +38,12 @@ $(document).ready(function() {
     $('.upload-image-button').on('click', function() {
         hasImageSelected = false;
         hasDescription = false;
+        hasTags = false;
     });
 
     // when you arent logged in
     $('.cant-upload').on('click', function() {
-        error_message.text('You must log in to upload an image.').appendTo($('.cant-upload').parents()).hide().fadeIn();
+        error_message.text('You must log in to upload an image.').appendTo($('.cant-upload').parent()).hide().fadeIn();
     });
 
     // when you click the upload image in the modal to find an image, check if theres an image there
@@ -47,27 +51,34 @@ $(document).ready(function() {
         hasImageSelected = true;
 
         // check if both things are true
-        if(hasDescription === true && hasImageSelected === true) {
+        if(hasDescription === true && hasImageSelected === true && hasTags === true) {
             $('.upload-image-submit').attr('type', 'submit');
-            console.log('button unlocked');
-        } else {
-            console.log('button locked');
         }
     });
 
     // when they click off of textarea, check if it's populated
     $('.image-description').on('blur', function() {
-        if(!$(this).val()) {
-           hasDescription = false;
-        } else {
+        if($(this).val()) {
             hasDescription = true;
         }
+
         // check if both things are true
-        if(hasDescription === true && hasImageSelected === true) {
+        if(hasDescription === true && hasImageSelected === true && hasTags === true) {
             $('.upload-image-submit').attr('type', 'submit');
-            console.log('button unlocked');
-        } else {
-            console.log('button locked');
+        }
+    });
+
+    // when they select a tag
+    $('.tags-container').on('click', function(e) {
+        if($(e.target).prop("checked") === true) {
+            hasTags = true;
+        } else if($(e.target).prop("checked") === false) {
+            hasTags = false;
+        }
+
+        // check if both things are true
+        if(hasDescription === true && hasImageSelected === true && hasTags === true) {
+            $('.upload-image-submit').attr('type', 'submit');
         }
     });
 
