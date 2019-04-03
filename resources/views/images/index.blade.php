@@ -1,21 +1,15 @@
 @extends('master')
+
 @section('title')
     Thomas and Ashley: Gallery
 @endsection
 
-
-
 @section('content')
-
-
-
-
-
-
 
     <div class="container-fluid page-heading-section">
         <h2 class="headings text-center page-heading-word">Gallery</h2>
     </div>
+
     <div class="gallery-container">
         {{--<div class="admin-controls d-none">--}}
             {{--<h3 class="pb-3">Admin Controls</h3>--}}
@@ -44,6 +38,7 @@
             </div>
         @endif
 
+        <p>Share a memory with us!  <span><a class="text-warning" href="{{action('ImageController@create')}}" > [ UPLOAD ] </a></span> your images and add to our story!</p>
 
         <ul id="filter" class="tags">
             <li class="highlight">
