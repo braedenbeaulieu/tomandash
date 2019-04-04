@@ -183,26 +183,64 @@ $(document).ready(function () {
       target.siblings().removeClass('highlight');
     }
 
-    var filterName = $(this).text().toLowerCase().replace(' ', '-');
+    var filterName = $(this).text().toLowerCase().replace(' ', '-'); // show the edit and delete buttons we hid
 
     if (filterName === "all") {
       $('.d-none').show().removeClass('d-none');
       $('.picture a').attr('data-lightbox', 'gallery');
+      $('.edit-delete-image').show();
       $grid.masonry('layout');
     } else {
       $('.picture').each(function () {
+        // if doesnt have the class of the filtername
         if (!$(this).hasClass(filterName)) {
+          // hide the element and hide the edit and delete button
           $(this).hide().addClass('d-none');
+          $(this).siblings('.edit-delete-image').hide(); // find the a and make the lightbox = ''
+
           $(this).find('a').attr('data-lightbox', '');
-        } else {
-          $(this).show().removeClass('d-none');
-          $(this).find('a').attr('data-lightbox', 'gallery');
-          $grid.masonry('layout');
-        }
+        } // if it does
+        else {
+            // remove the class
+            $(this).siblings('.edit-delete-image').show();
+            $(this).show().removeClass('d-none');
+            $(this).find('a').attr('data-lightbox', 'gallery'); // reset the grid
+
+            $grid.masonry('layout');
+          }
       });
     }
 
     return false;
+  });
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  }); // AJAX for edit and delete image
+
+  $('.grid').on('click', function (e) {
+    var target = $(e.target);
+
+    if (target.hasClass('delete-image-button')) {
+      var image_id = target.parent().parent().parent().attr('id');
+      console.log('delete button ' + image_id);
+      $.ajax({
+        url: '/CAKE/public/gallery/' + image_id,
+        type: 'delete',
+        data: {
+          image_id: image_id
+        },
+        success: function success() {
+          target.parent().parent().parent().hide().addClass('d-none');
+          $grid.masonry('layout');
+        },
+        error: function error(xhr, status, _error) {
+          console.log(status + " = " + _error);
+        }
+      });
+      $grid.masonry('layout');
+    }
   });
 });
 

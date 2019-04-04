@@ -1,5 +1,6 @@
 
 $(document).ready(function () {
+    const url = '/CAKE/public';
     let page_title = $('h2').text();
     let header_title = $('.header-links').children('.' + page_title.replace(/\s/g, '')).children('a');
 
@@ -13,7 +14,7 @@ $(document).ready(function () {
 
     if($('h2').text() === 'Guestbook') {
 
-        const url = '/tomandash';
+
 
         let error_message = $('<p></p>').attr('class', 'error-message').hide();
 

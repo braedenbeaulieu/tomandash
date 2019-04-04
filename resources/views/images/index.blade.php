@@ -53,7 +53,7 @@
         <div class="grid" id="gallery">
             <div class="grid-sizer"></div>
             @foreach($images as $i)
-                <div class="image-container grid-item">
+                <div class="image-container grid-item" id="{{$i->id}}">
                     <div class="picture @foreach($i->tags as $tag){{str_replace(' ', '-', strtolower($tag->name)) . ' '}} @endforeach ">
                         <a href="img/gallery/{{$i->image_url}}" data-lightbox="gallery" data-title="{{$i->description}}">
                             <img class="galleryimage" src="img/gallery/{{$i->image_url}}" alt="{{$i->name}}: {{$i->description}}">
@@ -62,13 +62,19 @@
                     </div>
                     @if(Auth::check())
                         @if(Auth::user()->role === 1)
-                            <div class="dropdown edit-delete-image">
+                            <div class="dropdown edit-delete-image e-d-{{$i->id}}">
                                 <button class="btn dropdown-toggle" title="edit and delete" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fas fa-ellipsis-h"></i>
                                 </button>
+
                                 <div class="image-dropdown-menu-{{$i->id}} dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <input class="edit-button buttons" id="{{$i->id}}" type="button" value="Edit" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">
-                                    <input class="buttons delete-post delete-button" id="{{$i->id}}" type="button" value="Delete" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">
+                                    {{--<input class="edit-image-button buttons" id="{{$i->id}}" type="button" value="Edit" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">--}}
+                                    {{--<input class="buttons delete-image delete-image-button" id="{{$i->id}}" type="button" value="Delete" data-toggle="collapse" data-target=".image-dropdown-menu-{{$i->id}}">--}}
+                                    {{--<form method="post" action="{{action('ImageController@destroy')}}">--}}
+                                        {{--<input type="submit" value="Delete">--}}
+                                    {{--</form>--}}
+                                    <button class="edit-image-button buttons">Edit</button>
+                                    <button class="buttons delete-image delete-image-button">Delete</button>
                                 </div>
                             </div>
                         @endif

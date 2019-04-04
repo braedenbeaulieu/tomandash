@@ -1442,6 +1442,7 @@ module.exports = g;
 /***/ (function(module, exports, __webpack_require__) {
 
 $(document).ready(function () {
+  var url = '/CAKE/public';
   var page_title = $('h2').text();
   var header_title = $('.header-links').children('.' + page_title.replace(/\s/g, '')).children('a');
   header_title.css('color', '#ff879f');
@@ -1452,7 +1453,6 @@ $(document).ready(function () {
   });
 
   if ($('h2').text() === 'Guestbook') {
-    var url = '/tomandash';
     var error_message = $('<p></p>').attr('class', 'error-message').hide();
     window.user_info = {
       user_id: $('#whos-logged-in').attr('class'),

@@ -50,7 +50,7 @@ Route::post('/guests', 'GuestController@store');
 Route::get('/guests/thankyou', function () {return view('/guests/thankyou');});
 
 //Gallery Routes
-Route::resource('/gallery', 'ImageController', ['except' => ['show']]);
+Route::resource('/gallery', 'ImageController');
 Route::resource('tags', 'TagController', ['except' => ['show']]);
 
 // For Admin Panel

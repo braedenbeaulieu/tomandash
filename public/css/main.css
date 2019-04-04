@@ -878,7 +878,9 @@ footer:hover {
   width: 100%;
 }
 .gallery-container .grid .image-container .picture a .galleryimage {
+  min-width: 100%;
   max-width: 100%;
+  width: 100%;
   border-radius: 4px;
   margin: 10px 0;
 }
@@ -966,7 +968,10 @@ footer:hover {
   .gallery-container .grid .grid-sizer {
     width: 100%;
   }
-  .gallery-container .grid .picture {
+  .gallery-container .grid .image-container {
+    width: 100%;
+  }
+  .gallery-container .grid .image-container .picture {
     margin: 0 auto;
     width: 100%;
   }
