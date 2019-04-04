@@ -57,3 +57,5 @@ Route::get('/guests/thankyou', function () {return view('/guests/thankyou');});
 Route::resource('/gallery', 'ImageController', ['except' => ['show']]);
 Route::resource('tags', 'TagController', ['except' => ['show']]);
 
+// For Admin Panel
+Route::get('/admin', function () {return view('/admin.index');});

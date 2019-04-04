@@ -97,7 +97,7 @@
                                             @if(Auth::user()->role === 1)
                                                 <form class="form">
                                                     <div class="form-group pt-3">
-                                                        <a class="btn btn-primary btn-block" style="color: white;" href="{{url('gallery')}}">Admin Panel</a>
+                                                        <a class="btn btn-primary btn-block" style="color: white;" href="{{url('admin')}}">Admin Panel</a>
                                                     </div>
                                                 </form>
                                             @endif
