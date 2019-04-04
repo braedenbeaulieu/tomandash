@@ -7,6 +7,19 @@
     border-radius: 10px;
     color: $p-gold;
 
+    button.btn.btn-primary {
+        background: $p-blue-dark;
+        border: 1px solid $p-pink-light;
+        color: $p-pink-light;
+        transition: all .3s;
+
+        &:hover {
+            background: $p-pink-light;
+            border-color: $p-blue-dark;
+            color: $p-blue-dark;
+        }
+    }
+
     p {
         a {
             color: $p-pink;
@@ -22,15 +35,11 @@
         color: $p-gold;
         transition: all .3s;
 
-       &:hover {
+        &:hover {
            color: $p-pink-light;
            text-decoration: none;
            background: transparent;
-       }
-    }
-
-    .admin-controls {
-        padding: 10px 0;
+        }
     }
 
     .gallery-links {
@@ -48,6 +57,7 @@
     .tags {
         display: inline-flex;
         justify-content: center;
+        flex-wrap: wrap;
         width: 100%;
         margin: 20px 0;
         padding: 0;
@@ -72,24 +82,36 @@
             width: 33%;
         }
 
-        .picture {
-            width: 31%;
+        .image-container {
             position: relative;
-            a {
-                .galleryimage {
-                    max-width: 100%;
-                    border-radius: 4px;
-                    margin: 10px 0;
-                }
+            width: 31%;
 
-                .edit-delete-image {
-                    position: absolute;
-                    bottom: 12px;
-                    right: 0;
-                    background: rgba(255, 255, 255, .5);
+            .picture {
+                width: 100%;
+                a {
+                    .galleryimage {
+                        max-width: 100%;
+                        border-radius: 4px;
+                        margin: 10px 0;
+                    }
+
+                }
+            }
+            .edit-delete-image {
+                button {
+                    background: rgba(255, 255, 255, .4);
                     border-radius: 4px 0 4px 0;
-                    color: $p-gold;
+                    color: $p-pink;
+                    padding: 0 4px;
+                    position: absolute;
+                    bottom: 13px;
+                    right: 0;
                     z-index: 5;
+                    transition: all .3s;
+
+                    &:hover {
+                        background: rgba(255, 255, 255, .8);
+                    }
                 }
             }
         }
