@@ -38,8 +38,6 @@
             </div>
         @endif
 
-        <p>Share a memory with us!  <span><a class="text-warning" href="{{action('ImageController@create')}}" > [ UPLOAD ] </a></span> your images and add to our story!</p>
-
         <ul id="filter" class="tags">
             <li class="highlight">
                 <a>All</a>
@@ -78,9 +76,6 @@
 
     </div>
 
-
-
-    <!-- Modal -->
     <div class="upload-modal modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="addImageModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -94,7 +89,6 @@
                     <form class="upload-form" method="POST" action="{{action ('ImageController@store')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="upload-image-container">
-                            {{--<label for="filename"></label>--}}
                             <input class="btn" type="file" name="filename">
 
                         </div>

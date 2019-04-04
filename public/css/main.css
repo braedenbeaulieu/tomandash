@@ -241,11 +241,12 @@ footer:hover {
   display: block;
   width: 100%;
   margin: 0 auto;
+  min-height: 100vh;
 }
 #blog .guestbook-container {
   background: #2a2e37;
   width: 600px;
-  margin: 20px auto 0;
+  margin: 20px auto 40px;
   border-radius: 10px;
 }
 #blog .guestbook-container .message {

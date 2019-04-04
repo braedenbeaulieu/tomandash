@@ -1452,7 +1452,7 @@ $(document).ready(function () {
   });
 
   if ($('h2').text() === 'Guestbook') {
-    var url = '/CAKE/public';
+    var url = '/tomandash';
     var error_message = $('<p></p>').attr('class', 'error-message').hide();
     window.user_info = {
       user_id: $('#whos-logged-in').attr('class'),
@@ -1525,12 +1525,12 @@ $(document).ready(function () {
               // get comment id
               var post_id = target.attr('id');
               $.ajax({
-                url: url + '/guestbook' + post_id,
+                url: url + '/guestbook/' + post_id,
                 type: 'delete',
                 data: {
                   post_id: post_id
                 },
-                success: function success(response) {
+                success: function success() {
                   // hide from view
                   target.parent().parent().parent().parent().parent().slideUp();
                 },

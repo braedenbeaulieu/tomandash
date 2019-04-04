@@ -13,7 +13,7 @@ $(document).ready(function () {
 
     if($('h2').text() === 'Guestbook') {
 
-        const url = '/CAKE/public';
+        const url = '/tomandash';
 
         let error_message = $('<p></p>').attr('class', 'error-message').hide();
 
@@ -97,10 +97,10 @@ $(document).ready(function () {
                 let post_id = target.attr('id');
 
                 $.ajax({
-                    url: url + '/guestbook' + post_id,
+                    url: url + '/guestbook/' + post_id,
                     type: 'delete',
                     data: {post_id: post_id},
-                    success: function (response) {
+                    success: function () {
                         // hide from view
                         target.parent().parent().parent().parent().parent().slideUp();
                     },
