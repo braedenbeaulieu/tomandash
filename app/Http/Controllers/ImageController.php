@@ -47,13 +47,13 @@ class ImageController extends Controller
         return view('images.edit', compact("image", "tags", "tagsArray"));
     }
 
-    public function update(Request $request, $image) {
+    public function update(Request $request) {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
         $formdata = $request->all();
-        $image = Image::findOrFail($image);
+        $image = Image::findOrFail($request->name);
         $image->update($formdata);
         $image->tags()->sync($request->tags);
         return  redirect('gallery');

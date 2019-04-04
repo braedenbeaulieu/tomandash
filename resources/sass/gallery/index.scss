@@ -100,6 +100,13 @@
                 }
             }
             .edit-delete-image {
+                text-align: center;
+                margin: 0 auto;
+
+                .dropdown-toggle::after {
+                    display:none;
+                }
+
                 button {
                     background: rgba(255, 255, 255, .4);
                     border-radius: 4px 0 4px 0;
@@ -115,6 +122,24 @@
                         background: rgba(255, 255, 255, .8);
                     }
                 }
+
+                .dropdown-menu.show {
+                    width: 75px;
+
+                    input {
+                        margin: 0 auto;
+                        border: none;
+                        background: none;
+                        color: $p-pink;
+                        font-size: 12px;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $p-pink-light;
+                        }
+                    }
+                }
+
             }
         }
     }

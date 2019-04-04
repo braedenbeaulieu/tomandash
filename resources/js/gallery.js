@@ -145,7 +145,7 @@ $(document).ready(function() {
         let target = $(e.target);
         if(target.hasClass('delete-image-button')) {
             let image_id = target.parent().parent().parent().attr('id');
-            console.log('delete button ' + image_id);
+
             $.ajax({
                 url: '/CAKE/public/gallery/' + image_id,
                 type: 'delete',
@@ -156,10 +156,90 @@ $(document).ready(function() {
                 },
                 error: function (xhr, status, error) {
                     console.log(status + " = " + error);
+                    target.parent().parent().parent().hide().addClass('d-none');
+                    $grid.masonry('layout');
                 }
             });
             $grid.masonry('layout');
+
+        // edit image
+        } else if(target.hasClass('edit-image-button')) {
+
+            // get values
+            let image_id = "";
+            let image_description = "";
+            let image_tags = "";
+            let image_src = "";
+            let image_action = "";
+
+            image_id = target.attr('id');
+            image_action = 'https://bbeaulieu709.scweb.ca/CAKE/public/gallery/' + image_id;
+            image_description = target.parent().parent().siblings().children('#anchor').attr('data-title');
+            image_tags = target.parent().parent().siblings().attr('id');
+            image_src = target.parent().parent().siblings().children('#anchor').attr('href');
+            image_tags = image_tags.trim().split(' ');
+
+            // populate the modal
+            let edit_image_form = $('.edit-image-form');
+            edit_image_form.attr('action', image_action);
+            edit_image_form.siblings('img').attr('src', image_src);
+            edit_image_form.children('#name').children('input').attr('value', image_id);
+            edit_image_form.children('#description').children('textarea').val(image_description);
+
+            // gave up on making the tags thing happen
+
+            // get an array of all tags the run through it and check off the boxes you need to
+            // let allTags = edit_image_form.children('#tags').children('input');
+            // let i = 0;
+            // image_tags.forEach(function(tag) {
+            //     console.log(allTags[i].id.toLowerCase());
+            //
+            //     if(tag === allTags[i].id.toLowerCase()) {
+            //         allTags[i].checked = true;
+            //         console.log($(this));
+            //     }
+            //
+            //     i++;
+            // });
+
+
+
         }
     });
+
+    // when you click edit image submit button
+    // $('.edit-image-submit').on('click', function(e) {
+    //
+    //     let target = $(e.target);
+    //
+    //     // get data
+    //     let updated_image_description = target.parent().siblings('#description').children('textarea').val();
+    //     let updated_images_tags;
+    //
+    //     console.log(`${updated_image_description}`);
+    //
+    //     // send the updated data to the controller
+    //
+    //     // $.ajax({
+    //     //     url: 'CAKE/pubic/gallery/' + image_id,
+    //     //     type: 'put',
+    //     //     headers: {
+    //     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     //     },
+    //     //     data: {
+    //     //
+    //     //     },
+    //     //     success: function(response) {
+    //     //         console.log(response);
+    //     //
+    //     //
+    //     //     },
+    //     //     error: function (xhr, status, error) {
+    //     //         // display error message
+    //     //         console.log(xhr + status + error);
+    //     //         //error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
+    //     //     }
+    //     // });
+    // });
 
 });
