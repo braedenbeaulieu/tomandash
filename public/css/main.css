@@ -878,9 +878,18 @@ footer:hover {
   width: 100%;
 }
 .gallery-container .grid .image-container .picture a .galleryimage {
+  min-width: 100%;
   max-width: 100%;
+  width: 100%;
   border-radius: 4px;
   margin: 10px 0;
+}
+.gallery-container .grid .image-container .edit-delete-image {
+  text-align: center;
+  margin: 0 auto;
+}
+.gallery-container .grid .image-container .edit-delete-image .dropdown-toggle::after {
+  display: none;
 }
 .gallery-container .grid .image-container .edit-delete-image button {
   background: rgba(255, 255, 255, 0.4);
@@ -895,6 +904,20 @@ footer:hover {
 }
 .gallery-container .grid .image-container .edit-delete-image button:hover {
   background: rgba(255, 255, 255, 0.8);
+}
+.gallery-container .grid .image-container .edit-delete-image .dropdown-menu.show {
+  width: 75px;
+}
+.gallery-container .grid .image-container .edit-delete-image .dropdown-menu.show input {
+  margin: 0 auto;
+  border: none;
+  background: none;
+  color: #e15671;
+  font-size: 12px;
+  cursor: pointer;
+}
+.gallery-container .grid .image-container .edit-delete-image .dropdown-menu.show input:hover {
+  color: #ff879f;
 }
 
 .upload-modal {
@@ -966,7 +989,10 @@ footer:hover {
   .gallery-container .grid .grid-sizer {
     width: 100%;
   }
-  .gallery-container .grid .picture {
+  .gallery-container .grid .image-container {
+    width: 100%;
+  }
+  .gallery-container .grid .image-container .picture {
     margin: 0 auto;
     width: 100%;
   }
