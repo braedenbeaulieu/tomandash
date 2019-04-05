@@ -10,7 +10,7 @@ use App\Http\Requests\ImageRequest;
 class ImageController extends Controller
 {
     public function __construct() {
-        $this->middleware('auth', ['only' => ['edit', 'destroy']]);
+        $this->middleware('isAdmin', ['only' => ['edit', 'destroy']]);
     }
     public function index() {
         $images = Image::all();
@@ -47,20 +47,21 @@ class ImageController extends Controller
         return view('images.edit', compact("image", "tags", "tagsArray"));
     }
 
-    public function update(Request $request, $image) {
+    public function update(Request $request) {
         $request->validate([
             'name' => 'required',
             'description' => 'required'
         ]);
         $formdata = $request->all();
-        $image = Image::findOrFail($image);
+        $image = Image::findOrFail($request->name);
         $image->update($formdata);
         $image->tags()->sync($request->tags);
         return  redirect('gallery');
     }
-    public function destroy($image_id) {
-        $image = Image::findOrFail($image_id);
-        $image->delete();
-        return redirect('gallery');
+    public function destroy(Request $request) {
+        if($request->ajax()) {
+            $image = Image::findOrFail($request->image_id);
+            $image->delete();
+        }
     }
 }

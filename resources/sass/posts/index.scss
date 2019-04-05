@@ -9,7 +9,7 @@
     .guestbook-container {
         background: $p-blue-dark;
         width: 600px;
-        margin: 20px auto 0;
+        margin: 20px auto 40px;
         border-radius: 10px;
 
         .message {
@@ -34,11 +34,11 @@
 
             // post button
             .create-post {
-                color: $p-pink;
+                color: $p-pink-light;
                 width: auto;
                 margin: 7px 0 0 7px;
                 display: block;
-                border: 1px solid $p-pink;
+                border: 1px solid $p-pink-light;
                 border-radius: 2px;
                 padding: 10px 17px;
                 background: $p-blue-dark;
@@ -49,8 +49,9 @@
 
                 // on hover
                 &:hover {
+                    cursor: pointer;
                     color: $p-blue-dark;
-                    background: $p-pink;
+                    background: $p-pink-light;
                     border-color: $p-blue-dark;
                     box-shadow: 1px 1px 5px rgba(0, 0, 0, .1);
                 }
@@ -103,7 +104,7 @@
         // all the posts
         #posts {
             background: $p-blue-dark;
-            border-radius: 0 0 4px 4px;
+            border-radius: 0 0 10px 10px;
             width: 600px;
             margin: 0 auto;
             padding: 0 30px;

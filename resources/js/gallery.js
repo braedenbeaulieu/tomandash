@@ -1,14 +1,4 @@
 $(document).ready(function() {
-
-
-
-
-
-
-
-
-
-
     // error handling
     let error_message = $('<p></p>').attr('class', 'error-message').hide();
     let hasImageSelected = false;
@@ -80,19 +70,6 @@ $(document).ready(function() {
             $('.upload-image-submit').attr('type', 'submit');
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
     // masonry stuff
     let $grid = $('.grid').imagesLoaded( function() {
         // init Masonry after all images have loaded
@@ -120,34 +97,149 @@ $(document).ready(function() {
             target.siblings().removeClass('highlight');
         }
 
-
-
-
-
-
-
         let filterName = $(this).text().toLowerCase().replace(' ', '-');
 
+        // show the edit and delete buttons we hid
         if (filterName === "all") {
             $('.d-none').show().removeClass('d-none');
             $('.picture a').attr('data-lightbox','gallery');
+            $('.edit-delete-image').show();
+
             $grid.masonry('layout');
         }
         else {
             $('.picture').each(function() {
+                // if doesnt have the class of the filtername
                 if(!$(this).hasClass(filterName)){
+                    // hide the element and hide the edit and delete button
                     $(this).hide().addClass('d-none');
+
+                    $(this).siblings('.edit-delete-image').hide();
+                    // find the a and make the lightbox = ''
                     $(this).find('a').attr('data-lightbox', '');
 
                 }
+                // if it does
                 else {
+                    // remove the class
+                    $(this).siblings('.edit-delete-image').show();
                     $(this).show().removeClass('d-none');
                     $(this).find('a').attr('data-lightbox', 'gallery');
+                    // reset the grid
                     $grid.masonry('layout');
                 }
             });
         }
         return(false);
     });
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    // AJAX for edit and delete image
+    $('.grid').on('click', function(e) {
+        let target = $(e.target);
+        if(target.hasClass('delete-image-button')) {
+            let image_id = target.parent().parent().parent().attr('id');
+
+            $.ajax({
+                url: '/CAKE/public/gallery/' + image_id,
+                type: 'delete',
+                data: {image_id: image_id},
+                success: function() {
+                    target.parent().parent().parent().hide().addClass('d-none');
+                    $grid.masonry('layout');
+                },
+                error: function (xhr, status, error) {
+                    console.log(status + " = " + error);
+                    target.parent().parent().parent().hide().addClass('d-none');
+                    $grid.masonry('layout');
+                }
+            });
+            $grid.masonry('layout');
+
+        // edit image
+        } else if(target.hasClass('edit-image-button')) {
+
+            // get values
+            let image_id = "";
+            let image_description = "";
+            let image_tags = "";
+            let image_src = "";
+            let image_action = "";
+
+            image_id = target.attr('id');
+            image_action = 'https://bbeaulieu709.scweb.ca/CAKE/public/gallery/' + image_id;
+            image_description = target.parent().parent().siblings().children('#anchor').attr('data-title');
+            image_tags = target.parent().parent().siblings().attr('id');
+            image_src = target.parent().parent().siblings().children('#anchor').attr('href');
+            image_tags = image_tags.trim().split(' ');
+
+            // populate the modal
+            let edit_image_form = $('.edit-image-form');
+            edit_image_form.attr('action', image_action);
+            edit_image_form.siblings('img').attr('src', image_src);
+            edit_image_form.children('#name').children('input').attr('value', image_id);
+            edit_image_form.children('#description').children('textarea').val(image_description);
+
+            // gave up on making the tags thing happen
+
+            // get an array of all tags the run through it and check off the boxes you need to
+            // let allTags = edit_image_form.children('#tags').children('input');
+            // let i = 0;
+            // image_tags.forEach(function(tag) {
+            //     console.log(allTags[i].id.toLowerCase());
+            //
+            //     if(tag === allTags[i].id.toLowerCase()) {
+            //         allTags[i].checked = true;
+            //         console.log($(this));
+            //     }
+            //
+            //     i++;
+            // });
+
+
+
+        }
+    });
+
+    // when you click edit image submit button
+    // $('.edit-image-submit').on('click', function(e) {
+    //
+    //     let target = $(e.target);
+    //
+    //     // get data
+    //     let updated_image_description = target.parent().siblings('#description').children('textarea').val();
+    //     let updated_images_tags;
+    //
+    //     console.log(`${updated_image_description}`);
+    //
+    //     // send the updated data to the controller
+    //
+    //     // $.ajax({
+    //     //     url: 'CAKE/pubic/gallery/' + image_id,
+    //     //     type: 'put',
+    //     //     headers: {
+    //     //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //     //     },
+    //     //     data: {
+    //     //
+    //     //     },
+    //     //     success: function(response) {
+    //     //         console.log(response);
+    //     //
+    //     //
+    //     //     },
+    //     //     error: function (xhr, status, error) {
+    //     //         // display error message
+    //     //         console.log(xhr + status + error);
+    //     //         //error_message.text('This post no longer exists.').appendTo(target.parent().parent()).hide().fadeIn();
+    //     //     }
+    //     // });
+    // });
 
 });
