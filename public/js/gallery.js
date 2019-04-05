@@ -102,6 +102,12 @@ $(document).ready(function () {
 
   $('.upload-image-submit').on('click', function () {
     if ($(this).attr('type') === 'button') {
+      // if hasTags is false send error
+      if (hasTags === false) {
+        error_message.text('You must select at least one tag.').appendTo($('.tags-container')).hide().fadeIn();
+      } // if hasImageSelected is false send error
+
+
       if (hasDescription === false) {
         error_message.text('You must write an image description.').appendTo($('.description-image')).hide().fadeIn();
       } // if hasImageSelected is false send error
@@ -109,11 +115,6 @@ $(document).ready(function () {
 
       if (hasImageSelected === false) {
         error_message.text('You must select an image.').appendTo($('.upload-image-container')).hide().fadeIn();
-      } // if hasImageSelected is false send error
-
-
-      if (hasTags === false) {
-        error_message.text('You must select at least one tag.').appendTo($('.tags-container')).hide().fadeIn();
       }
     }
   }); // everytime you go to upload an image set these to false

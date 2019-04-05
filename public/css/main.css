@@ -241,11 +241,12 @@ footer:hover {
   display: block;
   width: 100%;
   margin: 0 auto;
+  min-height: 100vh;
 }
 #blog .guestbook-container {
   background: #2a2e37;
   width: 600px;
-  margin: 20px auto 0;
+  margin: 20px auto 40px;
   border-radius: 10px;
 }
 #blog .guestbook-container .message {
@@ -265,11 +266,11 @@ footer:hover {
   border-radius: 8px;
 }
 #blog .guestbook-container #make-post .create-post {
-  color: #e15671;
+  color: #ff879f;
   width: auto;
   margin: 7px 0 0 7px;
   display: block;
-  border: 1px solid #e15671;
+  border: 1px solid #ff879f;
   border-radius: 2px;
   padding: 10px 17px;
   background: #2a2e37;
@@ -279,8 +280,9 @@ footer:hover {
   transition: all 0.3s;
 }
 #blog .guestbook-container #make-post .create-post:hover {
+  cursor: pointer;
   color: #2a2e37;
-  background: #e15671;
+  background: #ff879f;
   border-color: #2a2e37;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
@@ -320,7 +322,7 @@ footer:hover {
 }
 #blog .guestbook-container #posts {
   background: #2a2e37;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0 0 10px 10px;
   width: 600px;
   margin: 0 auto;
   padding: 0 30px;
@@ -807,6 +809,17 @@ footer:hover {
   border-radius: 10px;
   color: #eed3ab;
 }
+.gallery-container button.btn.btn-primary {
+  background: #2a2e37;
+  border: 1px solid #ff879f;
+  color: #ff879f;
+  transition: all 0.3s;
+}
+.gallery-container button.btn.btn-primary:hover {
+  background: #ff879f;
+  border-color: #2a2e37;
+  color: #2a2e37;
+}
 .gallery-container p a {
   color: #e15671;
   transition: all 0.3s;
@@ -823,9 +836,6 @@ footer:hover {
   text-decoration: none;
   background: transparent;
 }
-.gallery-container .admin-controls {
-  padding: 10px 0;
-}
 .gallery-container .gallery-links {
   display: inline-flex;
   width: 100%;
@@ -839,6 +849,7 @@ footer:hover {
 .gallery-container .tags {
   display: inline-flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   margin: 20px 0;
   padding: 0;
@@ -859,23 +870,31 @@ footer:hover {
 .gallery-container .grid .grid-sizer {
   width: 33%;
 }
-.gallery-container .grid .picture {
-  width: 31%;
+.gallery-container .grid .image-container {
   position: relative;
+  width: 31%;
 }
-.gallery-container .grid .picture a .galleryimage {
+.gallery-container .grid .image-container .picture {
+  width: 100%;
+}
+.gallery-container .grid .image-container .picture a .galleryimage {
   max-width: 100%;
   border-radius: 4px;
   margin: 10px 0;
 }
-.gallery-container .grid .picture a .edit-delete-image {
-  position: absolute;
-  bottom: 12px;
-  right: 0;
-  background: rgba(255, 255, 255, 0.5);
+.gallery-container .grid .image-container .edit-delete-image button {
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 4px 0 4px 0;
-  color: #eed3ab;
+  color: #e15671;
+  padding: 0 4px;
+  position: absolute;
+  bottom: 13px;
+  right: 0;
   z-index: 5;
+  transition: all 0.3s;
+}
+.gallery-container .grid .image-container .edit-delete-image button:hover {
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .upload-modal {
@@ -957,4 +976,27 @@ footer:hover {
   border-radius: 10px;
   padding: 20px;
   margin: 20px 0;
+}
+
+.admin-container {
+  background: #2a2e37;
+  border-radius: 10px;
+  color: #eed3ab;
+  margin: 30px auto;
+}
+.admin-container h3 {
+  cursor: default;
+}
+.admin-container .nav-item {
+  cursor: pointer;
+}
+
+.spacing {
+  min-height: 65vh;
+}
+.spacing .guest-list-container {
+  background: #2a2e37;
+  border-radius: 10px;
+  color: #eed3ab;
+  margin: 30px auto;
 }
