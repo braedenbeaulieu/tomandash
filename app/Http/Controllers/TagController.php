@@ -20,7 +20,7 @@ class TagController extends Controller
     public function store(TagRequest $request) {
         $formData = $request->all();
         Tag::create($formData);
-        return redirect('gallery');
+        return redirect('admin');
     }
     public function edit($tag) {
         $tag = Tag::findOrFail($tag);
@@ -30,10 +30,10 @@ class TagController extends Controller
         $formdata = $request->all();
         $tag = Tag::findOrFail($tag);
         $tag->update($formdata);
-        return  redirect('gallery');
+        return  redirect('admin');
     }
     public function destroy(Tag $tag) {
         $tag->delete();
-        return redirect('gallery');
+        return redirect('admin');
     }
 }

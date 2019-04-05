@@ -85,16 +85,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form class="add-tag-form" method="POST" action="{{action ('ImageController@store')}}" enctype="multipart/form-data">
+                    <form class="add-tag-form" method="POST" action="{{action ('TagController@store')}}" enctype="multipart/form-data">
                         @csrf
-                        {{ csrf_field() }}
-                        <label for="name">Tag Name: </label><input name="name" type="text"><br/>
-                        <input type="submit" value="Add Tag">
+                        <label for="name">Tag Name: </label>
+                        <input name="name" type="text"><br/>
 
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <input type="button" class="btn btn-primary add-tag-submit" value="Add">
+                            <input type="submit" class="btn btn-primary add-tag-submit" value="Add">
                         </div>
                     </form>
                 </div>
