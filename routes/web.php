@@ -36,9 +36,6 @@ Route::delete('/guestbook/comment/{comment_id}', 'PostCommentController@destroy'
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
-// Admin Routes
-Route::get('/admin', function () {return view('/admin.index');});
-
 Route::get('/ourstory', function () {return view('/ourstory.index');});
 Route::get('/thewedding', function () {return view('/thewedding.index');});
 Route::get('/weddingparty', function () {return view('/weddingparty.index');});
@@ -50,12 +47,15 @@ Route::get('/sprucewoodshores', function () {return view('/sprucewoodshores.inde
 // RSVP Routes
 Route::get('/guests/create', 'GuestController@create');
 Route::post('/guests', 'GuestController@store');
-Route::get('/guests', 'GuestController@index');
 Route::get('/guests/thankyou', function () {return view('/guests/thankyou');});
 
 //Gallery Routes
-Route::resource('/gallery', 'ImageController', ['except' => ['show']]);
+Route::resource('/gallery', 'ImageController');
 Route::resource('tags', 'TagController', ['except' => ['show']]);
 
 // For Admin Panel
-Route::get('/admin', function () {return view('/admin.index');});
+Route::group(['middleware' => 'isAdmin'], function () {
+    Route::get('/admin', 'AdminController@index');
+    Route::get('/guests', 'GuestController@index');
+});
+

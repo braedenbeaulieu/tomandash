@@ -10,6 +10,10 @@ use App\TAA;
 
 class GuestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('isAdmin', ['only' => ['index']]);
+    }
 
 	public function index()
 	{
