@@ -173,7 +173,7 @@ $(document).ready(function() {
             let image_action = "";
 
             image_id = target.attr('id');
-            image_action = 'https://bbeaulieu709.scweb.ca/CAKE/public/gallery/' + image_id;
+            image_action = 'https://cake.scweb.ca/tomandash/gallery/' + image_id;
             image_description = target.parent().parent().siblings().children('#anchor').attr('data-title');
             image_tags = target.parent().parent().siblings().attr('id');
             image_src = target.parent().parent().siblings().children('#anchor').attr('href');
