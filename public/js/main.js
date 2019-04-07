@@ -1452,7 +1452,7 @@ $(document).ready(function () {
   });
 
   if ($('h2').text() === 'Guestbook') {
-    var url = '/tomandash';
+    var url = '/CAKE/public';
     var error_message = $('<p></p>').attr('class', 'error-message').hide();
     window.user_info = {
       user_id: $('#whos-logged-in').attr('class'),

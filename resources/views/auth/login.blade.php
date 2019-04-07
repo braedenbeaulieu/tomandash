@@ -7,7 +7,9 @@
 
             <div class="form-group">
                 <div class="col-md-12">
-                    <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i> Facebook</a>
+                    <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook">
+                        <i class="fa fa-facebook"></i> Facebook
+                    </a>
                 </div>
             </div>
         </div>

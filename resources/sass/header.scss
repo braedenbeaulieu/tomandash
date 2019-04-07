@@ -20,12 +20,6 @@ header {
         color: white;
         transition: all .3s;
 
-        img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: none;
-        }
         span {
             font-size: 2.5em;
             padding: 0 15px 0 0;
@@ -62,6 +56,7 @@ header {
         background: #3b5998;
         width: 100%;
         text-align: center !important;
+        border-radius: 4px;
 
         a {
             color: white !important;
@@ -74,22 +69,26 @@ header {
     }
 
     .login-dropdown {
-        background: $p-blue-dark;
-
         .login-button {
             background: transparent;
             color: $p-pink-light;
-            border-color: $p-pink-light;
+            border: 1px solid $p-pink-light;
 
             &:hover {
                 background: $p-pink-light;
                 color: $p-blue-dark;
-                border-color: $p-blue-dark;
+                border: 1px solid $p-blue-dark;
             }
         }
 
         form {
             width: 200px;
+        }
+
+        small {
+            a {
+                color: $p-pink-light;
+            }
         }
     }
 }

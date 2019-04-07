@@ -14,7 +14,7 @@
 Route::get('/', function () {return view('/home.index');});
 
 // routing for auth stuff
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', function () {return view('/home.index');});
 

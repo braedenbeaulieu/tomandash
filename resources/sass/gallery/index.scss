@@ -23,7 +23,7 @@
     p {
         a {
             color: $p-pink;
-            transition: all.3s;
+            transition: all .3s;
 
             &:hover {
                 text-decoration: underline;
@@ -104,7 +104,7 @@
                 margin: 0 auto;
 
                 .dropdown-toggle::after {
-                    display:none;
+                    display: none;
                 }
 
                 button {
