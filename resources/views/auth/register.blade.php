@@ -61,7 +61,7 @@
 
                     <div class="form-group facebook-button text-center mt-2">
                         <a href="{{ url('/login/facebook') }}" class="btn btn-facebook text-center">
-                            <i class="fab fa-facebook-square"></i> Register
+                            <i class="fab fa-facebook-square"></i> Login
                         </a>
                     </div>
                 </form>
