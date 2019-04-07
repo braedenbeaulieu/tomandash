@@ -11,9 +11,10 @@ $(document).ready(function () {
         }
     });
 
+
     if($('h2').text() === 'Guestbook') {
 
-        const url = '/tomandash';
+        const url = '/CAKE/public';
 
         let error_message = $('<p></p>').attr('class', 'error-message').hide();
 

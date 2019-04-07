@@ -51,6 +51,10 @@ html {
                 border-color: #e14b68;
             }
         }
+        .btn:active, .btn-primary:active {
+            background: $p-pink-light !important;
+            border-color: $p-pink-light !important;
+        }
     }
 }
 

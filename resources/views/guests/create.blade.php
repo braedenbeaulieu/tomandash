@@ -19,7 +19,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group mt-0 mb-2">
-                            <label class="font-weight-bold mt-0 mb-0" for="guestname01">Full Name</label>
+                            <label class="mt-0 mb-0" for="guestname01">Full Name</label>
                             <input type="text" class="form-control{{ $errors->has('guestname01') ? ' is-invalid' : '' }}" id="guestname01" placeholder="Full Name..." name="guestname01" value="{{old('guestname01')}}">
                             @if ($errors->has('guestname01'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('guestname01') }}</strong></span>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="form-group mt-0 mb-2">
-                            <label class="font-weight-bold mt-0 mb-0" for="guests">Guests</label>
+                            <label class="mt-0 mb-0" for="guests">Guests</label>
                             <div class="controls">
                                 <select name="guests" id="guests" title="Total Guests (if Attending)" class="form-control" required>
                                     <option value="0" @if (old('guests') === '0') {{ 'selected' }} @endif>0 ( I am unable to Attend )</option>
@@ -44,35 +44,35 @@
                         </div>
 
                         <div class="form-group mt-0 mb-2" id="guestname2" >
-                            <label class="font-weight-bold my-0" for="guestname02">Guest #2</label>
+                            <label class="my-0" for="guestname02">Guest #2</label>
                             <input type="text" class="form-control{{ $errors->has('guestname02') ? ' is-invalid' : '' }}" placeholder="Guest #2 Full Name..." name="guestname02" value="{{old('guestname02')}}">
                             @if ($errors->has('guestname02'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('guestname02') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group mt-0 mb-2" id="guestname3" >
-                            <label class="font-weight-bold my-0" for="guestname03">Guest #3</label>
+                            <label class="my-0" for="guestname03">Guest #3</label>
                             <input type="text" class="form-control{{ $errors->has('guestname03') ? ' is-invalid' : '' }}" placeholder="Guest #3 Full Name..." name="guestname03" value="{{old('guestname03')}}">
                             @if ($errors->has('guestname03'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('guestname03') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group mt-0 mb-2" id="guestname4">
-                            <label class="font-weight-bold my-0" for="guestname04">Guest #4</label>
+                            <label class="my-0" for="guestname04">Guest #4</label>
                             <input type="text" class="form-control{{ $errors->has('guestname04') ? ' is-invalid' : '' }}" placeholder="Guest #4 Full Name..." name="guestname04" value="{{old('guestname04')}}">
                             @if ($errors->has('guestname04'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('guestname04') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group mt-0 mb-2" id="guestname5">
-                            <label class="font-weight-bold my-0" for="guestname05">Guest #5</label>
+                            <label class="my-0" for="guestname05">Guest #5</label>
                             <input type="text" class="form-control{{ $errors->has('guestname05') ? ' is-invalid' : '' }}" placeholder="Guest #5 Full Name..." name="guestname05" value="{{old('guestname05')}}">
                             @if ($errors->has('guestname05'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('guestname05') }}</strong></span>
                             @endif
                         </div>
                         <div class="form-group mt-0 mb-3">
-                            <label class="font-weight-bold my-0" for="passcode">Pass Code <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Refer to the Pass Code as printed on your Invitation."></i></label>
+                            <label class="my-0" for="passcode">Pass Code <i class="far fa-question-circle" data-toggle="tooltip" data-placement="top" title="Refer to the Pass Code as printed on your Invitation."></i></label>
                             <input type="text" class="form-control{{ $errors->has('passcode') ? ' is-invalid' : '' }}" id="passcode" placeholder="Invitation Pass Code..." name="passcode" value="{{old('passcode')}}">
                             @if ($errors->has('passcode'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('passcode') }}</strong></span>

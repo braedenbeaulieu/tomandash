@@ -93,6 +93,10 @@ html body .btn.btn-primary:hover {
   background-color: #e14b68;
   border-color: #e14b68;
 }
+html body .btn:active, html body .btn-primary:active {
+  background: #ff879f !important;
+  border-color: #ff879f !important;
+}
 
 @media screen and (max-width: 768px) {
   html body h2 {
@@ -119,12 +123,6 @@ header .navbar-brand {
   color: white;
   transition: all 0.3s;
 }
-header .navbar-brand img {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: none;
-}
 header .navbar-brand span {
   font-size: 2.5em;
   padding: 0 15px 0 0;
@@ -147,6 +145,7 @@ header .facebook-button {
   background: #3b5998;
   width: 100%;
   text-align: center !important;
+  border-radius: 4px;
 }
 header .facebook-button a {
   color: white !important;
@@ -155,21 +154,21 @@ header .facebook-button a {
 header .facebook-button a:hover {
   background: transparent;
 }
-header .login-dropdown {
-  background: #2a2e37;
-}
 header .login-dropdown .login-button {
   background: transparent;
   color: #ff879f;
-  border-color: #ff879f;
+  border: 1px solid #ff879f;
 }
 header .login-dropdown .login-button:hover {
   background: #ff879f;
   color: #2a2e37;
-  border-color: #2a2e37;
+  border: 1px solid #2a2e37;
 }
 header .login-dropdown form {
   width: 200px;
+}
+header .login-dropdown small a {
+  color: #ff879f;
 }
 
 @media screen and (max-width: 1202px) {
@@ -254,7 +253,7 @@ footer:hover {
   padding: 20px 0 0;
 }
 #blog .guestbook-container #make-post {
-  width: 100%;
+  width: 99%;
   margin: 20px auto 0;
   padding: 20px 20px 20px;
 }
@@ -287,7 +286,7 @@ footer:hover {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
 }
 #blog .guestbook-container #must-log-in {
-  width: 100%;
+  width: 99%;
   margin: 20px auto;
   padding: 0;
 }
@@ -323,9 +322,9 @@ footer:hover {
 #blog .guestbook-container #posts {
   background: #2a2e37;
   border-radius: 0 0 10px 10px;
-  width: 600px;
+  width: 99%;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0;
 }
 #blog .guestbook-container #posts .post {
   transition: all 0.3s;
@@ -522,6 +521,9 @@ footer:hover {
   #blog .guestbook-container #posts {
     width: 95%;
   }
+  #blog .guestbook-container #posts .post {
+    width: 100%;
+  }
   #blog .guestbook-container #posts .post .post-words {
     width: 80%;
   }
@@ -640,7 +642,7 @@ footer:hover {
   }
 }
 .guests-container {
-  min-height: 100vh;
+  min-height: 70vh;
 }
 .guests-container p {
   width: 100%;
@@ -981,7 +983,7 @@ footer:hover {
 }
 @media screen and (max-width: 800px) {
   .gallery-container {
-    width: 80%;
+    width: 99%;
   }
   .gallery-container .grid {
     margin: 0 auto;
@@ -1025,4 +1027,96 @@ footer:hover {
   border-radius: 10px;
   color: #eed3ab;
   margin: 30px auto;
+}
+
+.register-container {
+  min-height: 70vh;
+}
+.register-container p {
+  width: 100%;
+}
+.register-container .register-form {
+  background: #2a2e37;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px 80px 5px;
+  color: #eed3ab;
+}
+.register-container .register-form .form-group {
+  margin: 20px 0;
+}
+.register-container .register-form .form-group label {
+  margin: 10px 0;
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+}
+.register-container .register-form .form-group label i {
+  color: #ff879f;
+  cursor: pointer;
+}
+.register-container .register-form hr {
+  background: #eed3ab;
+}
+.register-container .register-form .btn-primary {
+  background: #2a2e37;
+  color: #ff879f;
+  transition: all 0.3s;
+  border: 1px solid #ff879f;
+}
+.register-container .register-form .btn-primary:hover {
+  background-color: #ff879f;
+  color: #2a2e37;
+  border-color: #2a2e37;
+}
+.register-container .register-form .btn-facebook {
+  background: #3b5998;
+  width: 250px;
+  text-align: center !important;
+  border-radius: 4px;
+  color: white;
+  font-size: 15px;
+}
+.register-container .register-form .btn-facebook i {
+  font-size: 16px;
+}
+.register-container .register-form input:hover, .register-container .register-form select:hover {
+  background: white;
+}
+
+.reset-password-container {
+  min-height: 70vh;
+  margin: 20px auto 100px;
+}
+.reset-password-container p {
+  width: 100%;
+}
+.reset-password-container .reset-password-form {
+  background: #2a2e37;
+  border-radius: 10px;
+  margin: 5px auto;
+  color: #eed3ab;
+  padding: 10px 0;
+}
+.reset-password-container .reset-password-form .form-group {
+  margin: 5px 0;
+}
+.reset-password-container .reset-password-form .form-group label {
+  font-family: "Raleway", sans-serif;
+  font-weight: 100;
+}
+.reset-password-container .reset-password-form .form-group label i {
+  color: #ff879f;
+  cursor: pointer;
+}
+.reset-password-container .reset-password-form .btn-primary {
+  margin: 10px 0;
+  background: #2a2e37;
+  color: #ff879f;
+  transition: all 0.3s;
+  border: 1px solid #ff879f;
+}
+.reset-password-container .reset-password-form .btn-primary:hover {
+  background-color: #ff879f;
+  color: #2a2e37;
+  border-color: #2a2e37;
 }

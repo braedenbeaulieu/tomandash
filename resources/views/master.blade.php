@@ -35,7 +35,6 @@
             <div class="container">
 
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('img/logo.jpg') }}" alt="Thomas and Ashley">
                     <span class="logo">Thomas and Ashley</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +74,7 @@
 
 
                                         <div class="form-group text-center mb-2">
-                                            <small><a href="#" data-toggle="modal" data-target="#modalPassword">Forgot Password?</a></small>
+                                            <small><a href="" data-toggle="modal" data-target="#modalPassword">Forgot Password?</a></small>
                                         </div>
                                         <div class="form-group text-center mb-2">
                                             <small><a href="{{route('register')}}">Register</a></small>
@@ -110,8 +109,6 @@
                                                 <button type="submit" class="btn btn-primary btn-block">Logout</button>
                                             </div>
                                         </form>
-
-
                                     </li>
                                 </ul>
                             </li>
@@ -120,27 +117,45 @@
                 </div>
             </div>
         </nav>
-
-        <div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3>Forgot Password</h3>
-                        <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <p class="text-danger">Reset your password...</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-                        <button class="btn btn-primary">Save Changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 </header>
+
+<div id="modalPassword" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Forgot Password</h3>
+                <button type="button" class="close font-weight-light" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+
+                <div class="form-group row pt-3">
+                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
+
+                    <div class="col-md-6">
+                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button type="submit" class="btn btn-primary">
+                        {{ __('Send Password Reset Link') }}
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 
 <section id="content">
     @yield('content')

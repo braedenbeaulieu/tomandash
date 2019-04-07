@@ -8,6 +8,7 @@ use Auth;
 use Socialite;
 Use App\User;
 use App\SocialIdentity;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,9 +28,13 @@ class LoginController extends Controller
     /**
      * Where to redirect users after login.
      *
-     * @var string
+     * @return string
      */
-    protected $redirectTo = '/';
+    //protected $redirectTo = '/';
+    public function redirectTo() {
+        return url()->current();
+    }
+
 
     /**
      * Create a new controller instance.
@@ -55,12 +60,12 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver($provider)->user();
         } catch (Exception $e) {
-            return redirect('/');
+            return redirect()->intended('/');
         }
 
         $authUser = $this->findOrCreateUser($user, $provider);
         Auth::login($authUser, true);
-        return redirect($this->redirectTo);
+        return redirect($this->redirectTo());
     }
 
 

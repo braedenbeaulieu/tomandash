@@ -1,0 +1,63 @@
+.register-container {
+    min-height: 70vh;
+
+    p {
+        width: 100%;
+    }
+
+    .register-form {
+        background: $p-blue-dark;
+        border-radius: 10px;
+        margin: 20px auto;
+        padding: 20px 80px 5px;
+        color: $p-gold;
+
+        .form-group {
+            margin: 20px 0;
+            label {
+                margin: 10px 0;
+                @include font(sans-serif);
+                font-weight: 100;
+
+                i {
+                    color: $p-pink-light;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        hr {
+            background: $p-gold;
+        }
+
+        .btn-primary {
+            background: $p-blue-dark;
+            color: $p-pink-light;
+            transition: all .3s;
+            border: 1px solid $p-pink-light;
+
+            &:hover {
+                background-color: $p-pink-light;
+                color: $p-blue-dark;
+                border-color: $p-blue-dark;
+            }
+        }
+
+        .btn-facebook {
+            background: #3b5998;
+            width: 250px;
+            text-align: center !important;
+            border-radius: 4px;
+            color: white;
+            font-size: 15px;
+
+            i {
+                font-size: 16px;
+            }
+        }
+
+        input:hover, select:hover {
+            background: white;
+        }
+    }
+}
