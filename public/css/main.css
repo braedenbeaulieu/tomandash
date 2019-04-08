@@ -678,6 +678,14 @@ footer:hover {
   background: white;
 }
 
+.total-rsvp {
+  font-size: 20px;
+  padding-top: 20px;
+}
+.total-rsvp span {
+  margin-bottom: 4px;
+}
+
 .the-wedding {
   margin-bottom: 100px;
 }

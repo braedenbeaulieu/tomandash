@@ -10,6 +10,7 @@
         <h2 class="headings text-center page-heading-word">Guest List</h2>
     </div>
     <div class="spacing">
+        <p class="total-rsvp">Total RSVPs: <span>@php echo count($guests) @endphp</span></p>
         <div class="container guest-list-container">
 
 
