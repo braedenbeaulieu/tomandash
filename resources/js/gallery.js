@@ -147,7 +147,7 @@ $(document).ready(function() {
             let image_id = target.parent().parent().parent().attr('id');
 
             $.ajax({
-                url: '/CAKE/public/gallery/' + image_id,
+                url: '/tomandash/gallery/' + image_id,
                 type: 'delete',
                 data: {image_id: image_id},
                 success: function() {

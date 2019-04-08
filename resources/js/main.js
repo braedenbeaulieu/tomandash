@@ -14,7 +14,7 @@ $(document).ready(function () {
 
     if($('h2').text() === 'Guestbook') {
 
-        const url = '/CAKE/public';
+        const url = '/tomandash';
 
         let error_message = $('<p></p>').attr('class', 'error-message').hide();
 
