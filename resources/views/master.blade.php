@@ -44,8 +44,8 @@
                     <ul class="nav navbar-nav header-links">
                         <li class="nav-item OurStory"><a class="nav-link ml-2 mr-2" href="{{ url('ourstory') }}">Our Story</a></li>
                         <li class="nav-item TheWedding"><a class="nav-link ml-2 mr-2" href="{{ url('thewedding') }}">The Wedding</a></li>
-                        <li class="nav-item RSVP"><a class="nav-link ml-2 mr-2" href="{{ url('guests/create') }}">RSVP</a></li>
                         <li class="nav-item Registry"><a class="nav-link ml-2 mr-2" href="{{ url('registry') }}">Registry</a></li>
+                        <li class="nav-item RSVP"><a class="nav-link ml-2 mr-2" href="{{ url('guests/create') }}">RSVP</a></li>
                         <li class="nav-item Guestbook"><a class="nav-link ml-2 mr-2" href="{{ url('guestbook') }}">Guestbook</a></li>
                         <li class="nav-item Gallery"><a class="nav-link ml-2 mr-2" href="{{ url('gallery') }}">Gallery</a></li>
                     </ul>
